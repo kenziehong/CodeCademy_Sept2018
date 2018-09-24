@@ -1,0 +1,107 @@
+class Dog extends Animal{
+  
+  int age;
+  public Dog(int dogsAge){
+    age = dogsAge;   
+    
+  }
+  //Our new method to help us get "started"
+  public void bark(){
+    System.out.println("Woof!");
+    
+  }
+  public void run(int feet){
+    System.out.println("Your dog ran "+feet+" feet!");
+    
+  }
+  
+  public int getAge(){
+    return age;
+  }
+  
+//Other methods omitted for brevity...
+	public static void main(String[] args) {
+    Dog spike = new Dog(5);
+    spike.bark();
+    spike.run(100);
+    int spikeAge = spike.getAge();
+    System.out.println(spikeAge);
+    spike.checkStatus();
+
+	}
+}
+
+
+
+
+class Animal {
+
+  public void checkStatus() {
+
+    System.out.println("Your pet is healthy and happy!");
+
+  }
+}
+
+
+-----------------------------------------------------
+
+DATA STRUCTURES
+Generalizations
+Great work! What did we learn so far?
+
+For Loops: used to repeatedly run a block of code
+For Each Loops: a concise version of a for loop
+ArrayList: stores a list of data
+HashMap: stores keys and associated values like a dictionary
+
+----------------------------------------------------
+
+OBJECT-ORIENTED JAVA
+Generalizations
+Great work! Let's review everything that we've learned about object-oriented programming in Java so far.
+
+Class: a blueprint for how a data structure should function
+
+Constructor: instructs the class to set up the initial state of an object
+
+Object: instance of a class that stores the state of a class
+
+Method: set of instructions that can be called on an object
+
+Parameter: values that can be specified when creating an object or calling a method
+
+Return value: specifies the data type that a method will return after it runs
+
+Inheritance: allows one class to use functionality defined in another class
+
+-------------------------------------------------------------
+
+
+CONDITIONALS AND CONTROL FLOW
+Generalizations
+Great work! Control flow allows Java programs to execute code blocks depending on Boolean expressions. What did we learn about control flow so far?
+
+Boolean Operators: &&, ||, and ! are used to build Boolean expressions and have a defined order of operations
+
+Statements: if, if/else, and if/else if/else statements are used to conditionally execute blocks of code
+
+Ternary Conditional: a shortened version of an if/else statement that returns a value based on the value of a Boolean expression
+
+Switch: allows us to check equality of a variable or expression with a value that does not need to be a Boolean
+
+
+------------------------------------------------------
+
+INTRODUCTION TO JAVA
+Generalizations
+Congratulations! You've learned some of the building blocks of Java programming. What can we generalize so far?
+
+Data Types are int, boolean, and char.
+Variables are used to store values.
+Whitespace helps make code easy to read for you and others.
+Comments describe code and its purpose.
+Arithmetic Operators include +, -, *, /, and %.
+Relational Operators include <, <=, >, and >=.
+Equality Operators include == and !=.
+A full understanding of these concepts is key to understanding the remainder of the Java course. Let's keep going!

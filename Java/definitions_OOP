@@ -1,0 +1,133 @@
+
+//Create a custom Car class
+
+class Car {
+
+}
+
+-----------------------
+class Car {
+
+    //The class constructor for the Car class
+    public Car() {
+
+    }
+}
+
+--------------------------
+class Car {
+
+    //Using instance variables to model our Car class after a real-life car
+    int modelYear;
+
+    public Car() {
+
+    }
+}
+
+-------------------------
+class Car {
+
+    //Use instance variables to model our Car class after a real-life car
+    int modelYear;
+
+    //The class constructor Car is still empty
+    //Let's add parameters to our Car class constructor
+    //Parameters allow data types to be created with specified attributes
+    public Car(int year) { 
+
+        modelYear = year;
+    }
+}
+
+-------------------------
+public static void main(String[] args) {
+	//To use the Car class, we must create an instance of the Car class. 
+	//An instance of a class is known as an object in Java.
+	 Car myFastCar = new Car(2007);
+
+}
+
+
+-------------------------
+class Car {
+
+    int modelYear;
+
+    public Car(int year) {
+
+        modelYear = year;
+
+    }
+
+    //Let's create a new method:
+    //Our new method to help us get "started"
+    public void startEngine() {
+
+        System.out.println("Vroom!");
+
+    }
+
+    public static void main(String[] args){
+
+        Car myFastCar = new Car(2007);
+
+        //Here is an example of calling a method on an object using the Car class
+         myFastCar.startEngine();
+
+    }
+}
+
+
+------------------------
+class Car {
+
+    int modelYear;
+
+    public Car(int year) {
+
+        modelYear = year;
+
+    }
+
+    public void startEngine() {
+        System.out.println("Vroom!");
+    }
+
+    public void drive(int distanceInMiles) {
+
+        System.out.println("Miles driven: " + distanceInMiles);
+
+    }
+
+    public static void main(String[] args){
+
+        Car myFastCar = new Car(2007);
+        myFastCar.startEngine();
+        myFastCar.drive(1628);
+
+    }
+
+}
+
+//In the example above, we create a drive method that accepts an int parameter called distanceInMiles. 
+//In the main method, we call the drive method on the myFastCar object and provide an int parameter of 1628.
+//Calling the drive method on myFastCar will result in printing Miles driven: 1628 to the console.    
+
+
+------------------------
+//The void keyword (which means "completely empty") indicates to the method that no value is returned after calling that method.
+//Alternatively, we can use data type keywords (such as int, char, etc.) to specify that a method should return a value of that type.
+
+public int numberOfTires() {
+
+        return 4;
+
+    }
+public static void main(String[] args){
+
+        int tires = myFastCar.numberOfTires();
+        System.out.println(tires);
+
+    }
+}
