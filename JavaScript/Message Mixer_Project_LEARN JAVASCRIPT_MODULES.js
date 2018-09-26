@@ -258,6 +258,10 @@ displayMessage();
 
 
 --------------------------------------------------------------------
+//export default
+
+//3. create a varibale MessageMixer and set it equal to an empty object to represent the module as an object
+const MessageMixer = {};
 
 //11.In messageMixer.js, use modify the way you export MessageMixer to use export default instead of. module.exports.
 
@@ -330,7 +334,7 @@ export default MessageMixer;
 
 
 --------------------------------------------------------------------
-
+//import from export default
 //12.In message.js, use the import keyword to import the MessageMixer module. The file path will be './messageMixer'
 import MessageMixer from './messageMixer';
 function displayMessage() {
@@ -350,7 +354,7 @@ displayMessage();
 
 
 -------------------------------------------------------------------
-
+//export {}
 //14.Message Mixer wants to test one final behavior for their program. They'd like to export each of the functions as a variable. Modify messageMixer.js so that each function is exported as a variable name. Note that as you do this, you should also remove the MessageMixer object in front of each function, as well at any reference to MessageMixer in the body of the reverseAllWords(), encode(), and palindrome() functions.
 
 const countCharacter = function (inputString, inputCharacter) {
@@ -423,7 +427,7 @@ export {countCharacter,capitalizeFirstCharacterOfWords,reverseWord,reverseAllWor
 
 
 -------------------------------------------------------------------------
-
+//import {}
 
 //16.In message.js, modify the program to import each of the variables.
 import {countCharacter,capitalizeFirstCharacterOfWords,reverseWord,reverseAllWords,replaceFirstOccurence,replaceAllOccurrences,encode,palindrome,pigLatin} from './messageMixer';
