@@ -366,3 +366,43 @@ async is a keyword that is used to create functions that will return promises.
 await is a keyword that is used to tell a program to continue moving through the message queue while a promise resolves.
 
 await can only be used within functions declared with async.
+
+
+-------------------------------------------------
+//http://genk.vn/kham-pha/giai-ngo-ve-api-vi-sao-noi-api-co-y-nghia-song-con-voi-ca-the-gioi-dien-toan-20160403144419703.chn
+//https://techtalk.vn/tat-tan-tat-ve-api.html
+
+REST là viết tắt của Representational State Transfer. Giải thích đơn giản, REST là một loạt hướng dẫn và dạng cấu trúc dùng cho việc chuyển đổi dữ liệu. Thông thường, REST hay được dùng cho ứng dụng web, nhưng cũng có thể làm việc được với dữ liệu phần mềm.
+API là viết tắt của Application Programming Interface, phương thức kết nối với các thư viện và ứng dụng khác. Windows có nhiều API, và Twitter cũng có web API, tuy chúng thực hiện các chức năng khác nhau, với mục tiêu khác nhau.
+
+Nhìn chung, RESTful API là những API đi theo cấu trúc REST.
+
+Cấu trúc REST là gì?
+Thật khó giải thích sao cho cụ thể. Tuy nhiên, vẫn có một số quy luật bất biến, như:
+
+Sự nhất quán trong cả API
+Tồn tại không trang thái (ví dụ, không có server-side session)
+Sử dụng HTTP status code khi cần thiết
+Sử dụng URL endpoint với logical hierarchy
+Versioning trong URL chứ không phải trong HTTP header
+
+
+
+Nhìn chung, có bốn lệnh dùng để truy cập RESTful API:
+
+GET để truy vấn object
+POST để tạo object mới
+PUT để sửa đổi hoặc thay thế một object
+DELETE để loại bỏ một object
+
+Mỗi phương thức trên phải được API call thông qua để gửi chỉ thị cho server phải làm gì.
+
+Return type cũng rất quan trọng, và nên dồng nhất với tất cả tài nguyên. JSON cũng là một return type nổi tiếng, với online specs giải thích đúng cấu trúc dữ liệu.
+
+Nên nhớ, return data ở endpoint sẽ thay đổi mạnh mẽ dựa vào phương thức HTTP. Ví dụ, GET trả nội dung, còn POST tạo nội dung mới. Request có thể chỉ đến cùng một endpoint, nhưng kết quả có thể rất khác.
+
+
+Tự build API	
+Build Endpoints: Tên danh từ, nói cách khác dữ liệu API phải trả kết quả là người, nơi chốn, hoặc “thứ” gì đó.
+Đặt Return Type: Đa số người dùng web trông chờ nội dung JSON, vậy đây có lẽ là lựa chọn tốt nhất bên cạnh XML. JSON chính là API return type nền tàng cho lập trình web.
+
