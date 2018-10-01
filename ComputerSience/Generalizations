@@ -45,3 +45,27 @@ else statements can be used to execute code when the conditions of an if stateme
 elif statements can be used to build additional checks into your if statements
 try and except statements can be used to build error control into your code.
 Let's put these skills to the test!
+
+------------------------------------------------------
+
+CREATING AND MODIFYING A LIST IN PYTHON
+Review
+So far, we have learned
+
+How to create a list
+How to create a list of lists using zip
+How to add elements to a list using either .append() or +
+How to use range to create lists of integers
+Let's practice these skills.
+
+---------------------------------------------------
+
+WORKING WITH LISTS IN PYTHON
+Review
+In this lesson, we learned how to:
+
+Get the length of a list //len(list)
+Select subsets of a list (called slicing) //list[ : ]
+Count the number of times that an element appears in a list //list.count('i')
+Sort a list of items //list.sort() # sorted(list)
+
