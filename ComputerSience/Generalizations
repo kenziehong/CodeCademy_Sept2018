@@ -69,3 +69,34 @@ Select subsets of a list (called slicing) //list[ : ]
 Count the number of times that an element appears in a list //list.count('i')
 Sort a list of items //list.sort() # sorted(list)
 
+----------------------------------------------
+LEARN PYTHON: LOOPS
+Review
+Good job! In this lesson, you learned
+
+how to write a for loop
+how to use range in a loop //list(range(2,9,3))
+what infinite loops are and how to avoid them //break
+how to skip values in a loop //continue
+how to write a while loop 
+how to make lists with one line
+Let's get some more practice with these concepts!
+
+
++++++++++++++++++++++++++++++++++
+List Comprehensions:
+1.Takes an element in words
+2.Assigns that element to a variable called word
+3.Checks if word[0] == '@', and if so, it adds word to the new list, usernames. If not, nothing happens.
+4.Repeats steps 1-3 for all of the strings in words
+Note: if we hadn’t done any checking (let's say we had omitted if word[0] == '@'), the new list would be just a copy of words
+
+++++++++++++++++++++++++++++++++++++
+More List Comprehensions:
+1.Takes a string in usernames
+2.Assigns that number to a variable called user
+3.Adds " please follow me!" to user
+4.Appends that concatenation to the new list called messages
+5.Repeats steps 1-4 for all of the strings in usernames
+
+
