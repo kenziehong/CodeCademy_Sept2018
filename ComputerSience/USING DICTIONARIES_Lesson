@@ -1,0 +1,122 @@
+#Review
+
+tarot = { 1:	"The Magician", 2:	"The High Priestess", 3:	"The Empress", 4:	"The Emperor", 5:	"The Hierophant", 6:	"The Lovers", 7:	"The Chariot", 8:	"Strength", 9:	"The Hermit", 10:	"Wheel of Fortune", 11:	"Justice", 12:	"The Hanged Man", 13:	"Death", 14:	"Temperance", 15:	"The Devil", 16:	"The Tower", 17:	"The Star", 18:	"The Moon", 19:	"The Sun", 20:	"Judgement", 21:	"The World", 22: "The Fool"}
+
+#1. We have provided a pack of tarot cards, tarot. You are going to do a three card spread of your past, present, and future. Create an empty dictionary called spread.
+spread = {}
+
+#2. The first card you draw is card 13. Pop the value assigned to the key 13 out of the tarot dictionary and assign it as the value of the "past" key of spread.
+spread["past"] = tarot.pop(13)
+spread["present"] = tarot.pop(22)
+spread["future"] = tarot.pop(10)
+
+#5. Iterate through the items in the spread dictionary and for each key: value pair, print out a string that says:
+for key, value in spread.items():
+  print("Your " + key + " is the " + str(value) + " card.")
+
+-----------------------------------------------
+#Get All Items
+
+pct_women_in_occupation = {"CEO": 28, "Engineering Manager": 9, "Pharmacist": 58, "Physician": 40, "Lawyer": 37, "Aerospace Engineer": 9}
+
+#1. Use a for loop to iterate through the items of pct_women_in_occupation. For each key : value pair, print out a string that looks like
+for key, value in pct_women_in_occupation.items():
+  print("Women make up " + str(value) + " percent of " + key + "s")
+
+
+------------------------------------
+#Get All Values
+
+num_exercises = {"functions": 10, "syntax": 13, "control flow": 15, "loops": 22, "lists": 19, "classes": 18, "dictionaries": 18}
+
+#test = list(num_exercises.values())
+#print(test)
+
+#1.Create a variable called total_exercises and set it equal to 0.
+total_exercises = 0
+
+#2. Iterate through the values in the num_exercises list and add each value to the total_exercises variable.
+for value in num_exercises.values():
+  total_exercises += value
+print(total_exercises)  
+
+
+-----------------------------
+#Get All Keys
+
+user_ids = {"teraCoder": 100019, "pythonGuy": 182921, "samTheJavaMaam": 123112, "lyleLoop": 102931, "keysmithKeith": 129384}
+num_exercises = {"functions": 10, "syntax": 13, "control flow": 15, "loops": 22, "lists": 19, "classes": 18, "dictionaries": 18}
+
+#1.Create a variable called users and assign it to be all of the keys of the user_ids list.
+#users = list(user_ids)
+#print(users)
+users = {key for key in user_ids.keys()}
+
+#2.
+#lessons = {}  //'dict' object has no attribute 'append'
+#for key in num_exercises.keys():
+  #lessons = {}  //'dict' object has no attribute 'append'
+  #lessons.append(key)
+
+lessons = { key for key in num_exercises.keys()}
+
+print(users)
+print(lessons)
+
+-------------------------------------
+#Delete a Key
+
+available_items = {"health potion": 10, "cake of the cure": 5, "green elixir": 20, "strength sandwich": 25, "stamina grains": 15, "power stew": 30}
+health_points = 20
+
+#1. You are designing the video game Big Rock Adventure. We have provided a dictionary of items in the player's inventory to add points to their health meter. In one line, add the value of "stamina grains" to health_points and remove the item from the dictionary. If the key does not exist, add 0 to health_points.
+health_points += available_items.pop("stamina grains", 0)
+health_points += available_items.pop("power stew", 0)
+health_points += available_items.pop("mystic bread", 0)
+
+print(available_items)
+print(health_points)
+
+--------------------------------------
+#Safely Get a Key
+
+user_ids = {"teraCoder": 100019, "pythonGuy": 182921, "samTheJavaMaam": 123112, "lyleLoop": 102931, "keysmithKeith": 129384}
+
+#1.Use .get() to get the value of "teraCoder"'s user ID, with 100000 as a default value if the user doesn't exist. Store it in a variable called tc_id. Print tc_id to the console.
+tc_id = user_ids.get("teraCoder", 100000)
+print(tc_id)
+
+stack_id = user_ids.get("superStackSmash", 100000)
+
+---------------------------------------
+#Try/Except to Get a Key
+
+caffeine_level = {"espresso": 64, "chai": 40, "decaf": 0, "drip": 120}
+
+caffeine_level['matcha'] = 30
+
+try:
+  print(caffeine_level['matcha'])
+except KeyError:
+  print("Unknown Caffeine Level")
+
+------------------------------------
+#Get an Invalid Key
+
+zodiac_elements = {"water": ["Cancer", "Scorpio", "Pisces"], "fire": ["Aries", "Leo", "Sagittarius"], "earth": ["Taurus", "Virgo", "Capricorn"], "air":["Gemini", "Libra", "Aquarius"]}
+
+zodiac_elements["energy"] = "Not a Zodiac element"
+
+print(zodiac_elements["energy"])
+
+-------------------------------------
+#Get A Key
+
+zodiac_elements = {"water": ["Cancer", "Scorpio", "Pisces"], "fire": ["Aries", "Leo", "Sagittarius"], "earth": ["Taurus", "Virgo", "Capricorn"], "air":["Gemini", "Libra", "Aquarius"]}
+print(zodiac_elements["earth"])
+print(zodiac_elements["fire"])
+
+
+
+
+

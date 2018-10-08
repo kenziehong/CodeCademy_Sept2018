@@ -173,3 +173,15 @@ students = {key:value for key, value in zip(names, heights)}
 3.Creates a key : value item in the students dictionary
 4.Repeats steps 1-3 for the entire list of pairs
 
+----------------------------------------------------------------------------------
+October 8, 2018 (16:55)
+
+USING DICTIONARIES
+Review
+In this lesson, you've learned how to go through dictionaries and access keys and values in different ways. Specifically you have seen how to:
+
+Use a key to get a value from a dictionary // dictionary(object).get(key, default value if not exist) or dictionary[key]
+Check for existence of keys //try-except
+Find the length of a dictionary
+Remove a key: value pair from a dictionary //dictionary(object).pop(key, default value if not exist) + still return value which matches key
+Iterate through keys and values in dictionaries //.keys(), .values(), .items() return view object
