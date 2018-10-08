@@ -127,6 +127,7 @@ what modules are and how they can be useful
 how to use a few of the most commonly used Python libraries
 what namespaces are and how to avoid polluting your local namespace
 how scope works for files in Python
+
 Programmers can do great things if they are not forced to constantly reinvent tools that have already been built. With the power of modules, we can import any code that someone else has shared publicly.
 
 In this article, we covered some of the Python Standard Library, but you can explore all the modules that come packaged with every installation of Python at the Python Standard Library documentation.
@@ -150,4 +151,25 @@ Over this lesson you've learned:
 .find() searches a string for a character/string and returns the index value that character/string is found at.
 .format() and f-strings allow you to interpolate a string with variables.
 Well I've been stringing you along for long enough, let's get some more practice in!
+
+------------------------------------------------------------------------------
+October 8, 2018
+
+CREATING DICTIONARIES
+Review
+So far we have learned:
+
+How to create a dictionary //names ={}
+How to add elements to a dictionary //names[key] = value
+How to update elements in a dictionary //names.update({key: value, key: value})
+How to use a list comprehension to create a dictionary from two lists
+
+@@@@@@@@@@@@@@@@@@
+
+students = {key:value for key, value in zip(names, heights)}
+
+1.Takes a pair from the zipped list of pairs from names and heights
+2.Names the elements in the pair key (the one originally from the names list) and value (the one originally from the heights list)
+3.Creates a key : value item in the students dictionary
+4.Repeats steps 1-3 for the entire list of pairs
 
