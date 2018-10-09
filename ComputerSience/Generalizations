@@ -160,7 +160,7 @@ Review
 So far we have learned:
 
 How to create a dictionary //names ={}
-How to add elements to a dictionary //names[key] = value
+How to add elements to a dictionary //names[key] = value (if key exist, value of key is a list: names[key].append = value)
 How to update elements in a dictionary //names.update({key: value, key: value})
 How to use a list comprehension to create a dictionary from two lists
 
