@@ -185,3 +185,16 @@ Check for existence of keys //try-except
 Find the length of a dictionary
 Remove a key: value pair from a dictionary //dictionary(object).pop(key, default value if not exist) + still return value which matches key
 Iterate through keys and values in dictionaries //.keys(), .values(), .items() return view object
+
+-------------------------------------------------------------------------------
+October 9,2018 (22:30)
+
+LEARN PYTHON: CLASSES
+Review
+So far we've covered what a data type actually is in Python. We explored what the functionality of Python's built-in types (also referred to as primitives) are. We learned how to create our own data types using the class keyword.
+
+We explored the relationship between a class and an object — we create objects when we instantiate a class, we find the class when we check the type() of an object. We learned the difference between class variables (the same for all objects of a class) and instance variables (unique for each object).
+
+We learned about how to define an object's functionality with methods. We created multiple objects from the same class, all with similar functionality, but with different internal data. They all had the same methods, but produced different output because they were different instances.
+
+Take a moment to congratulate yourself, object-oriented programming is a complicated concept.
