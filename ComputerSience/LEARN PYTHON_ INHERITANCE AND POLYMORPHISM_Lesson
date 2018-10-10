@@ -1,0 +1,173 @@
+#Review
+
+#1. Create a class SortedList that inherits from the built-in type list
+class SortedList(list):
+  
+  #2.Recall that lists have a .append() method that takes a two arguments, self and value. We're going to have SortedList perform a sort after every .append()
+  def append(self, value):
+    
+    #3.Write the code that would get SortedList to behave like a normal list when calling the .append() method.
+    super().append(value)
+    
+    #4.After you've appended the new value, sort the list.
+    self.sort()
+
+-----------------------------------------
+#Dunder Methods II
+
+class LawFirm:
+  def __init__(self, practice, lawyers):
+    self.practice = practice
+    self.lawyers = lawyers
+  
+  #1.Give LawFirm a .__len__() method that will return the number of lawyers in the law firm.
+  def __len__(self):
+    return len(self.lawyers)
+  
+  #2.Give LawFirm a .__contains__() method that takes two parameters: self and lawyer and checks to see if lawyer is in self.lawyers
+  def __contains__(self, lawyer):
+    return lawyer in self.lawyers
+    
+d_and_p = LawFirm("Injury", ["Donelli", "Paderewski"])
+
+----------------------------------------
+#Dunder Methods
+
+class Atom:
+  def __init__(self, label):
+    self.label = label
+    
+  #1.Give Atom a .__add__(self, other) method that returns a Molecule with the two Atoms.       
+  def __add__(self, other):
+    return Molecule([self, other])
+    
+class Molecule:
+  def __init__(self, atoms):
+    if type(atoms) is list:
+	    self.atoms = atoms
+      
+sodium = Atom("Na")
+chlorine = Atom("Cl")
+salt = Molecule([sodium, chlorine])
+# salt = sodium + chlorine
+
+------------------------------------------
+#Polymorphism
+
+a_list = [1, 18, 32, 12]
+a_dict = {'value': True}
+a_string = "Polymorphism is cool!"
+
+#1.In script.py a few different types of data are provided. Call len() on each of them. Is the same operation happening for each? How is it different? How is it similar? Does using len() to refer to these different operations make sense?
+len(a_list)
+len(a_dict)
+len(a_string)
+
+------------------------------------------
+#Interfaces
+
+class InsurancePolicy:
+  def __init__(self, price_of_item):
+    self.price_of_insured_item = price_of_item
+
+#1.  Create a subclass of InsurancePolicy called VehicleInsurance
+class VehicleInsurance(InsurancePolicy):
+  
+  #3. Give VehicleInsurance a .get_rate() method that takes self as a parameter. Return .001 multiplied by the price of the vehicle
+  def get_rate(self):
+    return .001*self.price_of_insured_item
+
+#2. Create a different subclass of InsurancePolicy called HomeInsurance
+class HomeInsurance(InsurancePolicy):
+  
+  #4. Give HomeInsurance a .get_rate() method that takes self as a parameter. Return .00005 multiplied by the price of the home
+  def get_rate(self):
+    return .00005*self.price_of_insured_item
+
+-----------------------------------------
+#Super()
+
+class PotatoSalad:
+  def __init__(self, potatoes, celery, onions):
+    self.potatoes = potatoes
+    self.celery = celery
+    self.onions = onions
+    
+#1. make a subclass of PotatoSalad called SpecialPotatoSalad
+class SpecialPotatoSalad(PotatoSalad):
+  
+  #2. Create a new constructor for SpecialPotatoSalad that just calls the parent constructor for PotatoSalad. Make sure that SpecialPotatoSalad's constructor takes the same arguments as PotatoSalad
+  def __init__(self, potatoes, celery, onions):
+    super().__init__(potatoes, celery, onions)
+    
+    #3. In your constructor for SpecialPotatoSalad, after making regular potato salad, set self.raisins = 40
+    self.raisins = 40
+    
+--------------------------------------
+#Overriding Methods
+
+class Message:
+  def __init__(self, sender, recipient, text):
+    self.sender = sender
+    self.recipient = recipient
+    self.text = text
+
+class User:
+  def __init__(self, username):
+    self.username = username
+    
+  def edit_message(self, message, new_text):
+    if message.sender == self.username:
+      message.text = new_text
+      
+#1. Create an Admin class that subclasses the User class.  
+class Admin(User):
+  
+  #2.Override User's .edit_message() method in Admin so that an Admin can edit any messages.
+  def edit_message(self, message, new_text):
+    message.text = new_text
+
+---------------------------------------
+#Exceptions
+
+# Define your exception up here:
+
+#1.Define your own exception called OutOfStock that inherits from the Exception class
+class OutOfStock(Exception):
+  pass
+
+
+# Update the class below to raise OutOfStock
+class CandleShop:
+  name = "Here's a Hot Tip: Buy Drip Candles"
+  def __init__(self, stock):
+    self.stock = stock
+    
+  def buy(self, color):
+    
+    #2.We reject code that raise exceptions, so don't raise OutOfStock explicitly outside of the .buy() method in the CandleShop class
+    if self.stock[color] < 1:
+      raise OutOfStock
+    self.stock[color] = self.stock[color] - 1
+
+candle_shop = CandleShop({'blue': 6, 'red': 2, 'green': 0})
+candle_shop.buy('blue')
+
+# This should raise OutOfStock:
+candle_shop.buy('green')
+
+#2. Have CandleShop raise your OutOfStock exception when CandleShop.buy() tries to buy a candle that's out of stock
+
+---------------------------------------------
+#Inheritance
+
+class Bin:
+  pass
+
+#1. In script.py we've already defined the class Bin. Create a subclass of Bin called RecyclingBin.
+class RecyclingBin(Bin):
+  pass
+
+    
+    
+

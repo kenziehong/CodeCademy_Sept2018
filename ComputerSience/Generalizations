@@ -198,3 +198,18 @@ We explored the relationship between a class and an object — we create objects
 We learned about how to define an object's functionality with methods. We created multiple objects from the same class, all with similar functionality, but with different internal data. They all had the same methods, but produced different output because they were different instances.
 
 Take a moment to congratulate yourself, object-oriented programming is a complicated concept.
+
+---------------------------------------------------------------------
+October 10, 2018 ()
+
+LEARN PYTHON: INHERITANCE AND POLYMORPHISM
+Review
+In this lesson, we learned more complicated relationships between classes. We learned:
+
+How to create a subclass of an existing class.
+How to redefine existing methods of a parent class in a subclass by overriding them.
+How to leverage a parent class's methods in the body of a subclass method using the super() function.
+How to define a Python exception that inherits from Exception.
+How to write programs that are flexible using interfaces and polymorphism.
+How to write data types that look and feel like native data types with dunder methods.
+These are really complicated concepts! It's a long journey to get to the state of comfortably being able to build class hierarchies that embody the concerns that your software will need to. Give yourself a pat on the back, you earned it!
