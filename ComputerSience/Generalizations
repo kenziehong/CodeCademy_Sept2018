@@ -110,7 +110,9 @@ In this lesson you learned:
 
 A string is a list of characters.
 A character can be selected from a string using its index string_name[index]. These indices start at 0.
-A 'slice' can be selected from a string. These can be between two indices or can be open-ended, selecting all of the string from a point.
+A 'slice' can be selected from a string. These can be between two indices or can be 
+open-ended, selecting all of the string from a point.
+
 Strings can be concatenated to make larger strings.
 len() can be used to determine the number of characters in a string.
 Strings can be iterated through using for loops.
@@ -213,3 +215,102 @@ How to define a Python exception that inherits from Exception.
 How to write programs that are flexible using interfaces and polymorphism.
 How to write data types that look and feel like native data types with dunder methods.
 These are really complicated concepts! It's a long journey to get to the state of comfortably being able to build class hierarchies that embody the concerns that your software will need to. Give yourself a pat on the back, you earned it!
+
+--------------------------------------------------------------
+Nodes Review
+Let's take a minute to review what we've covered about nodes in this lesson.
+
+Nodes:
+
+Contain data, which can be a variety of data types
+Contain links to other nodes. If a node has no links, or they are all null, you have reached the end of the path you were following.
+Can be orphaned if there are no existing links to them
+
+----------------------------------------------------
+NODES: PYTHON
+Python Nodes Review
+We have a few zany characters to keep track of and Python nodes may do just the trick. Let's get started...
+
+------------------------------------------------------
+
+LINKED LISTS: CONCEPTUAL
+Linked List Review
+Let's take a minute to review what we've covered about linked lists in this lesson.
+
+Linked Lists:
+
+Are comprised of nodes
+The nodes contain a link to the next node (and also the previous node for bidirectional linked lists)
+Can be unidirectional or bidirectional
+Are a basic data structure, and form the basis for many other data structures
+Have a single head node, which serves as the first node in the list
+Require some maintenance in order to add or remove nodes
+The methods we used are an example and depend on the exact use case and/or programming language being used
+
+-------------------------------------------------------
+LINKED LISTS: PYTHON
+Linked List Review
+Congratulations, you have implemented a linked list in Python!
+
+We did this by:
+
+Defining a Node class to hold the values and links between nodes
+Implementing a LinkedList class to handle external operations on the list like adding and removing nodes
+
+---------------------------------------------------
+
+Stacks Review
+Let's take a minute to review what we've covered about stacks in this lesson.
+
+Stacks:
+
+Contain data nodes
+Support three main operations
+Push adds data to the top of the stack
+Pop removes and provides data from the top of the stack
+Peek reveals data on the top of the stack
+Implementations include a linked list or array
+Can have a limited size
+Pushing data onto a full stack results in a stack overflow
+Stacks process data Last In, First Out (LIFO)
+
+-----------------------------------------------------
+STACKS: PYTHON
+Stacks Python Review
+Nice work — you've built out a Stack class that can:
+
+add a new item to the top via a push() method
+remove an item from the top and returns its value with a pop() method
+return the value of the top item using a peek() method
+allows a stack instance to maintain an awareness of its size to prevent stack "overflow"
+So how does your code stack up against pizza delivery?
+
+----------------------------------------------------------
+
+QUEUES: CONCEPTUAL
+Queues Review
+Let's take a minute to review what we've covered about queues in this lesson.
+
+Queues:
+
+Contain data nodes
+Support three main operations:
+Enqueue adds data to the back of the queue
+Dequeue removes and provides data from the front of the queue
+Peek provides data on the front of the queue
+Can be implemented using a linked list or array
+Bounded queues have a limited size.
+Enqueueing onto a full queue causes a queue overflow
+Queues process data First In, First Out (FIFO)
+
+---------------------------------------------------
+
+QUEUES: PYTHON
+Queues Python Review
+Congrats! You have just implemented a queue data structure in Python by creating a Queue class that:
+
+follows FIFO protocol with enqueue(), dequeue(), and peek() methods
+gives you the option of creating bounded queues with a max_size
+prevents queue "overflow" and "underflow" by keeping track of size
+
+----------------------------------------------------

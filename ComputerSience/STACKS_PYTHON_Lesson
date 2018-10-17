@@ -1,0 +1,198 @@
+#Stacks Python Review
+
+from node import Node
+
+class Stack:
+  def __init__(self, limit=1000):
+    self.top_item = None
+    self.size = 0
+    self.limit = limit
+  
+  def push(self, value):
+    if self.has_space():
+      item = Node(value)
+      item.set_next_node(self.top_item)
+      self.top_item = item
+      self.size += 1
+      print("Adding {} to the pizza stack!".format(value))
+    else:
+      print("No room for {}!".format(value))
+
+  def pop(self):
+    if not self.is_empty():
+      item_to_remove = self.top_item
+      self.top_item = item_to_remove.get_next_node()
+      self.size -= 1
+      print("Delivering " + item_to_remove.get_value())
+      return item_to_remove.get_value()
+    print("All out of pizza.")
+
+  def peek(self):
+    if not self.is_empty():
+      return self.top_item.get_value()
+    print("Nothing to see here!")
+
+  def has_space(self):
+    return self.limit > self.size
+
+  def is_empty(self):
+    return self.size == 0
+  
+# Defining an empty pizza stack
+pizza_stack = Stack(6)
+# Adding pizzas as they are ready until we have 
+pizza_stack.push("pizza #1")
+pizza_stack.push("pizza #2")
+pizza_stack.push("pizza #3")
+pizza_stack.push("pizza #4")
+pizza_stack.push("pizza #5")
+pizza_stack.push("pizza #6")
+
+# Uncomment the push() statement below:
+pizza_stack.push("pizza #7")
+
+# Delivering pizzas from the top of the stack down
+print("The first pizza to deliver is " + pizza_stack.peek())
+pizza_stack.pop()
+pizza_stack.pop()
+pizza_stack.pop()
+pizza_stack.pop()
+pizza_stack.pop()
+pizza_stack.pop()
+
+# Uncomment the pop() statement below:
+pizza_stack.pop()
+
+
+----------------------------------------------------
+#Stacks Python Size II
+
+from node import Node
+
+class Stack:
+  def __init__(self, limit=1000):
+    self.top_item = None
+    self.size = 0
+    self.limit = limit
+  
+  def push(self, value):
+    if self.has_space():
+      item = Node(value)
+      item.set_next_node(self.top_item)
+      self.top_item = item
+    # Increment stack size by 1 here:
+      self.size +=1
+    else:
+      print("All out of space!")
+    
+
+  def pop(self):
+    if not self.is_empty():
+      item_to_remove = self.top_item
+      self.top_item = item_to_remove.get_next_node()
+      self.size -= 1
+      return item_to_remove.get_value()
+    else:
+      print("This stack is totally empty.")
+  
+  def peek(self):
+    if self.is_empty():
+	    return self.top_item.get_value()
+    else:
+      print("Nothing to see here!")
+      
+  # Define has_space() and is_empty() below:
+  #1. Define a new method has_space() in Stack. The method should return True if self.limit is greater than self.size
+  def has_space(self):
+    if self.limit>self.size:
+      return True
+  
+  #4. Finally, let's define a new method is_empty() in Stack. The method should return True if the stack's size is 0. 
+  def is_empty(self):
+    if self.size == 0:
+      return True
+
+---------------------------------------------------------
+
+#Stacks Python Size I
+
+from node import Node
+
+class Stack:
+  #1.In __init__(), let's add two new properties: size and limit. limit should be accepted as a parameter with a default of 1000. Inside the method, set the instance limit property to the passed in value of limit. size should be set to 0 in __init__()
+  def __init__(self, limit = 1000):
+    self.top_item = None
+    self.limit = limit
+    self.size = 0
+    
+  
+  def push(self, value):
+    item = Node(value)
+    item.set_next_node(self.top_item)
+    self.top_item = item
+
+  def pop(self):
+    if self.size>0:
+      item_to_remove = self.top_item
+      self.top_item = item_to_remove.get_next_node()
+      self.size -=1
+      return item_to_remove.get_value()
+    # Decrement the stack size here:
+    else:
+      print("The stack is empty") 
+    
+  def peek(self):
+    if self.size>0:
+      return self.top_item.get_value()
+    else:
+      print("The stack is empty")
+
+
+-----------------------------------------------
+#Stacks Python Push and Pop
+
+from node import Node
+
+class Stack:
+  def __init__(self):
+    self.top_item = None
+  
+  # Define your push() and pop() methods below:
+  
+  #1.define a method push() for Stack that takes the parameter value. Inside the method:
+  #Instantiate a Node with value as an argument and assign it to the variable item (because this item is a node, we have easy access to Node's class methods)
+#Set item's next node to the stack's current top_item using the Node method set_next_node()
+#Set the stack instance's top_item equal to the new item, adding it to the top of the stack
+  def push(self, value):
+    item = Node(value)
+    item.set_next_node(self.top_item)#instance call method set self.next_node = self.top_item
+    self.top_item = item
+    
+  #2.define a method pop() for Stack. Inside pop():
+  #Create a variable item_to_remove and set it equal to the stack's top_item
+	#If we're removing our stack's top_item, we need to set a new top_item! Set the top_item equal to the node after item_to_remove
+	#Return the value stored in item_to_remove
+  def pop(self):
+    item_to_remove = self.top_item
+    self.top_item = item_to_remove.get_next_node() #instance call method return self.next_node
+    return item_to_remove.get_value()
+  
+  def peek(self):
+    return self.top_item.get_value()
+
+-----------------------------------------------------
+#Stacks Python Introduction
+
+from node import Node
+
+# Add your Stack class below:
+#1. create a Stack class. Define an __init__() method for Stack. Inside the method, set an instance property top_item equal to None
+class Stack:
+  def __init__(self):
+    self.top_item = None
+   
+  #2.define another method peek() that returns the value of the stack's top_item using the Node method get_value()
+  def peek(self):
+    return self.top_item.get_value()
+
+-    
