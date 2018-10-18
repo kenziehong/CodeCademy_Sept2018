@@ -48,6 +48,17 @@ class LinkedList:
         else:
           current_node = next_node
 
+
+ll = LinkedList()
+ll.insert_beginning(50)
+ll.insert_beginning(60)
+ll.insert_beginning(70)
+print(ll.stringify_list())
+
+ll.remove_node(60)
+print(ll.stringify_list())
+          
+
 -----------------------------------------------------------------
 #Linked List Implementation III
 
