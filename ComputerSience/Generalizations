@@ -358,3 +358,31 @@ Review
 Now that we have all of the functionality of a Hash Map, it's time to review what we've learned!
 
 -------------------------------------------------
+TREES: CONCEPTUAL
+Tree Review
+Trees are useful for modeling data that has a hierarchical relationship which moves in the direction from parent to child. No child node will have more than one parent.
+
+To recap some terms:
+
+root: A node which has no parent. One per tree.
+parent: A node which references other nodes.
+child: Nodes referenced by other nodes.
+sibling: Nodes which have the same parent.
+leaf: Nodes which have no children.
+level: The height or depth of the tree. Root nodes are at level 1, their children are at level 2, and so on.
+
+------------------------------------------------------
+TREES: PYTHON
+Tree Review
+Congratulations, you have implemented a tree in Python.
+
+For review, in our implementation:
+
+Trees are a Python class called TreeNode.
+A TreeNode has two properties, value and children.
+Nodes hold any type of data inside value.
+children is a list, which can be empty or hold other instances of TreeNode.
+We add to children by using the list method .append.
+We remove from children by filtering the list.
+
+---------------------------------------------------------

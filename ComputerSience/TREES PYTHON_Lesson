@@ -1,0 +1,229 @@
+class TreeNode:
+  def __init__(self, value):
+    self.value = value # data
+    self.children = [] # references to other nodes
+
+  def add_child(self, child_node):
+    # creates parent-child relationship
+    print("Adding " + child_node.value)
+    self.children.append(child_node) 
+    
+  def remove_child(self, child_node):
+    # removes parent-child relationship
+    print("Removing " + child_node.value + " from " + self.value)
+    self.children = [child for child in self.children 
+                     if child is not child_node]
+
+  def traverse(self):
+    # moves through each node referenced from self downwards
+    nodes_to_visit = [self]
+    while len(nodes_to_visit) > 0:
+      current_node = nodes_to_visit.pop()
+      print(current_node.value)
+      nodes_to_visit += current_node.children
+
+
+---------------------------------
+
+# Define your "TreeNode" Python class below
+class TreeNode:
+  def __init__(self, value):
+    self.value = value
+    self.children = []
+
+  def add_child(self, child_node):
+    print("Adding " + child_node.value)
+    self.children.append(child_node)
+    
+  def remove_child(self, child_node):
+    print("Removing " + child_node.value + " from " + self.value)
+    self.children = [child for child in self.children 
+                     if child is not child_node]
+
+  def traverse(self):
+    #1. define a variable and assign it to a list containing self
+    nodes_to_visit = [self]
+    
+    #2. make a while loop that execute as long as there are items in nodes_to_visit. Inside the body of the while loop, call .pop() on nodes_to_visit so we don't get stuck in an an infinite loop    
+    while len(nodes_to_visit) > 0:
+      
+      #3. make a new variable and assign it to
+      current_node = nodes_to_visit.pop()
+      print(current_node.value)
+      
+      #4. add a node's children, we'll ensure we traverse the whole tree
+      nodes_to_visit += current_node.children
+    
+
+root = TreeNode("CEO")
+first_child = TreeNode("Vice-President")
+second_child = TreeNode("Head of Marketing")
+third_child = TreeNode("Marketing Assistant")
+
+root.add_child(first_child)
+root.add_child(second_child)
+second_child.add_child(third_child)
+
+root.traverse()
+
+-----------------------------------------------
+
+# Define your "TreeNode" Python class below
+class TreeNode:
+  def __init__(self, value):
+    self.value = value
+    self.children = []
+
+  def add_child(self, child_node):
+    print("Adding " + child_node.value)
+    self.children.append(child_node)
+    
+  def remove_child(self, child_node):
+    print("Removing " + child_node.value + " from " + self.value)
+    self.children = [child for child in self.children 
+                     if child is not child_node]
+    
+  #1. define a method
+  def traverse(self):
+    print(self.value)
+    
+    #2. loop through self.children and print their value
+    for item in self.children:
+      print(item.value)
+  
+
+root = TreeNode("CEO")
+first_child = TreeNode("Vice-President")
+second_child = TreeNode("Head of Marketing")
+
+root.add_child(first_child)
+root.add_child(second_child)
+root.traverse()
+
+--------------------------------------
+# Define your "TreeNode" Python class below
+class TreeNode:
+  def __init__(self, value):
+    self.value = value
+    self.children = []
+
+  def add_child(self, child_node):
+    print("Adding " + child_node.value)
+    self.children.append(child_node)
+    
+  def remove_child(self, child_node):
+    print("Removing " + child_node.value + " from " + self.value)
+    
+    #1. use list comprehension which performs the same logic
+    self.children = [child for child in self.children 
+                     if child is not child_node]
+
+root = TreeNode("I am Root")
+child = TreeNode("A wee sappling")
+bad_seed = TreeNode("Root Rot!")
+
+root.add_child(child)
+root.add_child(bad_seed)
+
+root.remove_child(bad_seed)
+
+-----------------------------------------
+
+# Define your "TreeNode" Python class below
+class TreeNode:
+  def __init__(self, value):
+    self.value = value
+    self.children = []
+
+  def add_child(self, child_node):
+    print("Adding " + child_node.value)
+    self.children.append(child_node)
+    
+  #1. define a method, which has parameters of self, child_node
+  def remove_child(self, child_node):
+    
+    #2. make a local variable and set it to an empty list
+    new_children = []
+    
+    #3. iterate through self.children and add to the new_children list any item that is not the same as the child_node argument. When the iteration is over, assign self.children to be the new_children list
+    for item in self.children:
+      if item != child_node:
+        new_children.append(item)
+    self.children = new_children    
+
+root = TreeNode("I am Root")
+child = TreeNode("A wee sappling")
+bad_seed = TreeNode("Root Rot!")
+
+#4. call remove_child on root and pass bad_seed as an argument
+root.remove_child(bad_seed)
+
+--------------------------------------------------
+# Define your "TreeNode" Python class below
+class TreeNode:
+  def __init__(self, value):
+    self.value = value
+    #1. set ...to be an empty list
+    self.children = []
+    
+  #2. define a method that takes self and child_node as parameters
+  def add_child(self, child_node):
+    print("Adding " + child_node.value)
+    
+    #3. use a list method to add the child_node to self.children
+    self.children.append(child_node)
+
+root = TreeNode("I am Root")
+child = TreeNode("A wee sappling")
+root.add_child(child)
+
+----------------------------------------
+
+# Define your "TreeNode" Python class below
+#1. create a class
+class TreeNode:
+  # 2. define an method that takes self and value as parameters
+  def __init__(self, value):
+    print(" initializing node...")
+    
+    #3. assign value to self.value
+    self.value = value
+#4. make a instance of TreeNode, give it the value of your name as a string. Assign this to the variable: seed
+seed = TreeNode("Hong")
+    
+---------------------------------
+
+class TreeNode:
+  def __init__(self, value):
+    self.value = value
+    self.children = []
+
+  def __repr__(self, level=0):
+    # HELPER METHOD TO PRINT TREE!
+    ret = "--->" * level + repr(self.value) + "\n"
+    for child in self.children:
+      ret += child.__repr__(level+1)
+    return ret
+
+  def add_child(self, child_node):
+    self.children.append(child_node) 
+
+### TEST CODE TO PRINT TREE
+company = [
+  "Monkey Business CEO", 
+  "VP of Bananas", 
+  "VP of Lazing Around", 
+  "Associate Chimp", 
+  "Chief Bonobo", "Produce Manager", "Tire Swing R & D"]
+root = TreeNode(company.pop(0))
+for count in range(2):
+  child = TreeNode(company.pop(0))
+  root.add_child(child)
+
+root.children[0].add_child(TreeNode(company.pop(0)))
+root.children[0].add_child(TreeNode(company.pop(0)))
+root.children[1].add_child(TreeNode(company.pop(0)))
+root.children[1].add_child(TreeNode(company.pop(0)))
+print("MONKEY BUSINESS, LLC.")
+print("=====================")
+print(root)
