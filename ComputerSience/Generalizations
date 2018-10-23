@@ -433,3 +433,18 @@ Stores every vertex inside a dictionary
 Vertex data is the key and the vertex instance is the value.
 Has methods to add vertices, edges between vertices, and determine if a path exists between two vertices.
 adjacency list: Graph representation where each vertex has a list of all the vertices it shares an edge with.
+
+
+-----------------------------------------------------------------
+
+BUBBLE SORT: CONCEPTUAL
+Bubble Sort Review
+Bubble sort is an algorithm to sort a list through repeated swaps of adjacent elements. It has a runtime of O(n^2).
+
+For nearly sorted lists, bubble sort performs relatively few operations since it only performs a swap when elements are out of order.
+
+Bubble sort is a good introductory algorithm which opens the door to learning more complex algorithms. It answers the question, "How can we algorithmically sort a list?" and encourages us to ask, "How can we improve this sorting algorithm?"
+
+===>
+
+Recall that Bubble Sort compares neighboring items and if they are out of order, they are swapped.
