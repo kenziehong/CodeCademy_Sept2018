@@ -448,3 +448,30 @@ Bubble sort is a good introductory algorithm which opens the door to learning mo
 ===>
 
 Recall that Bubble Sort compares neighboring items and if they are out of order, they are swapped.
+
+-------------------------------------------------------------
+
+MERGE SORT: CONCEPTUAL
+Merge Sort Performance
+Merge sort was unique for its time in that the best, worst, and average time complexity are all the same: Θ(N*log(N)). This means an almost-sorted list will take the same amount of time as a completely out-of-order list. This is acceptable because the worst-case scenario, where a sort could stand to take the most time, is as fast as a sorting algorithm can be.
+
+Some sorts attempt to improve upon the merge sort by first inspecting the input and looking for "runs" that are already pre-sorted. Timsort is one such algorithm that attempts to use pre-sorted data in a list to the sorting algorithm's advantage. If the data is already sorted, Timsort runs in Θ(N) time.
+
+Merge sort also requires space. Each separation requires a temporary array, and so a merge sort would require enough space to save the whole of the input a second time. This means the worst-case space complexity of merge sort is O(N).
+
+@@@@@@@@@@@@@@@@@@@@@2
+
+This process of "look at the two next-smallest elements of each list and add the smaller one to our resulting list" continues on for as long as both lists have elements to compare. Once one list is exhausted, say every element from left has been added to the result, then we know that all the elements of the other list, right, should go at the end of the resulting list (they're larger than every element we've added so far).
+
+------------------------------------------------------------
+
+MERGE SORT: PYTHON
+Testing the Sort
+We've written our merge sort! The whole sort takes up two functions:
+
+merge_sort() which is called recursively breaks down an input list to smaller, more manageable pieces. merge() which is a helper function built to help combine those broken-down lists into ordered combination lists.
+
+merge_sort() continues to break down an input list until it only has one element and then it joins that with other single element lists to create sorted 2-element lists. Then it combines 2-element sorted lists into 4-element sorted lists. It continues that way until all the items of the lists are sorted!
+
+Only one thing left to do, test it out!
+
