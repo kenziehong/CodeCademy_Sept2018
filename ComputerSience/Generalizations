@@ -475,3 +475,24 @@ merge_sort() continues to break down an input list until it only has one element
 
 Only one thing left to do, test it out!
 
+------------------------------------------------------------
+QUICKSORT: CONCEPTUAL
+Quicksort Review
+
+Quicksort is an efficient algorithm for sorting values in a list. A single element, the pivot, is chosen from the list. All the remaining values are partitioned into two sub-lists containing the values smaller than and greater than the pivot element.
+
+Ideally, this process of dividing the array will produce sub-lists of nearly equal length, otherwise, the runtime of the algorithm suffers.
+
+When the dividing step returns sub-lists that have one or less elements, each sub-list is sorted. The sub-lists are recombined, or swaps are made in the original array, to produce a sorted list of values.
+
+----------------------------------------------------
+
+QUICKSORT: PYTHON
+Quicksort Review
+Congratulations on implementing the quicksort algorithm in Python. To review:
+
+We established a base case where the algorithm will complete when the start and end pointers indicate a list with one or zero elements
+If we haven't hit the base case, we randomly selected an element as the pivot and swapped it to the end of the list
+We then iterate through that list and track all the "lesser than" elements by swapping them with the iteration index and incrementing a lesser_than_pointer.
+Once we've iterated through the list, we swap the pivot element with the element located at lesser_than_pointer.
+With the list partitioned into two sub-lists, we repeat the process on both halves until base cases are met.
