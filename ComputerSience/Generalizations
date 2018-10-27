@@ -496,3 +496,31 @@ If we haven't hit the base case, we randomly selected an element as the pivot an
 We then iterate through that list and track all the "lesser than" elements by swapping them with the iteration index and incrementing a lesser_than_pointer.
 Once we've iterated through the list, we swap the pivot element with the element located at lesser_than_pointer.
 With the list partitioned into two sub-lists, we repeat the process on both halves until base cases are met.
+
+--------------------------------------------
+
+RADIX SORT: CONCEPTUAL
+Radix Review
+Take a moment to review radix sort:
+
+A radix is the base of a number system. For the decimal number system, the radix is 10.
+Radix sort has two variants - MSD and LSD
+Numbers are bucketed based on the value of digits moving left to right (for MSD) or right to left (for LSD)
+Radix sort is considered a non-comparison sort
+The performance of radix sort is O(n)
+
+------------------------------------------
+
+RADIX SORT: PYTHON
+Review (and Bug Fix!)
+Now that we've finished writing our radix sort we're finished for the day... or are we?
+
+Great job! We created an algorithm that:
+
+Takes numbers in an input list.
+Passes through each digit in those numbers, from least to most significant.
+Looks at the values of those digits.
+Buckets the input list according to those digits.
+Renders the results from that bucketing.
+Repeats this process until the list is sorted.
+And that's what a radix sort does! Feel free to play around with the solution code, see if there's anything you can improve about the code or a different way of writing it you want to try.
