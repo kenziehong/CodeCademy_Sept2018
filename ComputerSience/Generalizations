@@ -524,3 +524,72 @@ Buckets the input list according to those digits.
 Renders the results from that bucketing.
 Repeats this process until the list is sorted.
 And that's what a radix sort does! Feel free to play around with the solution code, see if there's anything you can improve about the code or a different way of writing it you want to try.
+
+--------------------------------------------------
+
+LINEAR SEARCH: CONCEPTUAL
+Review
+Congratulations! You have learned how linear search works and how to use it to search for values in lists.
+
+Let’s review what we learned:
+
+Linear search is a search algorithm that sequentially checks whether a given value is an element of a specified list by scanning the elements of a list one-by-one until it finds the target value.
+
+The time complexity for linear search is O(N), but its performance is dependent on its input:
+
+Best Case: The algorithm requires only 1 comparison to find the target value in the first position of the list.
+Worst Case: The algorithm requires only n comparison to find the target value in the last position of the list or does not exist in the list.
+Average Case: The algorithm makes N/2 comparisons.
+Linear search is a good choice for a search algorithm when:
+
+You expect the target value to be positioned near the beginning of the list.
+
+A search needs to be performed on an unsorted list because linear search traverses the entire list from beginning to end, regardless of its order.
+
+------------------------------------------------------------
+
+BINARY SEARCH: CONCEPTUAL
+Time Complexity of Binary Search
+How efficient is binary search?
+
+In each iteration, we are cutting the list in half. The time complexity is O(log N).
+
+A sorted list of 64 elements will take at most log2(64) = 6 comparisons.
+
+In the worst case:
+
+Comparison 1: We look at the middle of all 64 elements
+
+Comparison 2: If the middle is not equal to our search value, we would look at 32 elements
+
+Comparison 3: If the new middle is not equal to our search value, we would look at 16 elements
+
+Comparison 4: If the new middle is not equal to our search value, we would look at 8 elements
+
+Comparison 5: If the new middle is not equal to our search value, we would look at 4 elements
+
+Comparison 6: If the new middle is not equal to our search value, we would look at 2 elements
+
+When there's 2 elements, the search value is either one or the other, and thus, there is at most 6 comparisons in a sorted list of size 64.
+
+-----------------------------------------------------------------
+
+LINEAR SEARCH: PYTHON
+Review
+You are a linear search whiz!
+
+You have implemented linear search as a function in Python and used it to find a target value, duplicates, and the largest value in different search lists.
+
+Let’s review what we learned:
+
+Linear search is a search algorithm that sequentially checks whether a given value is an element of specified list by scanning the elements of a list one-by-one until it finds the target value.
+
+Starting with linear search as a subroutine in your code is a useful foundation for constructing algorithms to solve more advanced search problems, such as:
+
+Finding duplicates - sequentially search the list for all occurrences of the target value.
+
+Finding the maximum value - sequentially scan the list for the largest value and track the largest value seen to date.
+
+The linear_search() function is provided in the text editor.
+
+Test on your own examples!
