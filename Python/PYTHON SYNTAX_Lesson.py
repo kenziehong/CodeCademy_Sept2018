@@ -320,8 +320,388 @@ print(compute_bill(["apple"]))
 print(compute_bill(["banana", "apple", "orange", "pear"]))
 
   
+-------------------------------------------------------------------
 
+LISTS AND FUNCTIONS
+List element modification
+
+n = [1, 3, 5]
+# Do your multiplication here
+#. Multiply the second element of the n list by 5. Overwrite the second element with that result. Make sure to print the list when you are done
+n[1] = n[1]*5
+print n
+
+++++++++++++++++++++++++++++++++
+
+n = [1, 3, 5]
+# Append the number 4 here
+#Append the number 4 to the end of the list n
+n.append(4)
+print n
+
++++++++++++++++++++++++++++++++
+
+LISTS AND FUNCTIONS
+Removing elements from lists
+This exercise will expand on ways to remove items from a list. You actually have a few options. For a list called n:
+
+n.pop(index) will remove the item at index from the list and return it to you:
+
+n = [1, 3, 5]
+n.pop(1)
+# Returns 3 (the item at index 1)
+print n
+# prints [1, 5]
+n.remove(item) will remove the actual item if it finds it:
+
+n.remove(1)
+# Removes 1 from the list,
+# NOT the item at index 1
+print n
+# prints [3, 5]
+del(n[1]) is like .pop in that it will remove the item at the given index, but it won't return it:
+
+del(n[1])
+# Doesn't return anything
+print n
+# prints [1, 5]
+
++++++++++++++++++++++++++++++++++++++++
+
+n = [1, 3, 5]
+# Remove the first item in the list here
+n.pop(0)
+n.remove(1)
+del(n[0])
+
+print n
+
++++++++++++++++++++++++++++++++++++
+
+number = 5
+
+def my_function(x):
+  #print (x * 3)
+  x*3
+
+#my_function(number)
+print(my_function(number)) #None
+
+++++++++++++++++++++++++
+
+m = 5
+n = 13
+# Add add_function here that has 2 parameters x and y and adds them together
+def add_function(x,y):
+  return x+y
+
+print add_function(m, n)
+
+++++++++++++++++++++++++++++
+
+n = "Hello"
+# Your function here! called string_function that takes in a string argument (s) and then return s that argument concatenated with the word 'word'. Dont add a space before world
+def string_function(s):
+  return s + "world"
+
+print string_function(n)
+
++++++++++++++++++++++++++++
+
+Modifying each element in a list in a function
+
+
+n = [3, 5, 7]
+
+for i in range(0, len(n)):
+    n[i] = n[i] * 2
+# Don't forget to return your new list!
+def double_list(x):
+  for i in range(0, len(x)):
+    x[i] = x[i] * 2
+  return x 
+
+print double_list(n)
+
+
+++++++++++++++++++++++++++++++
+
+range(6) # => [0, 1, 2, 3, 4, 5]
+range(1, 6) # => [1, 2, 3, 4, 5]
+range(1, 6, 3) # => [1, 4]
+The range function has three different versions:
+
+range(stop)
+range(start, stop)
+range(start, stop, step)
+
+In all cases, the range() function returns a list of numbers from start up to (but not including) stop. Each item increases by step
+
+def my_function(x):
+  for i in range(0, len(x)):
+    x[i] = x[i]
+  return x
+
+#replace the ____ with a range() that returns a list containing [0, 1, 2].
+print my_function(range(3)) # Add your range between the parentheses!
+
++++++++++++++++++++++++++++++++
+
+Iterating over a list in a function
+Now that we've learned about range, we have two ways of iterating through a list.
+
+Method 1 - for item in list:
+
+for item in list:
+  print item
+Method 2 - iterate through indexes:
+
+for i in range(len(list)):
+  print list[i]
+Method 1 is useful to loop through the list, but it's not possible to modify the list this way.
+
+Method 2 uses indexes to loop through the list, making it possible to also modify the list if needed. Since we aren't modifying the list, feel free to use either one on this lesson!CONDITIONALS _CONTROL FLOW_Lesson.py
+
+n = [3, 5, 7]
+
+def total(numbers):
+  result = 0
+  for item in numbers:
+    result +=item
+  return result  
+
+
+ n = ["Michael", "Lieberman"]
+# Add your function here
+def join_strings(words):
+  result =""
+  for i in range(len(words)):
+    result += words[i]
+    
+  return result
+
+print join_strings(n)
+
++++++++++++++++++++++++++++++++++
+
+a = [1, 2, 3]
+b = [4, 5, 6]
+print a + b
+# prints [1, 2, 3, 4, 5, 6]
+The example above is just a reminder of how to concatenate two lists.
+
+
++++++++++++++++++++++++++++
+
+n = [[1, 2, 3], [4, 5, 6, 7, 8, 9]]
+# Add your function here
+def flatten(lists):
   
+  #Make a new, empty list called results.
+  results = []
+  
+  #Iterate through lists. Call the looping variable numbers.
+  for numbers in lists:
+    
+    #Iterate through numbers.
+    for item in numbers:
+      
+      #For each number, .append() it to results
+      results.append(item)
+  #Finally, return results from your function
+  return results
+
+print flatten(n)
+
+-------------------------------------------
+
+BATTLESHIP!
+Make a List
+
+print ["O"] * 5
+will print out ['O', 'O', 'O', 'O', 'O'] 
+
+
+#create a variable board and set it equal to an empty list
+board = []
+for i in range(5):
+  board.append(["O"]*5)
+  
+print board  
+  
+++++++++++++++++++++++++++
+Custom Print
+
+def print_board(board_in):
+  for row in board_in:
+    print row
+  
+print_board(board)   
+
++++++++++++++++++++++++++++
+
+Printing Pretty
+
+letters = ['a', 'b', 'c', 'd']
+print " ".join(letters)
+print "---".join(letters)
+
+Then, we print a b c d. The .join method uses the string to combine the items in the list.
+Finally, we print a---b---c---d. We are calling the .join function on the "---" string.
+
+
+def print_board(board_in):
+  for row in board_in:
+    #Inside your loop, use " " as the separator to join the elements of each row
+    print " ".join(row)
+  
+print_board(board)  
+  
++++++++++++++++++++++++++++++
+Hide...
+
+from random import randint
+coin = randint(0, 1)
+dice = randint(1, 6)
+In the above example, we first import the randint(low, high) function from the random module.
+Then, we generate either zero or one and store it in coin.
+Finally, we generate a number from one to six inclusive.   
+  
+# Add your code below!
+#Define two new functions, random_row and random_col, that each take board_in as input. These functions should return a random row index and a random column index from your board, respectively. Use randint(0, len(board_in) - 1). Call each function on board.
+def random_row(board_in):
+  return randint(0, len(board_in) -1)
+def random_col(board_in):
+  return randint(0, len(board_in) -1)
+
+random_row(board)
+random_col(board)
+
+++++++++++++++++++++++++++++++
+
+raw_input asks the user for input and returns it as a string. But we're going to want to use integers for our guesses! To do this, we'll wrap the raw_inputs with int() to convert the string to an integer.
+
+if x not in range(8) or \
+   y not in range(3):
+  print "Outside the range"
+The example above checks if either x or y are outside those ranges. 
+The \ character just continues the if statement onto the next line.
+
+-----------------------------------------------------
+Expand:
+
+https://www.digitalocean.com/community/tutorials/how-to-use-list-methods-in-python-3
+How To Use List Methods in Python 3
+
+list.append()
+The method list.append(x) will add an item (x) to the end of a list. We’ll start with a list of our fish that are dispersed throughout the aquarium.
+
+
+fish = ['barracuda','cod','devil ray','eel']
+fish.append('flounder')
+print(fish)
+
+Output
+['barracuda', 'cod', 'devil ray', 'eel', 'flounder']
+
++++++++++++++++++++++
+
+list.insert()
+The list.insert(i,x) method takes two arguments, with i being the index position you would like to add an item to, and x being the item itself.
+
+fish.insert(0,'anchovy')
+print(fish)
+
+Output
+['anchovy', 'barracuda', 'cod', 'devil ray', 'eel', 'flounder']
+
++++++++++++++++++++++
+
+list.extend()
+If we want to combine more than one list, we can use the list.extend(L) method, which takes in a second list as its argument.
+
+more_fish = ['goby','herring','ide','kissing gourami']
+
+fish.extend(more_fish)
+print(fish)
+
+Output
+['anchovy', 'barracuda', 'cod', 'devil ray', 'eel', 'flounder', 'goby', 'herring', 'ide', 'kissing gourami']
+
+++++++++++++++++++++++++
+
+list.remove()
+list.pop()
+list.index()
+
++++++++++++++++++++
+
+list.copy()
+When we are working with a list and may want to manipulate it in multiple ways while still having the original list available to us unchanged, we can use list.copy() to make a copy of the list.
+
+fish_2 = fish.copy()
+print(fish_2)
+
+Output
+['anchovy', 'barracuda', 'cod', 'eel', 'flounder', 'goby', 'herring', 'ide']
+
++++++++++++++++++++++++
+
+list.reverse()
+We can reverse the order of items in a list by using the list.reverse() method. Perhaps it is more convenient for us to use reverse alphabetical order rather than traditional alphabetical order. In that case, we need to use the .reverse() method with the fish list to have the list be reversed in place.
+
+fish.reverse()
+print(fish)
+Output
+['ide', 'herring', 'goby', 'flounder', 'eel', 'cod', 'barracuda', 'anchovy']
+
++++++++++++++++++++++++++++
+
+list.count()
+The list.count(x) method will return the number of times the value x occurs within a specified list. We may want to use this method when we have a long list with a lot of matching values. If we had a larger aquarium, for example, and we had an item for each and every neon tetra that we had, we could use .count() to determine the total number of neon tetras we have at any given time.
+
+We’ll use our current list to count the number of times the item 'goby' appears:
+
+print(fish.count('goby'))
+Output
+1
+
+fish_ages = [1,2,4,3,2,1,1,2]
+print(fish_ages.count(1))
+Output
+3
+
++++++++++++++++++++++++++++++
+
+list.sort()
+We can use the list.sort() method to sort the items in a list.
+
+Just like list.count(), list.sort() can make it more apparent how many of a certain integer value we have, and it can also put an unsorted list of numbers into numeric order.
+
+Let’s use the integer list, fish_ages to see the .sort() method in action:
+
+fish_ages.sort()
+print(fish_ages)
+Output
+[1, 1, 1, 2, 2, 2, 3, 4]
+
++++++++++++++++++++++++++++++
+
+list.clear()
+When we’re done with a list, we can remove all values contained in it by using the list.clear() method.
+
+The local government has decided to take over our aquarium, making it a public space for the people in our city to enjoy. Since we’re no longer working on the aquarium ourselves, we no longer need to keep an inventory of the fish, so let’s clear the fish list:
+
+fish.clear()
+print(fish)
+Output
+[]
+
+
+
+
+
+    
 
 
 
