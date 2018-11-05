@@ -697,12 +697,419 @@ print(fish)
 Output
 []
 
+------------------------------------------------------------------------
+
+LOOPS
+While you're here
+
+count = 0
+
+#if something is true
+if count < 10:
+  print "Hello, I am an if statement and count is", count
+#as long as something is true. 
+#Be careful not to alter or remove the count +=1 statement. If your program has no way to increase count, your loop could go on forever and become an infinite loop which could crash your computer/browser
+while count < 10:
+  print "Hello, I am a while and count is", count
+  count += 1
+
++++++++++++++++++++++++++++++++++
+
+Condition
+The condition is the expression that decides whether the loop is going to continue being executed or not. There are 5 steps to this program:
+
+The loop_condition variable is set to True
+
+The while loop checks to see if loop_condition is True. It is, so the loop is entered.
+
+The print statement is executed.
+
+The variable loop_condition is set to False.
+
+The while loop again checks to see if loop_condition is True. It is not, so the loop is not executed a second time.
+
+loop_condition = True
+
+while loop_condition:
+  print "I am a loop"
+  loop_condition = False
+
+++++++++++++++++++++++++++++++
+
+LOOPS
+Simple errors
+
+choice = raw_input('Enjoying the course? (y/n)')
+
+#Fill in the loop condition so the user will  be prompted for a choice over and over while choice does not equal "y" or "n"
+while choice !="y" and choice !="n":  # Fill in the condition (before the colon)
+  choice = raw_input("Sorry, I didn't catch that. Enter again: ")
 
 
+++++++++++++++++++++++++++++++++++++
 
+count = 0
 
+while count < 10: # Add a colon
+  print count
+  # Increment count
+  count +=1
+  
+++++++++++++++++++++++++++++++++++++
+
+count = 0
+
+#The difference here is that this loop is guaranteed to run at least once.
+while True:
+  print count
+  count += 1
+  if count >= 10:
+
+    #The break is a one-line statement that means "exit the current loop."
+    break
     
++++++++++++++++++++++++++++++++++++
 
+LOOPS
+While / else
+
+import random
+
+print "Lucky Numbers! 3 numbers will be generated."
+print "If one of them is a '5', you lose!"
+
+count = 0
+while count < 3:
+  num = random.randint(1, 6)
+  print num
+  if num == 5:
+    print "Sorry, you lose!"
+    break
+  count += 1
+  
+#the else block will execute anytime the loop condition( while count < 3) is evaluated to False.   
+else:
+  print "You win!"
+
+
+++++++++++++++++++++++++++++++++
+from random import randint
+
+# Generates a number from 1 through 10 inclusive
+random_number = randint(1, 10)
+print random_number
+
+guesses_left = 3
+# Start your game!
+while guesses_left > 0:
+  guess = int(raw_input("Your guess: "))
+  if guess == random_number:
+    print "You win!"
+    break
+  guesses_left -=1
+  
+else:
+  print "You lose."
+
+
++++++++++++++++++++++++++++++++++++++++
+
+LOOPS
+For your A
+
+phrase = "A bird in the hand..."
+
+# Add your for loop
+for char in phrase:
+  if char == "A" or char == 'a':
+    
+    #The , character after our print statement means that our next print statement keeps printing on the same line.
+    print 'X',
+  else:
+    print char,
+
+#Don't delete this print statement!
+print  
+  
+
+++++++++++++++++++++++++++++++++++++++
+
+numbers  = [7, 9, 12, 54, 99]
+
+print "This list contains: "
+
+for num in numbers:
+  print num
+
++++++++++++++++++++++++++++++++++++
+
+d = {'a': 'apple', 'b': 'berry', 'c': 'cherry'}
+
+for key in d:
+  # Your code here!
+  print key
+  
+++++++++++++++++++++++++++++
+
+choices = ['pizza', 'pasta', 'salad', 'nachos']
+
+print 'Your choices are:'
+for index, item in enumerate(choices):
+  print index, item
+
+#Your choices are:
+0 pizza
+1 pasta
+2 salad
+3 nachos
+++++++++++++++++++++++++++++++++++++  
+
+list_a = [3, 9, 17, 15, 19]
+list_b = [2, 4, 8, 10, 30, 40, 50, 60, 70, 80, 90]
+
+for a, b in zip(list_a, list_b):
+  # Add your code here!
+    print max(a, b)
+    
+print(zip(list_a, list_b)) #[(3, 2), (9, 4), (17, 8), (15, 10), (19, 30)]
+
+
+++++++++++++++++++++++++++++++++++++++++
+
+LOOPS
+For / else
+
+fruits = ['banana', 'apple', 'orange', 'tomato', 'pear', 'grape']
+
+print 'You have...'
+for f in fruits:
+  if f == 'tomato':
+    print 'A tomato is not a fruit!' # (It actually is.)
+    break
+  print 'A', f
+else:
+  print 'A fine selection of fruits!'
+
+
+------------------------------------------------------------
+
+PRACTICE MAKES PERFECT
+
+#define a function that will take a number x as input:
+def is_even(x):
+  if x%2 == 0:
+    return True
+  else:
+    return False
+
++++++++++++++++++++++++++++++++++++++
+
+def is_int(x):
+  absolute = abs(x)
+  rounded = round(absolute)
+  return absolute - rounded == 0
+
+print is_int(10)
+print is_int(10.5)
+
++++++++++++++++++++++++++++++++++++
+
+def digit_sum(n):
+  if n>0:
+    n = str(n)
+    total=0
+    for item in n:
+      item = int(item)
+      total +=item
+    return total
+
+
+def digit_sum(n):
+  total = 0
+  string_n = str(n)
+  for char in string_n:
+    total += int(char)
+  return total
+
+#Alternate Solution:
+
+#def digit_sum(n):
+#  total = 0
+#  while n > 0:
+#    total += n % 10
+#    n = n // 10
+#  return total
+  
+print digit_sum(1234)
+print(1234//10)
+
+++++++++++++++++++++++++++++++++++++++
+
+def factorial(x):
+  factorial = 1
+  while x>0:
+    factorial *=x
+    x -=1    
+  return factorial
+print(factorial(5))
+
++++++++++++++++++++++++++++++++++++
+
+def is_prime(x):
+    if x < 2:
+        return False
+    else:
+        for n in range(2, x-1):
+            if x % n == 0:
+                return False
+        return True
+
+print is_prime(13)
+print is_prime(10)
+print(range(2,5)) #[2, 3, 4]
+
+++++++++++++++++++++++++++++++++++
+
+#You may not use reversed or [::-1] to help you with this.
+def reverse(text):
+    word = ""
+    l = len(text) - 1
+    while l >= 0:
+        word = word + text[l]
+        l -= 1
+    return word
+  
+print reverse("Hello World")
+
++++++++++++++++++++++++++++++++++++
+
+def anti_vowel(text):
+  vowel = "aeiouAEIOU"
+  word =""
+  for chr in text:
+    if chr not in vowel:
+      word +=chr      
+  return word
+print(anti_vowel("Honag"))
+
+++++++++++++++++++++++++++++++++++++++++++++++
+
+score = {"a": 1, "c": 3, "b": 3, "e": 1, "d": 2, "g": 2, 
+         "f": 4, "i": 1, "h": 4, "k": 5, "j": 8, "m": 3, 
+         "l": 1, "o": 1, "n": 1, "q": 10, "p": 3, "s": 1, 
+         "r": 1, "u": 1, "t": 1, "w": 4, "v": 4, "y": 4, 
+         "x": 8, "z": 10}
+
+def scrabble_score(word):
+  word_lower = word.lower()
+  total = 0
+  for chr in word_lower:
+    total += score[chr]
+  return total  
+    
+print(scrabble_score("Hong")) #8
+
+
+++++++++++++++++++++++++++++++++++++++++++
+
+def censor(text, word):
+    words = text.split()
+    print(words)  #['this', 'hack', 'is', 'wack', 'hack']
+    result = ''
+    stars = '*' * len(word)
+    count = 0
+    for i in words:
+        if i == word:
+            words[count] = stars
+        count += 1
+    result =' '.join(words)
+
+    return result
+  
+print censor("this hack is wack hack", "hack")
+print("hong".split( )) #['hong']
+
+++++++++++++++++++++
+
+def count(sequence, item):
+  #return sequence.count(item)
+  count = 0
+  for element in sequence:
+    if element == item:
+      count +=1
+  return count
+
+++++++++++++++++++++++
+
+def purify(your_list):
+  new_list=[]
+  for el in your_list:
+    if el%2 == 0:
+      new_list.append(el)
+  return new_list    
+
++++++++++++++++++++++++++
+
+def product(lst):
+  product = 1
+  
+  for el in lst:
+    product *=el
+    
+  return product
+    
+print(product([2,3]))  #6
+  
+++++++++++++++++++++++++
+
+def remove_duplicates(inputlist):
+    if inputlist == []:
+        return []
+    
+    # Sort the input list from low to high    
+    inputlist = sorted(inputlist)
+    print(inputlist) #[1, 1, 2, 2, 4, 5, 5]
+    # Initialize the output list, and give it the first value of the now-sorted input list
+    outputlist = [inputlist[0]]
+    print(outputlist) #[1]
+
+    # Go through the values of the sorted list and append to the output list
+    # ...any values that are greater than the last value of the output list
+    for i in inputlist:
+        if i > outputlist[-1]:
+            outputlist.append(i)
+        
+    return outputlist
+  
+print remove_duplicates([1, 1, 2, 2, 5, 4, 5])   
+
+def remove_duplicates_2(lst):
+  new_lst = []
+  for el in lst:
+    if el not in new_lst:
+      new_lst.append(el)
+  return new_lst
+
+print(remove_duplicates_2(["hong","hoa","hong"]))
+  
+++++++++++++++++++++++++++++++++
+
+def median(lst):
+    sorted_list = sorted(lst)
+    if len(sorted_list) % 2 != 0:
+        #odd number of elements
+        index = len(sorted_list)//2 
+        return sorted_list[index]
+    elif len(sorted_list) % 2 == 0:
+        #even no. of elements
+        index_1 = len(sorted_list)/2 - 1       
+        index_2 = len(sorted_list)/2
+        print index_1, index_2
+        mean = (sorted_list[index_1] + sorted_list[index_2])/2.0
+        return mean
+   
+print median([2, 4, 5, 9])
+print median([2])  
 
 
 
