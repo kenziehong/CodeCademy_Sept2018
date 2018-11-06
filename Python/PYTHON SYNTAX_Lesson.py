@@ -1109,7 +1109,135 @@ def median(lst):
         return mean
    
 print median([2, 4, 5, 9])
-print median([2])  
+print median([2])
+
+
+--------------------------------------------------------------
+
+ADVANCED TOPICS IN PYTHON
+Iterators for Dictionaries
+
+
+my_dict = {
+  "Name": "Hong",
+  "Age": 27,
+  "BDFL": True
+}
+
+print my_dict.items() #[('BDFL', True), ('Age', 27), ('Name', 'Hong')]
+
+print my_dict.keys() #['BDFL', 'Age', 'Name']
+print my_dict.values() #[True, 27, 'Hong']
+for el in my_dict:
+  print el,  #BDFL Age Name
+
+
+for key in my_dict:
+  print key, my_dict[key]
+  
+"""
+BDFL True
+Age 27
+Name Hong
+"""  
+
+
+my_lst_1 = ["name", "age", "BDFL"]
+my_lst_2 = ["Hong", 27, True]
+
+print zip(my_lst_1, my_lst_2) #[('name', 'Hong'), ('age', 27), ('BDFL', True)]
+print my_lst_1 + my_lst_2 #['name', 'age', 'BDFL', 'Hong', 27, True]
+
+++++++++++++++++++++++++++++++
+
+ADVANCED TOPICS IN PYTHON
+List Comprehension Syntax
+
+doubles_by_3 = [x * 2 for x in range(1, 6) if (x * 2) % 3 == 0]
+
+# Complete the following line. Use the line above for help.
+even_squares = [x**2 for x in range(1,11) if x%2 == 0]
+
+print even_squares
+
+cubes_by_four = [x ** 3 for x in range(1, 11) if ((x ** 3) % 4) == 0]
+print cubes_by_four
+
++++++++++++++++++++++++++++++++++
+
+ADVANCED TOPICS IN PYTHON
+List Slicing Syntax
+
+l = [i ** 2 for i in range(1, 11)]
+# Should be [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+
+#[start:end:stride]
+print l[2:9:2] #[9, 25, 49, 81]
+
+my_list = range(1, 11) # List of numbers 1 - 10
+
+# Omit the start and end index. You only need to specify a stride.
+print my_list[::2]
+
+++++++++++++++++++++++++++
+
+ADVANCED TOPICS IN PYTHON
+Reversing a List
+
+my_list = range(1, 11)
+
+#A negative stride progresses through the list from right to left.
+backwards = my_list[::-1]
+
+to_one_hundred = range(101)
+# Add your code below!
+backwards_by_tens = to_one_hundred[::-10]
+print backwards_by_tens #[100, 90, 80, 70, 60, 50, 40, 30, 20, 10, 0]
+
+to_21 = range(1,22)
+odds = to_21[::2]
+middle_third = to_21[7:14]
+print(middle_third) #[8, 9, 10, 11, 12, 13, 14]
+
+
+++++++++++++++++++++++++++++++++++
+
+ADVANCED TOPICS IN PYTHON
+Anonymous Functions
+
+"""
+lambda x: x % 3 == 0
+Is the same as
+
+def by_three(x):
+  return x % 3 == 0
+"""
+# filter uses the lambda to determine what to filter, and the second argument is the list it does the filtering on.
+
+my_list = range(16)
+print filter(lambda x: x % 3 == 0, my_list)
+
+languages = ["HTML", "JavaScript", "Python", "Ruby"]
+
+# Add arguments to the filter()
+print filter(lambda x: x=="Python", languages) #['Python']
+
+
+squares = [ x**2 for x in range(1,11)]
+print filter(lambda x: x>30 and x<=70, squares) #[36, 49, 64]
+
++++++++++++++++++++++++++++++++++++
+Time to look back again
+
+garbled = "!XeXgXaXsXsXeXmX XtXeXrXcXeXsX XeXhXtX XmXaX XI"
+
+message = garbled[::-2]
+print message #I am the secret message!
+
+garbled = "IXXX aXXmX aXXXnXoXXXXXtXhXeXXXXrX sXXXXeXcXXXrXeXt mXXeXsXXXsXaXXXXXXgXeX!XX"
+message = filter(lambda x: x!= "X", garbled)
+print message
+
 
 
 
