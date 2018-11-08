@@ -1238,6 +1238,197 @@ garbled = "IXXX aXXmX aXXXnXoXXXXXtXhXeXXXXrX sXXXXeXcXXXrXeXt mXXeXsXXXsXaXXXXX
 message = filter(lambda x: x!= "X", garbled)
 print message
 
+--------------------------------------------------------------------
+
+INTRODUCTION TO BITWISE OPERATORS
+Just a Little BIT
+
+"""
+0
+10
+0
+13
+38
+-89
+"""
+print 5 >> 4  # Right Shift
+print 5 << 1  # Left Shift
+print 8 & 5   # Bitwise AND
+print 9 | 4   # Bitwise OR
+print 12 ^ 42 # Bitwise XOR
+print ~88     # Bitwise NOT
+
+print 0b1,    #1
+print 0b10,   #2
+print 0b11,   #3
+print 0b100,  #4
+print 0b101,  #5
+print 0b110,  #6
+print 0b111   #7
+print "******"
+print 0b1 + 0b11
+print 0b11 * 0b11
+
+eight = 0b1000
+nine = 0b1001
+ten = 0b1010
+eleven = 0b1011
+twelve = 0b1100
+
+print int("1",2)
+print int("10",2)
+print int("111",2)
+print int("0b100",2)
+print int(bin(5),2)
+# Print out the decimal equivalent of the binary 11001001.
+print int("11001001",2) #201
+
++++++++++++++++++++++++++++++++++++++++
+INTRODUCTION TO BITWISE OPERATORS
+Slide to the Left! Slide to the Right!
+
+
+shift_right = 0b1100
+shift_left = 0b1
+
+# Your code here!
+#Shift the variable shift_right to the right twice (>> 2) and shift the variable shift_left to the left twice (<< 2). Try to guess what the printed output will be!
+shift_right = shift_right >> 2
+shift_left = shift_left << 2
+
+print bin(shift_right) #0b11
+print bin(shift_left) #0b100
+
++++++++++++++++++++++++++++++++++
+
+INTRODUCTION TO BITWISE OPERATORS
+A BIT of This AND That
+
+"""
+So remember, for every given bit in a and b:
+
+0 & 0 = 0
+0 & 1 = 0
+1 & 0 = 0
+1 & 1 = 1
+
+     a:   00101010   42
+     b:   00001111   15       
+===================
+ a & b:   00001010   10
+"""
+print bin(0b1110 & 0b101)
+
++++++++++++++++++++++++++++++++
+
+INTRODUCTION TO BITWISE OPERATORS
+A BIT of This OR That
+
+"""
+So remember, for every given bit in a and b:
+
+0 | 0 = 0
+0 | 1 = 1 
+1 | 0 = 1
+1 | 1 = 1
+
+    a:  00101010  42
+    b:  00001111  15       
+================
+a | b:  00101111  47
+"""
+
+print bin(0b1110 | 0b101) #0b1111
+
+
+++++++++++++++++++++++++++++++++++
+
+INTRODUCTION TO BITWISE OPERATORS
+This XOR That?
+
+"""
+So remember, for every given bit in a and b:
+
+0 ^ 0 = 0
+0 ^ 1 = 1
+1 ^ 0 = 1
+1 ^ 1 = 0
+
+    a:  00101010   42
+    b:  00001111   15       
+================
+a ^ b:  00100101   37
+
+"""
+print bin(0b1110^0b101) #0b101
+
+
++++++++++++++++++++++++++++++++++++++++++
+
+INTRODUCTION TO BITWISE OPERATORS
+See? This is NOT That Hard!
+
+"""
+The bitwise NOT operator (~) just flips all of the bits in a single number.
+ this is equivalent to adding one to the number and then making it negative.
+-2
+-3
+-4
+-43
+-124
+"""
+print ~1
+print ~2
+print ~3
+print ~42
+print ~123
+
++++++++++++++++++++++++++++++++++++++++++
+
+INTRODUCTION TO BITWISE OPERATORS
+The Man Behind the Bit Mask
+
+def check_bit4(input):
+  mask = 0b1000
+  desired = input & mask
+  if desired > 0:
+    return "on"
+  else:
+    return "off"
+
+
++++++++++++++++++++++++++++++++++++++++
+
+INTRODUCTION TO BITWISE OPERATORS
+Turn It On
+
+a = 0b10111011
+print bin(a | 0b100) #0b10111111
+
+
++++++++++++++++++++++++++++++++++++
+
+INTRODUCTION TO BITWISE OPERATORS
+Just Flip Out
+
+a = 0b11101110
+
+mask = 0b11111111
+desired = a ^ mask
+
+print bin(desired) #0b10001
+
+++++++++++++++++++++++++++++++++++
+
+INTRODUCTION TO BITWISE OPERATORS
+Slip and Slide
+
+def flip_bit(number, n):
+  bit_to_flip = 0b1 << (n -1)
+  result = number ^ bit_to_flip
+  return bin(result)
+
+print(flip_bit(12,4)) #0b100
 
 
 
