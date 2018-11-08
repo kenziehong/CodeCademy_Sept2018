@@ -428,7 +428,71 @@ variance = grades_variance(grades)
 print variance
 print grades_std_deviation(variance)      
 
+---------------------------------------------------------
 
+"""
+Bank Account
+
+Accepting deposits
+Allowing withdrawals
+Showing the balance
+Showing the details of the account
+
+"""
+
+#1. create a class
+class BankAccount(object):
+  
+  #2. add a member variable called balance and set it equal to 0. This will "represent" the starting balance "of any new BankAccount object"
+  balance = 0
+  
+  #3. add the __init__() method that takes the default self parameter and an additional name parameter. Later, we'll use the name parameter to "specify" who the account belongs to. Inside, assign the self.name property to the name parameter that the method accepts.
+  #This method will make sure that whatever name the user types (when creating an object of this class) "will be atrributes to the object"
+  def __init__(self, name):
+    self.name = name
+    
+  #4. method defines what represents the object when a user tries to print that object
+  #it requires return (instead of print) to display the information associated with an object.
+  def __repr__(self):
+    return "%s's account. Balance: $%.2f" % (self.name, self.balance)
+  
+  def show_balance(self):
+    print "Balance: $%.2f" % self.balance
+    
+  #9.
+  def deposit(self, amount):
+    if amount<=0:
+      print "Some error message here"
+      return
+    else:
+      print "The amount of the deposit: $%.2f" % amount
+      self.balance +=amount
+      self.show_balance()
+      
+   #10.
+  def withdraw(self, amount):
+    if amount> self.balance:
+      print " Some error message here"
+      return
+    else:  
+      print "The amount of the withdraw: $%.2f" % amount
+      self.balance -= amount
+      self.show_balance()
+
+#Test      
+my_account = BankAccount("Hong")
+print my_account
+my_account.show_balance()
+my_account.deposit(2000)
+my_account.withdraw(1000)
+print my_account
+      
+      
+    
+    
+    
+  
+  
       
     
 
