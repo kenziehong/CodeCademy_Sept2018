@@ -1593,3 +1593,73 @@ class Equilateral(Triangle):
     
 
 
+-------------------------------------------------------
+
+CLASSES
+
+#create class
+class Car(object):
+  
+  #create a member variable that store information about each class object(information that belongs to class object)
+  condition ="new"
+  
+  #there is a special function named __init__() that gets called whenever we create a new instance of a class
+  #We might want to do this in order to provide more input variables,
+  #the keyword self - this is how the object keeps track of itself internally 
+  def __init__(self, model, color, mpg):
+    self.model= model
+    self.color = color
+    self.mpg = mpg
+
+   #add a method named display_car to Car that will reference the Car's member variables to return the string,
+  def display_car(self):
+    return "This is a %s %s with %s MPG." % (self.color, self.model, self.mpg) 
+    
+
+  #Modifying member variables
+  def drive_car(self):
+    self.condition = "used"
+       
+
+#create new object (instance of class)
+#You don't need to include the self keyword when you create an instance of a class, because self gets added to the beginning of your list of inputs automatically by the class definition.
+my_car = Car("DeLorean", "silver", 88)
+
+#call member variable
+print my_car.condition
+print my_car.model
+print my_car.color
+print my_car.mpg
+print my_car.condition
+print my_car.drive_car()
+print my_car.condition
+
+class ElectricCar(Car):
+  def __init__(self, model, color, mpg, battery_type):
+    self.model = model
+    self.color = color
+    self.mpg   = mpg
+    self.battery_type = battery_type
+    
+  def drive_car(self):
+    self.condition = "like new"
+
+my_car = ElectricCar("DeLorean", "silver", 88, "molten salt")
+
+print my_car.condition
+my_car.drive_car()
+print my_car.condition
+
++++++++++++++++++++++++
+
+class Point3D(object):
+  def __init__(self, x, y, z):
+    self.x = x
+    self.y = y
+    self.z = z
+    
+  def __repr__(self):
+    return "(%d, %d, %d)" % (self.x, self.y, self.z)
+    
+my_point = Point3D(1, 2, 3)
+print my_point
