@@ -488,7 +488,72 @@ my_account.withdraw(1000)
 print my_account
       
       
+---------------------------------------------------------------
+
+LEARN PYTHON
+DNA Analysis Project
+
+
+sample = ['GTA','GGG','CAC']
+
+#3.adding a method that will read a suspect's DNA sample, add the file's content to an empty string, and return the updated string
+def read_dna(dna_file):
+  dna_data =""
+  
+  #use with to open file in read-only mode, as f
+  with open (dna_file, "r") as f:
+    for line in f:
+      dna_data += line
+      
+  return dna_data    
+
+#10. a method that will take a string, creat a list codons from that string, and return a list. This will make the DNA analysis much easier later
+def dna_codons(dna):
+  codons = []
+  for i in range(0, len(dna), 3):
+    if (i+3)<len(dna):
+      codons.append(dna[i:i+3])
+      
     
+    
+  
+  return codons
+
+#16. this method should count the number of times a codon in the sample matches a codon in the suspect's DNA
+def match_dna(dna):
+  matches = 0
+  
+  for codon in dna:
+    if codon in sample:
+      matches +=1     
+    
+  return matches
+
+#22. a method that will determine if a suspect is the criminal
+def is_criminal(dna_sample):
+  dna_data = read_dna(dna_sample)
+  codons = dna_codons(dna_data)
+  num_matches = match_dna(codons)
+  
+  if num_matches >=3:
+    print "%s matches found. Continue investigation" % num_matches
+  else:
+    print "%s matches found. Free suspect" % num_matches
+    
+is_criminal("suspect1.txt")   
+is_criminal("suspect2.txt")
+is_criminal("suspect3.txt")
+    
+  
+  
+  
+  
+      
+      
+    
+
+
+
     
     
   
