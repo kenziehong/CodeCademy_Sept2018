@@ -545,7 +545,94 @@ is_criminal("suspect2.txt")
 is_criminal("suspect3.txt")
     
   
+---------------------------------------------------------------------
+
+LEARN PYTHON
+RGB-HEX Converter
+
+#1. create the RGB to Hex method
+def rgb_hex():
+  invalid_msg = "Some error message goes here..."
   
+  #3. prompt the user to enter a value
+  red = int(raw_input("Enter red (R) value"))
+  if red<0 or red>255:
+    print invalid_msg
+    return
+  
+  green = int(raw_input("Enter green (G) value"))
+  if green<0 or green>255:
+    print invalid_msg
+    return
+  
+  blue = int(raw_input("Enter blue (B) value"))
+  if blue<0 or blue>255:
+    print invalid_msg
+    return 
+  
+  #11. create a variable called val. Set it equal to the sum of shifting red to left by 16 bits, shifting green to left by 8 bits, and blue
+  #A hexadecimal number can be represented with 3 bytes, a byte for each part of R, G, and B. A byte is composed of two nibbles (4 bit numbers). Hexadecimal numbers have 6 characters and each nibble represents a hex character.
+  #Shifting red to the left by 16 bits will insert 16 bits that will hold the place of green (shifted 8 bits to the left) and blue (no shift).  
+  val = (red<<16) + (green <<8) + blue
+  print val
+  
+  #12. 
+  print "%s" % (hex(val)[2:]).upper()
+  
+#13. This is the method we'll use to convert the opposite way (from Hex to RGB)
+def hex_rgb():
+  hex_val = raw_input("Enter the color (six hexadecimal digits): ")
+  if len(hex_val) != 6:
+    print "Invalid hexidecimal value. Try again."
+    return
+  else:
+    hex_val = int(hex_val, 16) 
+  print hex_val
+  
+  #The variable two_hex_digits represents two hexadecimal digits. This will return the first RGB value (from right to left) of blue (B).
+  two_hex_digits = 2**8 
+  blue = hex_val % two_hex_digits
+  
+  #This line does just the opposite of what we did in the previous method. It moves hex_val 8 bits to the right, preparing us to modulo for the next value (G).
+  hex_val = hex_val >> 8
+  print hex_val
+  green = hex_val % two_hex_digits
+  
+  hex_val = hex_val >> 8
+  print hex_val
+  red = hex_val % two_hex_digits
+  
+  print "Red: %s Green: %s Blue: %s" % (red, green, blue)
+  
+#25.   The method you just wrote will convert a hexadecimal value to an RGB value.
+def convert():
+  while True:
+    option = raw_input("Enter 1 to convert RGB to HEX. Enter 2 to convert HEX to RGB. Enter X to Exit: ")
+    if option == '1':
+      print "RGB to Hex..."
+      rgb_hex()
+    elif option == '2':
+      print "Hex to RGB..."
+      hex_rgb()
+    elif option == 'X' or option == 'x':
+      break  
+    else:
+      print "Error"
+    
+convert()    
+    
+
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+    
   
   
       
