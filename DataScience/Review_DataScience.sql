@@ -15,3 +15,22 @@ AND and OR combines multiple conditions.
 ORDER BY sorts the result.
 LIMIT specifies the maximum number of rows that the query will return.
 CASE creates different outputs.
+
+----------------------------------------------
+
+AGGREGATE FUNCTIONS
+Review
+Congratulations!
+
+You just learned how to use aggregate functions to perform calculations on your data. What can we generalize so far?
+
+COUNT(): count the number of rows
+SUM(): the sum of the values in a column
+MAX()/MIN(): the largest/smallest value
+AVG(): the average of the values in a column
+ROUND(): round the values in the column
+Aggregate functions combine multiple rows together to form a single value of more meaningful information.
+
+GROUP BY is a clause used with aggregate functions to combine data from one or more columns.
+HAVING limit the results of a query based on an aggregate property
+

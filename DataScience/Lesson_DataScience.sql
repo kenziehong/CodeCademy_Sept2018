@@ -167,3 +167,76 @@ SELECT name,
 FROM movies; 
  
  
+-------------------------------------------------------------------------
+AGGREGATE FUNCTIONS
+
+COUNT() is a function that takes the name of a column as an argument and counts the number of non-empty values in that column.
+
+SELECT COUNT(*)
+FROM fake_apps
+WHERE price = 0;
+
+++++++++++++++++++
+
+SUM() is a function that takes the name of a column as an argument and returns the sum of all the values in that column.
+
+SELECT SUM(downloads)
+FROM fake_apps;
+
++++++++++++++++++++++
+
+The MAX() and MIN() functions return the highest and lowest values in a column, respectively.
+
+SELECT MAX(price)
+FROM fake_apps;
+
+++++++++++++++++++++++
+
+SQL uses the AVG() function to quickly calculate the average value of a particular column.
+
+SELECT AVG(price)
+FROM fake_apps;
+
++++++++++++++++++
+
+We can make the result table easier to read using the ROUND() function.
+SQL rounds the values in "the column name" to "integer" decimal places in the output.
+
+SELECT ROUND(AVG(price),2)
+FROM fake_apps;
+
+++++++++++++++++++
+
+GROUP BY is a clause in SQL that is used with aggregate functions. It is used in collaboration with the SELECT statement to arrange identical data into groups.
+
+The GROUP BY statement comes after any WHERE statements, but before ORDER BY or LIMIT.
+
+SELECT category, SUM(downloads)
+FROM fake_apps
+GROUP BY category;
+
+
+SELECT category, 
+   price,
+   AVG(downloads)
+FROM fake_apps
+GROUP BY 1, 2;
+
+++++++++++++++++++++++++++++++++++++++++++
+
+We can't use WHERE here because we don't want to filter the rows; we want to filter groups.
+
+HAVING is very similar to WHERE. In fact, all types of WHERE clauses you learned about thus far can be used with HAVING.
+
+When we want to limit the results of a query based on values of the individual rows, use WHERE.
+When we want to limit the results of a query based on an aggregate property, use HAVING.
+HAVING statement always comes after GROUP BY, but before ORDER BY and LIMIT.
+
+SELECT price, 
+   ROUND(AVG(downloads)),
+   COUNT(*)
+FROM fake_apps
+GROUP BY price
+HAVING COUNT(*)>10;
+
+
