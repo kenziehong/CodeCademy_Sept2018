@@ -105,7 +105,74 @@ SELECT review,
    WHEN review>2 THEN 'Fair'
    ELSE 'Poor'
   END AS 'status'
-FROM nomnom;  
+FROM nomnom;
+
+-------------------------------------
+CODE CHALLENGE: AGGREGATE FUNCTIONS
+Code Challenge   
+
+/*
+2.Use COUNT() and a LIKE operator to determine the number of users that have an email ending in '.com'.
+
+SELECT COUNT(*) FROM users WHERE email LIKE '%.com';
+
+3.Use COUNT(), GROUP BY, and ORDER BY to create a list of first names and occurrences within the users table.
+
+Order the data so that the most popular names are displayed first.
+
+SELECT first_name, COUNT(*) FROM users 
+GROUP BY first_name
+ORDER BY COUNT(*) DESC;
+
+4.
+SELECT
+  ROUND(watch_duration_in_minutes,0) as duration,
+  COUNT(*) as count
+FROM watch_history
+GROUP BY duration
+ORDER BY duration ASC;
+
+5.
+SELECT
+  user_id,
+  SUM(amount) AS 'total'
+FROM payments
+WHERE status = 'paid'
+GROUP BY 1
+ORDER BY 2 DESC;
+
+6.
+SELECT 
+ user_id,
+ SUM(watch_duration_in_minutes) AS 'total'
+FROM watch_history
+GROUP BY user_id
+HAVING total>400 ;
+
+7.To the nearest minute, how many minutes of content were streamed on Codeflix?
+SELECT ROUND(SUM(watch_duration_in_minutes)) 
+FROM watch_history;
+
+8.Which days in this period did Codeflix collect the most money?
+SELECT pay_date, SUM(amount)
+FROM payments
+WHERE status = 'paid'
+GROUP BY pay_date
+ORDER BY 2 DESC;
+
+9.When users successfully pay Codeflix (status = 'paid'), what is the average payment amount?
+SELECT AVG(amount)
+FROM payments
+WHERE status ='paid';
+
+10.
+SELECT 
+ MAX(watch_duration_in_minutes) as 'longest',
+ MIN(watch_duration_in_minutes) as 'shortes'
+FROM watch_history ;
+
+
+*/
   
 
 
