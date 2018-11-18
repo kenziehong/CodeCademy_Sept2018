@@ -174,6 +174,96 @@ FROM watch_history ;
 
 */
   
+---------------------------------------------------------------------
+AGGREGATE FUNCTIONS
+Trends in Startups
+
+SELECT * FROM startups LIMIT 10;
+
+SELECT COUNT(*) FROM startups;
+
+SELECT SUM(valuation) FROM startups;
+
+SELECT MAX(raised) FROM startups WHERE stage ='Seed';
+
+SELECT MIN(founded) FROM startups;
+
+SELECT category, ROUND(AVG(valuation),2) FROM startups 
+GROUP BY category ORDER BY 2 DESC;
+
+SELECT category, COUNT(*) FROM startups 
+GROUP BY category HAVING COUNT(*) > 3 ;
+
+SELECT location, AVG(employees) FROM startups GROUP BY location HAVING AVG(employees) >500;
 
 
+------------------------------------------------------
+AGGREGATE FUNCTIONS PROJECTS AND APPLICATIONS
+How to Hack Hacker News
+
+
+SELECT * FROM hacker_news LIMIT 10;
+
+SELECT title, score
+FROM hacker_news
+ORDER BY score DESC
+LIMIT 5;
+
+SELECT SUM(score) FROM hacker_news;
+
+SELECT user, SUM(score)
+FROM hacker_news
+GROUP BY user
+HAVING SUM(score)>200;
+
+SELECT (309+ 304 + 282 + 517)/6366.0;
+
+SELECT user, url, COUNT(*)
+FROM hacker_news
+WHERE url = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' GROUP BY user ORDER BY COUNT(*) DESC;
+
+SELECT 
+ CASE 
+  WHEN url LIKE '%github.com%' THEN 'GitHub'
+  WHEN url LIKE '%medium.com%' THEN 'Medium'
+  WHEN url LIKE '%nytimes.com%' THEN 'New York Times'
+  ELSE 'Other'
+ END AS 'Source',
+ COUNT (*)
+FROM hacker_news
+GROUP BY Source; 
+
+SELECT timestamp
+FROM hacker_news
+LIMIT 10;
+
+SELECT 
+   strftime('%H', timestamp) AS hour,
+   ROUND(AVG(score),2) AS avg_score,
+   COUNT(*) num_stories
+FROM hacker_news
+WHERE hour IS NOT NULL
+GROUP BY 1
+ORDER BY AVG(score) DESC;
+
+------------------------------------------------
+
+AGGREGATE FUNCTIONS PROJECTS AND APPLICATIONS
+The Metropolitan Museum of Art
+
+SELECT category, COUNT (*) FROM met WHERE category LIKE '%celery%';
+ 
+SELECT title, medium, MIN(date) FROM met; 
+ 
+SELECT country, COUNT(country) FROM met 
+GROUP BY country 
+ORDER BY 2 DESC LIMIT 10; 
+ 
+SELECT country, COUNT(*) FROM met 
+GROUP BY country 
+ORDER BY 2 DESC LIMIT 10; 
+ 
+SELECT medium, COUNT(*) FROM met
+WHERE medium LIKE '%gold%' OR medium LIKE '%silver%' GROUP BY medium ORDER BY 2 DESC;
+ 
 
