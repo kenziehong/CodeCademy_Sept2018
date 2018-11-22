@@ -266,4 +266,65 @@ ORDER BY 2 DESC LIMIT 10;
 SELECT medium, COUNT(*) FROM met
 WHERE medium LIKE '%gold%' OR medium LIKE '%silver%' GROUP BY medium ORDER BY 2 DESC;
  
+----------------------------------------------------
 
+WORKING WITH MULTIPLE TABLES
+Multiple Tables with REBU
+
+/*SELECT * FROM trips;
+
+SELECT * FROM riders;
+
+SELECT * FROM cars;
+
+SELECT * 
+FROM riders
+CROSS JOIN cars;
+
+SELECT *
+FROM rider, cars;
+
+SELECT *
+FROM trips
+LEFT JOIN riders
+ ON trips.rider_id = riders.id;
+
+SELECT * 
+FROM trips
+JOIN cars
+ ON trips.car_id = cars.id; 
+
+SELECT * 
+FROM riders
+UNION
+SELECT *
+FROM riders2;
+*/
+
+SELECT ROUND(AVG(cost),2)
+FROM trips;
+
+SELECT *
+FROM riders
+WHERE total_trips < 500;
+
+SELECT COUNT(*)
+FROM cars
+WHERE status ='active';
+
+SELECT *
+FROM cars
+ORDER BY trips_completed DESC
+LIMIT 2;
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
