@@ -34,3 +34,13 @@ Aggregate functions combine multiple rows together to form a single value of mor
 GROUP BY is a clause used with aggregate functions to combine data from one or more columns.
 HAVING limit the results of a query based on an aggregate property
 
+----------------------------------------------------------
+
+WORKING WITH MULTIPLE DATAFRAMES
+Review
+This lesson introduced some methods for combining multiple DataFrames:
+
+Creating a DataFrame made by matching the common columns of two DataFrames is called a merge
+We can specify which columns should be matches by using the keyword arguments left_on and right_on
+We can combine DataFrames whose rows don't all match using left, right, and outer merges and the how keyword argument
+We can stack or concatenate DataFrames with the same columns using pd.concat
