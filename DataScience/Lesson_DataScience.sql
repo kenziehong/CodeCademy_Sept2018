@@ -412,4 +412,135 @@ print(ice_cream)
 menu = pd.concat([bakery,ice_cream])
 print(menu)
 
+---------------------------------------------------------------
+
+MULTIPLE TABLES
+Combining Tables with SQL
+
+#we use the syntax table_name.column_name to be sure that our requests for columns are unambiguous. 
+#In our example, we use this syntax in the ON statement, but we will also use it in the SELECT or any other statement where we refer to column names.
+
+-- First query
+SELECT *
+FROM orders
+JOIN subscriptions
+	ON orders.subscription_id = subscriptions.subscription_id;
+
+-- Second query
+SELECT *
+FROM orders
+JOIN subscriptions
+	ON orders.subscription_id = subscriptions.subscription_id
+WHERE subscriptions.description = 'Fashion Magazine';
+
++++++++++++++++++++++++++++++++
+
+MULTIPLE TABLES
+Inner Joins
+
+SELECT COUNT(*)
+FROM newspaper;
+
+SELECT COUNT(*)
+FROM online;
+
+SELECT COUNT(*)
+FROM newspaper
+JOIN online
+  ON newspaper.id = online.id;
+ 
+++++++++++++++++++++++++++++++
+
+MULTIPLE TABLES
+Left Joins
+
+#A left join will keep all rows from the first table, regardless of whether there is a matching row in the second table.
+
+-- First query
+SELECT *
+FROM newspaper
+LEFT JOIN online
+	ON newspaper.id = online.id;
+  
+-- Second query
+SELECT *
+FROM newspaper
+LEFT JOIN online
+	ON newspaper.id = online.id
+WHERE online.id IS NULL;
+
+++++++++++++++++++++++++++++
+
+MULTIPLE TABLES
+Primary Key vs Foreign Key
+
+/*
+Each of these tables has a column that uniquely identifies each row of that table:
+
+These special columns are called primary keys.
+
+Primary keys have a few requirements:
+
+None of the values can be NULL.
+Each value must be unique (i.e., you can't have two customers with the same customer_id in the customers table).
+A table can not have more than one primary key column.
+
+When the primary key for one table appears in a different table, it is called a foreign key.
+
+So customer_id is a primary key when it appears in customers, but a foreign key when it appears in orders
+
+*/
+
+++++++++++++++++++++++++
+
+MULTIPLE TABLES
+Cross Join
+
+A more common usage of CROSS JOIN is when we need to compare each row of a table to a list of values.
+
+
+SELECT month, 
+  COUNT(*)
+FROM newspaper
+CROSS JOIN months
+WHERE start_month <= month 
+  AND end_month >= month
+GROUP BY month;
+
++++++++++++++++++++++++++++++++++
+MULTIPLE TABLES
+Union
+
+Sometimes we just want to stack one dataset on top of the other. Well, the UNION operator allows us to do that.
+
+SQL has strict rules for appending data:
+
+Tables must have the same number of columns.
+The columns must have the same data types in the same order as the first table.
+
+SELECT *
+FROM newspaper 
+UNION
+SELECT *
+FROM online ;
+
++++++++++++++++++++++++++++++++
+
+MULTIPLE TABLES
+With
+
+#Often times, we want to combine two tables, but one of the tables is the result of another calculation.
+#Essentially, we are putting a whole first query inside the parentheses () and giving it a name. After that, we can use this name as if it's a table and write a new query using the first query.
+
+WITH previous_query AS (
+   SELECT customer_id,
+      COUNT(subscription_id) AS 'subscriptions'
+   FROM orders
+   GROUP BY customer_id
+)
+SELECT customers.customer_name, 
+   previous_query.subscriptions
+FROM previous_query
+JOIN customers
+  ON previous_query.customer_id = customers.customer_id;
 

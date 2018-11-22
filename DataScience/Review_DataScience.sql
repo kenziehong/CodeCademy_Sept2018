@@ -44,3 +44,25 @@ Creating a DataFrame made by matching the common columns of two DataFrames is ca
 We can specify which columns should be matches by using the keyword arguments left_on and right_on
 We can combine DataFrames whose rows don't all match using left, right, and outer merges and the how keyword argument
 We can stack or concatenate DataFrames with the same columns using pd.concat
+
+------------------------------------------------
+
+MULTIPLE TABLES
+Review
+In this lesson, we learned about relationships between tables in relational databases and how to query information from multiple tables using SQL.
+
+Let's summarize what we've learned so far:
+
+JOIN will combine rows from different tables if the join condition is true.
+
+LEFT JOIN will return every row in the left table, and if the join condition is not met, NULL values are used to fill in the columns from the right table.
+
+Primary key is a column that serves a unique identifier for the rows in the table.
+
+Foreign key is a column that contains the primary key to another table.
+
+CROSS JOIN lets us combine all rows of one table with all rows of another table.
+
+UNION stacks one dataset on top of another.
+
+WITH allows us to define one or more temporary tables that can be used in the final query.
