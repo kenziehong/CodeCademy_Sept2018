@@ -66,3 +66,17 @@ CROSS JOIN lets us combine all rows of one table with all rows of another table.
 UNION stacks one dataset on top of another.
 
 WITH allows us to define one or more temporary tables that can be used in the final query.
+
+----------------------------------------------------
+23/11/2018
+
+INTRODUCTION TO NUMPY
+Review
+Let's take a second and review. In this lesson, you learned the basics of the NumPy package. Here are some key points:
+
+Arrays are a special type of list that allows us to store values in an organized manner.
+An array can be created by either defining it directly using np.array() or by importing a CSV using np.genfromtxt('file.csv', delimiter=',').
+An operation (such as addition) can be performed on every element in an array by simply performing it on the array itself.
+Elements can be selected from arrays using their index and array locations, both of which start at 0.
+Logical operations can be used to create new, more focused arrays out of larger arrays.
+The next lesson will explore how to analyze these arrays and use means, medians, and standard deviations to tell a story. But first, practice what you've learned by working through the following checkpoints.

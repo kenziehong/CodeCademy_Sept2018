@@ -544,3 +544,29 @@ FROM previous_query
 JOIN customers
   ON previous_query.customer_id = customers.customer_id;
 
+------------------------------------------------------------
+
+import numpy as np
+
+#Create a NumPy array
+test_1=np.array([92,94,88,91,87])
+
+#Import the student's scores on the second test from the CSV test_2.csv into an array.
+test_2 = np.genfromtxt('test_2.csv', delimiter =',')
+
+#Operations with NumPy Arrays
+temperatures_fixed = temperatures + 3
+
+#Selecting Elements from a 1-D Array
+jeremy_test_2 = test_2[-2]
+manual_adwoa_test_1 = test_1[1:3]
+
+
+#Selecting Elements from a 2-D Array
+#The syntax for selecting from a 2-d array is a[row,column] where a is the array.
+monday_temperatures = temperatures_fixed[0,:]
+thursday_friday_morning = temperatures_fixed[3:5,1]
+
+#Logical Operations with Arrays
+#We can also combine logical statements to further specify our criteria. To do so, we place each statement in parentheses and use boolean operators like & (and) and | (or).
+temperature_extremes = temperatures_fixed[(temperatures_fixed<50) | (temperatures_fixed>60)]
