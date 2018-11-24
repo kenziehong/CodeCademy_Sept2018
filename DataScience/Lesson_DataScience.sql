@@ -673,3 +673,84 @@ print(rain_max)
 0.65
 5.21
 
+-----------------------------------------------------------------
+STATISTICAL DISTRIBUTIONS WITH NUMPY
+Histograms, Part III
+
+import codecademylib
+import numpy as np
+
+# Write matplotlib import here:
+from matplotlib import pyplot as plt
+
+commutes = np.genfromtxt('commutes.csv', delimiter=',')
+
+# zoom in and see how many people have commutes ranging between 20 and 50 minutes.
+#it has 6 bins 
+#how many values fall between 20 and 25, 26 and 30 , etc.
+#These groupings are called bins. 
+#All bins in a histogram are always the same size. 
+#The width of each bin is the distance between the minimum and maximum values of each bin.
+
+# Plot histogram here:
+plt.hist(commutes, bins = 6, range=(20,51))
+plt.show()
+
+++++++++++++++++++++++++++++++++++++
+
+import codecademylib
+import numpy as np
+from matplotlib import pyplot as plt
+
+# Brachiosaurus
+b_data = np.random.normal(6.7,0.7,size=1000)
+
+# Fictionosaurus
+f_data = np.random.normal(7.7,0.3,size=1000)
+
+plt.hist(b_data,
+         bins=30, range=(5, 8.5), histtype='step',
+         label='Brachiosaurus')
+plt.hist(f_data,
+         bins=30, range=(5, 8.5), histtype='step',
+         label='Fictionosaurus')
+plt.xlabel('Femur Length (ft)')
+plt.legend(loc=2)
+plt.show()
+
+++++++++++++++++++++++++++++++++++++
+
+import codecademylib
+import numpy as np
+from matplotlib import pyplot as plt
+
+sunflowers = np.genfromtxt('sunflower_heights.csv',
+                           delimiter=',')
+
+# Calculate mean and std of sunflowers here:
+sunflowers_mean = np.mean(sunflowers)
+sunflowers_std = np.std(sunflowers)
+
+# Calculate sunflowers_normal here:
+sunflowers_normal = np.random.normal(
+  loc=sunflowers_mean,
+  scale=sunflowers_std,
+  size=5000
+)
+
+plt.hist(sunflowers,
+         range=(11, 15), histtype='step', linewidth=2,
+        label='Observed', normed=True)
+plt.hist(sunflowers_normal,
+         range=(11, 15), histtype='step', linewidth=2,
+        label='Normal', normed=True)
+plt.legend()
+plt.show()
+
+
+# Calculate probabilities here:
+experiments = np.random.binomial(200, 0.1, size=5000)
+prob = np.mean(experiments < 20)
+print(prob)
+
+

@@ -372,7 +372,45 @@ more_calories = 100-4
 calorie_std = np.std(calorie_stats) #19
  
  
- 
+--------------------------------------------------------
+STATISTICS IN NUMPY
+Election Results
+
+import codecademylib
+import numpy as np
+from matplotlib import pyplot as plt
+
+survey_responses = ['Ceballos', 'Kerrigan', 'Ceballos', 'Ceballos', 'Ceballos','Kerrigan', 'Kerrigan', 'Ceballos', 'Ceballos', 'Ceballos', 
+'Kerrigan', 'Kerrigan', 'Ceballos', 'Ceballos', 'Kerrigan', 'Kerrigan', 'Ceballos', 'Ceballos', 'Kerrigan', 'Kerrigan', 'Kerrigan', 'Kerrigan', 'Kerrigan', 'Kerrigan', 'Ceballos', 'Ceballos', 'Ceballos', 'Ceballos', 'Ceballos', 'Ceballos',
+'Kerrigan', 'Kerrigan', 'Ceballos', 'Ceballos', 'Ceballos', 'Kerrigan', 'Kerrigan', 'Ceballos', 'Ceballos', 'Kerrigan', 'Kerrigan', 'Ceballos', 'Ceballos', 'Kerrigan', 'Kerrigan', 'Kerrigan', 'Kerrigan', 'Kerrigan', 'Kerrigan', 'Ceballos',
+'Kerrigan', 'Kerrigan', 'Ceballos', 'Ceballos', 'Ceballos', 'Kerrigan', 'Kerrigan', 'Ceballos', 'Ceballos', 'Kerrigan', 'Kerrigan', 'Ceballos', 'Ceballos', 'Kerrigan', 'Kerrigan', 'Kerrigan', 'Kerrigan', 'Kerrigan', 'Kerrigan', 'Ceballos']
+
+total_ceballos = sum([1 for item in survey_responses if item == 'Ceballos'])
+
+survey_length = float(len(survey_responses))
+percentage_ceballos = total_ceballos/ survey_length
+
+possible_surveys = np.random.binomial(survey_length, 0.54, size = 10000) / survey_length
+plt.hist(possible_surveys, range = (0,1), bins =20)
+plt.show()
+
+possible_surveys_length = float(len(possible_surveys))
+incorrect_predictions = len(possible_surveys[possible_surveys<0.5])
+ceballos_loss_surveys = incorrect_predictions / possible_surveys_length
+
+large_survey_length = float(7000)
+large_survey = np.random.binomial(large_survey_length, 0.54, size = 10000) / large_survey_length
+plt.close()
+plt.hist(large_survey, alpha = 0.5, range =(0,1), bins =20)
+plt.show()
+
+incorrect_predictions = len(large_survey[large_survey <0.5])
+ceballos_loss_new = incorrect_predictions /  large_survey_length
+
+print(total_ceballos) #33
+print(percentage_ceballos) #0.471428571429
+print(ceballos_loss_surveys) #0.213
+print(ceballos_loss_new) #0
  
  
  
