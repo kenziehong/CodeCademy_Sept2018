@@ -80,3 +80,15 @@ An operation (such as addition) can be performed on every element in an array by
 Elements can be selected from arrays using their index and array locations, both of which start at 0.
 Logical operations can be used to create new, more focused arrays out of larger arrays.
 The next lesson will explore how to analyze these arrays and use means, medians, and standard deviations to tell a story. But first, practice what you've learned by working through the following checkpoints.
+
+--------------------------------------------------
+24/11/2018
+
+INTRODUCTION TO STATISTICS WITH NUMPY
+Review
+Let's review! In this lesson, you learned how to use NumPy to analyze single-variable datasets. Here's what we covered:
+
+Using the np.sort method to locate outliers.
+Calculating central positions of a dataset using np.mean and np.median.
+Understanding the spread of our data using percentiles and the interquartile range.
+Finding the standard deviation of a dataset using np.std

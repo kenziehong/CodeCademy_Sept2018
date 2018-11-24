@@ -546,13 +546,38 @@ JOIN customers
 
 ------------------------------------------------------------
 
+Introduction to NumPy
+
 import numpy as np
 
 #Create a NumPy array
 test_1=np.array([92,94,88,91,87])
 
 #Import the student's scores on the second test from the CSV test_2.csv into an array.
-test_2 = np.genfromtxt('test_2.csv', delimiter =',')
+test_2 = np.genfromimport numpy as np
+
+rainfall = np.array([5.21, 3.76, 3.27, 2.35, 1.89, 1.55, 0.65, 1.06, 1.72, 3.35, 4.82, 5.11])
+
+rain_mean = np.mean(rainfall)
+rain_median = np.median(rainfall)
+first_quarter = np.percentile(rainfall,25)
+third_quarter = np.percentile(rainfall,75)
+interquartile_range = third_quarter - first_quarter
+rain_std = np.std(rainfall)
+rain_min = np.min(rainfall)
+rain_max = np.max(rainfall)
+print(rain_mean)
+print(rain_median)
+print(first_quarter)
+print(third_quarter)
+print(interquartile_range)
+print(rain_std)
+print(rain_min)
+print(rain_max)
+
+
+
+txt('test_2.csv', delimiter =',')
 
 #Operations with NumPy Arrays
 temperatures_fixed = temperatures + 3
@@ -570,3 +595,81 @@ thursday_friday_morning = temperatures_fixed[3:5,1]
 #Logical Operations with Arrays
 #We can also combine logical statements to further specify our criteria. To do so, we place each statement in parentheses and use boolean operators like & (and) and | (or).
 temperature_extremes = temperatures_fixed[(temperatures_fixed<50) | (temperatures_fixed>60)]
+
+-----------------------------------------------------------------
+
+INTRODUCTION TO STATISTICS WITH NUMPY
+
+
+import numpy as np
+
+rainfall = np.array([5.21, 3.76, 3.27, 2.35, 1.89, 1.55, 0.65, 1.06, 1.72, 3.35, 4.82, 5.11])
+
+#NumPy and Mean
+#The mean is a useful measurement to get the center of a dataset
+#average number
+rain_mean = np.mean(rainfall)
+
+#Mean and Logical Operations
+#how many percentage items in an array if it matches the specified condition
+#the total number of True = 1 items divided by the total array length.
+rain_over_3 = np.mean(rainfall>3)
+
+#Calculating the Mean of 2D Arrays
+allergy_trials = np.array([[6, 1, 3, 8, 2], 
+                           [2, 6, 3, 9, 8], 
+                           [5, 2, 6, 9, 9]])
+
+trial_mean = np.mean(allergy_trials, axis=1) #the rows
+patient_mean = np.mean(allergy_trials, axis =0) #the columns
+
+#Sorting and Outliers
+#One way to quickly identify outliers is by sorting our data
+sorted_temps = np.sort(temps)
+
+
+#NumPy and Median
+#The median is the middle value of a dataset that’s been ordered in terms of magnitude (from lowest to highest).
+rain_median = np.median(rainfall)
+
+#Mean vs. Median
+#In a dataset, the median value can provide an important comparison to the mean. 
+#Unlike a mean, the median is not affected by outliers. 
+#This becomes important in skewed datasets, datasets whose values are not distributed evenly.
+
+#Percentiles, Part I
+#the median is the middle of a dataset: it is the number for which 50% of the samples are below, and 50% of the samples are above. 
+#But what if we wanted to find a point at which 40% of the samples are below, and 60% of the samples are above?
+first_quarter = np.percentile(rainfall,25)
+third_quarter = np.percentile(rainfall,75)
+
+#The difference between the first and third quartile is a value called the interquartile range. 
+#50% of the dataset will lie within the interquartile range.
+interquartile_range = third_quarter - first_quarter
+
+#NumPy and Standard Deviation, Part I
+#While the mean and median can tell us about the center of our data, 
+#they do not reflect the range of the data. That's where standard deviation comes in.
+#Similar to the interquartile range, the standard deviation tells us the spread of the data. The larger the standard deviation, the more spread out our data is from the center. The smaller the standard deviation, the more the data is clustered around the mean.
+rain_std = np.std(rainfall)
+
+rain_min = np.min(rainfall)
+rain_max = np.max(rainfall)
+print(rain_mean)
+print(rain_median)
+print(first_quarter)
+print(third_quarter)
+print(interquartile_range)
+print(rain_std)
+print(rain_min)
+print(rain_max)
+
+2.895
+2.81
+1.6775
+4.025
+2.3475
+1.52673125773
+0.65
+5.21
+

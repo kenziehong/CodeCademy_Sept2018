@@ -337,6 +337,39 @@ double_batch = cupcakes*2
 
 grocery_list = cookies + double_batch
 print(grocery_list) 
+
+
+
+-----------------------------------------------
+STATISTICS IN NUMPY
+CrunchieMunchies
+
+
+import codecademylib
+import numpy as np
+
+calorie_stats = np.genfromtxt('cereal.csv', delimiter = ',')
+average_calorites = np.mean(calorie_stats) #106
+
+calorie_stats_sorted = np.sort(calorie_stats)
+median_calories = np.median(calorie_stats) #110
+#While the median demonstrates that at least half of our values are over 110 calories (median),
+#it would be more impressive to show that a significant portion of the competition has a higher calorie count that CrunchieMunchies.
+
+#find the lowest percentile that is greater than 60 calories
+print np.percentile(calorie_stats,25)
+print np.percentile(calorie_stats,10)
+print np.percentile(calorie_stats,5)
+print np.percentile(calorie_stats,4)
+print np.percentile(calorie_stats,3)
+
+#While the percentile shows us that the majority of the competition has a much higher calorie count
+#let's calculate the percentage of cereals that have more than 60 calories per serving.
+nth_percentile = 4
+more_calories = 100-4
+
+#Can we make the generalization that most cereals have around 106 calories (mean) or is the spread even greater?
+calorie_std = np.std(calorie_stats) #19
  
  
  
