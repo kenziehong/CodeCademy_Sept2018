@@ -104,3 +104,18 @@ How to identify different dataset shapes, depending on peaks or distribution of 
 The definition of a normal distribution and how to use NumPy to generate one using NumPy's random number functions
 The relationships between normal distributions and standard deviations
 The definition of a binomial distribution
+
+--------------------------------------------
+
+HYPOTHESIS TESTING
+Types of Hypothesis Test
+
+For numerical data, we will cover:
+One Sample T-Tests
+Two Sample T-Tests
+ANOVA
+Tukey Tests
+
+For categorical data, we will cover:
+Binomial Tests
+Chi Square
