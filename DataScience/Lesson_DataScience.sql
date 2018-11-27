@@ -982,3 +982,335 @@ X = [[30, 10],
     [20,20]]
 chi2, pval, dof, expected = chi2_contingency(X)
 print pval
+
+--------------------------------------------------------------------------------
+
+27/11/2018
+
+CREATING, LOADING, AND SELECTING DATA WITH PANDAS
+Create a DataFrame I
+
+import codecademylib
+import pandas as pd
+
+df1 = pd.DataFrame({
+  'Product ID': [1, 2, 3, 4],
+  # add Product Name and Color here
+  'Product Name': ['t-shirt', 't-shirt', 'skirt', 'skirt'],
+  'Color': ['blue', 'green', 'red', 'black']
+})
+
+print(df1)
+
+
++++++++++++++++++++++++++++++++++++++++++++++
+CREATING, LOADING, AND SELECTING DATA WITH PANDAS
+Create a DataFrame II
+
+/*In this example, we were able to control the ordering of the columns because we used lists.
+*/
+
+import codecademylib
+import pandas as pd
+
+df2 = pd.DataFrame([
+  [1, 'San Diego', 100],
+  [2, 'Los Angeles', 120],
+  # Fill in rows 3 and 4
+  [3, 'San Francisco', 90],
+  [4, 'Sacramento', 115]
+],
+  columns=[
+    #add column names here
+    'Store ID', 'Location', 'Number of Employees'
+  ])
+
+print(df2)
+
+++++++++++++++++++++++++++++++++++++++++
+
+CREATING, LOADING, AND SELECTING DATA WITH PANDAS
+Comma Separated Variables (CSV)
+
+-- Note that there are no spaces between the commas.
+
+/*name,cake_flavor,frosting_flavor,topping
+Devil's Food,chocolate,chocolate,chocolate shavings
+Birthday Cake,vanilla,vanilla,rainbow sprinkles
+Carrot Cake,carrot,cream cheese,almonds
+*/
+++++++++++++++++++++++++++++++++++++++++++++++++
+
+CREATING, LOADING, AND SELECTING DATA WITH PANDAS
+Loading and Saving CSVs
+
+
+import codecademylib
+import pandas as pd
+df = pd.read_csv('sample.csv')
+print(df)
+
+#We can also save data to a CSV, using .to_csv().
+
+df.to_csv('new-csv-file.csv')
+
+++++++++++++++++++++++++++++++++++++++++++++
+
+CREATING, LOADING, AND SELECTING DATA WITH PANDAS
+Inspect a DataFrame
+
+/*The method .head() gives the first 5 rows of a DataFrame.
+The method df.info() gives some statistics for each column.
+*/
+
+import codecademylib
+import pandas as pd
+
+df = pd.read_csv('imdb.csv')
+print(df.head())
+print(df.info())
+
++++++++++++++++++++++++++++++++++++++++
+
+CREATING, LOADING, AND SELECTING DATA WITH PANDAS
+Select Columns
+
+/*There are two possible syntaxes for selecting all values from a column.
+
+1.Select the column as if you were selecting a value from a dictionary using a key. 
+
+2.If the name of a column follows all of the rules for a variable name 
+(doesn't start with a number, doesn't contain spaces or special characters, etc.), 
+*/
+import codecademylib
+import pandas as pd
+
+df = pd.DataFrame([
+  ['January', 100, 100, 23, 100],
+  ['February', 51, 45, 145, 45],
+  ['March', 81, 96, 65, 96],
+  ['April', 80, 80, 54, 180],
+  ['May', 51, 54, 54, 154],
+  ['June', 112, 109, 79, 129]],
+  columns=['month', 'clinic_east',
+           'clinic_north', 'clinic_south',
+           'clinic_west']
+)
+
+clinic_north = df.clinic_north 
+#clinic_north = df['clinic_north']
+print(type(clinic_north))
+print(type(df))
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+CREATING, LOADING, AND SELECTING DATA WITH PANDAS
+Selecting Multiple Columns
+
+#Note: Make sure that you have a double set of brackets ([[]]), or this command won't work!
+
+import codecademylib
+import pandas as pd
+
+df = pd.DataFrame([
+  ['January', 100, 100, 23, 100],
+  ['February', 51, 45, 145, 45],
+  ['March', 81, 96, 65, 96],
+  ['April', 80, 80, 54, 180],
+  ['May', 51, 54, 54, 154],
+  ['June', 112, 109, 79, 129]],
+  columns=['month', 'clinic_east',
+           'clinic_north', 'clinic_south',
+           'clinic_west']
+)
+
+clinic_north_south = df[['clinic_north','clinic_south']]
+print(type(clinic_north_south))
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+CREATING, LOADING, AND SELECTING DATA WITH PANDAS
+Select Rows
+
+#DataFrames are zero-indexed, meaning that we start with the 0th row and count up from there. 
+
+import codecademylib
+import pandas as pd
+
+df = pd.DataFrame([
+  ['January', 100, 100, 23, 100],
+  ['February', 51, 45, 145, 45],
+  ['March', 81, 96, 65, 96],
+  ['April', 80, 80, 54, 180],
+  ['May', 51, 54, 54, 154],
+  ['June', 112, 109, 79, 129]],
+  columns=['month', 'clinic_east',
+           'clinic_north', 'clinic_south',
+           'clinic_west'])
+
+march = df.iloc[2]
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+CREATING, LOADING, AND SELECTING DATA WITH PANDAS
+Selecting Multiple Rows
+
+/*Here are some different ways of selecting multiple rows: 
+
+orders.iloc[3:7] would select all rows starting at the 3rd row and up to but not including the 7th row 
+orders.iloc[:4] would select all rows up to, but not including the 4th row
+orders.iloc[-3:] would select the rows starting at the 3rd to last row and up to and including the final row
+*/
+
+import codecademylib
+import pandas as pd
+
+df = pd.DataFrame([
+  ['January', 100, 100, 23, 100],
+  ['February', 51, 45, 145, 45],
+  ['March', 81, 96, 65, 96],
+  ['April', 80, 80, 54, 180],
+  ['May', 51, 54, 54, 154],
+  ['June', 112, 109, 79, 129]],
+  columns=['month', 'clinic_east',
+           'clinic_north', 'clinic_south',
+           'clinic_west']
+)
+
+april_may_june = df.iloc[-3:]
+print(april_may_june)
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+CREATING, LOADING, AND SELECTING DATA WITH PANDAS
+Select Rows with Logic I
+
+#You can select a subset of a DataFrame by using logical statements: (==,>,<,!=,...)
+
+import codecademylib
+import pandas as pd
+
+df = pd.DataFrame([
+  ['January', 100, 100, 23, 100],
+  ['February', 51, 45, 145, 45],
+  ['March', 81, 96, 65, 96],
+  ['April', 80, 80, 54, 180],
+  ['May', 51, 54, 54, 154],
+  ['June', 112, 109, 79, 129]],
+  columns=['month', 'clinic_east',
+           'clinic_north', 'clinic_south',
+           'clinic_west'])
+
+#selects the row of df where the 'month' column is 'January'
+january = df[df.month == 'January']
+print(january)
+
++++++++++++++++++++++++++++++++++++++++++++++++++
+
+CREATING, LOADING, AND SELECTING DATA WITH PANDAS
+Select Rows with Logic II
+
+#You can also combine multiple logical statements, as long as each statement is in parentheses.
+#In Python, | means "or" and & means "and".
+
+import codecademylib
+import pandas as pd
+
+df = pd.DataFrame([
+  ['January', 100, 100, 23, 100],
+  ['February', 51, 45, 145, 45],
+  ['March', 81, 96, 65, 96],
+  ['April', 80, 80, 54, 180],
+  ['May', 51, 54, 54, 154],
+  ['June', 112, 109, 79, 129]],
+  columns=['month', 'clinic_east',
+           'clinic_north', 'clinic_south',
+           'clinic_west'])
+
+march_april = df[(df.month == 'March') | (df.month == 'April')]
+print(march_april)
+
+++++++++++++++++++++++++++++++++++++++++++++
+
+CREATING, LOADING, AND SELECTING DATA WITH PANDAS
+Select Rows with Logic III
+
+#We could use the isin command to check that df.name is one of a list of values:
+
+
+import codecademylib
+import pandas as pd
+
+df = pd.DataFrame([
+  ['January', 100, 100, 23, 100],
+  ['February', 51, 45, 145, 45],
+  ['March', 81, 96, 65, 96],
+  ['April', 80, 80, 54, 180],
+  ['May', 51, 54, 54, 154],
+  ['June', 112, 109, 79, 129]],
+  columns=['month', 'clinic_east',
+           'clinic_north', 'clinic_south',
+           'clinic_west'])
+
+january_february_march = df[df.month.isin(['January', 'February', 'March'])]
+print(january_february_march)
+
++++++++++++++++++++++++++++++++++++++++
+
+CREATING, LOADING, AND SELECTING DATA WITH PANDAS
+Setting indices
+
+/*When we select a subset of a DataFrame using logic, we end up with non-consecutive indices. 
+This is inelegant and makes it hard to use .iloc().
+
+We can fix this using the method .reset_index()
+Using .reset_index() will return a new DataFrame, but we usually just want to modify our existing DataFrame. 
+If we use the keyword inplace=True we can just modify our existing DataFrame
+
+it's probably better to use the keyword drop=True so that you don't end up with that extra column
+*/
+import codecademylib
+import pandas as pd
+
+df = pd.DataFrame([
+  ['January', 100, 100, 23, 100],
+  ['February', 51, 45, 145, 45],
+  ['March', 81, 96, 65, 96],
+  ['April', 80, 80, 54, 180],
+  ['May', 51, 54, 54, 154],
+  ['June', 112, 109, 79, 129]],
+  columns=['month', 'clinic_east',
+           'clinic_north', 'clinic_south',
+           'clinic_west']
+)
+
+df2 = df.loc[[1, 3, 5]]
+print(df2)
+
+df3 = df2.reset_index(drop=True, inplace=True)
+print(df3)
+
++++++++++++++++++++++++++++++++++++++++++++++++
+CREATING, LOADING, AND SELECTING DATA WITH PANDAS
+Review
+
+import codecademylib
+import pandas as pd
+
+#Load the data from shoefly.csv into the variable orders.
+orders = pd.read_csv('shoefly.csv')
+
+#Inspect the first 5 lines of the data.
+print(orders.head())
+
+#Select all of the email addresses from the column email and save them to a variable called emails.
+emails = orders.email
+
+#Use logic to select that row of orders and save it to the variable frances_palmer.
+frances_palmer = orders[(orders.first_name == 'Frances') & (orders.last_name == 'Palmer')]
+
+#Select all orders for shoe_type: clogs, boots, and ballet flats and save them to the variable comfy_shoes.
+comfy_shoes = orders[orders.shoe_type.isin(['clogs', 'boots', 'ballet flats'])]
+print(comfy_shoes)

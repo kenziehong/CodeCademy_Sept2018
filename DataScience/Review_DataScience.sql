@@ -119,3 +119,15 @@ Tukey Tests
 For categorical data, we will cover:
 Binomial Tests
 Chi Square
+
+---------------------------------------------------
+27/11/2018
+
+CREATING, LOADING, AND SELECTING DATA WITH PANDAS
+Review
+You've completed the lesson! You've just learned the basics of working with a single table in Pandas, including:
+
+Create a table from scratch
+Loading data from another file
+Selecting certain rows or columns of a table
+Let's practice what you've learned.
