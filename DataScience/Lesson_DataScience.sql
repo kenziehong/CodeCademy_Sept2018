@@ -1314,3 +1314,246 @@ frances_palmer = orders[(orders.first_name == 'Frances') & (orders.last_name == 
 #Select all orders for shoe_type: clogs, boots, and ballet flats and save them to the variable comfy_shoes.
 comfy_shoes = orders[orders.shoe_type.isin(['clogs', 'boots', 'ballet flats'])]
 print(comfy_shoes)
+
+----------------------------------------------------------------------------
+
+MODIFYING DATAFRAMES
+Adding a Column I
+
+One way that we can add a new column is by giving a list of the same length as the existing DataFrame.
+
+import codecademylib
+import pandas as pd
+
+df = pd.DataFrame([
+  [1, '3 inch screw', 0.5, 0.75],
+  [2, '2 inch nail', 0.10, 0.25],
+  [3, 'hammer', 3.00, 5.50],
+  [4, 'screwdriver', 2.50, 3.00]
+],
+  columns=['Product ID', 'Description', 'Cost to Manufacture', 'Price']
+)
+
+# Add columns here
+df['Sold in Bulk?'] = ['Yes', 'Yes', 'No', 'No']
+
+print(df)
+
++++++++++++++++++++++++++++++++++++++++++++++++++
+
+MODIFYING DATAFRAMES
+Adding a Column II
+
+We can also add a new column that is the same for all rows in the DataFrame.
+
+import codecademylib
+import pandas as pd
+
+df = pd.DataFrame([
+  [1, '3 inch screw', 0.5, 0.75],
+  [2, '2 inch nail', 0.10, 0.25],
+  [3, 'hammer', 3.00, 5.50],
+  [4, 'screwdriver', 2.50, 3.00]
+],
+  columns=['Product ID', 'Description', 'Cost to Manufacture', 'Price']
+)
+
+# Add columns here
+df['Is taxed?'] = 'Yes'
+
+print(df)
+
++++++++++++++++++++++++++++++++++++++
+MODIFYING DATAFRAMES
+Adding a Column III
+
+Finally, you can add a new column by performing a function on the existing columns.
+
+import codecademylib
+import pandas as pd
+
+df = pd.DataFrame([
+  [1, '3 inch screw', 0.5, 0.75],
+  [2, '2 inch nail', 0.10, 0.25],
+  [3, 'hammer', 3.00, 5.50],
+  [4, 'screwdriver', 2.50, 3.00]
+],
+  columns=['Product ID', 'Description', 'Cost to Manufacture', 'Price']
+)
+
+# Add columns here
+df['Revenue'] = df.Price - df['Cost to Manufacture']
+
+print(df)
+
+++++++++++++++++++++++++++++++++++++++
+MODIFYING DATAFRAMES
+Performing Column Operations
+
+We can use the apply function to apply a function to every value in a particular column. 
+
+import codecademylib
+from string import lower
+import pandas as pd
+
+df = pd.DataFrame([
+  ['JOHN SMITH', 'john.smith@gmail.com'],
+  ['Jane Doe', 'jdoe@yahoo.com'],
+  ['joe schmo', 'joeschmo@hotmail.com']
+],
+columns=['Name', 'Email'])
+
+# Add columns here
+df['Lowercase Name'] = df.Name.apply(lower)
+
+print(df)
+
+++++++++++++++++++++++++++++++++++++++++++++
+
+MODIFYING DATAFRAMES
+Reviewing Lambda Function
+
+A lambda function is a way of defining a function in a single line of code. Usually, we would assign them to a variable.
+
+Lambda functions work with all types of variables, not just integers! 
+
+mylambda = lambda x: x[0] + x[-1]
+print(mylambda('This is a string'))
+
++++++++++++++++++++++++++++++++++++++
+
+MODIFYING DATAFRAMES
+Reviewing Lambda Function: If Statements
+/*
+We can make our lambdas more complex by using a modified form of an if statement.
+
+In general, the syntax for an if function in a lambda function is:
+
+lambda x: [OUTCOME IF TRUE] \
+    if [CONDITIONAL] \
+    else [OUTCOME IF FALSE]
+*/
+
+mylambda = lambda x: 'Welcome to BattleCity!'\
+                      if x>=13 \
+                      else 'You must be over 13' 
+
+print(mylambda(13)) 
+
++++++++++++++++++++++++++++++++++
+
+MODIFYING DATAFRAMES
+Applying a Lambda to a Column
+
+In Pandas, we often use lambda functions to perform complex operations on columns.
+
+import codecademylib
+import pandas as pd
+
+df = pd.read_csv('employees.csv')
+
+# Add columns here
+get_last_name = lambda x: x.split()[-1]
+
+df['last_name'] = df.name.apply(get_last_name)
+
+print(df)
+
+++++++++++++++++++++++++++++++++++++
+
+MODIFYING DATAFRAMES
+Applying a Lambda to a Row
+
+/*we use apply without specifying a single column and add the argument axis=1, the input to our lambda function will be an entire row, not a column. 
+To access particular values of the row, we use the syntax row.column_name or row[‘column_name’].
+
+We can create this column using a lambda function and the keyword axis=1:
+
+df['Price with Tax'] = df.apply(lambda row:
+     row['Price'] * 1.075
+     if row['Is taxed?'] == 'Yes'
+     else row['Price'],
+     axis=1
+)
+*/
+
+import codecademylib
+import pandas as pd
+
+df = pd.read_csv('employees.csv')
+
+total_earned = lambda row: (row.hourly_wage * 40) + ((row.hourly_wage * 1.5) * (row.hours_worked - 40)) \
+	if row.hours_worked > 40 \
+  else row.hourly_wage * row.hours_worked
+  
+df['total_earned'] = df.apply(total_earned, axis = 1)
+
+print(df)
+
++++++++++++++++++++++++++++++++++
+
+MODIFYING DATAFRAMES
+Renaming Columns
+
+/*We can use df.column_name (which tab-completes) rather than df['column_name'] (which takes up extra space).
+You can change all of the column names at once by setting the .columns property to a different list.
+*/
+import codecademylib
+import pandas as pd
+
+df = pd.read_csv('imdb.csv')
+
+# Rename columns here
+df.columns = ['ID', 'Title', 'Category', 'Year Released', 'Rating']
+
+print(df)
+
+++++++++++++++++++++++++++++++++++
+
+MODIFYING DATAFRAMES
+Renaming Columns II
+
+/*
+You also can rename individual columns by using the .rename method. 
+Pass a dictionary like the one below to the columns keyword argument:
+
+Using rename with only the columns keyword will create a new DataFrame, leaving your original DataFrame unchanged. 
+That's why we also passed in the keyword argument inplace=True. 
+Using inplace=True lets us edit the original DataFrame.
+
+There are several reasons why .rename is preferable to .columns:
+
+You can rename just one column
+You can be specific about which column names are getting changed (with .column you can accidentally switch column names if you're not careful)
+Note: If you misspell one of the original column names, this command won't fail. It just won't change anything.*/
+
+import codecademylib
+import pandas as pd
+
+df = pd.read_csv('imdb.csv')
+
+# Rename columns here
+df.rename(columns={'name': 'movie_title'},inplace=True)
+
+print(df)
+
+++++++++++++++++++++++++++++++++
+MODIFYING DATAFRAMES
+Review
+
+import codecademylib
+import pandas as pd
+
+orders = pd.read_csv('shoefly.csv')
+
+print(orders.head(5))
+
+orders['shoe_source'] = orders.shoe_material.apply(lambda x: \
+                        	'animal' if x == 'leather'else 'vegan')
+
+orders['salutation'] = orders.apply(lambda row: \
+                                    'Dear Mr. ' + row['last_name']
+                                    if row['gender'] == 'male'
+                                    else 'Dear Ms. ' + row['last_name'],
+                                    axis=1)
+print(orders.head(5))

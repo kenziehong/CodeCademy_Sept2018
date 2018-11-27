@@ -131,3 +131,13 @@ Create a table from scratch
 Loading data from another file
 Selecting certain rows or columns of a table
 Let's practice what you've learned.
+
+-------------------------------------------
+
+MODIFYING DATAFRAMES
+Review
+Great job! In this lesson, you learned how to modify an existing DataFrame. Some of the skills you've learned include:
+
+Adding columns to a DataFrame
+Using lambda functions to calculate complex quantities
+Renaming columns
