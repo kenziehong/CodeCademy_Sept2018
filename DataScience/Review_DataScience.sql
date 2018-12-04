@@ -141,3 +141,11 @@ Great job! In this lesson, you learned how to modify an existing DataFrame. Some
 Adding columns to a DataFrame
 Using lambda functions to calculate complex quantities
 Renaming columns
+
+------------------------------------------
+AGGREGATES IN PANDAS
+Review
+This lesson introduced you to aggregates in Pandas. You learned:
+
+How to perform aggregate statistics over individual rows with the same value using groupby.
+How to rearrange a DataFrame into a pivot table, a great way to compare data across two dimensions.

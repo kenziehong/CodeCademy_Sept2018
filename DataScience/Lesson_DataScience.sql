@@ -1557,3 +1557,228 @@ orders['salutation'] = orders.apply(lambda row: \
                                     else 'Dear Ms. ' + row['last_name'],
                                     axis=1)
 print(orders.head(5))
+
+----------------------------------------------------------------
+
+AGGREGATES IN PANDAS
+Calculating Column Statistics
+
+/*In the previous lesson, you learned how to perform operations on each value in a column using apply.
+
+In this exercise, you will learn how to combine all of the values from a column for a single calculation.
+
+The general syntax for these calculations is:
+
+df.column_name.command()
+The following table summarizes some common commands:
+
+Command	Description
+mean	Average of all values in column
+std	Standard deviation
+median	Median
+max	Maximum value in column
+min	Minimum value in column
+count	Number of values in column
+nunique	Number of unique values in column
+unique	List of unique values in column*/
+
+import codecademylib
+import pandas as pd
+
+orders = pd.read_csv('orders.csv')
+
+#examine the first 10 rows 
+print(orders.head(10))
+
+#the most expensive pair of shoes purchased
+most_expensive = orders.price.max()
+
+#how many different colors of shoes we are selling. Save your answer to the variable num_colors
+num_colors = orders.shoe_color.nunique()
+
+++++++++++++++++++++++++++++++++++++++++++++++
+
+AGGREGATES IN PANDAS
+Calculating Aggregate Functions I
+
+/*When we have a bunch of data, we often want to calculate aggregate statistics 
+(mean, standard deviation, median, percentiles, etc.) over certain subsets of the data.
+
+We want to get an average grade for each student across all assignments. 
+We could do some sort of loop, but Pandas gives us a much easier option: the method .groupby.
+
+For this example, we'd use the following command:
+
+grades = df.groupby('student').grade.mean()
+
+In general, we use the following syntax to calculate aggregates:
+
+df.groupby('column1').column2.measurement()
+where:
+
+column1 is the column that we want to group by ('student' in our example)
+column2 is the column that we want to perform a measurement on (grade in our example)
+measurement is the measurement function we want to apply (mean in our example)*/
+
+import codecademylib
+import pandas as pd
+
+orders = pd.read_csv('orders.csv')
+
+#The most expensive shoe for each shoe_type
+pricey_shoes = orders.groupby('shoe_type').price.max()
+print(type(pricey_shoes)) #<class 'pandas.core.series.Series'>
+
+++++++++++++++++++++++++++++++++++++++++
+
+AGGREGATES IN PANDAS
+Calculating Aggregate Functions II
+
+/*After using groupby, we often need to clean our resulting data.
+
+As we saw in the previous exercise, the groupby function creates a new Series, not a DataFrame. 
+For our ShoeFly.com example, the indices of the Series were different values of shoe_type, 
+and the name property was price.
+
+Usually, we'd prefer that those indices were actually a column. In order to get that, we can use reset_index(). 
+This will transform our Series into a DataFrame and move the indices into their own column.
+
+Generally, you'll always see a groupby statement followed by reset_index:
+
+df.groupby('column1').column2.measurement()
+    .reset_index()
+
+When we use groupby, we often want to rename the column we get as a result.
+teas_counts = teas_counts.rename(columns={"id": "counts"})*/    
+
+import codecademylib
+import pandas as pd
+
+orders = pd.read_csv('orders.csv')
+
+#change pricey_shoes into a DataFrame
+pricey_shoes = orders.groupby('shoe_type').price.max().reset_index()
+print(type(pricey_shoes)) #<class 'pandas.core.frame.DataFrame'>
+
++++++++++++++++++++++++++++++++++++++++++++
+AGGREGATES IN PANDAS
+Calculating Aggregate Functions III
+
+/*Sometimes, the operation that you want to perform is more complicated than mean or count. 
+In those cases, you can use the apply method and lambda functions, just like we did for individual column operations. Note that the input to our lambda function will always be a list of values.
+
+A great example of this is calculating percentiles.
+If we want to calculate the 75th percentile (i.e., the point at which 75% of employees have a lower wage and 25% have a higher wage) for each category, we can use the following combination of apply and a lambda function:
+
+# np.percentile can calculate any percentile over an array of values
+high_earners = df.groupby('category').wage
+    .apply(lambda x: np.percentile(x, 75))
+    .reset_index()
+*/
+
+import codecademylib
+import numpy as np
+import pandas as pd
+
+orders = pd.read_csv('orders.csv')
+
+#let's calculate 25th percentile for shoe price for each shoe_color (the point at which 25% of each shoe_color have lower price and 75% have a higher price)
+cheap_shoes = orders.groupby('shoe_color').price.apply(lambda x: np.percentile(x, 25)).reset_index()
+print(cheap_shoes)
+
++++++++++++++++++++++++++++++++++++
+
+AGGREGATES IN PANDAS
+Calculating Aggregate Functions IV
+
+/*Sometimes, we want to group by more than one column. 
+We can easily do this by passing a list of column names into the groupby method.
+
+Imagine that we run a chain of stores and have data about the number of sales at different locations on different days:
+We suspect that sales are different at different locations on different days of the week. In order to test this hypothesis, we could calculate the average sales for each store on each day of the week across multiple months. The code would look like this:
+
+df.groupby(['Location', 'Day of Week'])['Total Sales'].mean().reset_index()*/
+
+import codecademylib
+import numpy as np
+import pandas as pd
+
+orders = pd.read_csv('orders.csv')
+
+#create a DataFrame with the total number of shoes of each shoe_type/shoe_color combination purchased.
+#When we're using count(), it doesn't really matter which column we perform the calculation on. You should use id in this example, but we would get the same answer if we used shoe_type of last_name
+shoe_counts = orders.groupby(['shoe_type', 'shoe_color'])['id'].count().reset_index()
+print(shoe_counts)
+
+++++++++++++++++++++++++++++++++++
+AGGREGATES IN PANDAS
+Pivot Tables
+
+/*When we perform a groupby across multiple columns, we often want to change how our data is stored. 
+In order to test our hypothesis, it would be more useful if the table was formatted like this:
+
+Location	    M	Tu	W	Th	F	Sa	Su
+Chelsea	        400	390	250	275	300	150	175
+West Village	300	310	350	400	390	250	200
+
+Reorganizing a table in this way is called pivoting. The new table is called a pivot table.
+
+In Pandas, the command for pivot is:
+
+df.pivot(columns='ColumnToPivot',
+         index='ColumnToBeRows',
+         values='ColumnToBeValues')
+
+
+For our specific example, we would write the command like this:
+
+# First use the groupby statement:
+unpivoted = df.groupby(['Location', 'Day of Week'])['Total Sales'].mean().reset_index()
+# Now pivot the table
+pivoted = unpivoted.pivot(
+    columns='Day of Week',
+    index='Location',
+    values='Total Sales')
+Just like with groupby, the output of a pivot command is a new DataFrame, 
+but the indexing tends to be "weird", so we usually follow up with .reset_index().*/
+
+import codecademylib
+import numpy as np
+import pandas as pd
+
+orders = pd.read_csv('orders.csv')
+shoe_counts = orders.groupby(['shoe_type', 'shoe_color']).id.count().reset_index()
+#make it easier for her to compare purchases of different shoe colors of the same shoe type by creating a pivot table
+shoe_counts_pivot = shoe_counts.pivot(
+     columns = 'shoe_color',
+     index = 'shoe_type',
+     values = 'id'
+).reset_index()
+print(shoe_counts_pivot)
+
+
++++++++++++++++++++++++++++++++++++
+AGGREGATES IN PANDAS
+Review
+
+
+import codecademylib
+import pandas as pd
+
+user_visits = pd.read_csv('page_visits.csv')
+print(user_visits.head())
+
+#use a groupby statement to calculate how many visits came from each of the different source
+click_source = user_visits.groupby('utm_source').id.count().reset_index()
+print(click_source)
+
+#use groupby to calculate the number of visits to our site from each utm_source for each month.
+click_source_by_month = user_visits.groupby(['utm_source', 'month']).id.count().reset_index()
+
+#Use pivot to create a pivot table where the rows are utm_source and the columns are month
+click_source_by_month_pivot = click_source_by_month.pivot(
+       columns = 'month',
+       index = 'utm_source',
+       values = 'id'
+).reset_index()
+print(click_source_by_month_pivot)
