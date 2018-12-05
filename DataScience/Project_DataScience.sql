@@ -452,7 +452,90 @@ print(inventory.head(10))
 print(product_request)
 print(seed_request)
 
+---------------------------------------------------------------
+
+AGGREGATES IN PANDAS
+A/B Testing for ShoeFly.com
+
+/*Our favorite online shoe store, ShoeFly.com is performing an A/B Test. 
+They have two different versions of an ad, which they have placed in emails, 
+as well as in banner ads on Facebook, Twitter, and Google. 
+They want to know how the two ads are performing on each of the different platforms on each day of the week. 
+Help them analyze the data using aggregate measures. 
  
+*/ 
  
- 
- 
+import codecademylib
+import pandas as pd
+
+ad_clicks = pd.read_csv('ad_clicks.csv')
+
+#1. examine the first few rows of ad_clicks
+print(ad_clicks.head())
+
+#2. how many views came from each utm_source
+print(ad_clicks.groupby('utm_source')\
+         .user_id.count()\
+         .reset_index()
+     )
+
+#3. create a new column called is_click, which is True if ad_click_timestamp is not null and False otherwise
+#ad_clicks['is_click'] = ad_clicks.apply(lambda row: True if row.ad_click_timestamp.isnull() else False) --error AttributeError: ("'Series' object has no attribute 'ad_click_timestamp'", u'occurred at index user_id') ???
+ad_clicks['is_click'] = ~ ad_clicks.ad_click_timestamp.isnull()
+#The ~ is a NOT operator, and isnull() tests whether or not the value of ad_click_timestamp is null.
+
+#4. the percent of people who clicked on ads from each utm_source
+#start by grouping by utm_source and is_click and counting the number of user_id's in each of those groups. Save your answer to the variable
+clicks_by_source = ad_clicks\
+  .groupby(['utm_source', 'is_click'])\
+  .user_id.count()\
+  .reset_index()
+
+#5. let's pivot the data so that the columns are is_click, the index is utm_source, and the values are are user_id 
+clicks_pivot = clicks_by_source.pivot(
+    columns = 'is_click',
+    index = 'utm_source',
+    values = 'user_id'
+)
+
+#6. create a new column in clicks_pivot called per_cent_clicked which is equal to the percent of users who clicked on the ad from each utm_source
+clicks_pivot['percent_clicked'] = clicks_pivot[True] / \
+(clicks_pivot[True] + clicks_pivot[False])
+print(clicks_pivot)
+
+#7. Were approximately the same number of people shown both adds
+print(ad_clicks\
+       .groupby('experimental_group')\
+       .user_id.count()      
+     )
+
+#8. Check to see if a greater percentage of users clicked on Ad A or Ad B
+print(ad_clicks\
+        .groupby(['experimental_group', 'is_click'])\
+        .user_id.count()\
+        .reset_index() 
+        .pivot(
+            columns = 'is_click',
+            index = 'experimental_group',
+            values = 'user_id'
+        )\
+        .reset_index()
+     )
+#9. Maybe the clicks have changed by day of the week. Start by creating two DataFrames: a_clicks and b_clicks, which contain only the results for A group and B group, respectively
+a_clicks = ad_clicks[ad_clicks.experimental_group == 'A']
+b_clicks = ad_clicks [ad_clicks.experimental_group == 'B']
+
+#10. For each group, calculate the percent of users who clicked on the ad by day
+a_clicks_pivot = a_clicks\
+      .groupby(['is_click', 'day'])\
+      .user_id.count()\
+      .reset_index()\
+      .pivot(
+          columns = 'is_click',
+          index = 'day',
+          values = 'user_id'
+       )
+a_clicks_pivot['percentage_clicked'] = a_clicks_pivot[True] / (a_clicks_pivot[True] + a_clicks_pivot[False])
+print(a_clicks_pivot)
+
+
