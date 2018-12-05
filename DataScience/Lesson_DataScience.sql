@@ -1782,3 +1782,363 @@ click_source_by_month_pivot = click_source_by_month.pivot(
        values = 'id'
 ).reset_index()
 print(click_source_by_month_pivot)
+
+-------------------------------------------------------------------------------
+
+5/12/2018
+
+LINE GRAPHS IN MATPLOTLIB
+Basic Line Plot
+
+/*Line graphs are helpful for visualizing how a variable changes over time.
+
+x_values = [0, 1, 2, 3, 4]
+y_values = [0, 1, 4, 9, 16]
+plt.plot(x_values, y_values)
+plt.show()
+
+x_values is a variable holding a list of x-values for each point on our line graph
+y_values is a variable holding a list of y-values for each point on our line graph
+plt is the name we have given to the Matplotlib module we have imported at the top of the code
+plt.plot(x_values, y_values) will create the line graph
+plt.show() will actually display the graph*/
+
+import codecademylib
+from matplotlib import pyplot as plt
+
+days = [0, 1, 2, 3, 4, 5, 6]
+money_spent = [10, 12, 12, 10, 14, 22, 24]
+
+#plot days on the x-axis and money_spent on the y-axis 
+plt.plot(days, money_spent)
+plt.show()
+
+++++++++++++++++++++++++++++++++++++++
+
+LINE GRAPHS IN MATPLOTLIB
+Basic Line Plot II
+
+/*We can also have multiple line plots displayed on the same set of axes. 
+This can be very useful if we want to compare two datasets with the same scale and axis categories.
+*/
+import codecademylib
+from matplotlib import pyplot as plt
+
+time = [0, 1, 2, 3, 4]
+revenue = [200, 400, 650, 800, 850]
+costs = [150, 500, 550, 550, 560]
+
+plt.plot(time, revenue)
+plt.plot(time, costs)
+plt.show()
+
+++++++++++++++++++++++++++++++++++++++
+
+LINE GRAPHS IN MATPLOTLIB
+Linestyles
+
+/*We can specify a different color for a line by using the keyword color with either an HTML color name or a HEX code:
+We can also change make a line dotted or dashed using the keyword linestyle (--,:, ' ')
+We can also add a marker using the keyword marker (o, s, *)
+*/
+import codecademylib
+from matplotlib import pyplot as plt
+
+time = [0, 1, 2, 3, 4]
+revenue = [200, 400, 650, 800, 850]
+costs = [150, 500, 550, 550, 560]
+plt.plot(time, revenue, color = 'purple', linestyle = '--')
+plt.plot(time, costs, color = '#82edc9', marker = 's')
+plt.show()
+
+++++++++++++++++++++++++++++++++++++++
+LINE GRAPHS IN MATPLOTLIB
+Axis and Labels
+
+/*Sometimes, it can be helpful to zoom in or out of the plot, 
+especially if there is some detail we want to address. 
+To zoom, we can use plt.axis(). We use plt.axis() by feeding it a list as input. This list should contain:
+
+The minimum x-value displayed
+The maximum x-value displayed
+The minimum y-value displayed
+The maximum y-value displayed*/
+
+import codecademylib
+from matplotlib import pyplot as plt
+
+x = range(12)
+y = [3000, 3005, 3010, 2900, 2950, 3050, 3000, 3100, 2980, 2980, 2920, 3010]
+plt.plot(x, y)
+
+#modify the axes 
+plt.axis([0,12,2900,3100])
+
+plt.show()
+
++++++++++++++++++++++++++++++++++
+LINE GRAPHS IN MATPLOTLIB
+Labeling the Axes
+
+/*Eventually, we will want to show these plots to other people to convince them of important trends in our data. 
+When we do that, we’ll want to make our plots look as professional as possible.
+
+We can label the x- and y- axes by using plt.xlabel() and plt.ylabel(). The plot title can be set by using plt.title().
+
+All of these commands require a string, which is a set of characters in either single (') or double (") quotes.
+*/
+import codecademylib
+from matplotlib import pyplot as plt
+
+x = range(12)
+y = [3000, 3005, 3010, 2900, 2950, 3050, 3000, 3100, 2980, 2980, 2920, 3010]
+plt.plot(x, y)
+plt.axis([0, 12, 2900, 3100])
+
+plt.xlabel('Time')
+plt.ylabel('Dollars spent on coffee')
+plt.title('My Last Twelve Years of Coffee Drinking')
+
+plt.show()
+
++++++++++++++++++++++++++++++
+
+LINE GRAPHS IN MATPLOTLIB
+Subplots
+
+/*Sometimes, we want to display two lines side-by-side, rather than in the same set of x- and y-axes. 
+When we have multiple axes in the same picture, we call each set of axes a subplot. 
+The picture or object that contains all of the subplots is called a figure.
+
+We can create subplots using .subplot().
+
+The command plt.subplot() needs three arguments to be passed into it:
+
+The number of rows of subplots
+The number of columns of subplots
+The index of the subplot we want to create
+
+Any plt.plot() that comes after plt.subplot() will create a line plot in the specified subplot. */
+
+import codecademylib
+from matplotlib import pyplot as plt
+
+months = range(12)
+temperature = [36, 36, 39, 52, 61, 72, 77, 75, 68, 57, 48, 48]
+flights_to_hawaii = [1200, 1300, 1100, 1450, 850, 750, 400, 450, 400, 860, 990, 1000]
+
+plt.subplot(1,2,1)
+plt.plot(months, temperature)
+plt.subplot(1,2,2)
+plt.plot(temperature, flights_to_hawaii, 'o')
+plt.show()
+
+++++++++++++++++++++++++++++++++
+
+LINE GRAPHS IN MATPLOTLIB
+Subplots Part II
+
+/*Sometimes, when we're putting multiple subplots together, some elements can overlap and make the figure unreadable
+
+We can customize the spacing between our subplots to make sure that the figure we create is visible and easy to understand.
+To do this, we use the plt.subplots_adjust() command. .subplots_adjust() has some keyword arguments that can move your plots within the figure:
+
+left — the left-side margin, with a default of 0.125. You can increase this number to make room for a y-axis label
+right — the right-side margin, with a default of 0.9. You can increase this to make more room for the figure, or decrease it to make room for a legend
+bottom — the bottom margin, with a default of 0.1. You can increase this to make room for tick mark labels or an x-axis label
+top — the top margin, with a default of 0.9
+wspace — the horizontal space between adjacent subplots, with a default of 0.2
+hspace — the vertical space between adjacent subplots, with a default of 0.2*/
+
+import codecademylib
+from matplotlib import pyplot as plt
+
+x = range(7)
+straight_line = [0, 1, 2, 3, 4, 5, 6]
+parabola = [0, 1, 4, 9, 16, 25, 36]
+cubic = [0, 1, 8, 27, 64, 125, 216]
+
+plt.subplot(2,1,1)
+plt.plot(x,straight_line)
+
+plt.subplot(2,2,3)
+plt.plot(x, parabola)
+
+plt.subplot(2,2,4)
+plt.plot(x, cubic)
+
+plt.subplots_adjust(wspace = 0.35, bottom = 0.2)
+plt.show()
+
++++++++++++++++++++++++++++++++++++++++
+
+LINE GRAPHS IN MATPLOTLIB
+Legends
+
+/*When we have multiple lines on a single graph we can label them by using the command plt.legend().
+
+The legend method takes a list with the labels to display.
+
+plt.legend() can also take a keyword argument loc, which will position the legend on the figure.
+
+These are the position values loc accepts:
+
+Number Code	String
+0	best
+1	upper right
+2	upper left
+3	lower left
+4	lower right
+5	right
+6	center left
+7	center right
+8	lower center
+9	upper center
+10	center
+Note: If you decide not to set a value for loc, it will default to choosing the "best" location.
+
+Sometimes, it's easier to label each line as we create it. If we want, we can use the keyword label inside of plt.plot(). 
+If we choose to do this, we don't pass any labels into plt.legend(). */
+
+import codecademylib
+from matplotlib import pyplot as plt
+
+months = range(12)
+hyrule = [63, 65, 68, 70, 72, 72, 73, 74, 71, 70, 68, 64]
+kakariko = [52, 52, 53, 68, 73, 74, 74, 76, 71, 62, 58, 54]
+gerudo = [98, 99, 99, 100, 99, 100, 98, 101, 101, 97, 98, 99]
+
+plt.plot(months, hyrule)
+plt.plot(months, kakariko)
+plt.plot(months, gerudo)
+
+#create your legend here
+legend_labels = ['Hyrule', 'Kakariko', 'Gerudo Valley']
+plt.legend(legend_labels, loc = 8)
+
+plt.show()
+
+++++++++++++++++++++++++++
+LINE GRAPHS IN MATPLOTLIB
+Modify Ticks
+
+/*In all of our previous exercises, our commands have started with plt..
+In order to modify tick marks, we'll have to try something a little bit different.
+
+Because our plots can have multiple subplots, we have to specify which one we want to modify. 
+In order to do that, we call plt.subplot() in a different way.
+
+ax = plt.subplot(1, 1, 1)
+ax is an axes object, and it lets us modify the axes belonging to a specific subplot. Even if we only have one subplot, when we want to modify the ticks, we will need to start by calling either ax = plt.subplot(1, 1, 1) or ax = plt.subplot() in order to get our axes object.
+
+Suppose we wanted to set our x-ticks to be at 1, 2, and 4. We would use the following code:
+
+ax = plt.subplot()
+plt.plot([0, 1, 2, 3, 4], [0, 1, 4, 9, 16])
+plt.plot([0, 1, 2, 3, 4], [0, 1, 8, 27, 64])
+ax.set_xticks([1, 2, 4])
+
+We can also modify the y-ticks by using ax.set_yticks().
+
+When we change the x-ticks, their labels automatically change to match. 
+But, if we want special labels (such as strings), we can use the command ax.set_xticklabels() or ax.set_yticklabels(). For example, we might want to have a y-axis with ticks at 0.1, 0.6, and 0.8, but label them 10%, 60%, and 80%, respectively. To do this, we use the following commands:
+
+ax = plt.subplot()
+plt.plot([1, 3, 3.5], [0.1, 0.6, 0.8], 'o')
+ax.set_yticks([0.1, 0.6, 0.8])
+ax.set_yticklabels(['10%', '60%', '80%'])*/
+
+
+import codecademylib
+from matplotlib import pyplot as plt
+
+month_names = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep","Oct", "Nov", "Dec"]
+
+months = range(12)
+conversion = [0.05, 0.08, 0.18, 0.28, 0.4, 0.66, 0.74, 0.78, 0.8, 0.81, 0.85, 0.85]
+
+plt.xlabel("Months")
+plt.ylabel("Conversion")
+
+plt.plot(months, conversion)
+
+# Save the set of axes in a variable called ax
+ax = plt.subplot()
+
+#Set the x-ticks to be the months list
+ax.set_xticks(months)
+
+#Set the x-ticks labels to be the month_names list
+ax.set_xticklabels(month_names)
+
+ax.set_yticks([0.10, 0.25, 0.5, 0.75])
+ax.set_yticklabels(["10%", "25%", "50%", "75%"])
+
+plt.show()
+
++++++++++++++++++++++++++++++++++++++++
+LINE GRAPHS IN MATPLOTLIB
+Figures
+
+/*When we're making lots of plots, it's easy to end up with lines that have been plotted and not displayed. 
+If we’re not careful, these "forgotten" lines will show up in your new plots. 
+In order to be sure that you don't have any stray lines, you can use the command plt.close('all') 
+to clear all existing plots before you plot a new one.
+
+Previously, we learned how to put two sets of axes into the same figure. 
+Sometimes, we would rather have two separate figures. 
+We can use the command plt.figure() to create new figures and size them how we want. 
+We can add the keyword figsize=(width, height) to set the size of the figure, in inches. 
+We use parentheses (( and )) to pass in the width and height, which are separated by a comma (,).
+
+To create a figure with a width of 4 inches, and height of 10 inches, we would use:
+
+plt.figure(figsize=(4, 10))
+
+Once we've created a figure, we might want to save it so that we can use it in a presentation or a website. 
+We can use the command plt.savefig() to save out to many different file formats, such as png, svg, or pdf. 
+After plotting, we can call plt.savefig('name_of_graph.png')
+# Figure 2
+plt.figure(figsize=(4, 10)) 
+plt.plot(x, parabola)
+plt.savefig('tall_and_narrow.png')*/
+
+import codecademylib
+from matplotlib import pyplot as plt
+
+word_length = [8, 11, 12, 11, 13, 12, 9, 9, 7, 9]
+power_generated = [753.9, 768.8, 780.1, 763.7, 788.5, 782, 787.2, 806.4, 806.2, 798.9]
+years = [2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009]
+
+#close all plots to make sure we have no lines already plotted that we've forgotton about
+plt.close('all')
+
+#Create a figure and plot word_length against years
+plt.plot(years, word_length)
+plt.savefig('winning_word_lengths.png')
+
+#create a figure with 7 inches of width and 3 inches of height and plot power_generated against years
+plt.figure(figsize=(7, 3)) 
+plt.plot(years, power_generated)
+plt.savefig('power_generated.png')
+
++++++++++++++++++++++++++++++++++++++++++++++++++
+LINE GRAPHS IN MATPLOTLIB
+Review
+
+import codecademylib
+from matplotlib import pyplot as plt
+
+x = range(5)
+y1 = range(2,7)
+y2 = range(4,9)
+
+plt.plot(x,y1, color = 'pink', marker ='o')
+plt.plot(x,y2, color = 'gray', marker ='o')
+
+plt.title("Two Lines on One Graph")
+plt.xlabel("Amazing X-axis")
+plt.ylabel("Incredible Y-axis")
+plt.legend(["label_1", "label_2"], loc=4)
+
+plt.show()

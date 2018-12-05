@@ -149,3 +149,22 @@ This lesson introduced you to aggregates in Pandas. You learned:
 
 How to perform aggregate statistics over individual rows with the same value using groupby.
 How to rearrange a DataFrame into a pivot table, a great way to compare data across two dimensions.
+
+------------------------------------------------------
+5/12/2018
+
+LINE GRAPHS IN MATPLOTLIB
+Review
+Now you’ve played around with several two-dimensional line plots in Matplotlib. You’ve seen how you can create simple, readable plots with few commands. You’ve also learned some commands to style and label your plots better. These are the concepts you’ve seen in Matplotlib so far:
+
+Creating a line graph from data
+Changing the appearance of the line
+Zooming in on different parts of the axis
+Putting labels on titles and axes
+Creating a more complex figure layout
+Adding legends to graphs
+Changing tick labels and positions
+Saving what you've made
+Moving on, we’ll learn how to make different kinds of plots (beyond line graphs!) in Matplotlib and how to choose between those plots when displaying data.
+
+Let’s do a final round of practice with all of the cool plotting concepts you’ve learned so far!
