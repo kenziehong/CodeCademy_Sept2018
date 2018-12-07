@@ -2142,3 +2142,330 @@ plt.ylabel("Incredible Y-axis")
 plt.legend(["label_1", "label_2"], loc=4)
 
 plt.show()
+
+-------------------------------------------------------------
+6/12/2018
+
+DIFFERENT PLOT TYPES
+Simple Bar Chart
+
+T/*he plt.bar function allows you to create simple bar charts to compare multiple categories of data.
+
+You call plt.bar with two arguments:
+
+the x-values — a list of x-positions for each bar
+the y-values — a list of heights for each bar*/
+
+import codecademylib
+from matplotlib import pyplot as plt
+
+drinks = ["cappuccino", "latte", "chai", "americano", "mocha", "espresso"]
+sales =  [91, 76, 56, 66, 52, 27]
+plt.bar(range(len(drinks)), sales)
+plt.show()
+
++++++++++++++++++++++++++++++++++
+
+DIFFERENT PLOT TYPES
+Simple Bar Chart II
+
+/*When we create a bar chart, we want each bar to be meaningful and correspond to a category of data.
+In the previous lesson, we learned how to customize the tick marks on the x-axis in three steps:
+
+1.Create an axes object
+ax = plt.subplot()
+2.Set the x-tick positions using a list of numbers
+ax.set_xticks([0, 1, 2, 3, 4, 5, 6, 7, 8])
+3.Set the x-tick labels using a list of strings
+ax.set_xticklabels(['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune', 'Pluto'])
+4.If your labels are particularly long, you can use the rotation keyword to rotate your labels by 
+a specified number of degrees:
+ax.set_xticklabels(['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune', 'Pluto'],
+rotation=30)
+
+Note: We have to set the x-ticks before we set the x-labels 
+because the default ticks won’t necessarily be one tick per bar, 
+especially if we’re plotting a lot of bars. If we skip setting the x-ticks before the x-labels, 
+we might end up with labels in the wrong place.
+
+Remember from Lesson I that we can label the x-axis (plt.xlabel) and y-axis (plt.ylabel) as well. 
+Now, our graph is much easier to understand*/
+
+import codecademylib
+from matplotlib import pyplot as plt
+
+drinks = ["cappuccino", "latte", "chai", "americano", "mocha", "espresso"]
+sales =  [91, 76, 56, 66, 52, 27]
+
+plt.bar(range(len(drinks)), sales)
+
+#create your ax object here
+ax = plt.subplot()
+ax.set_xticks(range(len(drinks)))
+ax.set_xticklabels(drinks, rotation=30)
+
+plt.show()
+
+++++++++++++++++++++++++++++++++++++++++++++
+DIFFERENT PLOT TYPES
+Side-By-Side Bars
+
+/*We can use a bar chart to compare two sets of data with the same types of axis values. 
+To do this, we plot two sets of bars next to each other, so that the values of each category can be compared
+*/
+import codecademylib
+from matplotlib import pyplot as plt
+
+drinks = ["cappuccino", "latte", "chai", "americano", "mocha", "espresso"]
+sales1 =  [91, 76, 56, 66, 52, 27]
+sales2 = [65, 82, 36, 68, 38, 40]
+
+n = 1 # This is our first dataset (out of 2) 
+t = 2 # Number of datasets 
+d = len(drinks) # Number of sets of bars 
+w = 0.8 # Width of each bar 
+store1_x = [t*element + w*n for element in range(d)]
+plt.bar(store1_x,sales1)
+
+n = 2  # This is our second dataset (out of 2)
+t = 2 # Number of datasets
+d = len(drinks) # Number of sets of bars
+w = 0.8 # Width of each bar
+store2_x = [t*element + w*n for element
+             in range(d)]
+plt.bar(store2_x, sales2)
+
+plt.show()
+
++++++++++++++++++++++++++++++++++++++++
+DIFFERENT PLOT TYPES
+Stacked Bars
+
+/*If we want to compare two sets of data while preserving knowledge of the total between them, 
+we can also stack the bars instead of putting them side by side.
+We do this by using the keyword bottom. */
+
+import codecademylib
+from matplotlib import pyplot as plt
+
+drinks = ["cappuccino", "latte", "chai", "americano", "mocha", "espresso"]
+sales1 =  [91, 76, 56, 66, 52, 27]
+sales2 = [65, 82, 36, 68, 38, 40]
+  
+plt.bar(range(len(drinks)), sales1)
+plt.bar(range(len(drinks)), sales2, bottom=sales1)
+
+plt.legend(["Location 1", "Location 2"])
+
+plt.show()
+
+++++++++++++++++++++++++++++++++++++++++
+
+DIFFERENT PLOT TYPES
+Error Bars
+/*
+In the previous exercise, you learned to represent data as bars of different heights.
+ Sometimes, we need to visually communicate some sort of uncertainty in the heights of those bars.
+
+ To display error visually in a bar chart, we often use error bars 
+ to show where each bar could be, taking errors into account.
+
+ Each of the black lines is called an error bar. 
+ The taller the bar is, the more uncertain we are about the height of the blue bar. 
+ The horizontal lines at the top and bottom are called caps. They make it easier to read the error bars.
+ */
+
+ import codecademylib
+from matplotlib import pyplot as plt
+
+drinks = ["cappuccino", "latte", "chai", "americano", "mocha", "espresso"]
+ounces_of_milk = [6, 9, 4, 0, 9, 0]
+error = [0.6, 0.9, 0.4, 0, 0.9, 0]
+
+# Plot the bar graph here
+plt.bar(range(len(drinks)), ounces_of_milk, yerr= error, capsize=5)
+
+plt.show()
+
++++++++++++++++++++++++++++++++++++++++
+
+DIFFERENT PLOT TYPES
+Fill Between
+
+/*We’ve learned how to display errors on bar charts using error bars. 
+Let’s take a look at how we might do this in an aesthetically pleasing way on line graphs. 
+In Matplotlib, we can use plt.fill_between to shade error. This function takes three arguments:
+
+x-values — this works just like the x-values of plt.plot
+lower-bound for y-values — sets the bottom of the shared area
+upper-bound for y-values — sets the top of the shared area
+
+Generally, we use fill_between to create a shaded error region, and then plot the actual line over it. 
+We can set the alpha keyword to a value between 0 and 1 
+in the fill_between call for transparency so that we can see the line underneath. */
+
+
+import codecademylib
+from matplotlib import pyplot as plt
+
+months = range(12)
+month_names = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+revenue = [16000, 14000, 17500, 19500, 21500, 21500, 22000, 23000, 20000, 19500, 18000, 16500]
+
+#plot these revenues against months as a line
+plt.plot(months,revenue)
+
+#make an axis object, store it in the variable ax, and then use it to set the x-ticks to months and x-axis tick labels to be the months of the year, given to you in the varibale month_names
+ax = plt.subplot()
+ax.set_xticks(months)
+ax.set_xticklabels(month_names)
+
+#Create a list containing the lower bound of the expected revenue for each month, and call it y_lower
+y_lower =[el - 0.1*el for el in revenue]
+y_upper = [el + 0.1*el for el in revenue]
+
+#Use fill_between to shade the error above and below the line we've plotted, with an alpha of 0.2
+plt.fill_between(months, y_lower, y_upper, alpha = 0.2 )
+
+plt.show()
+
++++++++++++++++++++++++++++++++++++++++++++++++
+
+DIFFERENT PLOT TYPES
+Pie Chart
+
+#If we want to display elements of a data set as proportions of a whole, we can use a pie chart.
+
+import codecademylib
+from matplotlib import pyplot as plt
+import numpy as np
+
+payment_method_names = ["Card Swipe", "Cash", "Apple Pay", "Other"]
+payment_method_freqs = [270, 77, 32, 11]
+
+#display the payment_method_freqs list as a pie chart
+plt.pie(payment_method_freqs)
+
+#set the axes to be equal
+plt.axis('equal')
+
+plt.show()
+
++++++++++++++++++++++++++++++++++++++++
+
+DIFFERENT PLOT TYPES
+Pie Chart Labeling
+
+/*We also want to be able to understand what each slice of the pie represents. To do this, we can either:
+1.use a legend to label each color, or
+2.put labels on the chart itself.
+
+One other useful labeling tool for pie charts is adding the percentage of the total that each slice occupies. 
+
+'%0.2f' — 2 decimal places, like 4.08
+'%0.2f%%' — 2 decimal places, but with a percent sign at the end, like 4.08%. You need two consecutive percent signs because the first one acts as an escape character, so that the second one gets displayed on the chart.
+'%d%%' — rounded to the nearest int and with a percent sign at the end, like 4%.
+
+*/
+
+import codecademylib
+from matplotlib import pyplot as plt
+
+payment_method_names = ["Card Swipe", "Cash", "Apple Pay", "Other"]
+payment_method_freqs = [270, 77, 32, 11]
+
+plt.pie(payment_method_freqs, labels = payment_method_names, autopct ='%0.1f%%')
+plt.axis('equal')
+
+#Add a legend to the chart you made in the previous exercise by passing in a list of labels to plt.legend. For the labels, use the list payment_method_names
+plt.legend(payment_method_names)
+
+#Add a percentage to each slice using autopct parameter. Go to one decimal point of precision
+
+plt.show()
+
+++++++++++++++++++++++++++++++++++++++++
+
+DIFFERENT PLOT TYPES
+Histogram
+
+/*Sometimes we want to get a feel for a large dataset with many samples 
+beyond knowing just the basic metrics of mean, median, or standard deviation. 
+To get more of an intuitive sense for a dataset, we can use a histogram to display all the values.
+
+A histogram tells us how many values in a dataset fall between different sets of numbers 
+(i.e., how many numbers fall between 0 and 10? Between 10 and 20? Between 20 and 30?). 
+Each of these questions represents a bin, for instance, our first bin might be between 0 and 10.
+
+All bins in a histogram are always the same size. The width of each bin is the distance 
+between the minimum and maximum values of each bin. In our example, the width of each bin would be 10.
+
+Each bin is represented by a different rectangle whose height is the number of elements from the dataset 
+that fall within that bin.
+
+To make a histogram in Matplotlib, we use the command plt.hist. plt.hist finds the minimum and the maximum values 
+in your dataset and creates 10 equally-spaced bins between those values.
+
+The histogram above, for example, was created with the following code:
+
+plt.hist(dataset) 
+plt.show()
+If we want more than 10 bins, we can use the keyword bins to set how many bins we want to divide the data into. 
+The keyword range selects the minimum and maximum values to plot.
+ For example, if we wanted to take our data from the last example and make a new histogram that 
+ just displayed the values from 66 to 69, divided into 40 bins (instead of 10), we could use this function call:
+
+plt.hist(dataset, range=(66,69), bins=40)
+
+Histograms are best for showing the shape of a dataset. 
+For example, you might see that values are close together, or skewed to one side. 
+With this added intuition, we often discover other types of analysis we want to perform.*/
+
+import codecademylib
+from matplotlib import pyplot as plt
+from script import sales_times
+
+#make a histogram out of this data
+#Use the bins keyword to create 20 bins instead of the default 10.
+plt.hist(sales_times, bins=20)
+
+plt.show()
+
++++++++++++++++++++++++++++++++++
+
+DIFFERENT PLOT TYPES
+Multiple Histograms
+
+/*If we want to compare two different distributions, we can put multiple histograms on the same plot. 
+However, it can be hard to read two histograms on top of each other. 
+
+We have two ways we can solve a problem like this:
+
+1.use the keyword "alpha", which can be a value between 0 and 1. This sets the transparency of the histogram.
+A value of 0 would make the bars entirely transparent. A value of 1 would make the bars completely opaque.
+
+2.use the keyword "histtype" with the argument 'step' to draw just the outline of a histogram:
+
+Another problem we face is that our histograms might have different numbers of samples, making one much bigger than the other
+
+To solve this, we can normalize our histograms using normed=True. This command divides the height of each column by 
+a constant such that the total shaded area of the histogram sums to 1.
+*/
+
+import codecademylib
+from matplotlib import pyplot as plt
+from script import sales_times1
+from script import sales_times2
+
+
+#Modify the transparency value of both histograms to be 0.4 so that we can see the separate histograms better.
+
+#Normalize both the histograms so that we can compare the patterns between them despite the differences in sample size.
+
+plt.hist(sales_times1, bins=20, alpha=0.4, normed=True)
+
+plt.hist(sales_times2, bins=20, alpha=0.4, normed=True)
+
+
+
+plt.show()
