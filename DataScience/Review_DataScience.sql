@@ -185,3 +185,24 @@ Create and format pie charts to compare proportional datasets
 Analyze frequency data using histograms, including multiple histograms on the same plot
 Normalize histograms
 In the upcoming project, you will experiment with these different plot types and how to best use them to find patterns or trends in a new data set.
+
+-----------------------------------------------------------
+8/12/2018
+
+LEARN SEABORN INTRODUCTION
+Review
+In this lesson you learned how to extend Matplotlib with Seaborn to create meaningful visualizations from data in DataFrames.
+
+You've also learned how Seaborn creates aggregated charts and how to change the way aggregates and error bars are calculated.
+
+Finally, you learned how to aggregate by multiple columns, and how the hue parameter adds a nested categorical variable to a visualization.
+
+To review the seaborn workflow:
+1. Ingest data from a CSV file to Pandas DataFrame.
+df = pd.read_csv('file_name.csv')
+2. Set sns.barplot() with desired values for x, y, and set data equal to your DataFrame.
+sns.barplot(data=df, x='X-Values', y='Y-Values')
+3. Set desired values for estimator and hue parameters.
+sns.barplot(data=df, x='X-Values', y='Y-Values', estimator=len, hue='Value')
+4. Render the plot using plt.show().
+plt.show()

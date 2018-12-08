@@ -2469,3 +2469,282 @@ plt.hist(sales_times2, bins=20, alpha=0.4, normed=True)
 
 
 plt.show()
+
+--------------------------------------------------------
+
+8/12/2018
+
+LEARN SEABORN INTRODUCTION
+Introduction to Seaborn
+
+/*Seaborn is a Python data visualization library that provides simple code to 
+create elegant visualizations for statistical exploration and insight. 
+Seaborn is based on Matplotlib, but improves on Matplotlib in several ways:
+
+1.Seaborn provides a more visually appealing plotting style and concise syntax.
+2.Seaborn natively understands Pandas DataFrames, making it easier to plot data directly from CSVs.
+3.Seaborn can easily summarize Pandas DataFrames with many rows of data into aggregated charts.
+*/
+
+import codecademylib3_seaborn
+import pandas as pd
+from matplotlib import pyplot as plt
+
+# Paste import here:
+import seaborn as sns
+
+df = pd.read_csv('survey.csv')
+sns.barplot(x='Age Range', y='Response', hue='Gender', data=df)
+plt.show()
+
+++++++++++++++++++++++++++++++++++++
+
+LEARN SEABORN INTRODUCTION
+Using Pandas For Seaborn
+
+/*Throughout this lesson, you'll use Seaborn to visualize a Pandas DataFrame.
+
+DataFrames contain data structured into rows and columns. 
+DataFrames look similar to other data tables you may be familiar with, 
+but they are designed specifically to be used with Python.
+
+You can create a DataFrame from a local CSV file (CSV files store data in a tabular format).
+
+To create a DataFrame from a local CSV file you would use the syntax:
+
+df = pd.read_csv('file_name.csv')
+The code above creates a DataFrame saved to a variable named df. 
+The data inside of the df DataFrame comes from the data in the local CSV file named file_name.csv.
+
+Once you have prepared and organized a Pandas DataFrame with your chosen dataset, 
+you are ready to plot with Seaborn!*/
+
+import codecademylib3_seaborn
+import pandas as pd
+from matplotlib import pyplot as plt
+import seaborn as sns
+
+
+df = pd.read_csv('survey.csv')
+print(df.head())
+
+++++++++++++++++++++++++++++++++++
+
+LEARN SEABORN INTRODUCTION
+Plotting Bars with Seaborn
+
+/*To plot this data using Matplotlib, you would write the following:
+
+df = pd.read_csv("results.csv")
+ax = plt.subplot()
+plt.bar(range(len(df)),
+        df["Mean Satisfaction"])
+ax.set_xticks(range(len(df)))
+ax.set_xticklabels(df.Gender)
+plt.xlabel("Gender")
+plt.ylabel("Mean Satisfaction")
+
+That's a lot of work for a simple bar chart! Seaborn gives us a much simpler option. 
+With Seaborn, you can use the sns.barplot() command to do the same thing.
+
+The Seaborn function sns.barplot(), takes at least three keyword arguments:
+
+1.data: a Pandas DataFrame that contains the data (in this example, data=df)
+2.x: a string that tells Seaborn which column in the DataFrame contains otheur x-labels (in this case, x="Gender")
+3.y: a string that tells Seaborn which column in the DataFrame contains the heights we want to plot 
+for each bar (in this case y="Mean Satisfaction")*/
+
+import codecademylib3_seaborn
+import pandas as pd
+from matplotlib import pyplot as plt
+import seaborn as sns
+
+# Use Pandas to load in the data from results.csv and save it to the variable df.
+df =pd.read_csv("results.csv")
+
+#Display df using print
+print(df)
+
+#3.Remove all of the # characters from in front of the sns.barplot command and fill in the missing values.
+sns.barplot(
+	data= df,
+	x= "Gender",
+	y= "Mean Satisfaction"
+)
+
+#4.Type plt.show() to display the completed bar plot.
+plt.show()
+
++++++++++++++++++++++++++++++++++++++++
+
+LEARN SEABORN INTRODUCTION
+Understanding Aggregates
+
+/*Seaborn can also calculate aggregate statistics for large datasets. 
+To understand why this is helpful, we must first understand what an aggregate is.
+
+An aggregate statistic, or aggregate, is a single number used to describe a set of data. 
+One example of an aggregate is the average, or mean of a data set. 
+There are many other aggregate statistics as well.
+
+In Python, you can compute aggregates fairly quickly and easily using Numpy, a popular Python library for computing. 
+You'll use Numpy in this exercise to compute aggregates for a DataFrame.*/
+
+import codecademylib3_seaborn
+import pandas as pd
+from matplotlib import pyplot as plt
+#1.To calculate aggregates using Numpy, you'll first need to import the Numpy library at the top of script.py.
+import numpy as np
+
+gradebook = pd.read_csv("gradebook.csv")
+
+#2. take a minute to understand the data you'll analyze
+print(gradebook)
+
+#3.Select all rows from the gradebook DataFrame where assignment_name is equal to Assignment 1. Save the result to the variable assignment1.
+assignment1 = gradebook[gradebook.assignment_name == "Assignment 1"]
+
+#4.Check out the DataFrame you just created. Print assignment1.
+print(assignment1)
+
+#5. Use np.median() to calculate the median of the column grade from assignment1 and save it to asn1_median.
+asn1_median = np.median(assignment1.grade)
+print(asn1_median)
+
+++++++++++++++++++++++++++++++++++
+
+LEARN SEABORN INTRODUCTION
+Plotting Aggregates
+
+/*Suppose this data is stored in a Pandas DataFrame called df.
+
+The same Seaborn command that you previously learned (sns.barplot()) will plot this data in a bar plot 
+and automatically aggregate the data:
+
+sns.barplot(data=df, x="student", y="grade")
+In the example above, Seaborn will aggregate grades by student, and plot the average grade for each student.*/
+
+import codecademylib3_seaborn
+import pandas as pd
+from matplotlib import pyplot as plt
+import seaborn as sns
+
+gradebook = pd.read_csv("gradebook.csv")
+
+#1.Use Seaborn to plot the average grade for each assignment.
+sns.barplot(data=gradebook, x="assignment_name", y="grade")
+
+#2.Use plt.show() to display the graph.
+plt.show()
+
+++++++++++++++++++++++++++++++++++++++++
+
+LEARN SEABORN INTRODUCTION
+Modifying Error Bars
+
+/*By default, Seaborn will place error bars on each bar when you use the barplot() function.
+
+Error bars are the small lines that extend above and below the top of each bar. 
+Errors bars visually indicate the range of values that might be expected for that bar.
+
+There are several different calculations that are commonly used to determine error bars.
+
+By default, Seaborn uses something called a bootstrapped confidence interval. 
+Roughly speaking, 
+this interval means that "based on this data, 95% of similar situations would have an outcome within this range".
+
+In our gradebook example, the confidence interval for the assignments means 
+"if we gave this assignment to many, many students,
+ we're confident that the mean score on the assignment would be within the range represented by the error bar".
+
+The confidence interval is a nice error bar measurement because it is defined for different types of 
+aggregate functions, such as medians and mode, in addition to means.
+
+If you're calculating a mean and would prefer to use standard deviation for your error bars, 
+you can pass in the keyword argument ci="sd" to sns.barplot() 
+which will represent one standard deviation.*/
+
+import codecademylib3_seaborn
+import pandas as pd
+from matplotlib import pyplot as plt
+import seaborn as sns
+
+gradebook = pd.read_csv("gradebook.csv")
+
+#Modify the bar plot so that the error bars represent one standard deviation, rather than 95% confidence intervals.
+sns.barplot(data=gradebook,
+            x="name",
+            y="grade"
+            ci = "sd"
+           )
+plt.show()
+
+++++++++++++++++++++++++++++++++++
+
+LEARN SEABORN INTRODUCTION
+Calculating Different Aggregates
+
+
+/*In most cases, we'll want to plot the mean of our data, but sometimes, we'll want something different:
+
+If our data has many outliers, we may want to plot the median.
+If our data is categorical, we might want to count how many times each category appears
+
+Seaborn is flexible and can calculate any aggregate you want. 
+To do so, you'll need to use the keyword argument "estimator", 
+which accepts any function that works on a list.
+*/
+
+import codecademylib3_seaborn
+import numpy as np
+import pandas as pd
+from matplotlib import pyplot as plt
+import seaborn as sns
+
+#1.Consider our hospital satisfaction survey data, which is loaded into the Pandas DataFrame df. 
+#Use print to examine the data.
+df = pd.read_csv("survey.csv")
+print(df)
+
+#2.We'd like to know how many men and women answered the survey
+#To calculate the number of times a particular value appears in the Response column , we pass in len
+sns.barplot(data=df,
+            x='Gender',
+            y='Response',
+            estimator=len)
+
+#4.Change sns.barplot() to graph the median Response aggregated by Gender using estimator=np.median
+#sns.barplot(data=df,
+#            x='Gender',
+#            y='Response',
+#           estimator=np.median)
+
+plt.show()
+
+++++++++++++++++++++++++++++++++++++++
+
+LEARN SEABORN INTRODUCTION
+Aggregating by Multiple Columns
+
+/*Sometimes we'll want to aggregate our data by multiple columns to visualize nested categorical variables.
+
+For example, consider our hospital survey data. The mean satisfaction seems to depend on Gender,
+ but it might also depend on another column: Age Range.
+
+We can compare both the Gender and Age Range factors at once by using the keyword hue.*/
+
+import codecademylib3_seaborn
+import pandas as pd
+from matplotlib import pyplot as plt
+import seaborn as sns
+
+df = pd.read_csv("survey.csv")
+print(df)
+
+sns.barplot(data=df,
+           x='Gender',
+           y='Response',
+           hue='Age Range')
+plt.show()
+
+++++++++++++++++++++++++++++++++++++++
