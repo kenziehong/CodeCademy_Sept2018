@@ -206,3 +206,15 @@ sns.barplot(data=df, x='X-Values', y='Y-Values')
 sns.barplot(data=df, x='X-Values', y='Y-Values', estimator=len, hue='Value')
 4. Render the plot using plt.show().
 plt.show()
+
+-----------------------------------------------------------
+
+9/12/2018
+
+LEARN SEABORN: DISTRIBUTIONS
+Review
+In this lesson, we examined how Seaborn has several plots that can visualize distributions. While bar plots can display basic aggregates, KDE plots, dist plots, box plots, and violin plots can show us distributions and other information.
+
+KDE plot - Kernel density estimator; shows a smoothed version of dataset. Use sns.kdeplot().
+Box plot - A classic statistical model that shows the median, interquartile range, and outliers. Use sns.boxplot().
+Violin plot - A combination of a KDE and a box plot. Good for showing multiple distributions at a time. Use sns.violinplot().
