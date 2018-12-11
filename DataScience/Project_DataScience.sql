@@ -994,3 +994,86 @@ plt.ylabel("Number of Customers")
 plt.title('Customer Expenditure Over 6 Months')
 
 plt.show()
+
+--------------------------------------------------------------------
+12/12/2108
+
+"""
+Honey Production
+Now that you have learned how linear regression works, let's try it on an example of real-world data.
+
+As you may have already heard, the honeybees are in a precarious state right now. 
+You may have seen articles about the decline of the honeybee population for various reasons. 
+You want to investigate this decline and how the trends of the past predict the future for the honeybees.
+
+Note: All the tasks can be completed using Pandas or NumPy. Pick whichever one you prefer.
+
+"""
+
+import codecademylib3_seaborn
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+from sklearn import linear_model
+
+df = pd.read_csv("https://s3.amazonaws.com/codecademy-content/programs/data-science-path/linear_regression/honeyproduction.csv")
+
+#1.Use .head() to get a sense of how this DataFrame is structured.
+print(df.head())
+
+#2Use the .groupby() method provided by pandas to get the mean of totalprod per year.Store this in a variable called prod_per_year.
+prod_per_year = df.groupby("year").totalprod.mean().reset_index()
+print(prod_per_year)
+
+#3.Create a variable called X that is the column of years in this prod_per_year DataFrame.
+X = prod_per_year.year
+
+#After creating X, we will need to reshape it to get it into the right format, using this command:
+X = X.values.reshape(-1,1)
+print(X)
+
+#4.Create a variable called y that is the totalprod column in the prod_per_year dataset
+y = prod_per_year.totalprod
+
+#5.Using plt.scatter(), plot y vs X as a scatterplot. Display the plot using plt.show().
+#Can you see a vaguely linear relationship between these variables?
+
+plt.scatter(X,y)
+plt.show()
+
+#Create and Fit a Linear Regression Model
+
+#6.Create a linear regression model from scikit-learn and call it regr. 
+#Use the LinearRegression() constructor from the linear_model module to do this.
+regr = linear_model.LinearRegression()
+
+#7.Fit the model to the data by using .fit(). You can feed X into your regr model by passing it in as a parameter of .fit().
+regr.fit(X,y)
+
+#8.After you have fit the model, print out the slope of the line (stored in a list called regr.coef_) and the intercept of the line (regr.intercept_).
+print(regr.coef_[0])
+print(regr.intercept_)
+
+#9. Create a list called y_predict that is the predictions your regr model would make on the X data
+#You can use the .predict() method, using X as a parameter, to get the predictions from the regr object.
+y_predict = regr.predict(X)
+
+#10. Plot y_predict vs X as a line, on top of your scatterplot using plt.plot()
+plt.plot(X,y_predict)
+plt.show()
+
+#11. Let's predict what the year 2050 may look like in terms of honey production
+#Create a NumPy array called X_future that is the range from 2013 to 2050
+X_future = np.array(range(2013, 2051))
+
+#Reshape it for scikit-learn
+#You can think of reshape() as rotating this array. Rather than one big row of numbers, X_future is now a big column of numbers  there's one number in each row.
+X_future = X_future.reshape(-1,1)
+
+#12.Create a list called future_predict that is the y-values that your regr model would predict for the values of X_future
+future_predict = regr.predict(X_future)
+
+#13.
+plt.plot(X_future, future_predict)
+plt.show()
+
