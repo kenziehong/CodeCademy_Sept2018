@@ -811,3 +811,186 @@ plt.show()
 #6.Save your figure to a file called my_line_graph.png.
 plt.savefig("my_line_graph.png")
 
+------------------------------------------------------------------------
+
+PROJECT: BOARD SLIDES FOR FOODWHEEL
+FoodWheel: Let the Food Choose For You
+
+"""
+FoodWheel is a startup delivery service that takes away the struggle of deciding where to eat! FoodWheel picks you an amazing local restaurant and lets you order through the app. Senior leadership is getting ready for a big board meeting, and as the resident Data Analyst, you have been enlisted to help decipher data and create a presentation to answer several key questions:
+
+What cuisines does FoodWheel offer? Which areas should the company search for more restaurants to partner with?
+How has the average order amount changed over time? What does this say about the trajectory of the company?
+How much has each customer on FoodWheel spent over the past six months? What can this tell us about the average FoodWheel customer?
+
+Over this project, you will analyze several DataFrames and create several visualizations to help answer these questions.
+
+Time to get started.
+"""
+
+from matplotlib import pyplot as plt
+import pandas as pd
+
+#2. Start by loading ...into a DataFrame called...
+restaurants = pd.read_csv('restaurants.csv')
+
+#3. Inspect...using head()
+print(restaurants.head())
+
+#4. How many different types of cuisine does FoodWheel offer? Save this number to the variable...
+cuisine_options_count = restaurants.cuisine.nunique()
+
+#5. Let's count the number of restaurants of each cuisine. Use groupby and count. Save your results to ...
+cuisine_counts = restaurants.groupby('cuisine').id.count().reset_index()
+
+print(cuisine_counts)
+
+++++++++++++++++++++++++++++++++++++++
+PROJECT: BOARD SLIDES FOR FOODWHEEL
+What cuisines does FoodWheel offer?
+
+
+import codecademylib
+from matplotlib import pyplot as plt
+import pandas as pd
+
+restaurants = pd.read_csv('restaurants.csv')
+
+cuisine_counts = restaurants.groupby('cuisine')\
+                            .name.count()\
+                            .reset_index()
+
+
+#1. Start by creating two variables:
+# ...contains the values of the column cuisine from cuisine_counts
+#...contains the number of restaurants of each cuisine from cuisine_counts
+cuisines = cuisine_counts.cuisine.values
+counts = cuisine_counts.name.values
+
+#2. Let's use this the values from counts to create a pie chart. Make sure that your pie chart includes:
+#Labels for each cuisine
+#Percent labels using autopct
+#A title
+#Using plt.axis to make the pie chart a perfect circle
+plt.pie(counts, labels = cuisines, autopct = "%d%%")
+plt.axis("equal")
+plt.show()
+
+++++++++++++++++++++++++++++++++++++++++++
+
+PROJECT: BOARD SLIDES FOR FOODWHEEL
+Orders Over Time
+
+/*FoodWheel is a relatively new startup. They launched in April, and have grown more popular since then. Management suspects that the average order size has increased over time. They'd like you to investigate if this claim is true and answer this questions:
+
+How has the average order amount changed over time? What does this say about the trajectory of the company?
+*/
+import codecademylib
+from matplotlib import pyplot as plt
+import pandas as pd
+
+#1. Start by loading the data from ...into the DataFrame...
+orders = pd.read_csv("orders.csv")
+
+#2. Examine the first few rows 
+print(orders.head())
+
+#3. Create a new column in orders called month that contains the month that the order was placed
+orders['month'] = orders.date.apply(lambda x: x.split('-')[0])
+
+print orders.head()
+
+#4. Group orders by month and get the average order price in each month. Save your answer to ...
+avg_order = orders.groupby('month').price.mean().reset_index()
+
+#5. We've eventually going to make a bar chart with this information. It would be nice if our bar chart had error bars. 
+#Calculate the standard deviation for the average price of orders for each month using std. Save this to std_order
+std_order = orders.groupby('month').price.std().reset_index()
+
++++++++++++++++++++++++++++++++++++++++++++++++
+PROJECT: BOARD SLIDES FOR FOODWHEEL
+Orders Over Time
+
+-- You've now created two new DataFrames from the orders DataFrame, avg_order, 
+-- which gives the average amount spent on an order for each month and std_order, which gives the standard deviation for each month. 
+
+-- Now it's time to create a bar chart that uses both of these DataFrames.
+
+import codecademylib
+from matplotlib import pyplot as plt
+import pandas as pd
+
+orders = pd.read_csv('orders.csv')
+
+orders['month'] = orders.date.apply(lambda x: x.split('-')[0])
+
+avg_order = orders.groupby('month').price.mean().reset_index()
+
+std_order = orders.groupby('month').price.std().reset_index()
+
+#1.Start by creating a set of axes using plt.subplot and saving them to the variable ax
+ax = plt.subplot()
+
+#2. Create a variable with the average prices in it by selecting the column price from avg_order. Save this to bar_heights
+#bar_heights = avg_order.price.values
+#bar_errors = std_order.price.values
+
+bar_heights = avg_order.price
+bar_errors = std_order.price
+
+#4. Create a bar chart to share this data
+# Create an axes object called ax using plt.subplot
+#The height of each bar should come from bar_heights
+#Use the standard deviation in bar_errors as the yerr
+#The error capsize should be 5
+#Make sure that you label each bar with the name of the month
+#Also be sure to label the y-axis
+#Give your plot a descriptive title
+plt.bar(range(len(bar_heights)),
+  			bar_heights,
+        yerr=bar_errors,
+       capsize=5)
+ax.set_xticks(range(len(bar_heights)))
+ax.set_xticklabels(['April', 'May', 'June', 'July', 'August', 'September'])
+plt.ylabel('Average Order Amount')
+plt.title('Order Amount over Time')
+plt.show()
+
+++++++++++++++++++++++++++++++++++++++++++
+
+PROJECT: BOARD SLIDES FOR FOODWHEEL
+Customer Types
+
+/*-- There is a range of amounts that customers spend on FoodWheel. Let's investigate and aim to answer our final question:
+
+-- How much has each customer on FoodWheel spent over the past six months? 
+-- What can this tell us about the average FoodWheel customer?
+
+-- A great way to answer this question is to create 
+a histogram of the amount spent by each customer over the past six months.*/
+
+import codecademylib
+from matplotlib import pyplot as plt
+import pandas as pd
+
+orders = pd.read_csv('orders.csv')
+print(orders.head())
+#1. Start by grouping orders by cuustomer_id and calculating the sum of price spent by each customer. Save your results to ...
+customer_amount = orders.groupby('customer_id').price.sum().reset_index()
+
+#2.Inspect customer_amount using print and .head().
+print customer_amount.head()
+
+#3.Create a histogram of this data.
+#The range should be from 0 to 200
+#The number of bins should be 40
+#Label the x-axis Total Spent
+#Label the y-axis Number of Customers
+#Add a title
+plt.hist(customer_amount.price.values,
+        range=(0, 200), bins=40)
+plt.xlabel('Total Spent')
+plt.ylabel("Number of Customers")
+plt.title('Customer Expenditure Over 6 Months')
+
+plt.show()
