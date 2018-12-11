@@ -3026,4 +3026,618 @@ sns.violinplot(data=df, x="label", y="value")
 plt.show()
 
 ------------------------------------------------------------------------------
+10/12/2018
+
+WHY USE MACHINE LEARNING?
+Introduction to Machine Learning
+
+/*The year is 2049...
+
+Neo York is overrun by bots and web crawlers. The capabilities of Machine Learning have reached new heights and the world 
+as we know it will never be the same:
+
+Facial recognition technology that helps users tag and share photos of friends can now tag future friends;
+night drones are on the prowl.
+
+Machine learning powered self-driving cars (and flying cars) are now massively available to consumers. 
+The steering wheel has become a thing of the past.
+
+Recommendation engines that suggest what VR shows to watch and what products to buy will now display 
+a different environment for each user group.
+
+At the dawn of a new age, you can't help but wonder, 
+what is Machine Learning and how did it pivot our world so drastically?
+*/
+++++++++++++++++++++++++
+
+WHY USE MACHINE LEARNING?
+What is Machine Learning?
+
+/*While at IBM, Arthur Samuel developed a program that learned how to play checkers. 
+He called it — "the field of study that gives computers the ability to learn without being explicitly programmed" (1959).
+
+What does this mean?
+
+As programmers, we often approach problems in a methodical, logic-based way. 
+We try to determine what our desired outputs should be, and then create the proper rules 
+that will transform our inputs into those outputs.
+
+Machine learning flips the script. We want the program itself to learn the rules that describe our data the best, 
+by finding patterns in what we know and applying those patterns to what we don't know.
+
+These algorithms are able to learn. Their performance gets better and better with each iteration, 
+as it uncovers more hidden trends in the data.*/
+
+++++++++++++++++++++++++++++++
+
+WHY USE MACHINE LEARNING?
+Supervised Learning
+
+
+/*Machine learning can be branched out into the following categories:
+
+Supervised Learning
+Unsupervised Learning
+
+Supervised Learning is where the data is labeled and the program learns to predict the output from the input data. For instance, a supervised learning algorithm for credit card fraud detection would take as input a set of recorded transactions. For each transaction, the program would predict if it is fraudulent or not.
+
+Supervised learning problems can be further grouped into regression and classification problems.
+
+Regression:
+
+In regression problems, we are trying to predict a continuous-valued output. Examples are:
+
+What is the housing price in Neo York?
+What is the value of cryptocurrencies?
+Classification:
+
+In classification problems, we are trying to predict a discrete number of values. Examples are:
+
+Is this a picture of a human or a picture of an AI?
+Is this email spam?
+*/
+
+from texts import text_counter, text_training
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.naive_bayes import MultinomialNB
+
+intercepted_text = "abc"
+
+text_counts = text_counter.transform([intercepted_text])
+
+text_classifier = MultinomialNB()
+
+text_labels = [0] * 1000 + [1] * 1000
+
+text_classifier.fit(text_training, text_labels)
+
+final_pos = text_classifier.predict_proba(text_counts)[0][1]
+
+final_neg = text_classifier.predict_proba(text_counts)[0][0]
+
+if final_pos > final_neg:
+  print("The text is positive.")
+else:
+  print("The text is negative.")
+
+++++++++++++++++++++++++++++
+
+WHY USE MACHINE LEARNING?
+Unsupervised Learning
+
+/*Unsupervised Learning is a type of machine learning where the program learns the inherent structure of the data 
+based on unlabeled examples.
+
+Clustering is a common unsupervised machine learning approach that finds patterns and structures in unlabeled data 
+by grouping them into clusters.
+
+Some examples:
+
+Social networks clustering topics in their news feed
+Consumer sites clustering users for recommendations
+Search engines to group similar objects in one cluster
+
+*/
+
+from texts import text_counter, text_training
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.naive_bayes import MultinomialNB
+
+intercepted_text = "abc"
+
+text_counts = text_counter.transform([intercepted_text])
+
+text_classifier = MultinomialNB()
+
+text_labels = [0] * 1000 + [1] * 1000
+
+text_classifier.fit(text_training, text_labels)
+
+final_pos = text_classifier.predict_proba(text_counts)[0][1]
+
+final_neg = text_classifier.predict_proba(text_counts)[0][0]
+
+if final_pos > final_neg:
+  print("The text is positive.")
+else:
+  print("The text is negative.")
+plt.show()
+
++++++++++++++++++++++++++++++
+
+WHY USE MACHINE LEARNING?
+Begin Your Journey
+DING DING DING!
+
+-- Whew, it's still 2018. There is still time. Understanding Machine Learning will 
+-- help you change this bleak future, or be ready for it.
+
+-- As you begin your journey through Codecademy's Machine Learning content, 
+-- you will learn the different applications of this powerful field. 
+-- You will build your own models, test them, and try to improve them. You will analyze bigger, and more complex data
+-- and deliver faster, more accurate results — even on a very large scale using:
+
+-- Supervised Learning
+-- Unsupervised Learning
+-- Throughout your exploration of ML, we hope you gain an understanding of 
+-- how to harness predictive models to do good, and enhance human life rather than replace it!
+
+-- So what are you going to build?
+
+-- What is the kind of future that you want to see?
+
+------------------------------------------------------
+
+LINEAR REGRESSION
+Introduction to Linear Regression
+
+/*The purpose of machine learning is often to create a model that explains some real-world data, 
+so that we can predict what may happen next, with different inputs.
+
+The simplest model that we can fit to data is a line. When we are trying to find a line that fits a set of data best, 
+we are performing Linear Regression.
+
+A line is a rough approximation, but it allows us the ability to explain and predict variables 
+that have a linear relationship with each other. 
+In the rest of the lesson, we will learn how to perform Linear Regression.
+*/
+import codecademylib3_seaborn
+import matplotlib.pyplot as plt
+
+months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+revenue = [52, 74, 79, 95, 115, 110, 129, 126, 147, 146, 156, 184]
+
+plt.plot(months, revenue, "o")
+
+plt.title("Sandra's Lemonade Stand")
+
+plt.xlabel("Months")
+plt.ylabel("Revenue ($)")
+
+plt.show()
+
+# What do you think the revenue in month 13 would be?
+month_13 = 175
+
++++++++++++++++++++++++++++++++++++++++
+
+LINEAR REGRESSION
+Points and Lines
+
+/*For our program to make the same level of guess, we have to determine what a line would look like through 
+those data points.
+
+A line is determined by its slope and its intercept. In other words, for each point y on a line we can say:
+
+y = m x + by=mx+b
+
+where m is the slope, and b is the intercept. y is a given point on the y-axis, 
+and it corresponds to a given x on the x-axis.
+
+The slope is a measure of how steep the line is, while the intercept is a measure of where the line hits the y-axis.
+
+When we perform Linear Regression, the goal is to get the "best" m and b for our data. 
+We will determine what "best" means in the next exercises.
+
+*/
+import codecademylib3_seaborn
+import matplotlib.pyplot as plt
+months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+revenue = [52, 74, 79, 95, 115, 110, 129, 126, 147, 146, 156, 184]
+
+#slope:
+m = 12
+#intercept:
+b = 40
+#1.Create a new list, y, that has every element in months, multiplied by m and added to b.
+#A list comprehension is probably the easiest way to do this
+y= [el*m+ b for el in months]
+
+plt.plot(months, revenue, "o")
+#2.Plot the y values against months as a line
+plt.plot(months, y)
+
+plt.show()
+
+++++++++++++++++++++++++++++++++++=
+
+LINEAR REGRESSION
+Loss
+
+/*When we think about how we can assign a slope and intercept to fit a set of points, 
+we have to define what the best fit is.
+
+For each data point, we calculate loss, a number that measures how bad the model's (in this case, the line's)
+prediction was. You may have seen this being referred to as error.
+
+We can think about loss as the squared distance from the point to the line. We do the squared distance (instead of just the distance) 
+so that points above and below the line both contribute to total loss in the same way:
+*/
+x = [1, 2, 3]
+y = [5, 1, 3]
+
+#y = x
+m1 = 1
+b1 = 0
+
+#y = 0.5x + 1
+m2 = 0.5
+b2 = 1
+
+y_predicted1 = [m1*el + b1 for el in x]
+y_predicted2 = [m2*el + b2 for el in x]
+
+total_loss1 = 0
+
+for i in range(len(y)):
+  total_loss1 += (y[i] - y_predicted1[i])**2
+ 
+total_loss2 = 0
+for i in range(len(y)):
+  total_loss2 += (y[i] - y_predicted2[i])**2
+  
+print(total_loss1)
+print(total_loss2)
+
+better_fit = 2
+
++++++++++++++++++++++++++++++++++++++++++++
+
+LINEAR REGRESSION
+Minimizing Loss
+
+/*The goal of a linear regression model is to find the slope and intercept pair that minimizes loss on average 
+across all of the data.
+
+Do you first get the slope to where it produces lowest loss, and then move the intercept to where it produces lowest loss?
+Do you create a rough idea in your mind where the line should be first, and then enter the parameters to match that image?*/
+
+++++++++++++++++++++++++++++++++
+
+LINEAR REGRESSION
+Gradient Descent for Intercept
+
+/*As we try to minimize loss, we take each parameter we are changing, and move it as long as we are decreasing loss. 
+It's like we are moving down a hill, and stop once we reach the bottom:
+
+The process by which we do this is called gradient descent. We move in the direction that decreases our loss the most. Gradient refers to the slope of the curve at any point.
+
+For example, let's say we are trying to find the intercept for a line.
+ We currently have a guess of 10 for the intercept. At the point of 10 on the curve, the slope is downward.
+  Therefore, if we increase the intercept, we should be lowering the loss. So we follow the gradient downwards.
+
+
+
+We derive these gradients using calculus. It is not crucial to understand how we arrive at the gradient equation. 
+To find the gradient of loss as intercept changes, the formula comes out to be:
+
+N is the number of points we have in our dataset
+m is the current gradient guess
+b is the current intercept guess
+
+Basically:
+
+we find the sum of y_value - (m*x_value + b) for all the y_values and x_values we have
+and then we multiply the sum by a factor of -2/N. N is the number of points we have.*/
+
+def get_gradient_at_b(x,y,m,b):
+  diff = 0
+  for i in range(len(x)):
+    diff += y[i] -(m*x[i] +b)
+    
+  b_gradient = (-2/len(x)) * diff  
+  return b_gradient
+
+++++++++++++++++++++++++++++++++++++++
+
+LINEAR REGRESSION
+Gradient Descent for Slope
+
+/*We have a function to find the gradient of b at every point. 
+To find the m gradient, or the way the loss changes as the slope of our line changes, we can use this formula:
+
+Once more:
+
+N is the number of points you have in your dataset
+m is the current gradient guess
+b is the current intercept guess
+To find the m gradient:
+
+we find the sum of x_value * (y_value - (m*x_value + b)) for all the y_values and x_values we have
+and then we multiply the sum by a factor of -2/N. N is the number of points we have.
+
+Once we have a way to calculate both the m gradient and the b gradient, 
+we'll be able to follow both of those gradients downwards to the point of lowest loss for both the m value 
+and the b value. 
+
+Then, we'll have the best m and the best b to fit our data!  */
+
+def get_gradient_at_b(x, y, m, b):
+    diff = 0
+    N = len(x)
+    for i in range(N):
+      y_val = y[i]
+      x_val = x[i]
+      diff += (y_val - ((m * x_val) + b))
+    b_gradient = -2/N * diff
+    return b_gradient
+  
+def get_gradient_at_m(x, y, m, b):
+    diff = 0
+    N = len(x)
+    for i in range(N):
+      y_val = y[i]
+      x_val = x[i]
+      diff += x_val*(y_val - (m*x_val+b))
+    m_gradient = -2/N * diff
+    return m_gradient
+
+
++++++++++++++++++++++++++++++++++++++
+
+LINEAR REGRESSION
+Put it Together
+
+/*Now that we know how to calculate the gradient, we want to take a "step" in that direction. 
+However, it's important to think about whether that step is too big or too small. 
+We don't want to overshoot the minimum error!
+
+We can scale the size of the step by multiplying the gradient by a learning rate.
+
+To find a new b value, we would say:
+
+new_b = current_b - (learning_rate * b_gradient)
+where current_b is our guess for what the b value is, b_gradient is the gradient of the loss curve 
+at our current guess, and learning_rate is proportional to the size of the step we want to take.
+
+In a few exercises, we'll talk about the implications of a large or small learning rate, 
+but for now, let's use a fairly small value.
+*/
+def get_gradient_at_b(x, y, b, m):
+  N = len(x)
+  diff = 0
+  for i in range(N):
+    x_val = x[i]
+    y_val = y[i]
+    diff += (y_val - ((m * x_val) + b))
+  b_gradient = -(2/N) * diff  
+  return b_gradient
+
+def get_gradient_at_m(x, y, b, m):
+  N = len(x)
+  diff = 0
+  for i in range(N):
+      x_val = x[i]
+      y_val = y[i]
+      diff += x_val * (y_val - ((m * x_val) + b))
+  m_gradient = -(2/N) * diff  
+  return m_gradient
+
+#Your step_gradient function here
+def step_gradient(x, y, b_current, m_current):
+    b_gradient = get_gradient_at_b(x, y, b_current, m_current)
+    m_gradient = get_gradient_at_m(x, y, b_current, m_current)
+    b = b_current - (0.01 * b_gradient)
+    m = m_current - (0.01 * m_gradient)
+    return [b, m]
+
+months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+revenue = [52, 74, 79, 95, 115, 110, 129, 126, 147, 146, 156, 184]
+
+# current intercept guess:
+b = 0
+# current slope guess:
+m = 0
+
+b, m = step_gradient(months, revenue, b, m)
+print(b, m)    
+
+++++++++++++++++++++++++++++++++++++++++++++++
+
+LINEAR REGRESSION
+Convergence
+
+/*How do we know when we should stop changing the parameters m and b? 
+How will we know when our program has learned enough?
+
+To answer this, we have to define convergence. 
+Convergence is when the loss stops changing (or changes very slowly) when parameters are changed.
+
+Hopefully, the algorithm will converge at the best values for the parameters m and b.*/
+
++++++++++++++++++++++++++++++++++++++++++
+
+LINEAR REGRESSION
+Learning Rate
+
+/*We want our program to be able to iteratively learn what the best m and b values are. 
+So for each m and b pair that we guess, we want to move them in the direction of the gradients we've calculated.
+ But how far do we move in that direction?
+
+We have to choose a learning rate, which will determine how far down the loss curve we go.
+
+A small learning rate will take a long time to converge — you might run out of time or cycles 
+before getting an answer. A large learning rate might skip over the best value. 
+It might never converge! Oh no!
+
+Finding the absolute best learning rate is not necessary for training a model. 
+You just have to find a learning rate large enough that gradient 
+descent converges with the efficiency you need, and not so large that convergence never happens.
+
+*/
+
+import codecademylib3_seaborn
+import matplotlib.pyplot as plt
+from data import bs, bs_000000001, bs_01
+
+iterations = range(1400)
+#iterations = range(100)
+
+plt.plot(iterations, bs_000000001)
+#plt.plot(iterations, bs_01)
+plt.xlabel("Iterations")
+plt.ylabel("b value")
+plt.show()
+
+++++++++++++++++++++++++++++++++++++++++
+
+LINEAR REGRESSION
+Put it Together II
+
+/*At each step, we know how to calculate the gradient and move in that direction with 
+a step size proportional to our learning rate. 
+Now, we want to make these steps until we reach convergence.
+*/
+import codecademylib3_seaborn
+import matplotlib.pyplot as plt
+
+def get_gradient_at_b(x, y, b, m):
+  N = len(x)
+  diff = 0
+  for i in range(N):
+    x_val = x[i]
+    y_val = y[i]
+    diff += (y_val - ((m * x_val) + b))
+  b_gradient = -(2/N) * diff  
+  return b_gradient
+
+def get_gradient_at_m(x, y, b, m):
+  N = len(x)
+  diff = 0
+  for i in range(N):
+      x_val = x[i]
+      y_val = y[i]
+      diff += x_val * (y_val - ((m * x_val) + b))
+  m_gradient = -(2/N) * diff  
+  return m_gradient
+
+#Your step_gradient function here
+def step_gradient(b_current, m_current, x, y, learning_rate):
+    b_gradient = get_gradient_at_b(x, y, b_current, m_current)
+    m_gradient = get_gradient_at_m(x, y, b_current, m_current)
+    b = b_current - (learning_rate * b_gradient)
+    m = m_current - (learning_rate * m_gradient)
+    return [b, m]
+  
+#Your gradient_descent function here:  
+def gradient_descent(x, y, learning_rate, num_iterations):
+  b = 0
+  m = 0
+  for i in range(num_iterations):
+    b, m = step_gradient(b, m, x, y, learning_rate)
+  return [b,m]  
+
+months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+revenue = [52, 74, 79, 95, 115, 110, 129, 126, 147, 146, 156, 184]
+
+#Uncomment the line below to run your gradient_descent function
+b, m = gradient_descent(months, revenue, 0.01, 1000)
+
+#Uncomment the lines below to see the line you've settled upon!
+y = [m*x + b for x in months]
+
+plt.plot(months, revenue, "o")
+plt.plot(months, y)
+
+plt.show()
+
++++++++++++++++++++++++++++++++++++++++++++
+
+LINEAR REGRESSION
+Use Your Functions on Real Data
+
+/*We have constructed a way to find the "best" b and m values using gradient descent! 
+Let's try this on the set of baseball players' heights and weights that we saw at the beginning of the lesson.
+*/
+import codecademylib3_seaborn
+from gradient_descent_funcs import gradient_descent
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv("heights.csv")
+
+X = df["height"]
+y = df["weight"]
+
+plt.plot(X, y, 'o')
+
+b, m = gradient_descent(X, y, num_iterations=1000, learning_rate=0.0001)
+y_predictions = [m*x + b for x in X]
+
+plt.plot(X, y_predictions)
+
+plt.show()
+
+++++++++++++++++++++++++++++++++++++++++++
+LINEAR REGRESSION
+Scikit-Learn
+
+/*Congratulations! You've now built a linear regression algorithm from scratch.
+
+Luckily, we don't have to do this every time we want to use linear regression. 
+We can use Python's scikit-learn library. Scikit-learn, or sklearn, is used specifically for Machine Learning. 
+Inside the linear_model module, there is a LinearRegression() function we can use:
+
+from sklearn.linear_model import LinearRegression
+
+You can first create a LinearRegression model, and then fit it to your x and y data:
+
+line_fitter = LinearRegression()
+line_fitter.fit(X, y)
+The .fit() method gives the model two variables that are useful to us:
+
+the line_fitter.coef_, which contains the slope
+the line_fitter.intercept_, which contains the intercept
+We can also use the .predict() function to pass in x-values and receive the y-values that this line would predict:
+
+y_predicted = line_fitter.predict(X)
+
+Note: the num_iterations and the learning_rate that you learned about in your own implementation have default values 
+within scikit-learn, so you don't need to worry about setting them specifically!
+*/
+import codecademylib3_seaborn
+from sklearn.linear_model import LinearRegression
+import matplotlib.pyplot as plt
+import numpy as np
+
+temperature = np.array(range(60, 100, 2))
+temperature = temperature.reshape(-1, 1)
+sales = [65, 58, 46, 45, 44, 42, 40, 40, 36, 38, 38, 28, 30, 22, 27, 25, 25, 20, 15, 5]
+
+plt.plot(temperature, sales, 'o')
+
+#1.Create an sklearn linear regression model and call it line_fitter.
+line_fitter = LinearRegression()
+
+#2.Fit the line_fitter object to temperature and sales
+line_fitter.fit(temperature, sales)
+
+#3.Create a list called sales_predict that is the predicted sales values that line_fitter would generate from the temperature list.
+sales_predict = line_fitter.predict(temperature)
+
+#4.Plot sales_predict against temperature as a line, on the same plot as the scatterplot.
+plt.plot(temperature, sales_predict)
+plt.show()
+
++++++++++++++++++++++++++++++++++++++++++++++
 
