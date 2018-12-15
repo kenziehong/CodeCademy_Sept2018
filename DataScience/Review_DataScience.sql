@@ -243,3 +243,49 @@ Convergence refers to when the parameters stop changing with each iteration.
 Learning rate refers to how much the parameters are changed on each iteration.
 We can use Scikit-learn's LinearRegression() model to perform linear regression on a set of points.
 These are important tools to have in your toolkit as you continue your exploration of data science.
+
+---------------------------------------------------
+Normalization
+This article describes why normalization is necessary. It also demonstrates the pros and cons of min-max normalization and z-score normalization.
+
+Review
+
+Normalizing your data is an essential part of machine learning. You might have an amazing dataset with many great features, but if you forget to normalize, one of those features might completely dominate the others. It's like you're throwing away almost all of your information! Normalizing solves this problem. In this article, you learned the following techniques to normalize:
+
+Min-max normalization: Guarantees all features will have the exact same scale but does not handle outliers well.
+(value - min) / (max - min) 
+	
+Z-score normalization: Handles outliers, but does not produce normalized data with the exact same scale.
+(value - mean)/ standard deviation
+
++++++++++++++++++++++++++++++++++++
+
+Training Set vs Validation Set vs Test Set
+This article teaches the importance of splitting a data set into training, validation and test sets.
+
+Testing Our Model
+Supervised machine learning algorithms are amazing tools capable of making predictions and classifications. However, it is important to ask yourself how accurate those predictions are. After all, it’s possible that every prediction your classifier makes is actually wrong! Luckily, we can leverage the fact that supervised machine learning algorithms, by definition, have a dataset of pre-labeled datapoints. In order to test the effectiveness of your algorithm, we’ll split this data into:
+
+training set
+validation set
+test set
+
+------------------------------------------------------------------------------------
+
+K-NEAREST NEIGHBORS
+Review
+Congratulations! You just implemented your very own classifier from scratch and used Python's sklearn library. In this lesson, you learned some techniques very specific to the K-Nearest Neighbor algorithm, but some general machine learning techniques as well. Some of the major takeaways from this lesson include:
+
+Data with n features can be conceptualized as points lying in n-dimensional space.
+Data points can be compared by using the distance formula. Data points that are similar will have a smaller distance between them.
+A point with an unknown class can be classified by finding the k nearest neighbors
+To verify the effectiveness of a classifier, data with known classes can be split into a training set and a validation set. Validation error can then be calculated.
+Classifiers have parameters that can be tuned to increase their effectiveness. In the case of K-Nearest Neighbors, k can be changed.
+A classifier can be trained improperly and suffer from overfitting or underfitting. In the case of K-Nearest Neighbors, a low k often leads to overfitting and a large k often leads to underfitting.
+Python's sklearn library can be used for many classification and machine learning algorithms.
+To the right is an interactive visualization of K-Nearest Neighbors. If you move your mouse over the canvas, the location of your mouse will be classified as either green or blue. The nearest neighbors to your mouse are highlighted in yellow. Use the slider to change k to see how the boundaries of the classification change.
+
+If you find any interesting patterns, share it with us on Twitter!
+
+
+​	
