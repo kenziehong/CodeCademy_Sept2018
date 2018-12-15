@@ -287,5 +287,24 @@ To the right is an interactive visualization of K-Nearest Neighbors. If you move
 
 If you find any interesting patterns, share it with us on Twitter!
 
+---------------------------------------------------------------------------
+
+BAYES' THEOREM
+Review
+
+In this course, we learned several new definitions:
+
+Two events are independent if the occurrence of one event does not affect the probability of the second event
+If two events are independent then:
+
+P(A ∩ B) = P(A)* P(B)
+
+A prior is an additional piece of information that tells us how likely an event is
+A frequentist approach to statistics does not incorporate a prior
+A Bayesian approach to statistics incorporates prior knowledge
+Bayes' Theorem is the following:
+
+P(A|B) = {P(B|A)*P(A)}/P(B)
+​	 
 
 ​	
