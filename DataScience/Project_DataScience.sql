@@ -1239,3 +1239,147 @@ print(classifier.score(test_counts, test_emails.target))
 #15.Play around with different sets of data. Can you find a set that's incredibly accurate or incredibly inaccurate? The possible categories are listed below.
 
 
+----------------------------------------------------
+18/12/2018
+CLUSTERING: K-MEANS
+Handwriting Recognition using K-Means
+
+/*The U.S. Postal Service has been using machine learning and scanning technologies since 1999. Because its postal offices have to look at roughly half a billion pieces of mail every day, they have done extensive research and developed very efficient algorithms for reading and understanding addresses. And not only the post office:
+
+ATMs can recognize handwritten bank checks
+Evernote can recognize handwritten task lists
+Expensify can recognize handwritten receipts
+But how do they do it?
+
+In this project, you will be using K-means clustering (the algorithm behind this magic) and scikit-learn to cluster images of handwritten digits.
+
+Let's get started!
+*/
+
+import codecademylib3_seaborn
+import numpy as np
+from matplotlib import pyplot as plt
+
+#------------Getting Started with the Digits Dataset:---
+#1. The sklearn library comes with a digits dataset for practise. From sklearn library, import the datasets module.Then, load in the digits data using .load_digits() and print digits.
+from sklearn import datasets
+digits = datasets.load_digits()
+
+#2.When first starting out with a dataset, it’s always a good idea to go through the data description and see what you can already learn.Instead of printing the digits, print digits.DESCR.What is the size of an image (in pixel)?Where is this dataset from?
+#print(digits.DESCR)
+
+#3.Let's see what the data looks like!
+#print(digits.data)
+
+#4.Next, print out the target values in digits.target.
+print(digits.target)
+
+#5.To visualize the data images, we need to use Matplotlib. Let's visualize the image at index 100:
+plt.gray()
+plt.matshow(digits.images[100])
+plt.show()
+
+#Is it a 4? Let's print out the target label at index 100 to find out!
+print(digits.target[100])
+
+
+/*#Open the hint to see how you can visualize more than one image.
+#To take a look at 64 sample images. Copy and paste the code below:
+# Figure size (width, height)
+
+fig = plt.figure(figsize=(6, 6))
+
+# Adjust the subplots 
+
+fig.subplots_adjust(left=0, right=1, bottom=0, top=1, hspace=0.05, wspace=0.05)
+
+# For each of the 64 images
+
+for i in range(64):
+
+    # Initialize the subplots: add a subplot in the grid of 8 by 8, at the i+1-th position
+
+    ax = fig.add_subplot(8, 8, i+1, xticks=[], yticks=[])
+
+    # Display an image at the i-th position
+
+    ax.imshow(digits.images[i], cmap=plt.cm.binary, interpolation='nearest')
+
+    # Label the image with the target value
+
+    ax.text(0, 7, str(digits.target[i]))
+
+plt.show()
+*/
+#---------K-Means Clustering:------
+#6Now we understand what we are working with. Let's cluster the 1797 different digit images into groups.
+from sklearn.cluster import KMeans
+
+#7What should be the k, the number of clusters, here? Use the KMeans() method to build a model that finds k clusters.
+#The random_state will ensure that every time you run your code, the model is built in the same way. This can be any number. We used random_state = 42.
+model = KMeans(n_clusters =10, random_state =42)
+
+#8.Use the .fit() method to fit the digits.data to the model.
+model.fit(digits.data)
+
+#---------Visualizing after K-Means:----------
+#9.Let's visualize all the centroids! Because data samples live in a 64-dimensional space, the centroids have values so they can be images!First, add a figure of size 8x3 using .figure().Then, add a title using .suptitle().
+fig = plt.figure(figsize=(8, 3))
+fig.suptitle('Cluser Center Images', fontsize=14, fontweight='bold')
+
+#10.Scikit-learn sometimes calls centroids "cluster centers". Write a for loop to displays each of the cluster_centers_ like so. Scikit-learn sometimes calls centroids "cluster centers".
+for i in range(10):
+
+  # Initialize subplots in a grid of 2X5, at i+1th position
+  ax = fig.add_subplot(2, 5, 1 + i)
+
+  # Display images
+  ax.imshow(model.cluster_centers_[i].reshape((8, 8)), cmap=plt.cm.binary)
+ 
+#11.Outside of the for loop, use .show() to display the visualization.
+plt.show()
+
+#12.Optional:If you want to see another example that visualizes the data clusters and their centers using K-means, check out the sklearn's own example.
+
+#---------Testing Your Model:-----------
+#13.Instead of feeding new arrays into the model, let's do something cooler! Inside the right panel, go to test.html.
+
+#14What year will robots take over the world? Use your mouse to write a digit in each of the boxes and click Get Array.
+
+#15 Back in script.py, create a new variable named new_samples and copy and paste the 2D array into it.
+new_samples = np.array([
+[0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.37,1.52,1.52,0.68,0.00,0.00,0.00,0.08,5.55,7.62,7.62,6.85,0.76,0.00,0.00,2.73,7.62,3.73,2.43,7.54,3.81,0.00,0.00,4.49,7.24,0.00,0.00,6.17,4.57,0.00,0.00,5.32,5.62,0.00,0.00,7.08,4.42,0.00,0.00,4.88,7.24,1.82,3.05,7.62,2.59,0.00,0.00,0.99,6.86,7.62,7.62,5.71,0.15,0.00],
+[0.00,0.00,1.06,3.80,3.80,1.37,0.00,0.00,0.00,0.30,6.62,7.39,7.46,5.33,0.00,0.00,0.00,2.27,7.61,2.66,4.78,6.78,0.00,0.00,0.00,1.60,7.55,7.39,7.61,6.85,0.00,0.00,0.00,0.00,1.52,3.81,5.70,6.85,0.00,0.00,0.00,0.00,0.00,0.00,3.80,6.85,0.00,0.00,0.00,1.67,5.03,3.19,5.92,6.84,0.00,0.00,0.00,1.98,7.23,7.61,7.45,3.57,0.00,0.00],
+[0.00,0.00,3.40,5.32,2.59,0.00,0.00,0.00,0.00,3.20,7.62,7.53,5.33,0.00,0.00,0.00,0.00,4.57,6.48,5.55,5.32,0.00,0.00,0.00,0.00,2.74,4.34,7.39,4.57,0.00,0.00,0.00,0.00,0.00,3.72,7.62,1.51,0.00,0.00,0.00,0.00,1.06,7.23,5.71,0.00,0.00,0.00,0.00,0.00,4.79,7.62,6.39,6.08,6.86,1.60,0.00,0.00,2.74,4.65,5.33,5.33,4.03,0.69,0.00],
+[0.00,0.00,0.00,0.07,0.76,0.00,0.00,0.00,0.00,0.00,0.08,5.16,7.62,2.06,0.00,0.00,0.00,1.29,5.56,7.62,7.62,2.29,0.00,0.00,1.14,7.55,7.32,3.95,7.62,2.29,0.00,0.00,0.23,2.89,0.68,0.76,7.61,2.28,0.00,0.00,0.00,0.00,0.00,0.76,7.61,2.28,0.00,0.00,0.00,0.00,0.00,0.76,7.62,2.28,0.00,0.00,0.00,0.00,0.00,0.08,2.81,0.46,0.00,0.00]
+])
+
+#16.Use the .predict() function to predict new labels for these four new digits. Store those predictions in a variable named new_labels.
+new_labels = model.predict(new_samples)
+
+#17.But wait, because this is a clustering algorithm, we don't know which label is which.By looking at the cluster centers, let's map out each of the labels with the digits we think it represents:
+for i in range(len(new_labels)):
+  if new_labels[i] == 0:
+    print(0, end='')
+  elif new_labels[i] == 1:
+    print(9, end='')
+  elif new_labels[i] == 2:
+    print(2, end='')
+  elif new_labels[i] == 3:
+    print(1, end='')
+  elif new_labels[i] == 4:
+    print(6, end='')
+  elif new_labels[i] == 5:
+    print(8, end='')
+  elif new_labels[i] == 6:
+    print(4, end='')
+  elif new_labels[i] == 7:
+    print(5, end='')
+  elif new_labels[i] == 8:
+    print(7, end='')
+  elif new_labels[i] == 9:
+    print(3, end='')
+    
+print(new_labels)    
+
+#18.Is the model recognizing your handwriting?Remember, this model is trained on handwritten digits of 30 Turkish people (from the 1990's).Try writing your digits similar to these cluster centers:
