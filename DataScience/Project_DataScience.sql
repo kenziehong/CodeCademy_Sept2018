@@ -1383,3 +1383,209 @@ for i in range(len(new_labels)):
 print(new_labels)    
 
 #18.Is the model recognizing your handwriting?Remember, this model is trained on handwritten digits of 30 Turkish people (from the 1990's).Try writing your digits similar to these cluster centers:
+
+
+-----------------------------------------------------------------
+20/12/2018
+
+SQL CUMULATIVE PROJECT
+Analyzing Heart Disease
+
+/*You are a Data Analyst at Codecademy Laboratory, a company that determines if a patient is at risk for developing coronary artery disease (CAD). CAD is one of the most common forms of heart disease. It can lead to heart attacks and strokes.
+
+You will perform tasks to identify patients who are at-risk for developing CAD, so the lab can advise them to seek medical care. Before you do that, you'll complete tasks to reorganize your datasets in a better way.
+
+How does the lab identify CAD risk?
+
+First, a blood sample is collected. This blood sample is sent for a test called a lipid panel. The panel tests for levels of lipids that indicate CAD risk:
+
+Total Cholesterol,
+LDL,
+HDL,
+and Triglycerides.
+When these lipid values range from Low, to Desirable, to Borderline_High, to High.
+
+Desirable is good! Everything else may indicate CAD risk.
+
+How do you tell if values are desirable or not?
+
+You’ll work with patients, panels, and recommended_values tables. Keep in mind that data in these tables is semi-real. While it's based on real recommended values, we've simplified it for this project. Doctors take additional factors into account when guiding patients. Don't use it to make decisions about your health.
+
+Here is some background you'll need:
+
+patients: You'll use this table to add more context If you get stuck during this project, check out the project walkthrough video which can be found at the bottom of the page after the final step of the project.
+to values in panels table - who's lipid panel is it? How can you contact them? Are they an active patient or inactive?
+
+panels: It stores patients' lipid values from the blood test, such as total cholesterol, LDL, HDL, and triglycerides.
+
+recommended_values: You should use this table to check if values in the panels table indicate CAD risk. Here is how you tell if values are desirable or not:
+
+Total Cholesterol: <200 is Desirable, 200 - 239 is Borderline-High, and >=240 is High
+LDL: <130 is Desirable, 130 - 159 is Borderline-High, and >=160 is High
+HDL: <50 is Low, and >=50 is Desirable
+Triglycerides: <150 is Desirable, 150 - 199 is Borderline-High, and >=200 is High
+Note: Don't delete the code after you complete a checkpoint. Continue below it. If you don't do this, your subsequent code won't work.
+*/
+
+#1.If you get stuck during this project, check out the project walkthrough video which can be found at the bottom of the page after the final step of the project.
+#When you're ready to find the answer, check the hint.
+
+SELECT *
+FROM recommended_value
+LIMIT 10;
+
+#----Tasks to help the lab run more efficiently:-----
+#2.Something seems weird in the panels table... Oh, there is a duplicate row. That's not helpful!
+#Let's remove this row. Make sure you return the first 5 rows again to check that it's actually gone.
+DELETE FROM panels 
+WHERE ID = 'ID';
+
+SELECT * 
+FROM panels 
+LIMIT 5;
+
+#3.Valaria Broadwell, a patient with ID 7, was an inactive patient at our lab but would like to become a regular patient again.
+#Change her Status in patients table from inactive to active.
+
+UPDATE patients
+SET Status = "active"
+WHERE ID =7;
+
+SELECT * 
+FROM patients
+WHERE ID =7;
+
+#4.Your lab thinks that data in patients table could be organized better. They want their inactive patients in a separate table from now on.
+#Create a table called inactive_patients and copy all inactive patients into this table. This new table should have columns identical to the patients table.
+#We haven't learned how to copy a table, so take a moment and Google "SQL CREATE AS" and see if you can figure it out
+
+CREATE TABLE inactive_patients
+AS SELECT * 
+    FROM patients 
+    WHERE Status = "inactive";
+    
+    
+DELETE FROM patients 
+WHERE status = "inactive";
+
+#5.patients is not the best name for patients table anymore, is it?
+#Change the name to active_patients.    
+ALTER TABLE patients
+RENAME TO active_patients;
+
+#6.Did you know you can do arithmetic with SQL?
+#Your lab's marketing team is trying to re-engage inactive patients. They want to know how many patients they'll need to convince.
+#Find the percentage of active and inactive patients.
+#Take a look at the hint below.
+WITH
+total_active AS (
+  SELECT COUNT() AS active
+  FROM active_patients),
+  
+total_inactive AS (
+  SELECT COUNT() AS inactive
+  FROM inactive_patients ),
+  
+total_patients AS (
+  SELECT total_active.active + total_inactive.inactive AS total
+  FROM total_active, total_inactive)
+
+SELECT 
+   (total_active.active*100/total_patients.total) AS percent_active,    (total_inactive.inactive*100/total_patients.total) AS percent_inactive 
+FROM total_active, total_inactive, total_patients;   
+  
+
+#7.The most recent patient to visit the lab is the last patient in the active_patients table. Find out who it is, so we can ask them if they forgot their wallet.
+#Challenge yourself to not just use ID = 99! That's too easy!  
+
+#Did your query from the last checkpoint not work, even when you ran the solution code?
+#The solution code isn't wrong, it's just not complete. Can you find out what's missing?
+DELETE FROM active_patients
+WHERE ID = 'ID';
+
+DELETE FROM active_patients 
+WHERE Name IN 
+(SELECT Name FROM active_patients LIMIT 1);
+
+SELECT *
+FROM active_patients 
+WHERE ID = (SELECT MAX(ID) 
+            FROM active_patients);
+
+#9.Find patients that have come in for a lipid panel more than once.
+#Use the panels table. You only need to list the patient_IDs for this.  
+SELECT patient_ID, COUNT() FROM panels GROUP BY patient_ID HAVING COUNT() > 1;
+
+#10.Remember your panels table did not have an LDL column? Well, let's add it now.
+#LDL is not calculated directly from the blood sample. 
+#Most specialists use the Friedewald Equation to estimate LDL 
+#from Total Cholesterol, HDL, and Triglycerides. This is the equation:
+ALTER TABLE panels
+ADD COLUMN LDL DECIMAL(5,2);
+
+UPDATE panels
+SET LDL = panels.Cholesterol - (panels.HDL + panels.Triglycerides)/5;
+
+#11.LDL is the bad cholesterol. Patients with Borderline_High and High LDL levels may be at risk for heart disease.
+#Find these patients, organize the list from High to Low, and round off the values. You should return the list in the following format:
+#While it was mentioned above that other lipids play a role in CAD risk as well, let's just focus on LDL here.
+
+WITH 
+rv AS(
+  SELECT Borderline_High, High
+  FROM recommended_values
+  WHERE Lipid = 'LDL')
+  
+SELECT Name, ROUND(LDL), Address, Phone, COUNT(patient_ID), Borderline_High
+FROM active_patients,rv
+JOIN panels
+ON active_patients.ID = panels.patient_ID
+GROUP BY Name, LDL
+HAVING LDL>= rv.Borderline_High 
+ORDER BY LDL DESC;
+
+/*SELECT 
+    active_patients.Name AS 'Name', 
+    ROUND(LDL) AS 'LDL', 
+    active_patients.Address AS 'Address',
+    active_patients.Phone AS 'Phone'
+FROM 
+    panels, 
+    (SELECT Borderline_High, High FROM recommended_values WHERE Lipid = "LDL") rv
+JOIN active_patients ON panels.patient_ID = active_patients.ID
+GROUP BY 
+    LDL, 
+    active_patients.Name 
+HAVING LDL >= rv.Borderline_High
+ORDER BY LDL DESC;
+*/
+
+#12.How many patients have Borderline_High levels of LDL? and How many patients have High levels of LDL?
+#Your result should look like this:
+
+WITH 
+rv AS(
+  SELECT Borderline_High, High
+  FROM recommended_values
+  WHERE Lipid = 'LDL')
+  
+SELECT 
+  COUNT(
+  	CASE
+     	WHEN (LDL>=rv.High) THEN High
+    END 
+  ) AS High,
+  COUNT(
+  	CASE
+     	WHEN (LDL>=rv.Borderline_high AND LDL<rv.High) THEN High
+    END 
+  ) AS Borderline_High
+FROM panels, rv;  
+  
+
+/*SELECT 
+    COUNT(CASE WHEN (LDL >= rv.Borderline_High AND LDL < rv.High) THEN LDL END) AS Borderline_High,
+    COUNT(CASE WHEN LDL >= rv.High THEN LDL END) AS High
+FROM 
+    panels, 
+    (SELECT Borderline_High, High FROM recommended_values WHERE Lipid = "LDL") rv;*/
