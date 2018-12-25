@@ -765,11 +765,14 @@ ttest_1samp requires two inputs, a distribution of values and an expected mean:
 
 tstat, pval = ttest_1samp(example_distribution, expected_mean)
 
-When we conduct a hypothesis test, we want to first create a null hypothesis, which is a prediction that there is no significant difference. 
+When we conduct a hypothesis test, we want to first create a null hypothesis,
+ which is a prediction that there is no significant difference. 
 
-The null hypothesis that this test examines can be phrased as such: "The set of samples belongs to a population with the target mean".
+The null hypothesis that this test examines can be phrased as such: 
+"The set of samples belongs to a population with the target mean".
 
-if we receive a p-value of less than 0.05, we can reject the null hypothesis and state that there is a significant difference.
+if we receive a p-value of less than 0.05, we can reject the null hypothesis and 
+state that there is a significant difference.
 */
 from scipy.stats import ttest_1samp
 import numpy as np
@@ -818,7 +821,8 @@ Dangers of Multiple T-Tests
 /*We know that the p-value is the probability that we incorrectly reject the null hypothesis on each t-test. 
 The more t-tests we perform, the more likely that we are to get a false positive, a Type I error.
 
-For a p-value of 0.05, if the null hypothesis is true then the probability of obtaining a significant result is 1 – 0.05 = 0.95. 
+For a p-value of 0.05, if the null hypothesis is true then the probability of obtaining a significant result 
+is 1 – 0.05 = 0.95. 
 When we run another t-test, the probability of still getting a correct result is 0.95 * 0.95, or 0.9025. 
 That means our probability of making an error is now close to 10%! 
 This error probability only gets bigger with the more t-tests we do.
@@ -854,7 +858,8 @@ print(error_prob)
 HYPOTHESIS TESTING
 ANOVA
 
-/*When comparing more than two numerical datasets, the best way to preserve a Type I error probability of 0.05 is to use ANOVA
+/*When comparing more than two numerical datasets, the best way to preserve a Type I error probability of 0.05 
+is to use ANOVA
 
 ANOVA (Analysis of Variance) tests the null hypothesis that all of the datasets have the same mean. 
 If we reject the null hypothesis with ANOVA, we're saying that at least one of the sets has a different mean; 
@@ -911,7 +916,8 @@ HYPOTHESIS TESTING
 For example, if we were looking to compare mean scores of movies that are dramas, comedies, or documentaries, 
 we would make a call to pairwise_tukeyhsd like this:
 
-It will return a table of information, telling you whether or not to reject the null hypothesis for each pair of datasets.*/
+It will return a table of information, telling you whether or not to reject the null hypothesis 
+for each pair of datasets.*/
 
 
 from statsmodels.stats.multicomp import pairwise_tukeyhsd
@@ -937,15 +943,18 @@ print(tukey_results)
 HYPOTHESIS TESTING
 Binomial Test
 
-/*So far, we have been working with numerical datasets. The tests we have looked at, the 1- and 2-Sample T-Tests, ANOVA, and Tukey's Range test, will not work if we can't find the means of our distributions and compare them.
+/*So far, we have been working with numerical datasets. The tests we have looked at, the 1- and 2-Sample T-Tests,
+ ANOVA, and Tukey's Range test, will not work if we can't find the means of our distributions and compare them.
 
 If we have a dataset where the entries are not numbers, but categories instead, we have to use different methods.
 
-To analyze a dataset like this, with two different possibilities for entries, we can use a Binomial Test. A Binomial Test compares a categorical dataset to some expectation.
+To analyze a dataset like this, with two different possibilities for entries, we can use a Binomial Test. 
+A Binomial Test compares a categorical dataset to some expectation.
 
 SciPy has a function called binom_test, which performs a Binomial Test for you.
 
-binom_test requires three inputs, the number of observed successes, the number of total trials, and an expected probability of success
+binom_test requires three inputs, the number of observed successes, the number of total trials, 
+and an expected probability of success
 */
 
 from scipy.stats import binom_test
@@ -5680,5 +5689,3 @@ plt.xlabel('number of clusters (k)')
 plt.ylabel('inertia')
 
 plt.show()
-
----------------------------------------------------------------

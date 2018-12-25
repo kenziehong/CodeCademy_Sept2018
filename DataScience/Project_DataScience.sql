@@ -1669,7 +1669,107 @@ else:
   
 #17. Fantastic! With proven benefits to both of our product lines, we can definitely ramp up our marketing and sales. Look out for a Familiar face in drug stores everywhere  
   
-    
+--------------------------------------------------------------------------------------------
+25/12/2018
+
+"""HYPOTHESIS TESTING
+FetchMaker
+Congratulations! You’ve just started working at the hottest new tech startup, FetchMaker. 
+FetchMaker’s mission is to match up prospective dog owners with their perfect pet. 
+Data on thousands of adoptable dogs are in FetchMaker’s system, and it’s your job to analyze some of that data."""
+
+import numpy as np
+import fetchmaker
+
+#------Play around with the data----------
+#1. Let'start by including a data interface called fetchmaker that will give you access to FetchMaker's dog data. Use import fetchmaker at the top of your script.py file to import the fetchmaker package
+
+#2. The attributes that FetchMaker keeps track of are: weight, an integer representing how heavy a dog is in pounds. tail_length, a float representing tail length in inches. age, in years. color, a String such as "brown" or "grey", is_rescue, a boolean 0 or 1. The fetchmaker package lets you access this data for a specific breed of dog with the following format. This returns a Pandas DataFrame of the weights of the poodles recorded in the system. The other methods are get_tail_length, get_color, get_age, and get_is_rescue, which all take a breed as an input. Get the tail lengths of all of the "rottweiler" in the system, and store it in a variable called rottweiler_t1
+rottweiler_tl = fetchmaker.get_tail_length("rottweiler")
+
+#3. Print out the mean of rottweiler_tl and the standard deviation of rottweiler_tl, using np.mean and np.std
+print(np.mean(rottweiler_tl))
+print(np.std(rottweiler_tl))
+
+#--------Data to the rescue---------
+#4.Over the years, we have seen that we expect 8% of dogs in the FetchMaker system to be rescues. We want to know if whippets are signifcantly more or less like to be a rescue. Store the is_rescue values for "whippet"s in a variable called whippet_rescue
+whippet_rescue = fetchmaker.get_is_rescue("whippet")
+
+#5.Use np.count_nonzero to get the number of entries in whippet_rescue that are 1. Store this number in a variable called num_whippet_rescues
+num_whippet_rescues = np.count_nonzero(whippet_rescue)
+
+#6.Get the number of samples in the whippet set by taking the np.size of whippet_rescue. Store this in a variable called num_whippets
+num_whippets = np.size(whippet_rescue)
+
+#7Use a binomial test to test the number of whippet rescues, num_whippet_rescues, against our expected percentage 8%. Remember to import the binomial test by using. 
+#8. Print out the p-value. Is your result significant
+from scipy.stats import binom_test
+print(binom_test(num_whippet_rescues, num_whippets, 0.08)) #return pvalue
+
+#-----Size does matter----------------
+#9.Three of our most popular mid-sized dog breeds are whippets, terriers, and pitbulls. Is there a significant difference in the average weights of these three dog breeds? Perform a comparative numerical test to determine if there is a significant difference
+#Use ANOVA for this scenario. First, use the line from scipy.stats import f_oneway to import SciPy's ANOVA function
+from scipy.stats import f_oneway
+w = fetchmaker.get_weight("whippet")
+t = fetchmaker.get_weight("terrier")
+p = fetchmaker.get_weight("pitbull")
+print f_oneway(w,t,p).pvalue
+
+#10. Now, perform another test to determine which of pairs of these dog breeds differ from each other
+#Use Tukey's Range Test for this scenario. First, use the line to import the test
+from statsmodels.stats.multicomp import pairwise_tukeyhsd
+values = np.concatenate([w,t,p])
+labels = ['whippet']*len(w) + ['terrier']*len(t) + ['pitbull']*len(p) 
+print pairwise_tukeyhsd(values, labels, 0.05)
+
+#-----Categorical dog test-----------
+#11. We want to see if "poodle" s and "shihtze"s have significantly different color breakdowns. Get the poodle colors and store it in a variable called poodle_colors. Get the shih tzu colors and store it in a variable called shihtzu_colors
+poodle_colors = fetchmaker.get_color("poodle")
+shihtzu_colors = fetchmaker.get_color("shihtzu")
+
+#12. You can get the number of occurrences of brown poodles by using. Use this function to build a Chi Square contingency table, called color_table, with the following structure. Fill in the "x" entries with the number of each poodle or shih tzu with the specified color
+color_table =[
+  [
+    np.count_nonzero(poodle_colors =="black"),
+    np.count_nonzero(shihtzu_colors =="black")
+  ],
+  [
+    np.count_nonzero(poodle_colors =="brown"),
+    np.count_nonzero(shihtzu_colors =="brown")
+  ],
+  [
+    np.count_nonzero(poodle_colors =="gold"),
+    np.count_nonzero(shihtzu_colors =="gold")
+  ],
+  [
+    np.count_nonzero(poodle_colors =="grey"),
+    np.count_nonzero(shihtzu_colors =="grey")
+  ],
+  [
+    np.count_nonzero(poodle_colors =="white"),
+    np.count_nonzero(shihtzu_colors =="white")
+  ]
+]
+
+print(color_table)
+
+#13. Feed your color_table into SciPy's Chi Square test, save the p_value and print it out. Is there a signifant difference?
+from scipy.stats import chi2_contingency
+chi2, pval, dof, expected = chi2_contingency(color_table)
+
+print pval
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
