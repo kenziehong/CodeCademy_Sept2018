@@ -2014,16 +2014,147 @@ ax2.set_title("Goals Visualization")
 #17.Render your box plot so you can see it.
 plt.show()
 
+--------------------------------------------------------------
+28/12/2018
 
+TWITCH PROJECT
+Twitch Part 1: Analyze Data with SQL
 
+/*Twitch
 
+Twitch is the world’s leading video platform and community for gamers, with 15+ million unique daily visitors. 
+Using data to understand its users and products is one of the chief responsibilities of the Twitch Science Team.
 
+In this project, you will be working with two training tables that contain Twitch users' stream (video) 
+viewing data and chat room usage data.
 
+Stream viewing data:
 
+stream table
+Chat usage data:
 
+chat table
+The Twitch Science Team provided this practice dataset. You can download the .csv files (800,000 rows) from GitHub.
 
+Let's get started!
+*/
+#----------Getting Started:----------
+#1.Start by getting a feel for the stream table and the chat table:
+#Select all columns from the first 20 rows.
+#What columns do the tables have?
+SELECT *
+FROM stream
+LIMIT 20;
 
+#2.What are the unique games in the stream table?
+SELECT DISTINCT game
+FROM stream;
 
+SELECT game
+FROM stream
+GROUP BY game;
 
+#3.What are the unique channels in the stream table?
+SELECT DISTINCT channel
+FROM stream;
 
+#-----------Aggregate Functions:-----------
+#4. What are the most popular games in the stream table?
+#Create a list of games and their number of viewers using GROUP BY
+
+SELECT game, COUNT(game)
+FROM stream
+GROUP BY game
+ORDER BY COUNT(game) DESC;
+
+#5.These are some big numbers from the game League of Legends (also known as LoL).
+#Where are these LoL stream viewers located?
+#Create a list of countries and their number of LoL viewers using WHERE and GROUP BY
+SELECT game, country, COUNT(country)
+FROM stream
+WHERE game ='League of Legends'
+GROUP BY country
+ORDER BY COUNT(country) DESC;
+
+#6.The player column contains the source the user is using to view the stream (site, iphone, android, etc).
+#Create a list of players and their number of streamers.
+SELECT player, COUNT(player)
+FROM stream
+GROUP BY player
+ORDER BY COUNT(country) DESC;
+
+#7.Create a new column named genre for each of the games.
+#Group the games into their genres: Multiplayer Online Battle Arena (MOBA), First Person Shooter (FPS), Survival, and Other.
+#Using CASE, your logic should be:
+#Use GROUP BY and ORDER BY to showcase only the unique game titles.
+SELECT game, COUNT(game),
+  CASE
+    WHEN game = 'League of Legends' THEN 'MOBA'
+    WHEN game = 'Dota 2' THEN 'MOBA'
+    WHEN game = 'Heroes of the Storm' THEN 'MOBA'
+    WHEN game = 'Counter-Strike: Global Offensive' THEN 'FPS'
+    WHEN game = 'DayZ' THEN 'Survival'
+    WHEN game = 'ARK: Survival Evolved' THEN 'Survival'
+  ELSE 'Other'
+  END AS gener
+FROM stream
+GROUP BY 1
+ORDER BY 2 DESC;
+
+#-----------How does view count change in the course of a day?----------
+#8Before we get started, let's run this query and take a look at the time column from the stream table:
+#The data type of the time column is DATETIME. It is for storing a date/time value in the database.
+SELECT time
+FROM stream
+LIMIT 10;
+
+#9.SQLite comes with a strftime() function - a very powerful function that allows you to return a formatted date.
+#It takes two arguments: strftime(format, column)
+# Let's test this function out:
+SELECT time,
+   strftime('%S', time)
+FROM stream
+GROUP BY 1
+LIMIT 20;
+
+/*For strftime(__, timestamp):
+
+%Y returns the year (YYYY)
+%m returns the month (01-12)
+%d returns the day of the month (1-31)
+%H returns 24-hour clock (00-23)
+%M returns the minute (00-59)
+%S returns the seconds (00-59)
+if time format is YYYY-MM-DD HH:MM:SS.
+
+*/
+
+#10.Okay, now we understand how strftime() works. Let's write a query that returns three columns:
+#The hours of the time column
+#The view count for each hour
+#Lastly, filter the result with only the users in your country using a WHERE clause.
+SELECT 
+   strftime('%H', time),
+   COUNT(1)
+FROM stream
+WHERE country ='US'
+GROUP BY 1;
+
+#------Joining the two tables:----------
+#11. The stream table and the chat table share a column: device_id.
+#Let's join the two tables on that column.
+SELECT *
+FROM stream
+JOIN chat
+  ON stream.device_id = chat.device_id;
+
+#12.Good job! You have completed the SQL portion of the project. Before moving on to Part 2: Visualize data with Matplotlib, see what else you can dig up!
+#For example:
+/*
+What are your favorite games? Can you find some insights about its viewers and chat room users?
+Is there anything you can do after joining the two tables?
+The full training .csv files are on GitHub.
+*/
+
+------------------------------------------------------
 
