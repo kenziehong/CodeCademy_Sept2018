@@ -1,0 +1,999 @@
+29/12/2018
+INTRODUCTION TO HTML
+What is HTML?
+
+<!-- Welcome to the world of code! Last year, millions of learners from our community started with HTML. Why? HTML is the skeleton of all web pages. It's often the first language learned by marketers and designers and is core to front-end development work. If this is your first time touching code, we're excited for what you're about to create.
+
+So what exactly is HTML? HTML provides structure to the content appearing on a website, such as images, text, or videos. Right-click on any page on the internet, choose “Inspect,” and you’ll see HTML in a panel of your screen.
+
+HTML stands for HyperText Markup Language:
+
+A markup language is a computer language that defines the structure and presentation of raw text.
+In HTML, the computer can interpret raw text that is wrapped in HTML elements.
+HyperText is text displayed on a computer or device that provides access to other text through links, also known as hyperlinks. You probably clicked on a couple of hyperlinks on your way to this Codecademy course.
+Learning HTML is the first step in creating websites, but even a bit of knowledge can help you inject code snippets into newsletter, blog or website templates. As you continue learning, you can layer HTML with CSS and JavaScript to create visually compelling and dynamic websites. But for now, we're going to focus on how to add and modify basic content on a page, like text, images, and videos. Don't worry if the websites look ugly — we're just getting started.
+ -->
+++++++++++++++++++++++++++++++++++
+INTRODUCTION TO HTML
+HTML Anatomy
+
+<!-- HTML is composed of elements. These elements structure the webpage and define its content. Let's take a look at how they're written.
+
+The diagram to the right displays an HTML paragraph element. As we can see, the paragraph element is made up of one opening tag (<p>), the content (“Hello World!” text), and a closing tag (</p>). A tag and the content between it is called an HTML element. There are many tags that we can use to organize and display text and other types of content, like images.
+
+Let's quickly review each part of the element pictured:
+
+HTML element (or simply, element) — a unit of content in an HTML document formed by HTML tags and the text or media it contains.
+
+HTML Tag — the element name, surrounded by an opening (<) and closing (>) angle bracket.
+
+Opening Tag — the first HTML tag used to start an HTML element. The tag type is surrounded by opening and closing angle brackets.
+
+Content — The information (text or other elements) contained between the opening and closing tags of an HTML element.
+
+Closing tag — the second HTML tag used to end an HTML element. Closing tags have a forward slash (/) inside of them, directly after the left angle bracket.
+
+Study the diagram to the right to learn about the anatomy of HTML syntax. When you're done, continue to the next exercise.
+ -->
+++++++++++++++++++++++++++++++++
+INTRODUCTION TO HTML
+The Body
+
+<!-- One of the key HTML elements we use to build a webpage is the body element. Only content inside the opening and closing body tags can be displayed to the screen. Here's what opening and closing body tags look like:
+
+<body>
+
+</body>
+Once the file has a body, many different types of content – including text, images, and buttons – can be added to the body.
+
+<body>
+   <p>"Life is very short and what we have to do must be done in the now." - Audre Lorde</p>
+</body> -->
+
++++++++++++++++++++++++++++++++++
+INTRODUCTION TO HTML
+HTML Structure
+
+<!-- HTML is organized as a collection of family tree relationships. As you saw in the last exercise, we placed <p> tags within <body> tags. When an element is contained inside another element, it is considered the child of that element. The child element is said to be nested inside of the parent element.
+
+<body>
+  <p>This paragraph is a child of the body</p>
+</body>
+In the example above, the <p> element is nested inside the <body> element. The <p> element is considered a child of the <body> element, and the <body> element is considered the parent. You can also see that we've added two spaces of indentation (using the space bar) for better readability.
+
+Since there can be multiple levels of nesting, this analogy can be extended to grandchildren, great-grandchildren, and beyond. The relationship between elements and their ancestor and descendent elements is known as hierarchy.
+
+Let's consider a more complicated example that uses some new tags:
+
+<body>
+  <div>
+    <h1>Sibling to p, but also grandchild of body</h1>
+    <p>Sibling to h1, but also grandchild of body</p>
+  </div>
+</body>
+In this example, the <body> element is the parent of the <div> element. Both the <h1> and <p> elements are children of the <div> element. Because the <h1> and <p> elements are at the same level, they are considered siblings and are both grandchildren of the <body> element.
+
+Understanding HTML hierarchy is important because child elements can inherit behavior and styling from their parent element. You'll learn more about webpage hierarchy in when you start digging into CSS.
+ -->
+++++++++++++++++++++++++++++++
+INTRODUCTION TO HTML
+Headings
+
+<!-- Headings in HTML are similar to headings in other types of media. For example, in newspapers, large headings are typically used to capture a reader's attention. Other times, headings are used to describe content, like the title of a movie or an educational article.
+
+HTML follows a similar pattern. In HTML, there are six different headings, or heading elements. Headings can be used for a variety of purposes, like titling sections, articles, or other forms of content.
+
+The following is the list of heading elements available in HTML. They are ordered from largest to smallest in size.
+
+<h1> — used for main headings. All other smaller headings are used for subheadings.
+<h2>
+<h3>
+<h4>
+<h5>
+<h6>
+The following example code uses a headline intended to capture a reader's attention. It uses the largest heading available, the main heading element:
+
+<h1>BREAKING NEWS</h1>
+ -->
+
+ <body>
+  <h1>The Brown Bear</h1>
+  <h2>About Brown Bears</h2>
+  <h3>Species</h3>
+  <h3>Features</h3>
+  <h2>Habitat</h2>
+  <h3>Countries with Large Brown Bear Populations</h3>
+  <h3>Countries with Small Brown Bear Populations</h3>
+  <h2>Media</h2>  
+</body>
+
++++++++++++++++++++++++++++++++++++++
+
+INTRODUCTION TO HTML
+Divs
+
+<!-- One of the most popular elements in HTML is the <div> element. <div> is short for "division" or a container that divides the page into sections. These sections are very useful for grouping elements in your HTML together.
+
+<body>
+  <div>
+    <h1>Why use divs?</h1>
+    <p>Great for grouping elements!</p>
+  </div>
+</body>
+<div>s can contain any text or other HTML elements, such as links, images, or videos. Remember to always add two spaces of indentation when you nest elements inside of <div>s for better readability.
+ -->
+<body>
+  <h1>The Brown Bear</h1>
+  <div>
+    <h2>About Brown Bears</h2>
+    <h3>Species</h3>
+    <h3>Features</h3>
+  </div> 
+  <div>
+    <h2>Habitat</h2>
+    <h3>Countries with Large Brown Bear Populations</h3>
+    <h3>Countries with Small Brown Bear Populations</h3>
+  </div> 
+  <div>
+    <h2>Media</h2>
+  </div>
+</body>
+
+++++++++++++++++++++++++++++++++++++++
+INTRODUCTION TO HTML
+Attributes
+
+<!-- If we want to expand an element's tag, we can do so using an attribute. Attributes are content added to the opening tag of an element and can be used in several different ways, from providing information to changing styling. Attributes are made up of the following two parts:
+
+The name of the attribute
+The value of the attribute
+One commonly used attribute is the id. We can use the id attribute to specify different content (such as <div>s) and is really helpful when you use an element more than once. ids have several different purposes in HTML, but for now, we'll focus on how they can help us identify content on our page.
+
+When we add an id to a <div>, we place it in the opening tag:
+
+<div id="intro">
+  <h1>Introduction</h1>
+</div>
+ -->
+
+1.
+Add an id attribute with the value "introduction" to the <div> tag that's below the The Brown Bear <h1> heading.
+
+2.
+Add an id attribute with the value "habitat" to the opening <div> tag that has the Habitat <h2> heading as a child.
+
+3.
+Add an id attribute with the value "media" to the opening <div> tag that has the Media <h2> heading as a child.
+
++++++++++++++++++++++++++++++++++++++++
+INTRODUCTION TO HTML
+Displaying Text
+
+<!-- If you want to display text in HTML, you can use a paragraph or span:
+
+Paragraphs (<p>) contain a block of plain text.
+<span> contains short pieces of text or other HTML. They are used to separate small pieces of content that are on the same line as other content.
+Take a look at each of these elements in action below:
+
+<div>
+  <h1>Technology</h1>
+</div>
+<div>
+  <p><span>Self-driving cars</span> are anticipated to replace up to 2 million jobs over the next two decades.</p>
+</div>
+In the example above, there are two different <div>. The second <div> contains a <p> with <span>Self-driving cars</span>. This <span> element separates "Self-driving cars" from the rest of the text in the paragraph.
+
+It's best to use a <span> element when you want to target a specific piece of content that is inline, or on the same line as other text. If you want to divide your content into blocks, it's better to use a <div>. -->
+
+++++++++++++++++++++++++++++++++++++++++++=
+INTRODUCTION TO HTML
+Styling Text
+
+<!-- You can also style text using HTML tags. The <em> tag emphasizes text, while the <strong> tag highlights important text.
+
+Later, when you begin to style websites, you will decide how you want browsers to display content within <em> and <strong> tags. Browsers, however, have built-in style sheets that will generally style these tags in the following ways:
+
+The <em> tag will generally render as italic emphasis.
+The <strong> will generally render as bold emphasis.
+Take a look at each style in action:
+
+<p><strong>The Nile River</strong> is the <em>longest</em> river in the world, measuring over 6,850 kilometers long (approximately 4,260 miles).</p>
+In this example, the <strong> and <em> tags are used to emphasize the text to produce the following:
+
+The Nile River is the longest river in the world, measuring over 6,850 kilometers long (approximately 4,260 miles).
+
+As we can see, "The Nile River" is bolded and "longest" is in italics. -->
+
+++++++++++++++++++++++++++++++++++++++++
+INTRODUCTION TO HTML
+Line Breaks
+
+<!-- The spacing between code in an HTML file doesn't affect the positioning of elements in the browser. If you are interested in modifying the spacing in the browser, you can use HTML's line break element: <br>.
+
+The line break element is unique because it is only composed of a starting tag. You can use it anywhere within your HTML code and a line break will be shown in the browser.
+
+<p>The Nile River is the longest river <br> in the world, measuring over 6,850 <br> kilometers long (approximately 4,260 <br> miles).</p>
+The code in the example above will result in an output that looks like the following:
+
+The Nile River is the longest river
+in the world, measuring over 6,850
+kilometers long (approximately 4,260
+miles). -->
+
++++++++++++++++++++++++++++++++++++++++==
+INTRODUCTION TO HTML
+Unordered Lists
+
+<!-- In addition to organizing text in paragraph form, you can also display content in an easy-to-read list.
+
+In HTML, you can use an unordered list tag (<ul>) to create a list of items in no particular order. An unordered list outlines individual list items with a bullet point.
+
+The <ul> element should not hold raw text and won't automatically format raw text into an unordered list of items. Individual list items must be added to the unordered list using the <li> tag. The <li> or list item tag is used to describe an item in a list.
+
+<ul>
+  <li>Limes</li>
+  <li>Tortillas</li>
+  <li>Chicken</li>
+</ul>
+In the example above, the list was created using the <ul> tag and all individual list items were added using <li> tags.
+
+The output will look like this:
+
+*Limes
+*Tortillas
+*Chicken -->
+
+++++++++++++++++++++++++++++++++++++++++
+INTRODUCTION TO HTML
+Ordered Lists
+
+<!-- Ordered lists (<ol>) are like unordered lists, except that each list item is numbered. They are useful when you need to list different steps in a process or rank items for first to last.
+
+You can create the ordered list with the <ol> tag and then add individual list items to the list using <li> tags.
+
+<ol>
+  <li>Preheat the oven to 350 degrees.</li>
+  <li>Mix whole wheat flour, baking soda, and salt.</li>
+  <li>Cream the butter, sugar in separate bowl.</li>
+  <li>Add eggs and vanilla extract to bowl.</li>
+</ol>
+The output will look like this:
+
+1.Preheat the oven to 350 degrees.
+2.Mix whole wheat flour, baking soda, and salt.
+3.Cream the butter, sugar in separate bowl.
+4.Add eggs and vanilla extract to bowl. -->
+
++++++++++++++++++++++++++++++++++++++++++++
+
+INTRODUCTION TO HTML
+Images
+
+<!-- All of the elements you've learned about so far (headings, paragraphs, lists, and spans) share one thing in common: they're composed entirely of text! What if you want to add content to your web page that isn't composed of text, like images?
+
+The <img> tag allows you to add an image to a web page. Most elements require both opening and closing tags, but the <img> tag is a self-closing tag. Note that the end of the <img> tag has a forward slash /. Self-closing tags may include or omit the final slash — both will render properly.
+
+<img src="image-location.jpg" />
+The <img> tag has a required attribute called src. The src attribute must be set to the image's source, or the location of the image. In this case, the value of src must be the uniform resource locator (URL) of the image. A URL is the web address or local address where a file is stored. -->
+
++++++++++++++++++++++++++++++++++++++
+INTRODUCTION TO HTML
+Image Alts
+
+<!-- Part of being an exceptional web developer is making your site accessible to users of all backgrounds. In order to make the Web more inclusive, we need to consider what happens when assistive technologies such as screen readers come across image tags.
+
+The alt attribute, which means alternative text, brings meaning to the images on our sites. The alt attribute can be added to the image tag just like the src attribute. The value of alt should be a description of the image.
+
+<img src="#" alt="A field of yellow sunflowers" />
+The alt attribute also serves the following purposes:
+
+If an image fails to load on a web page, a user can mouse over the area originally intended for the image and read a brief description of the image. This is made possible by the description you provide in the alt attribute.
+Visually impaired users often browse the web with the aid of screen reading software. When you include the alt attribute, the screen reading software can read the image's description out loud to the visually impaired user.
+The alt attribute also plays a role in Search Engine Optimization (SEO), because search engines cannot "see" the images on websites as they crawl the internet. Having descriptive alt attributes can improve the ranking of your site.
+If the image on the web page is not one that conveys any meaningful information to a user (visually impaired or otherwise), the alt attribute should be left empty. -->
+
+++++++++++++++++++++++++++++++++++++++
+INTRODUCTION TO HTML
+Videos
+
+<!-- In addition to images, HTML also supports displaying videos. Like the <img> tag, the <video> tag requires a src attribute with a link to the video source. Unlike the <img> tag however, the <video> element requires an opening and a closing tag.
+
+<video src="myVideo.mp4" width="320" height="240" controls>
+  Video not supported
+</video>
+In this example, the video source (src) is myVideo.mp4 The source can be a video file that is hosted alongside your webpage, or a URL that points to a video file hosted on another webpage.
+
+After the src attribute, the width and height attributes are used to set the size of the video displayed in the browser. The controls attribute instructs the browser to include basic video controls: pause, play and skip.
+
+The text, "Video not supported", between the opening and closing video tags will only be displayed if the browser is unable to load the video. -->
+
+<body>
+  <h1>The Brown Bear</h1>
+  <div id="introduction">
+    <h2>About Brown Bears</h2>
+    <p>The brown bear (<em>Ursus arctos</em>) is native to parts of northern Eurasia and North America. Its conservation status is currently <strong>Least Concern</strong>.<br /><br /> There are many subspecies within the brown bear species, including the Atlas bear and the Himalayan brown bear.</p>
+    <h3>Species</h3>
+    <ul>
+      <li>Arctos</li>
+      <li>Collarus</li>
+      <li>Horribilis</li>
+      <li>Nelsoni (extinct)</li>
+    </ul>
+    <h3>Features</h3>
+    <p>Brown bears are not always completely brown. Some can be reddish or yellowish. They have very large, curved claws and huge paws. Male brown bears are often 30% larger than female brown bears. They can range from 5 feet to 9 feet from head to toe.</p>
+  </div>
+  <div id="habitat">
+    <h2>Habitat</h2>
+    <h3>Countries with Large Brown Bear Populations</h3>
+    <ol>
+      <li>Russia</li>
+      <li>United States</li>
+      <li>Canada</li>
+    </ol>
+    <h3>Countries with Small Brown Bear Populations</h3>
+    <p>Some countries with smaller brown bear populations include Armenia, Belarus, Bulgaria, China, Finland, France, Greece, India, Japan, Nepal, Poland, Romania, Slovenia, Turkmenistan, and Uzbekistan.</p>
+  </div>
+  <div id="media">
+    <h2>Media</h2>
+    <img src="https://s3.amazonaws.com/codecademy-content/courses/web-101/web101-image_brownbear.jpg" alt="A Brown Bear"/>
+        <video src="https://s3.amazonaws.com/codecademy-content/courses/freelance-1/unit-1/lesson-2/htmlcss1-vid_brown-bear.mp4" width="320" height="240" controls>Video not supported</video>
+  </div>
+</body>
+
+-----------------------------------------------
+29/12/2018
+
+HTML DOCUMENT STANDARDS
+Preparing for HTML
+
+<!-- Now that you've learned about some of the most common HTML elements, it's time to learn how to set up an HTML file.
+
+HTML files require certain elements to set up the document properly. You can let web browsers know that you are using HTML by starting your document with a document type declaration.
+
+The declaration looks like this:
+
+<!DOCTYPE html>
+This declaration is an instruction, and it must be the first line of code in your HTML document. It tells the browser what type of document to expect, along with what version of HTML is being used in the document. For now, the browser will correctly assume that the html in <!DOCTYPE html> is referring to HTML5, as it is the current standard.
+
+In the future, however, a new standard will override HTML5. To make sure your document is forever interpreted correctly, always include <!DOCTYPE html> at the very beginning of your HTML documents.
+
+Lastly, HTML code is always saved in a file with an .html extension. -->
+
++++++++++++++++++++++++++++++++++++++++
+HTML DOCUMENT STANDARDS
+The <html> tag
+
+<!-- The <!DOCTYPE html> declaration provides the browser with two pieces of information (the type of document and the HTML version to expect), but it doesn't actually add any HTML structure or content.
+
+To create HTML structure and content, we must add opening and closing <html> tags after declaring <!DOCTYPE html>:
+
+<!DOCTYPE html>
+<html>
+
+</html>
+Anything between the opening <html> and closing </html> tags will be interpreted as HTML code. Without these tags, it's possible that browsers could incorrectly interpret your HTML code. -->
+
+++++++++++++++++++++++++++++++++++++++++
+HTML DOCUMENT STANDARDS
+The Head
+
+<!-- So far you've done two things to set up the file properly:
+
+Declared to the browser that your code is HTML with <!DOCTYPE html>
+Added the HTML element (<html>) that will contain the rest of your code.
+We have added these elements to the Brown Bears page you previously created. Now, let's also give the browser some information about the page itself. We can do this by adding a <head> element.
+
+Remember the <body> tag? The <head> element is part of this HTML metaphor. It goes above our <body> element.
+
+The <head> element contains the metadata for a web page. Metadata is information about the page that isn't displayed directly on the web page. Unlike the information inside of the <body> tag, the metadata in the head is information about the page itself. You'll see an example of this in the next exercise.
+
+The opening and closing head tags typically appear as the first item after your first HTML tag:
+
+<head>
+</head> -->
+
+++++++++++++++++++++++++++++++++++++++++
+HTML DOCUMENT STANDARDS
+Page Titles
+
+<!-- What kind of metadata about the web page can the <head> element contain?
+
+If you navigate to the Codecademy catalog and look at the top of your browser, you'll notice the words Catalog | Codecademy, which is the title of the web page.
+
+A browser's tab displays the title specified in the <title> tag. The <title> tag is always inside of the <head>.
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Coding Journal</title>
+  </head>
+</html>
+If we were to open a file containing the HTML code in the example above, the browser would display the words My Coding Journal in the title bar (or in the tab's title). -->
+
+++++++++++++++++++++++++++++++++++++++++++
+HTML DOCUMENT STANDARDS
+Where Does the Title Appear?
+
+<!-- Good work! Unfortunately, the browser panel used by the Codecademy environment does not have a title bar, so the "Brown Bear" title you wrote in the previous exercise will not be displayed. Outside of the Codecademy environment, however, your title would appear as depicted in the diagram to the right.
+
+So far, we have learned about:
+
+<!DOCTYPE html>, the declaration specifying the version of HTML for the browser
+The <html> tags that enclose all of your HTML code
+The <head> tag that contains the metadata of a webpage, such as its <title>
+Next, you will learn about new types of elements that go inside the body. -->
+
+++++++++++++++++++++++++++++++++++
+HTML DOCUMENT STANDARDS
+Linking to Other Web Pages
+
+<!-- One of the powerful aspects of HTML (and the Internet), is the ability to link to other web pages.
+
+You can add links to a web page by adding an anchor element <a> and including the text of the link in between the opening and closing tags.
+
+<a>This Is A Link To Wikipedia</a>
+Wait a minute! Technically, the link in the example above is incomplete. How exactly is the link above supposed to work if there is no URL that will lead users to the actual Wikipedia page?
+
+The anchor element in the example above is incomplete without the href attribute. This attribute stands for hyperlink reference and is used to link to a path, or the address to where a file is located (whether it is on your computer or another location). The paths provided to the href attribute are often URLs.
+
+<a href="https://www.wikipedia.org/">This Is A Link To Wikipedia</a>
+In the example above, the href attribute has been set to the value of the URL https://www.wikipedia.org/. The example now shows the correct use of an anchor element.
+
+When reading technical documentation, you may come across the term hyperlink. Not to worry, this is simply the technical term for link. These terms are often used interchangeably. -->
+
+++++++++++++++++++++++++++++++++++++++
+HTML DOCUMENT STANDARDS
+Opening Links in a New Window
+
+<!-- Have you ever clicked on a link and observed the resulting web page open in a new browser window? If so, you can thank the <a> element's target attribute.
+
+The target attribute specifies how a link should open.
+
+It's possible that one or more links on your web page link to an entirely different website. In that case, you may want users to read the linked website, but hope that they return to your web page. This is exactly when the target attribute is useful!
+
+For a link to open in a new window, the target attribute requires a value of _blank. The target attribute can be added directly to the opening tag of the anchor element, just like the href attribute.
+
+<a href="https://en.wikipedia.org/wiki/Brown_bear" target="_blank">The Brown Bear</a>
+In the example above, setting the target attribute to "_blank" instructs the browser to open the relevant Wikipedia page in a new window.
+
+In this exercise, we've used the terminology "open in a new window." It's likely that you are using a modern browser that opens up websites in new tabs, rather than new windows. Before the advent of browsers with tabs, additional browser windows had to be opened to view more websites. The target="_blank" attribute, when used in modern browsers, will open new websites in a new tab. -->
+
++++++++++++++++++++++++++++++++++++
+HTML DOCUMENT STANDARDS
+Linking to Relative Page
+
+<!-- Thus far you have learned how to link to external web pages. Many sites also link to internal web pages like Home, About, and Contact.
+
+Before we learn how to link between internal pages, let's establish where our files are stored. When making multi-page static websites, web developers often store HTML files in the root directory, or a main folder where all the files for the project are stored. As the size of the projects you create grows, you may use additional folders within the main project folder to organize your code.
+
+project-folder/
+|—— about.html
+|—— contact.html
+|—— index.html
+The example above shows three different files — about.html, contact.html, and index.html in one folder.
+
+HTML files are often stored in the same folder, as shown in the example above. If the browser is currently displaying index.html, it also knows that about.html and contact.html are in the same folder. Because the files are stored in the same folder, we can link web pages together using a relative path.
+
+<a href="./contact.html">Contact</a>
+In this example, the <a> tag is used with a relative path to link from the current HTML file to the contact.html file in the same folder. On the web page, Contact will appear as a link.
+
+A relative path is a filename that shows the path to a local file (a file on the same website, such as ./index.html) versus an absolute path (a full URL, like https://www.codecademy.com/learn/learn-html which is stored in a different folder). The ./ in ./index.html tells the browser to look for the file in the current folder. -->
+
++++++++++++++++++++++++++++++++++++++++
+HTML DOCUMENT STANDARDS
+Linking At Will
+
+<!-- You've probably visited websites where not all links were made up of text. Maybe the links you clicked on were images or some other form of content.
+
+So far, we've added links that were made up of only text, like the following:
+
+<a href="https://en.wikipedia.org/wiki/Opuntia" target="_blank">Prickly Pear</a>
+Text-only links, however, would significantly decrease your flexibility as a web developer!
+
+Thankfully, HTML allows you to turn nearly any element into a link by wrapping that element with an anchor element. With this technique, it's possible to turn images into links by simply wrapping the <img> element with an <a> element.
+
+<a href="https://en.wikipedia.org/wiki/Opuntia" target="_blank"><img src="#" alt="A red prickly pear fruit"/></a>
+In the example above, an image of a prickly pear has been turned into a link by wrapping the outside of the <img> element with an <a> element. -->
+
++++++++++++++++++++++++++++++++++
+HTML DOCUMENT STANDARDS
+Linking to Same Page
+
+<!-- At this point, we have all the content we want on our page. Since we have so much content, it doesn't all fit on the screen. How do we make it easier for a user to jump to different portions of our page?
+
+When users visit our site, we want them to be able to click a link and have the page automatically scroll to a specific section.
+
+In order to link to a target on the same page, we must give the target an id, like this:
+
+<p id="top">This is the top of the page!</p>
+<h1 id="bottom">This is the bottom! </h1>
+In this example, the <p> element is assigned an id of "top" and the <h1> element is assigned "bottom." An id can be added to most elements on a webpage.
+
+An id should be descriptive to make it easier to remember the purpose of a link. The target link is a string containing the # character and the target element's id.
+
+<ol>
+  <li><a href="#top">Top</a></li>
+  <li><a href="#bottom">Bottom</a></li>
+</ol>
+In the example above, the links to <p id="top"> and <h1 id="bottom"> are embedded in an ordered list. These links appear in the browser as a numbered list of links. An id is especially helpful for organizing content belonging to a div!	 -->
+
++++++++++++++++++++++++++++++++++++++
+HTML DOCUMENT STANDARDS
+Whitespace
+
+<!-- The rest of this lesson will focus on some tools developers use to make code easier to interpret.
+
+As the code in an HTML file grows, it becomes increasingly difficult to keep track of how elements are related. Programmers use two tools to visualize the relationship between elements: whitespace and indentation.
+
+Both tools take advantage of the fact that the position of elements in a browser is independent of the amount of whitespace or indentation in the index.html file.
+
+For example, if you wanted to increase the space between two paragraphs on your web page, you would not be able to accomplish this by adding space between the paragraph elements in the index.html file. The browser ignores whitespace in HTML files when it renders a web page, so it can be used as a tool to make code easier to read and follow.
+
+What makes the example below difficult to read?
+
+<body><p>Paragraph 1</p><p>Paragraph 2</p></body>
+You have to read the entire line to know what elements are present. Compare the example above to this:
+
+<body>
+    <p>Paragraph 1</p>
+    <p>Paragraph 2</p>
+</body>
+This example is easier to read, because each element is on its own line. While the first example required you to read the entire line of code to identify the elements, this example makes it easy to identify the body tag and two paragraphs.
+
+A browser renders both examples the same way:
+
+Paragraph 1
+Paragraph 2
+In the next exercise you will learn how to use indentation to help visualize nested elements.	 -->
+
+++++++++++++++++++++++++++++++++++++++++++
+HTML DOCUMENT STANDARDS
+Indentation
+
+<!-- The second tool web developers use to make the structure of code easier to read is indentation. The spaces are inserted using the space and tab bars on your keyboard.
+
+The World Wide Web Consortium, or W3C, is responsible for maintaining the style standards of HTML. At the time of writing, the W3C recommends 2 spaces of indentation when writing HTML code. Although your code will work without exactly two spaces, this standard is followed by the majority of professional web developers. Indentation is used to easily visualize which elements are nested within other elements.
+
+<body>
+  <p>Paragraph 1</p>
+  <div>
+    <p>Paragraph 2</p>
+  </div>
+</body>
+In the example above, Paragraph 1 and the <div> tag are nested inside of the <body> tag, so they are indented two spaces. The Paragraph 2 element is nested inside of the <div> tag, so it is indented an additional two spaces. -->
+
++++++++++++++++++++++++++++++++++++++++
+
+HTML DOCUMENT STANDARDS
+Comments
+
+<!-- HTML files also allow you to add comments to your code.
+
+Comments begin with and end with. Any characters in between will be ignored by your browser.
+
+This is a comment that the browser will not display.
+Including comments in your code is helpful for many reasons:
+
+They help you (and others) understand your code if you decide to come back and review it at a much later date.
+They allow you to experiment with new code, without having to delete old code.
+Favorite Films Section
+<p>The following is a list of my favorite films:</p>
+In this example, the comment is used to denote that the following text makes up a particular section of the page.
+
+<p> Test Code </p>
+In the example above, a valid HTML element (a paragraph element) has been "commented out." This practice is useful when there is code you want to experiment with, or return to, in the future.	 -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Brown Bears</title>
+</head>
+
+<body>
+  <nav>
+    <a href="./index.html">Brown Bear</a>
+    <a href="./aboutme.html">About Me</a>
+  </nav>
+  <h1>The Brown Bear</h1>
+  <nav>
+    <ul>
+      <li><a href="#introduction">Introduction</a></li>
+      <li><a href="#habitat">Habitat</a></li>
+      <li><a href="#media">Media</a></li>
+    </ul>
+  </nav>
+  <div id="introduction">
+    <h2>About Brown Bears</h2>
+    <p>The brown bear (<em>Ursus arctos</em>) is native to parts of northern Eurasia and North America. Its conservation status is currently <strong>Least Concern</strong>.<br /><br /> There are many subspecies within the brown bear species, including the
+      Atlas bear and the Himalayan brown bear.</p>
+    <a href="https://en.wikipedia.org/wiki/Brown_bear" target="_blank">Learn More</a>
+    <h3>Species</h3>
+    <ul>
+      <li>Arctos</li>
+      <li>Collarus</li>
+      <li>Horribilis</li>
+      <li>Nelsoni (extinct)</li>
+    </ul>
+    <h3>Features</h3>
+    <p>Brown bears are not always completely brown. Some can be reddish or yellowish. They have very large, curved claws and huge paws. Male brown bears are often 30% larger than female brown bears. They can range from 5 feet to 9 feet from head to toe.</p>
+  </div>
+  <div id="habitat">
+    <h2>Habitat</h2>
+    <h3>Countries with Large Brown Bear Populations</h3>
+    <ol>
+      <li>Russia</li>
+      <li>United States</li>
+      <li>Canada</li>
+    </ol>
+    <h3>Countries with Small Brown Bear Populations</h3>
+    <p>Some countries with smaller brown bear populations include Armenia, Belarus, Bulgaria, China, Finland, France, Greece, India, Japan, Nepal, Poland, Romania, Slovenia, Turkmenistan, and Uzbekistan.</p>
+  </div>
+  <div id="media">
+    <h2>Media</h2>
+    <img src="https://s3.amazonaws.com/codecademy-content/courses/web-101/web101-image_brownbear.jpg" />
+    <video src="https://s3.amazonaws.com/codecademy-content/courses/freelance-1/unit-1/lesson-2/htmlcss1-vid_brown-bear.mp4" height="240" width="320" controls>Video not supported</video>
+  </div>
+</body>
+
+</html>
+
+----------------------------------------------------------------------------------
+30/12/2018
+
+TABLES
+Why Tables?
+
+<!-- There are many websites on the Internet that display information like stock prices, sports scores, invoice data, and more. This data is naturally tabular in nature, meaning that a table is often the best way of presenting the data.
+
+In this part of the course, you'll learn how to use HTML to present tabular data to users.
+
+Let's begin! -->
+
+++++++++++++++++++++++++++
+TABLES
+Create a Table
+
+<!-- Before displaying data, you must first create the table that will contain the data by using the <table> element.
+
+<table>
+
+</table>
+The <table> element will contain all of the tabular data you plan on displaying. -->
+
++++++++++++++++++++++++++++++
+TABLES
+Table Rows
+
+<!-- In many programs that use tables, the table is already predefined for you, meaning that it contains the rows, columns, and cells that will hold data. In HTML, all of these components must be created.
+
+The first step in entering data into the table is to add rows using the table row element: <tr>.
+
+<table>
+  <tr>
+  </tr>
+  <tr>
+  </tr>
+</table>
+In the example above, two rows have been added to the table.	 -->
+
+++++++++++++++++++++++++++++++++++
+TABLES
+Table Data
+
+<!-- 
+Rows aren't sufficient to add data to a table. Each cell element must also be defined. In HTML, you can add data using the table data element: <td>.
+
+<table>
+  <tr>
+    <td>73</td>
+    <td>81</td>
+  </tr>
+</table>
+In the example above, two data points (73 and 81) were entered in the one row that exists. By adding two data points, we created two cells of data.
+
+If the table were displayed in the browser, it would show a table with one row and two columns. -->
+
+++++++++++++++++++++++++++++++++++
+TABLES
+Table Headings
+
+<!-- Table data doesn't make much sense without titles to describe what the data represents.
+
+To add titles to rows and columns, you can use the table heading element: <th>.
+
+The table heading element is used just like a table data element, except with a relevant title. Just like table data, a table heading must be placed within a table row.
+
+<table>
+  <tr>
+    <th></th>
+    <th scope="col">Saturday</th>
+    <th scope="col">Sunday</th>
+  </tr>
+  <tr>
+    <th scope="row">Temperature</th>
+    <td>73</td>
+    <td>81</td>
+  </tr>
+</table>
+What happened in the code above?
+
+First, a new row was added to hold the three headings: a blank heading, a Saturday heading, and a Sunday heading. The blank heading creates the extra table cell necessary to align the table headings correctly over the data they correspond to.
+
+In the second row, one table heading was added as a row title: Temperature.
+
+Note, also, the use of the scope attribute, which can take one of two values:
+
+row - this value makes it clear that the heading is for a row.
+col - this value makes it clear that the heading is for a column.
+HTML code for tables may look a little strange at first, but analyzing it piece by piece helps make the code more understandable. -->
+
+++++++++++++++++++++++++++++++++++++++
+
+TABLES
+Table Borders
+
+<!-- So far, the tables you've created have been a little difficult to read because they have no borders.
+
+In older versions of HTML, a border could be added to a table using the border attribute and setting it equal to an integer. This integer would represent the thickness of the border.
+
+<table border="1">
+  <tr>
+    <td>73</td>
+    <td>81</td>
+  </tr>
+</table>
+The code in the example above is following is deprecated, so please don't use it. It's meant to illustrate older conventions you may come across when reading other developers' code.
+
+The browser will likely still interpret your code correct if you use the border attribute, but that doesn't mean the attribute should be used. Instead, you can achieve the same effect using CSS.
+
+table, td {
+  border: 1px solid black;
+}
+The code in the example above uses CSS instead of HTML to show table borders. -->
+
++++++++++++++++++++++++++++++++++
+
+TABLES
+Spanning Columns
+
+<!-- What if the table contains data that spans multiple columns?
+
+For example, a personal calendar could have events that span across multiple hours, or even multiple days.
+
+Data can span columns using the colspan attribute. The attributes accepts an integer (greater than or equal to 1) to denote the number of columns it spans across.
+
+<table>
+  <tr>
+    <th>Monday</th>
+    <th>Tuesday</th>
+    <th>Wednesday</th>
+  </tr>
+  <tr>
+    <td colspan="2">Out of Town</td>
+    <td>Back in Town</td>
+  </tr>
+</table>
+In the example above, the data Out of Town spans the Monday and Tuesday table headings using the value 2 (two columns). The data Back in Town appear only under the Wednesday heading. -->
+
+++++++++++++++++++++++++++++++++++++++++
+TABLES
+Spanning Rows
+
+<!-- 
+Data can also span multiple rows using the rowspan attribute.
+
+The rowspan attribute is used for data that spans multiple rows (perhaps an event goes on for multiple hours on a certain day). It accepts an integer (greater than or equal to 1) to denote the number of rows it spans across.
+
+<table>
+  <tr> Row 1
+    <th></th>
+    <th>Saturday</th>
+    <th>Sunday</th>
+  </tr>
+  <tr> Row 2
+    <th>Morning</th>
+    <td rowspan="2">Work</td>
+    <td rowspan="3">Relax</td>
+  </tr>
+  <tr> Row 3
+    <th>Afternoon</th>
+  </tr>
+  <tr> Row 4
+    <th>Evening</th>
+    <td>Dinner</td>
+  </tr>
+</table>
+In the example above, there are four rows:
+
+The first row contains an empty cell and the two column headings.
+The second row contains the Morning row heading, along with Work, which spans two rows under the Saturday column. The "Relax" entry spans three rows under the Sunday column.
+The third row only contains the Afternoon row heading.
+The fourth row only contains the Dinner entry, since "Relax" spans into the cell next to it.
+If you'd like to see how the browser interprets the code above, feel free to copy and paste it into the code editor to understand it a little better. -->
+
++++++++++++++++++++++++++++++
+TABLES
+Table Body
+
+<!-- Over time, a table can grow to contain a lot of data and become very long. When this happens, the table can be sectioned off so that it is easier to manage.
+
+Long tables can be sectioned off using the table body element: <tbody>.
+
+The <tbody> element should contain all of the table's data, excluding the table headings (more on this in a later exercise).
+
+<table>
+  <tbody>
+    <tr>
+      <th></th>
+      <th>Saturday</th>
+      <th>Sunday</th>
+    </tr>
+    <tr>
+      <th>Morning</th>
+      <td rowspan="2">Work</td>
+      <td rowspan="3">Relax</td>
+    </tr>
+    <tr>
+     <th>Afternoon</th>
+    </tr>
+    <tr>
+      <th>Evening</th>
+      <td>Dinner</td>
+    </tr>
+  </tbody>
+</table>
+In the example above, all of the table data is contained within a table body element. Note, however, that the headings were also kept in the table's body — we'll change this in the next exercise. -->
+
+++++++++++++++++++++++++++++++++++++
+TABLES
+Table Head
+
+<!-- In the last exercise, the table's headings were kept inside of the table's body. When a table's body is sectioned off, however, it also makes sense to section off the table's headings using the <thead> element.
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Saturday</th>
+      <th>Sunday</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Morning</th>
+      <td rowspan="2">Work</td>
+      <td rowspan="3">Relax</td>
+    </tr>
+    <tr>
+     <th>Afternoon</th>
+    </tr>
+    <tr>
+      <th>Evening</th>
+      <td>Dinner</td>
+    </tr>
+  </tbody>
+</table>
+In the example above, the only new element is <thead>. The table headings are contained inside of this element. Note that the table's head still requires a row in order to contain the table headings. -->
+
+++++++++++++++++++++++++++++++++++++
+TABLES
+Table Footer
+
+<!-- The bottom part of a long table can also be sectioned off using the <tfoot> element.
+
+<table>
+  <thead>
+    <tr>
+      <th>Quarter</th>
+      <th>Revenue</th>
+      <th>Costs</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Q1</th>
+      <td>$10M</td>
+      <td>$7.5M</td>
+    </tr>
+    <tr>
+      <th>Q2</th>
+      <td>$12M</td>
+      <td>$5M</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th>Total</th>
+      <td>$22M</td>
+      <td>$12.5M</td>
+    </tr>
+  </tfoot>
+</table>
+In the example above, the footer contains the totals of the data in the table. Footers are often used to contain sums, differences, and other data results.	 -->
+
++++++++++++++++++++++++++++++
+TABLES
+Styling with CSS
+
+<!-- Tables, by default, are very bland. They have no borders, the font color is black, and the typeface is the same type used for other HTML elements.
+
+You can use CSS to style tables just like you have done in the past. Specifically, you can change style the various aspects mentioned above.
+
+table, th, td {
+  border: 1px solid black;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+The code in the example above demonstrates just some of the various table aspects you can style using the CSS properties you learned about earlier. -->
+
++++++++++++++++++++++++++++++++++
+TABLES
+HTML Tables
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ship To It - Company Packing List</title>
+  <link href="https://fonts.googleapis.com/css?family=Lato: 100,300,400,700|Luckiest+Guy|Oxygen:300,400" rel="stylesheet">
+  <link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+  <ul class="navigation">
+    <li><img src="https://s3.amazonaws.com/codecademy-content/courses/web-101/unit-9/htmlcss1-img_logo-shiptoit.png" height="20px;"></li>
+    <li class="active">Action List</li>
+    <li>Profiles</li>
+    <li>Settings</li>
+  </ul>
+
+  <div class="search">Search the table</div>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>Company Name</th>
+        <th>Number of Items to Ship</th>
+        <th>Next Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Adam's Greenworks</td>
+        <td>14</td>
+        <td>Package Items</td>
+      </tr>
+      <tr>
+        <td>Davie's Burgers</td>
+        <td>2</td>
+        <td>Send Invoice</td>
+      </tr>
+      <tr>
+        <td>Baker's Bike Shop</td>
+        <td>3</td>
+        <td>Send Invoice</td>
+      </tr>
+      <tr>
+        <td>Miss Sally's Southern</td>
+        <td>4</td>
+        <td>Ship</td>
+      </tr>
+      <tr>
+        <td>Summit Resort Rentals</td>
+        <td>4</td>
+        <td>Ship</td>
+      </tr>
+      <tr>
+        <td>Strike Fitness</td>
+        <td>1</td>
+        <td>Enter Order</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <td>Total</td>
+			<td>28</td>
+    </tfoot>
+  </table>
+</body>
+</html>
+
