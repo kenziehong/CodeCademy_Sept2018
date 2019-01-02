@@ -85,3 +85,20 @@ Nested elements can be selected by separating selectors with a space.
 The !important flag will override any style, however it should almost never be used, as it is extremely difficult to override.
 Multiple unrelated selectors can receive the same styles by separating the selector names with commas.
 Great work this lesson. With this knowledge, you'll be able to use CSS to change the look and feel of websites to make them look great.
+
+---------------------------------------------------------------------
+2/1/2019
+
+CSS VISUAL RULES
+Review Visual Rules
+
+Incredible work! You used CSS to alter text and images throughout a website. Throughout this lesson, you learned concepts including:
+
+CSS declarations are structured into property and value pairs.
+The font-family property defines the typeface of an element.
+font-size controls the size of text displayed.
+font-weight defines how thin or thick text is displayed.
+The text-align property places text in the left, right, or center of its parent container.
+Text can have two different color attributes: color and background-color. color defines the color of the text, while background-color defines the color behind the text.
+CSS can make an element transparent with the opacity property.
+CSS can also set the background of an element to an image with the background-image property.

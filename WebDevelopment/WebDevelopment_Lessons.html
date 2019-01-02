@@ -1395,3 +1395,331 @@ index.html
 </body>
 
 </html>
+
+-------------------------------------------------------------
+02/01/2019
+
+CSS VISUAL RULES
+Introduction To Visual Rules
+
+<!-- In this lesson, you'll learn the basic structure and syntax of CSS so that you can start styling web page elements.
+ -->
+++++++++++++++++++++++++++++++
+
+CSS VISUAL RULES
+CSS Structure
+
+<!-- To style an HTML element using CSS, you need to write a CSS declaration inside the body of a CSS selector.
+
+h1 {
+  color: blue;
+}
+The example above selects the <h1> element. Inside of the selector's body, we typed color: blue. This line is referred to as a CSS declaration. CSS declarations consist of a property and a value.
+
+Property — the property you'd like to style of that element (i.e., size, color, etc.).
+
+Value — the value of the property (i.e., 18px for size, blue for color, etc.).
+
+In the example above, the property is color and the value is blue. The property and value are separated by a colon (:). A semicolon (;) should always be used at the end of a declaration.
+
+Finally, the entire snippet of code in the example above is known as a CSS rule or rule set. A CSS rule consists of the selector (here, h1) and all declarations inside of the selector. -->
+
+++++++++++++++++++++++++++++++
+CSS VISUAL RULES
+Font Family
+
+<!-- If you've ever used a formatted word processor, chances are that you probably also used a feature that allowed you change the font you were typing in. Font refers to the technical term typeface, or font family.
+
+To change the typeface of text on your web page, you can use the font-family property.
+
+h1 {
+  font-family: Garamond;
+}
+In the example above, the font family for all main heading elements has been set to Garamond.
+
+When setting typefaces on a web page, keep the following points in mind:
+
+The font specified in a stylesheet must be installed on a user's computer in order for that font to display when a user visits the web page.
+The default typeface for all HTML elements is Times New Roman. You may be familiar with this typeface if you have ever used a formatted word processor. If no font-family attribute is defined, the page will appear in Times New Roman.
+It's a good practice to limit the number of typefaces used on a web page to 2 or 3. This helps the page load faster in some cases and is usually a good design decision.
+When the name of a typeface consists of more than one word, it's a best practice to enclose the typeface's name in quotes, like so:
+h1 {
+  font-family: "Courier New";
+}
+You can find a reference of web safe fonts here. -->
+
+++++++++++++++++++++++++++++
+CSS VISUAL RULES
+Font Size
+
+<!-- Changing the typeface isn't the only way to customize text. Often times, different sections of a web page are highlighted by modifying the font size.
+
+To change the size of text on your web page, you can use the font-size property.
+
+p {
+  font-size: 18px;
+}
+In the example above, the font-size of all paragraphs was set to 18px. px means pixels and is a way to measure font size. -->
+
+++++++++++++++++++++++++++++++
+CSS VISUAL RULES
+Font Weight
+
+<!-- In CSS, the font-weight property controls how bold or thin text appears.
+
+p {
+  font-weight: bold;
+}
+In the example above, all paragraphs on the web page would appear bolded.
+
+The font-weight property has a another value: normal. Why does it exist?
+
+If we wanted all text on a web page to appear bolded, we could select all text elements and change their font weight to bold. If a certain section of text was required to appear normal, however, we could set the font weight of that particular element to normal, essentially shutting off bold for that element. -->
+
++++++++++++++++++++++++++++++++
+CSS VISUAL RULES
+Text Align
+
+<!-- No matter how much styling is applied to text (typeface, size, weight, etc.), text always appears on the left side of the browser.
+
+To align text we can use the text-align property. The text-align property will align text to the element that holds it, otherwise known as its parent.
+
+h1 {
+  text-align: right;
+}
+The text-align property can be set to one of the following three values:
+
+left — aligns text to the left hand side of its parent element, which in this case is the browser.
+center — centers text inside of its parent element.
+right — aligns text to the right hand side of its parent element. -->
+
+++++++++++++++++++++++++++++++++
+CSS VISUAL RULES
+Color
+
+<!-- Before discussing the specifics of color, it's important to make two distinctions about color. Color can affect the following design aspects:
+
+Foreground color
+Background color
+Foreground color is the color that an element appears in. For example, when a heading is styled to appear green, the foreground color of the heading has been styled.
+
+Conversely, when a heading is styled so that its background appears yellow, the background color of the heading has been styled.
+
+In CSS, these two design aspects can be styled with the following two properties:
+
+color: this property styles an element's foreground color
+background-color: this property styles an element's background color
+h1 {
+  color: red;
+  background-color: blue;
+}
+In the example above, the text of the heading will appear in red, and the background of the heading will appear blue. -->
+
+++++++++++++++++++++++++++++++++
+CSS VISUAL RULES
+Opacity
+
+<!-- Opacity is the measure of how transparent an element is. It's measured from 0 to 1, with 1 representing 100%, or fully visible and opaque, and 0 representing 0%, or fully invisible.
+
+Opacity can be used to make elements fade into others for a nice overlay effect. To adjust the opacity of an element, the syntax looks like this:
+
+.overlay {
+  opacity: 0.5;
+}
+In the example above, the .overlay element would be 50% visible, letting whatever is positioned behind it show through. -->
+
++++++++++++++++++++++++++++++++
+CSS VISUAL RULES
+Background Image
+
+<!-- CSS has the ability to change the background of an element. One option is to make the background of an element an image. This is done through the CSS property background-image. Its syntax looks like this:
+
+.main-banner {
+  background-image: url("https://www.example.com/image.jpg");
+}
+The background-image property will set the element's background to display an image.
+The value provided to background-image is a url. The url should be a url to an image. The url can be a file within your project, or it can be a link to an external site. To link to an image inside an existing project, you must provide a relative file path. If there was an image folder in the project, with an image named mountains.jpg, the relative file path would look like:
+.main-banner {
+  background-image: url("images/mountains.jpg");
+} -->
+
++++++++++++++++++++++++++++++++++++++++++++++++++
+CSS VISUAL RULES
+Review Visual Rules
+
+body {
+  /* Old browsers */
+  background: #141E30;
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(-45deg, #35577D, #141E30);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(-45deg, #35577D, #141E30);
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  color: #FFF;
+  font-size: 2em;
+  padding-top: 100px;
+  width: 100%;
+  font-family: Georgia;
+  text-align: center;
+}
+
+h2 {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 100;
+  font-size: 22px;
+  line-height: 24px;
+  padding-bottom: 30px;
+  text-align: left;
+  width: 70%;
+  font-family: Georgia
+}
+
+p {
+  color: AliceBlue;
+  line-height: 1.3em;
+  text-align: left;
+  width: 100%;
+  font-family: Helvetica;
+  font-size: 18px;
+  font-weight: bold;
+    
+}
+
+.byline {
+  font-family: Helvetica;
+  color: rgba(255, 255, 255, 0.5);
+  float: left;
+  font-size: 14px;
+  padding-left: 10px;
+  text-transform: uppercase;
+}
+
+.caption {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 14px;
+  margin-left: 20px;
+  padding: 10px;
+  position: relative;
+  top: 80%;
+  width: 60%;
+  background-color: white;
+  color: black;
+  opacity: 0.75;
+}
+
+.content {
+  padding: 40px;
+}
+
+.image {
+  background-image: url("https://s3.amazonaws.com/codecademy-content/courses/freelance-1/unit-2/soccer.jpeg");
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+}
+
+.writer-img {
+  -webkit-box-shadow: 5px 0px 5px 0px rgba(0, 0, 50, 0.97);
+  -moz-box-shadow: 5px 0px 5px 0px rgba(0, 0, 50, 0.97);
+  box-shadow: 5px 0px 5px 0px rgba(0, 0, 50, 0.97);
+  float: left;
+  width: 50px;
+}
+
+
+++++++++++++++++++++++++++++++
+body {
+  /* Old browsers */
+  background: #141E30;
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(-45deg, #35577D, #141E30);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(-45deg, #35577D, #141E30);
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  color: #FFF;
+  font-size: 2em;
+  padding-top: 100px;
+  width: 100%;
+  font-family: Georgia;
+  text-align: center;
+}
+
+h2 {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 100;
+  font-size: 22px;
+  line-height: 24px;
+  padding-bottom: 30px;
+  text-align: left;
+  width: 70%;
+  font-family: Georgia
+}
+
+p {
+  color: AliceBlue;
+  line-height: 1.3em;
+  text-align: left;
+  width: 100%;
+  font-family: Helvetica;
+  font-size: 18px;
+  font-weight: bold;
+    
+}
+
+.byline {
+  font-family: Helvetica;
+  color: rgba(255, 255, 255, 0.5);
+  float: left;
+  font-size: 14px;
+  padding-left: 10px;
+  text-transform: uppercase;
+}
+
+.caption {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 14px;
+  margin-left: 20px;
+  padding: 10px;
+  position: relative;
+  top: 80%;
+  width: 60%;
+  background-color: white;
+  color: black;
+  opacity: 0.75;
+}
+
+.content {
+  padding: 40px;
+}
+
+.image {
+  background-image: url("https://s3.amazonaws.com/codecademy-content/courses/freelance-1/unit-2/soccer.jpeg");
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+}
+
+.writer-img {
+  -webkit-box-shadow: 5px 0px 5px 0px rgba(0, 0, 50, 0.97);
+  -moz-box-shadow: 5px 0px 5px 0px rgba(0, 0, 50, 0.97);
+  box-shadow: 5px 0px 5px 0px rgba(0, 0, 50, 0.97);
+  float: left;
+  width: 50px;
+}
+
