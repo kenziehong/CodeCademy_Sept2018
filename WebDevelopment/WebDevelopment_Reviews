@@ -214,3 +214,41 @@ The word-spacing property changes how far apart individual words are.
 The letter-spacing property changes how far apart individual letters are.
 
 The text-align property changes the horizontal alignment of text.
+
+-------------------------------------------
+CODE CHALLENGE: CSS DESIGN
+CSS Code Challenges Review
+
+Great job on completing the CSS code challenges!
+
+To recap on what you just practiced:
+
+Edited an image to make it round.
+Targeted specific elements' CSS.
+Transferred inline CSS to a stylesheet.
+Refactored a CSS stylesheet to remove extra selectors.
+Manipulated padding and margin to align elements.
+Added a fallback font just in case a font can't be displayed.
+Separated declarations using semicolons.
+Changed the display property of an element.
+Assigned the position of elements to overlap.
+
+---------------------------------------------------
+SIZING ELEMENTS
+Review: Relative Measurements
+
+Great work! You learned how to size elements on a website relative to other elements on the page.
+
+Let's review what you learned:
+
+Content on a website can be sized relative to other elements on the page using relative measurements.
+The unit of em sizes font relative to the font size of a parent element.
+The unit of rem sizes font relative to the font size of a root element. That root element is the <html> element.
+Percentages are commonly used to size box-model features, like the width, height, padding, or margin of an element.
+When percentages are used to size width and height, child elements will be sized relative to the dimensions of their parent (remember that parent dimensions must first be set).
+Percentages can be used to set padding and margin. Horizontal and vertical padding and margin are set relative to the width of a parent element.
+The minimum and maximum width of elements can be set using min-width and max-width.
+The minimum and maximum height of elements can be set using min-height and max-height.
+When the height of an image or video is set, then its width can be set to auto so that the media scales proportionally. Reversing these two properties and values will also achieve the same result.
+A background image of an HTML element will scale proportionally when its background-size property is set to cover.
+Relative units of measurement are a first step towards incorporating responsive design in a website. When combined with more advanced responsive techniques, you can create a seamless user experience regardless of a device's screen size.
