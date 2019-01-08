@@ -309,3 +309,22 @@ Did you locate the bug using steps 1 and 2, but can't fix the bug? Consult docum
 It may take some time and practice, but this is how all developers work through their issues, so don't give up, and you'll be an expert in no time.
 
 Congratulations again on learning all of these new techniques. Let's give them one more round of practice so you can see how much progress you've made!
+
+---------------------------------------------------------------
+LEARN JAVASCRIPT: ERROR HANDLING
+Error Handling Review
+
+Great job with handling errors!
+
+In this lesson we went over:
+
+How mistakes in programming leads to errors.
+Why errors are useful for developers.
+Errors will prevent a program from executing unless it is handled.
+How to create an error using the Error() function.
+How to throw an error object using the throw keyword.
+How to use the try...catch statement to handle thrown errors.
+Evaluating code in a try block to anticipate errors.
+Catching the error in a catch block to allow our program to continue running.
+Why the try...catch statement would be useful in a program.
+Now you have the ability to create code that doesn't break when an error is thrown!
