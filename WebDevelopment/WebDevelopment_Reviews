@@ -364,3 +364,56 @@ await returns the resolved value of the awaited promise.
 We can write multiple await statements to produce code that reads like synchronous code.
 We use try...catch statements within our async functions for error handling.
 We should still take advantage of concurrency by writing async functions that allow asynchronous actions to happen in concurrently whenever possible.
+
+-----------------------------------------------------
+10/01/2019
+
+REQUESTS I
+Review Requests I
+
+You’ve done an amazing job navigating through making XHR GET and POST requests! Take some time to review the core concepts before moving on to the next lesson.
+
+JavaScript is the language of the web because of its asynchronous capabilities. AJAX, which stands for Asynchronous JavaScript and XML, is a set of tools that are used together to take advantage of JavaScript's asynchronous capabilities.
+
+There are many HTTP request methods, two of which are GET and POST.
+
+GET requests only request information from other sources.
+
+POST methods can introduce new information to other sources in addition to requesting it.
+
+GET requests can be written using an XMLHttpRequest object and vanilla JavaScript.
+
+POST requests can also be written using an XMLHttpRequest object and vanilla JavaScript.
+
+Writing GET and POST requests with XHR objects and vanilla JavaScript requires constructing the XHR object using new, setting the responseType, creating a function that will handle the response object, and opening and sending the request.
+
+To add a query string to a URL endpoint you can use ? and include a parameter.
+
+To provide additional parameters, use & and then include a key-value pair, joined by =.
+
+Determining how to correctly write the requests and how to properly implement them requires carefully reading the documentation of the API with which you're working.
+
+----------------------------------------------------
+
+REQUESTS II
+Review Requests II
+
+Let's recap on the concepts covered in the previous exercises:
+
+GET and POST requests can be created a variety of ways.
+
+Use AJAX to asynchronously request data from APIs. fetch() and async/await are new functionalities developed in ES6 (promises) and ES8 respectively.
+
+Promises are a new type of JavaScript object that represent data that will eventually be returned from a request.
+
+fetch() is a web API that can be used to create requests. fetch() will return promises.
+
+We can chain .then() methods to handle promises returned by fetch().
+
+The .json() method converts a returned promise to a JSON object.
+
+async is a keyword that is used to create functions that will return promises.
+
+await is a keyword that is used to tell a program to continue moving through the message queue while a promise resolves.
+
+await can only be used within functions declared with async.
