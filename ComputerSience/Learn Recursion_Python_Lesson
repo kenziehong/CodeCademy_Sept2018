@@ -1,0 +1,1445 @@
+RECURSION: CONCEPTUAL
+Introduction to Recursion
+
+You've heard about a trendy new spot that sells fruit sandwiches. What are fruit sandwiches? You have no idea, but you're eager to find out!
+
+Sadly, when you arrive at the store, the line is out the door and around the block. Undeterred, you hatch a plan to find out how many people are in line before you.
+
+You tap the person in front of you and ask them how many people are ahead of them. They have no idea, (the line is huge!) so they ask you to wait a moment and tap the person in front of them, repeating this process through the line.
+
+Finally, the second to last person taps the person at the front of the line. Nobody is ahead of them, so they reply "It's just me so: one person!". Then this message is repeated back down the line.
+
+The next person says "okay, there was one person ahead of me, I'll add myself... I can tell the person behind me: 2 people in line."
+
+Each person waiting for a reply:
+
+receives the message
+adds themselves to the count
+responds to the person tapping them
+This chain eventually reaches you with the final number. Your plan was a success!
+
+You executed a recursive strategy. The "function" of asking a person involved asking a person. The self-referential logic can seem like it goes on forever, but each question brings you closer to the front of the line where no more people are asked about the line.
+
+Your approach had two aspects which are essential to recursive thinking. Break the problem into two possibilities:
+
+There's nobody left in line, don't ask
+There's someone in line, ask them
+We repeat Step 2 with a different input which brings us closer to Step 1.
+
+Instructions
+What are the repetitive parts of your strategy?
+
+When did things stop repeating? Why?
+
+++++++++++++++++++++++++++++++++++++++++++++++++
+
+RECURSION: CONCEPTUAL
+Recursion Outline
+
+Recursion is a strategy for solving problems by defining the problem in terms of itself. For example, to sum the elements of a list we would take the first element and add it to the sum of the remaining elements.
+
+How would we get that sum of remaining elements? Easy! We'd take the first element of the remaining elements and add it to the... Maybe you can understand why recursion can be a tricky subject!
+
+In programming, recursion means a function definition will include an invocation of the function within its own body. Here's a pseudo-code example:
+
+define function, speller
+  if there are no more letters
+    print "all done"
+  print the first letter
+  invoke speller with the given name minus the first letter
+If we invoked this function with "Zoe" as the argument, we would see "Z", "o", and "e" printed out before "all done".
+
+We call the function a total of 4 times!
+
+function called with "Zoe"
+function called with "oe"
+function called with "e"
+function called with ""
+Let's break the function into three chunks:
+
+   if there are no more letters
+     print "all done"
+This section is the base case. We are NOT invoking the function under this condition. The equivalent base case from the previous exercise was when we had reached the front of the line.
+
+   print the first letter
+This section solves a piece of the problem. If we want to spell someone's name, we'll have to spell at least one letter.
+
+   invoke speller with the given name minus the first letter
+This section is the recursive step, calling the function with arguments which bring us closer to the base case. In this example, we're reducing the length of the name by a single letter. Eventually, there will be a function call with no letters given as the argument.
+
+For comparison's sake, here is pseudo-code for an iterative approach to the same problem:
+
+ define function, speller
+   for each letter in the name argument
+     print the letter
+   print "all done"
+
+Compare the two pseudo-code functions.
+
+How are they different? What parts are similar?
+
+How is it possible for a function to resolve if it refers to itself?
+
++++++++++++++++++++++++++++++++++++++++++++++++++++
+RECURSION: CONCEPTUAL
+Call Stacks and Execution Frames
+
+A recursive approach requires the function invoking itself with different arguments. How does the computer keep track of the various arguments and different function invocations if it's the same function definition?
+
+Repeatedly invoking functions may be familiar when it occurs sequentially, but it can be jarring to see this invocation occur within a function definition.
+
+Languages make this possible with call stacks and execution contexts.
+
+Stacks, a data structure, follow a strict protocol for the order data enters and exits the structure: the last thing to enter is the first thing to leave.
+
+Your programming language often manages the call stack, which exists outside of any specific function. This call stack tracks the ordering of the different function invocations, so the last function to enter the call stack is the first function to exit the call stack
+
+we can think of execution contexts as the specific values we plug into a function call.
+
+A function which adds two numbers:
+
+Invoking the function with 3 and 4 as arguments...
+execution context:
+X = 3
+Y = 4
+
+Invoking the function with 6 and 2 as arguments...
+execution context:
+X = 6
+Y = 2
+Consider a pseudo-code function which sums the integers in an array:
+
+ function, sum_list 
+   if list has a single element
+     return that single element
+   otherwise...
+     add first element to value of sum_list called with every element minus the first
+This function will be invoked as many times as there are elements within the list! Let's step through:
+
+CALL STACK EMPTY
+___________________
+
+Our first function call...
+sum_list([5, 6, 7])
+
+CALL STACK CONTAINS
+___________________
+sum_list([5, 6, 7])
+with the execution context of a list being [5, 6, 7]
+___________________
+
+Base case, a list of one element not met.
+We invoke sum_list with the list of [6, 7]...
+
+CALL STACK CONTAINS
+___________________
+sum_list([6, 7])
+with the execution context of a list being [6, 7]
+___________________
+sum_list([5, 6, 7])
+with the execution context of a list being [5, 6, 7]
+___________________
+
+Base case, a list of one element not met.
+We invoke sum_list with the list of [7]...
+
+CALL STACK CONTAINS
+___________________
+sum_list([7])
+with the execution context of a list being [7]
+___________________
+sum_list([6, 7])
+with the execution context of a list being [6, 7]
+___________________
+sum_list([5, 6, 7])
+with the execution context of a list being [5, 6, 7]
+___________________
+
+We've reached our base case! List is one element. 
+We return that one element.
+This return value does two things:
+
+1) "pops" sum_list([7]) from CALL STACK.
+2) provides a return value for sum_list([6, 7])
+
+----------------
+CALL STACK CONTAINS
+___________________
+sum_list([6, 7])
+with the execution context of a list being [6, 7]
+RETURN VALUE = 7
+___________________
+sum_list([5, 6, 7])
+with the execution context of a list being [5, 6, 7]
+___________________
+
+sum_list([6, 7]) waits for the return value of sum_list([7]), which it just received. 
+
+sum_list([6, 7]) has resolved and "popped" from the call stack...
+
+
+----------------
+CALL STACK contains
+___________________
+sum_list([5, 6, 7])
+with the execution context of a list being [5, 6, 7]
+RETURN VALUE = 6 + 7
+___________________
+
+sum_list([5, 6, 7]) waits for the return value of sum_list([6, 7]), which it just received. 
+sum_list([5, 6, 7]) has resolved and "popped" from the call stack.
+
+
+----------------
+CALL STACK is empty
+___________________
+RETURN VALUE = (5 + 6 + 7) = 18
+Instructions
+When a recursive function enters the base case without any recursive calls, will the call stack be empty?
+
+Why or why not?
+
+++++++++++++++++++++++++++++++++++++++++++++
+
+RECURSION: CONCEPTUAL
+Base Case and Recursive Step
+
+Recursion has two fundamental aspects: the base case and the recursive step.
+
+When using iteration, we rely on a counting variable and a boolean condition. For example, when iterating through the values in a list, we would increment the counting variable until it exceeded the length of the dataset.
+
+Recursive functions have a similar concept, which we call the base case. The base case dictates whether the function will recurse, or call itself. Without a base case, it's the iterative equivalent to writing an infinite loop.
+
+Because we're using a call stack to track the function calls, your computer will throw an error due to a stack overflow if the base case is not sufficient.
+
+The other fundamental aspect of a recursive function is the recursive step. This portion of the function is the step that moves us closer to the base case.
+
+In an iterative function, this is handled by a loop construct that decrements or increments the counting variable which moves the counter closer to a boolean condition, terminating the loop.
+
+In a recursive function, the "counting variable" equivalent is the argument to the recursive call. If we're counting down to 0, for example, our base case would be the function call that receives 0 as an argument. We might design a recursive step that takes the argument passed in, decrements it by one, and calls the function again with the decremented argument. In this way, we would be moving towards 0 as our base case.
+
+Analyzing the Big O runtime of a recursive function is very similar to analyzing an iterative function. Substitute iterations of a loop with recursive calls.
+
+For example, if we loop through once for each element printing the value, we have a O(N) or linear runtime. Similarly, if we have a single recursive call for each element in the original function call, we have a O(N) or linear runtime.
+
+Instructions
+How are iteration and recursion similar? How are they different?
+
+Can we rewrite any iterative function in a recursive way? Why or why not?
+
+--------------------------------------------------------------------------
+RECURSION: PYTHON
+Building Our Own Call Stack
+
+The best way to understand recursion is with lots of practice! At first, this method of solving a problem can seem unfamiliar but by the end of this lesson, we'll have implemented a variety of algorithms using a recursive approach.
+
+Before we dive into recursion, let's replicate what's happening in the call stack with an iterative function. The call stack is abstracted away from us in Python, but we can recreate it to gain a better understanding of how recursive calls build up and resolve.
+
+Let's write a function that, given a number as input, sums every number from 1 to the given input.
+
+sum_to_one(4)
+# 10
+sum_to_one(11)
+# 66
+To accurately depict what occurs in a recursive function, we'll need a single call stack and execution contexts for each function call. The call stack tracks each function invocation until it resolves in a last in, first out order.
+
+call_stack = []
+recursive_func()
+call_stack = [recursive_func_1]
+
+# within the body of recursive_func, another call to recursive_func()
+call_stack = [recursive_func_1, recursive_func_2]
+# the body of the second call to recursive_func resolves...
+call_stack = [recursive_func_1]
+# the body of the original call to recursive_func resolves...
+call_stack = []
+Execution contexts are effectively a mapping between variable names and their values within the function when it is called. We can use a list for our call stack and a dictionary for each execution context.
+
+Let's get started!
+
+Instructions
+1.
+Define a sum_to_one() function that has n as the sole parameter.
+
+Inside the function body:
+
+declare the variable result and set it to 1.
+declare the variable call_stack and set it to an empty list.
+Use multiple return to return both of these values: result, call_stack
+
+2.
+Fill in our sum_to_one() function body by writing a while loop after the variable call_stack.
+
+This loop represents the recursive calls which lead to a base case.
+
+We'll want to loop until the input n reaches 1.
+
+Inside the loop, create a variable execution_context and assign it to a dictionary with the key of "n_value" pointing to n.
+
+Use a list method to add execution_context to the end of call_stack.
+
+This is our way of simulating the recursive function calls being "pushed" onto the system's call stack.
+
+Decrement n after its value has been stored.
+
+End the loop by printing call_stack.
+
+3.
+After the while loop concludes, we've reached our "base case", where n == 1.
+
+In the next exercise, we'll handle the accumulation of values from all the execution contexts captured in call_stack.
+
+For now, print out "BASE CASE REACHED"!
+
+=======================================
+
+# define your sum_to_one() function above the function call
+def sum_to_one(n):
+  result = 1
+  call_stack = []
+  while(n!=1):
+    execution_context = {"n_value": n}
+    call_stack.append(execution_context)
+    n -= 1
+    print(call_stack)
+  print("BASE CASE REACHED")  
+  return result, call_stack
+  
+sum_to_one(4)
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+RECURSION: PYTHON
+Building Our Own Call Stack, Part II
+
+In the previous exercise, we used an iterative function to implement how a call stack accumulates execution contexts during recursive function calls.
+
+We'll now address the conclusion of this function, where the separate values stored in the call stack are accumulated into a single return value.
+
+Instructions
+1.
+This is the point in a recursive function when we would begin returning values as the function calls are "popped" off the call stack.
+
+We'll use another while loop to simulate this process. Write the while loop below the "Base Case Reached" print statement.
+
+This loop will run as long as there are execution contexts stored in call_stack.
+
+Inside this second loop:
+
+declare the variable return_value
+assign the last element in call_stack to return_value.
+Remove that value from call_stack otherwise you'll have an infinite loop!
+Print call_stack to see how the execution contexts are removed from call_stack.
+
+2.
+Print that you're adding return_value["n_value"] to result and their respective values.
+
+Finish the loop by retrieving "n_value" from return_value and add it to result.
+
+========================================
+
+def sum_to_one(n):
+  result = 1
+  call_stack = []
+  
+  while n != 1:
+    execution_context = {"n_value": n}
+    call_stack.append(execution_context)
+    n -= 1
+    print(call_stack)
+  print("BASE CASE REACHED")
+  
+  while len(call_stack) != 0 :
+    return_value = call_stack.pop()
+    print(call_stack)
+    print("adding n_value to result")
+    result += return_value["n_value"]
+    
+  return result, call_stack
+
+sum_to_one(4)
+
+-----------------------------------------------------------------
+
+RECURSION: PYTHON
+Sum to One with Recursion
+
+Now that we've built a mental model for how recursion is handled by Python, let's implement the same function and make it truly recursive.
+
+To recap: We want a function that takes an integer as an input and returns the sum of all numbers from the input down to 1.
+
+sum_to_one(4)
+# 4 + 3 + 2 + 1
+# 10
+Here's how this function would look if we were to write it iteratively:
+
+def sum_to_one(n):
+  result = 0
+  for num in range(n, 0, -1):
+    result += num
+  return result
+
+sum_to_one(4)
+# num is set to 4, 3, 2, and 1
+# 10
+We can think of each recursive call as an iteration of the loop above. In other words, we want a recursive function that will produce the following function calls:
+
+recursive_sum_to_one(4)
+recursive_sum_to_one(3)
+recursive_sum_to_one(2)
+recursive_sum_to_one(1)
+Every recursive function needs a base case when the function does not recurse, and a recursive step, when the recursing function moves towards the base case.
+
+Base case:
+
+The integer given as input is 1.
+Recursive step:
+
+The recursive function call is passed an argument 1 less than the last function call.
+Instructions
+1.
+Define the sum_to_one() function.
+
+It takes n as the sole parameter.
+
+We'll start by setting up our base case.
+
+This function should NOT recurse if the given input, n is 1.
+
+In the base case, we return n.
+
+2.
+Now, we'll consider the recursive step.
+
+We want our return value to be the current input added to the return value of sum_to_one().
+
+We also need to invoke sum_to_one() with an argument that will get us closer to the base case.
+
+# return {recursive call} + {current input}
+3.
+Each recursive call is responsible for adding one of those integers to the ultimate total.
+
+To help us visualize the different function calls, add a print statement before the recursive call that tells us the current value of n.
+
+Use the following string for the print statement: print("Recursing with input: {0}".format(n))
+
+Let's test out our function. Call sum_to_one() with 7 as input and print out the result. Nice work!
+
+=======================================
+
+# Define sum_to_one() below...
+def sum_to_one(n):
+  if n == 1:
+    return n
+  print("Recursing with input: {0}".format(n))
+  return n + sum_to_one(n - 1)
+
+# uncomment when you're ready to test
+print(sum_to_one(7))
+
+------------------------------------------------------------------
+RECURSION: PYTHON
+Recursion and Big O
+
+Excellent job writing your first recursive function. Our next task may seem familiar so there won't be as much guidance.
+
+We'd like a function factorial that, given a positive integer as input, returns the product of every integer from 1 up to the input. If the input is less than 2, return 1.
+
+For example:
+
+factorial(4)
+# 4 * 3 * 2 * 1
+# 24
+Since this function is similar to the previous problem, we'll add an additional wrinkle. You'll need to evaluate the big O runtime of the function.
+
+With an iterative function, we would consider how the number of iterations grows in relation to the size of the input.
+
+For example you may ask yourself, are we looping once more for each new element in the list?
+
+That's linear or O(N).
+
+Are we looping an additional number of elements in the list for each new element in the list?
+
+That's quadratic or O(N^2).
+
+With recursive functions, the thought process is similar but we're replacing loop iterations with recursive function calls.
+
+In other words, are we recursing once more for each new element in the list?
+
+That's linear or O(N).
+
+Let's analyze our previous function, sum_to_one().
+
+sum_to_one(4)
+# recursive call to sum_to_one(3)
+# recursive call to sum_to_one(2)
+# recursive call to sum_to_one(1)
+
+# Let's increase the input...
+
+sum_to_one(5)
+# recursive call to sum_to_one(4)
+# recursive call to sum_to_one(3)
+# recursive call to sum_to_one(2)
+# recursive call to sum_to_one(1)
+What do you think? We added one to the input, how many more recursive calls were necessary?
+
+Talk through a few more inputs and then start coding when you're ready to move on.
+
+Instructions
+1.
+Define the factorial function with one parameter: n.
+
+Set up a base case.
+
+Think about the input(s) that wouldn't need a recursive call for your function.
+
+Return the appropriate value.
+
+2.
+Now let's consider the recursive step for factorial().
+
+If we're in the recursive step that means factorial() has been invoked with an integer of at least 2.
+
+We need to return the current input value multiplied by the return value of the recursive call.
+
+Structure the recursive call so it invokes factorial() with an argument one less than the current input.
+
+3.
+Nice work, test out your function by printing the result of calling factorial() with 12 as an input.
+
+Now, change the input to a really large number, think big, and run the code.
+
+If you chose an input large enough, you should see a RecursionError.
+
+======================================
+
+# Define factorial() below:
+def factorial(n):
+  if n==1:
+    return n
+  else:
+    return n* factorial(n-1)
+print(factorial(12))
+
+++++++++++++++++++++++++++++++++++++++++++++++++++=
+RECURSION: PYTHON
+Stack Over-Whoa!
+
+The previous exercise ended with a stack overflow, which is a reminder that recursion has costs that iteration doesn't. We saw in the first exercise that every recursive call spends time on the call stack.
+
+Put enough function calls on the call stack, and eventually there's no room left.
+
+Even when there is room for any reasonable input, recursive functions tend to be at least a little less efficient than comparable iterative solutions because of the call stack.
+
+The beauty of recursion is how it can reduce complex problems into an elegant solution of only a few lines of code. Recursion forces us to distill a task into its smallest piece, the base case, and the smallest step to get there, the recursive step.
+
+Let's compare two solutions to a single problem: producing a power set. A power set is a list of all subsets of the values in a list.
+
+This is a really tough algorithm. Don't be discouraged!
+
+power_set(['a', 'b', 'c'])
+# [
+#   ['a', 'b', 'c'], 
+#   ['a', 'b'], 
+#   ['a', 'c'], 
+#   ['a'], 
+#   ['b', 'c'], 
+#   ['b'], 
+#   ['c'], 
+#   []
+# ]
+Phew! That's a lot of lists! Our input length was 3, and the list returned had a length of 8.
+
+Producing subsets requires a runtime of at least O(2^N), we'll never do better than that because a set of N elements creates a power set of 2^N elements.
+
+Binary, a number system of base 2, can represent 2^N numbers for N binary digits. For example:
+
+# 1 binary digit, 2 numbers
+# 0 in binary
+0
+# 1 in binary
+1
+
+# 2 binary digits, 4 numbers
+# 00 => 0
+# 01 => 1
+# 10 => 2
+# 11 => 3
+The iterative approach uses this insight for a very clever solution by including an element in the subset if its "binary digit" is 1.
+
+set = ['a', 'b', 'c']
+binary_number = "101"
+# produces the subset ['a', 'c']
+# 'b' is left out because its binary digit is 0
+That process is repeated for all O(2^N) numbers!
+
+Here is the complete solution. You're not expected to understand every line, just take in the level of complexity.
+
+def power_set(set):
+  power_set_size = 2**len(set)
+  result = []
+
+  for bit in range(0, power_set_size):
+    sub_set = []
+    for binary_digit in range(0, len(set)):
+      if((bit & (1 << binary_digit)) > 0):
+        sub_set.append(set[binary_digit])
+    result.append(sub_set)
+  return result
+Very clever but not very intuitive! Let's try recursion.
+
+Consider the base case, where the problem has become so simple we can solve it without doing any work.
+
+What's the simplest power set possible? An empty list!
+
+power_set([])
+# [[]]
+Now the recursive step. We need to progress towards our base case, an empty list, so we'll be removing an element from the input.
+
+Examine the simplest powerset that isn't the base case:
+
+power_set(['a'])
+# [[], ['a']]
+A power set in the recursive step requires:
+
+all subsets which contain the element
+in this case "a"
+all subsets which don't contain the element
+in this case [].
+With the recursive approach, we're able to articulate the problem in terms of itself. No need to bring in a whole number system to find the solution!
+
+Here's the recursive solution in its entirety:
+
+def power_set(my_list):
+  if len(my_list) == 0:
+    return [[]]
+  power_set_without_first = power_set(my_list[1:])
+  with_first = [ [my_list[0]] + rest for rest in power_set_without_first ]
+  return with_first + power_set_without_first
+Neither of these solutions is simple, this is a complicated algorithm, but the recursive solution is almost half the code and more directly conveys what this algorithm does.
+
+Give yourself a pat on the back for making it through a tough exercise!
+
+Instructions
+Run the code to see subsets of universities.
+
+Try adding your own school.
+
+See how large you can make the input list before these computations become impossibly slow...
+
+O(2^N) runtime is no joke!
+
+===========================================
+
+def power_set(my_list):
+    # base case: an empty list
+    if len(my_list) == 0:
+        return [[]]
+    # recursive step: subsets without first element
+    power_set_without_first = power_set(my_list[1:])
+    # subsets with first element
+    with_first = [ [my_list[0]] + rest for rest in power_set_without_first ]
+    # return combination of the two
+    return with_first + power_set_without_first
+  
+universities = ['MIT', 'UCLA', 'Stanford']
+power_set_of_universities = power_set(universities)
+
+print(power_set_of_universities)
+
+for set in power_set_of_universities:
+  print(set)
+
+-----------------------------------------------
+RECURSION: PYTHON
+No Nested Lists Anymore, I Want Them to Turn Flat
+
+Let's use recursion to solve another problem involving lists: flatten().
+
+We want to write a function that removes nested lists within a list but keeps the values contained.
+
+nested_planets = ['mercury', 'venus', ['earth'], 'mars', [['jupiter', 'saturn']], 'uranus', ['neptune', 'pluto']]
+
+flatten(nested_planets)
+# ['mercury', 
+#  'venus', 
+#  'earth', 
+#  'mars', 
+#  'jupiter', 
+#  'saturn', 
+#  'uranus', 
+#  'neptune', 
+#  'pluto']
+Remember our tools for recursive functions. We want to identify a base case, and we need to think about a recursive step that takes us closer to achieving the base case.
+
+For this problem, we have two scenarios as we move through the list.
+
+The element in the list is a list itself.
+We have more work to do!
+The element in the list is not a list.
+All set!
+Which is the base case and which is the recursive step?
+
+Instructions
+1.
+Define flatten() which has a single parameter named my_list.
+
+We'll start by declaring a variable, result and setting it to an empty list.
+
+result is our intermediary variable that houses elements from my_list.
+
+Return result.
+
+2.
+Returning an empty list isn't much good to us, it should be filled with the values contained in my_list.
+
+Use a for loop to iterate through my_list.
+
+Inside the loop, we need a conditional for our recursive step. Check if the element in the current iteration is a list.
+
+We can use Python's isinstance() like so:
+
+a_list = ['listing it up!']
+not_a_list = 'string here'
+
+isinstance(a_list, list)
+# True
+isinstance(not_a_list, list)
+# False
+For now, print "List found!" in the conditional.
+
+Outside of the method definition, call flatten() and pass planets as an argument.
+
+3.
+We need to make the recursive step draw us closer to the base case, where every element is not a list.
+
+After your print statement, declare the variable flat_list, and assign it to a recursive call to flatten() passing in your iterating variable as the argument.
+
+flatten() will return a list, update result so it now includes every element contained in flat_list.
+
+Test flatten() by calling it on the planets and printing the result.
+
+We can combine two lists like so:
+
+first_list = ['a', 'b', 'c']
+second_list = ['d', 'e', 'f']
+first_list + second_list
+# ['a', 'b', 'c', 'd', 'e', 'f']
+We can use this to update the result list like so:
+
+result = ['a']
+flat_list = ['b', 'c']
+result += flat_list
+
+result # ['a', 'b', 'c']
+4.
+Nice work! Now the base case.
+
+If the iterating variable is not a list, we can update result, so it includes this element at the end of the list.
+
+flatten() should now return the complete result.
+
+=========================================
+
+# define flatten() below...
+
+def flatten(my_list):
+  result = []
+  for el in my_list:
+    if isinstance(el, list):
+      print("list found!")
+      flat_list = flatten(el)
+      result += flat_list
+    else:
+      result.append(el)
+  return result
+
+
+### reserve for testing...
+planets = ['mercury', 'venus', ['earth', 'venus'], 'mars', [['jupiter', 'saturn']], 'uranus', ['neptune', 'pluto']]
+print(flatten(planets))
+
+------------------------------------------------------------
+RECURSION: PYTHON
+Fibonacci? Fibonaccu!
+
+So far our recursive functions have all included a single recursive call within the function definition.
+
+Let's explore a problem which pushes us to use multiple recursive calls within the function definition.
+
+Fibonacci numbers are integers which follow a specific sequence: the next Fibonacci number is the sum of the previous two Fibonacci numbers.
+
+We have a self-referential definition which means this problem is a great candidate for a recursive solution!
+
+We'll start by considering the base case. The Fibonacci Sequence starts with 0 and 1 respectively. If our function receives an input in that range, we don't need to do any work.
+
+If we receive an input greater than 1, things get a bit trickier. This recursive step requires two previous Fibonacci numbers to calculate the current Fibonacci number.
+
+That means we need two recursive calls in our recursive step. Expressed in code:
+
+fibonacci(3) == fibonacci(1) + fibonacci(2)
+Let's walk through how the recursive calls will accumulate in the call stack:
+
+call_stack = []
+fibonacci(3)
+call_stack = [fibonacci(3)]
+To calculate the 3rd Fibonacci number we need the previous two Fibonacci numbers. We start with the previous Fibonacci number.
+
+fibbonacci(2)
+call_stack = [fibbonacci(3), fibbonacci(2)]
+fibonacci(2) is a base case, the value of 1 is returned...
+
+call_stack = [fibbonacci(3)]
+The return value of fibonacci(2) is stored within the execution context of fibonacci(3) while ANOTHER recursive call is made to retrieve the second most previous Fibonacci number...
+
+fibonacci(1)
+call_stack = [fibonacci(3), fibonacci(1)]
+Finally, fibonacci(1) resolves because it meets the base case and the value of 1 is returned.
+
+call_stack = [fibonacci(3)]
+The return values of fibonacci(2) and fibonacci(1) are contained within the execution context of fibonacci(3), which can now return the sum of the previous two Fibonacci numbers.
+
+As you can see, those recursive calls add up fast when we have multiple recursive invocations within a function definition!
+
+Can you reason out the big O runtime of this Fibonacci function?
+
+Instructions
+1.
+Define our fibonacci() function that takes n as an argument.
+
+Let's address our base cases:
+
+if the input is 1, we return 1
+if the input is 0, we return 0
+2.
+Now take care of the recursive step.
+
+This step involves summing two recursive calls to fibonacci().
+
+We need to retrieve the second to last and last Fibonacci values and return their sum.
+
+We can get the second to last Fibonacci by decrementing the input by 2 and the last by decrementing the input by 1.
+
+3.
+Add print statements within fibonacci() to explore the different recursive calls.
+
+Set fibonacci_runtime to the appropriate big O runtime.
+
+======================================
+# define the fibonacci() function below...
+
+def fibonacci(n):
+  # base cases
+  if n == 1:
+    return n
+  if n == 0:
+    return n
+  
+  # recursive step
+  print("Recursive call with {0} as input".format(n))
+  return fibonacci(n - 1) + fibonacci(n - 2)
+
+
+print(fibonacci(5))
+# set the appropriate runtime:
+# 1, logN, N, N^2, 2^N, N!
+fibonacci_runtime = "2^N" 
+
+----------------------------------------------------
+
+RECURSION: PYTHON
+Recursive Data Structures
+
+Data structures can also be recursive.
+
+Trees are a recursive data structure because their definition is self-referential. A tree is a data structure which contains a piece of data and references to other trees!
+
+Trees which are referenced by other trees are known as children. Trees which hold references to other trees are known as the parents.
+
+A tree can be both parent and child. We're going to write a recursive function that builds a special type of tree: a binary search tree.
+
+Binary search trees:
+
+Reference two children at most per tree node.
+The "left" child of the tree must contain a value lesser than its parent
+The "right" child of the tree must contain a value greater than its parent.
+Trees are an abstract data type, meaning we can implement our version in a number of ways as long as we follow the rules above.
+
+For the purposes of this exercise, we'll use the humble Python dictionary:
+
+bst_tree_node = {"data": 42}
+bst_tree_node["left_child"] = {"data": 36}
+bst_tree_node["right_child"] = {"data": 73}
+
+bst_tree_node["data"] > bst_tree_node["left_child"]["data"]
+# True
+bst_tree_node["data"] < bst_tree_node["right_child"["data"]
+# True
+We can also assume our function will receive a sorted list of values as input.
+
+This is necessary to construct the binary search tree because we'll be relying on the ordering of the list input.
+
+Our high-level strategy before moving through the checkpoints.
+
+base case: the input list is empty
+Return "No Child" to represent the lack of node
+recursive step: the input list must be divided into two halves
+Find the middle index of the list
+Store the value located at the middle index
+Make a tree node with a "data" key set to the value
+Assign tree node's "left child" to a recursive call using the left half of the list
+Assign tree node's "right child" to a recursive call using the right half of the list
+Return the tree node
+Instructions
+1.
+Define the build_bst() function with my_list as the sole parameter.
+
+If my_list has no elements, return "No Child" to represent the lack of a child tree node.
+
+This is the base case of our function.
+
+The recursive step will need to remove an element from the input to eventually reach an empty list.
+
+2.
+We'll be building this tree by dividing the list in half and feeding those halves to the left and right sides of the tree.
+
+This dividing step will eventually produce empty lists to satisfy the base case of the function.
+
+Outside of the conditional you just wrote, declare middle_idx and set it to the middle index of my_list.
+
+Then, declare middle_value and set it to the value in my_list located at middle_idx.
+
+Print "Middle index: " + middle_idx.
+
+Then, print "Middle value: " + middle_value
+
+You can use .format() or addition for the print the statement. Addition will require you to use str() on the variables since they are integers!
+
+3.
+After the print statements, declare the variable tree_node that points to a Python dictionary with a key of "data" pointing to middle_value.
+
+tree_node represents the tree being created in this function call. We want a tree_node created for each element in the list, so we'll repeat this process on the left and right sub-trees using the appropriate half of the input list.
+
+Now for the recursive calls!
+
+Set the key of "left_child" in tree_node to be a recursive call to build_bst() with the left half of the list not including the middle value as an argument.
+
+Set the key of "right_child" in tree_node to be a recursive call to build_bst() with the right half of the list not including the middle value as an argument.
+
+It's very important we don't include the middle_value in the lists we're passing as arguments, or else we'll create duplicate nodes!
+
+Finally, return tree_node. As the recursive calls resolve and pop off the call stack, the final return value will be the root or "top" tree_node which contains a reference to every other tree_node.
+
+4.
+Congratulations! You've built up a recursive data structure with a recursive function!
+
+This data structure can be used to find values in an efficient O(logN) time.
+
+Fill in the variable runtime with the runtime of your build_bst() function.
+
+This runtime is a tricky one so don't be afraid to use that hint!
+
+=======================================
+
+def build_bst(my_list):
+  if len(my_list) == 0:
+    return "No Child"
+
+  middle_index = len(my_list) // 2
+  middle_value = my_list[middle_index]
+  
+  print("Middle index: {0}".format(middle_index))
+  print("Middle value: {0}".format(middle_value))
+  
+  tree_node = {"data": middle_value}
+  tree_node["left_child"] = build_bst(my_list[ : middle_index])
+  tree_node["right_child"] = build_bst(my_list[middle_index + 1 : ])
+
+  return tree_node
+  
+sorted_list = [12, 13, 14, 15, 16]
+binary_search_tree = build_bst(sorted_list)
+print(binary_search_tree)
+
+# fill in the runtime as a string
+# 1, logN, N, N*logN, N^2, 2^N, N!
+runtime = "???" 
+
+----------------------------------------------------------------------------------
+RECURSION VS. ITERATION - CODING THROWDOWN
+Rules of the Throwdown
+
+This lesson will provide a series of algorithms and an iterative or recursive implementation.
+
+Anything we write iteratively, we can also write recursively, and vice versa. Often, the difference is substituting a loop for recursive calls.
+
+Your mission is to recreate the algorithm using the alternative strategy. If the example is recursive, write the algorithm using iteration. If the algorithm uses iteration, solve the problem using recursion.
+
+By the end of this lesson, you'll have gained a better understanding of the different strategies to implement an algorithm, and along the way, we'll discuss the big O runtimes of each algorithm.
+
+Each exercise will have a single checkpoint. You can implement the algorithm however you like as long as you're following the prescribed approach (iterative or recursive).
+
+If you're feeling stuck, the hint will give a detailed breakdown of how to implement the algorithm.
+
+We'll start with a classic recursive example, factorial(). This function returns the product of every number from 1 to the given input.
+
+# runtime: Linear - O(N)
+def factorial(n):  
+  if n < 0:    
+    ValueError("Inputs 0 or greater only") 
+  if n <= 1:    
+    return 1  
+  return n * factorial(n - 1)
+
+factorial(3)
+# 6
+factorial(4)
+# 24
+factorial(0)
+# 1
+factorial(-1)
+# ValueError "Input must be 0 or greater"
+This is a linear implementation, or O(N), where N is the number given as input.
+
+Instructions
+1.
+Implement your version of factorial() which has the same functionality without using any recursive calls!
+
+==========================================
+def factorial(n):
+  if n<0:
+    ValueError("Input 0 or greater only")
+  
+  result=1
+  for i in range(1,n+1):
+    result *=i
+  return result  
+  
+
+# test cases
+print(factorial(3) == 6)
+print(factorial(0) == 1)
+print(factorial(5) == 120)
+
+=======================================
+def factorial(n):  
+  if n < 0:
+    ValueError("Inputs 0 or greater only")
+  result = 1
+  while n != 0:
+    result *= n
+    n -= 1
+  return result
+
+# test cases
+print(factorial(3) == 6)
+print(factorial(0) == 1)
+print(factorial(5) == 120)
+
+--------------------------------------------------
+RECURSION VS. ITERATION - CODING THROWDOWN
+When Fibs Are Good
+
+Nice work! We'll demonstrate another classic recursive function: fibonacci().
+
+fibonacci() should return the Nth Fibonacci number, where N is the number given as input. The first two numbers of a Fibonacci Sequence start with 0 and 1. Every subsequent number is the sum of the previous two.
+
+Our recursive implementation:
+
+# runtime: Exponential - O(2^N)
+
+def fibonacci(n):
+  if n < 0:
+    ValueError("Input 0 or greater only!")
+  if n <= 1:
+    return n
+  return fibonacci(n - 1) + fibonacci(n - 2)
+
+fibonacci(3)
+# 2
+fibonacci(7)
+# 13
+fibonacci(0)
+# 0
+Instructions
+1.
+Implement your version of fibonacci() which has the same functionality without using any recursive calls!
+
+==================================
+
+def fibonacci(n):
+  if n < 0:
+    ValueError("Input 0 or greater only!")	
+  list =[0,1]
+  for i in range(2,n+1):
+    list.append(list[i-1] + list[i-2])
+  return list[n]
+  
+
+# test cases
+print(fibonacci(3) == 2)
+print(fibonacci(7) == 13)
+print(fibonacci(0) == 0)
+print(fibonacci(10))
+
+==================================
+def fibonacci(n):
+  if n < 0:
+    ValueError("Input 0 or greater only!")
+
+  fibs = [0, 1]
+  
+  if n <= len(fibs) - 1:
+    return fibs[n]
+
+  while n > len(fibs) - 1:
+    fibs.append(fibs[-1] + fibs[-2])
+  print(fibs)  
+  return fibs[-1]
+
+# test cases
+print(fibonacci(3) == 2)
+print(fibonacci(7) == 13)
+print(fibonacci(0) == 0)
+
+---------------------------------------------------
+
+RECURSION VS. ITERATION - CODING THROWDOWN
+Let's Give'em Sum Digits To Talk About
+
+Fantastic! Now we'll switch gears and show you an iterative algorithm to sum the digits of a number.
+
+This function, sum_digits(), produces the sum of all the digits in a positive number as if they were each a single number:
+
+# Linear - O(N)
+def sum_digits(n):
+  if n < 0:
+    ValueError("Inputs 0 or greater only!")
+  result = 0
+  while n is not 0:
+    result += n % 10
+    n = n // 10
+  return result + n
+
+sum_digits(12)
+# 1 + 2
+# 3
+sum_digits(552)
+# 5 + 5 + 2
+# 12
+sum_digits(123456789)
+# 1 + 2 + 3 + 4...
+# 45
+Instructions
+1.
+Implement your version of sum_digits() which has the same functionality using recursive calls!
+
+=====================================
+def sum_digits(n):
+  if n<0:
+    ValueError("Input 0 or greater than only!")
+  
+  if n<10:
+    return n
+  return n%10 + sum_digits(n//10)
+  
+# test cases
+print(sum_digits(12) == 3)
+print(sum_digits(552) == 12)
+print(sum_digits(123456789) == 45)
+
+================================
+def sum_digits(n):
+  if n <= 9:
+    return n
+  last_digit = n % 10
+  return sum_digits(n // 10) + last_digit
+
+# test cases
+print(sum_digits(12) == 3)
+print(sum_digits(552) == 12)
+print(sum_digits(123456789) == 45)
+
+-------------------------------------------------------
+
+RECURSION VS. ITERATION - CODING THROWDOWN
+It Was Min To Be
+
+We'll use an iterative solution to the following problem: find the minimum value in a list.
+
+def find_min(my_list):
+  min = None
+  for element in my_list:
+    if not min or (element < min):
+      min = element
+  return min
+
+find_min([42, 17, 2, -1, 67])
+# -1
+find_mind([])
+# None
+find_min([13, 72, 19, 5, 86])
+# 5
+This solution has a linear runtime, or O(N), where N is the number of elements in the list.
+
+Instructions
+1.
+Implement your version of find_min() which has the same functionality using recursive calls!
+
+===========================================
+def find_min(my_list, min = None):
+  if not my_list:
+    return min
+
+  if not min or my_list[0] < min:
+    min = my_list[0]
+  return find_min(my_list[1:], min)
+
+# test cases
+print(find_min([42, 17, 2, -1, 67]) == -1)
+print(find_min([]) == None)
+print(find_min([13, 72, 19, 5, 86]) == 5)
+
+print(not []) #true
+print(not None) #true 
+
+---------------------------------------------------------------------------
+RECURSION VS. ITERATION - CODING THROWDOWN
+Taco Cat
+
+Palindromes are words which read the same forward and backward. Here's an iterative function that checks whether a given string is a palindrome:
+
+def is_palindrome(my_string):
+  while len(my_string) > 1:
+    if my_string[0] != my_string[-1]:
+      return False
+    my_string = my_string[1:-1]
+  return True 
+
+palindrome("abba")
+# True
+palindrome("abcba")
+# True
+palindrome("")
+# True
+palindrome("abcd")
+# False
+Take a moment to think about the runtime of this solution.
+
+In each iteration of the loop that doesn't return False, we make a copy of the string with two fewer characters.
+
+Copying a list of N elements requires N amount of work in big O.
+
+This implementation is a quadratic solution: we're looping based on N and making a linear operation for each loop!
+
+Here's a more efficient version:
+
+# Linear - O(N)
+def is_palindrome(my_string):
+  string_length = len(my_string)
+  middle_index = string_length // 2
+    for index in range(0, middle_index):
+      opposite_character_index = string_length - index
+      if my_string[index] != my_string[opposite_character_index]
+    return False  
+return True
+Note these solutions do not account for spaces or capitalization in the input!
+
+Instructions
+1.
+Implement your version of is_palindrome() which has the same functionality using recursive calls!
+
+==============================
+
+def is_palindrome(my_string):
+  if len(my_string) == 0:
+    return True
+  if my_string[0] != my_string[-1]:
+    return False
+  return is_palindrome(my_string[1:-1])
+  
+# test cases
+print(is_palindrome("abba") == True)
+print(is_palindrome("abcba") == True)
+print(is_palindrome("") == True)
+print(is_palindrome("abcd") == False)
+
+
+========================
+def is_palindrome(str):
+  if len(str) < 2:
+    return True
+  if str[0] != str[-1]:
+    return False
+  return is_palindrome(str[1:-1])
+
+
+# test cases
+print(is_palindrome("abba") == True)
+print(is_palindrome("abcba") == True)
+print(is_palindrome("") == True)
+print(is_palindrome("abcd") == False)
+
+---------------------------------------------------
+RECURSION VS. ITERATION - CODING THROWDOWN
+Multiplication? Schmultiplication!
+
+All programming languages you're likely to use will include arithmetic operators like +, -, and *.
+
+Let's pretend Python left out the multiplication, *, operator.
+
+How could we implement it ourselves? Well, multiplication is repeated addition. We can use a loop!
+
+Here's an iterative approach:
+
+def multiplication(num_1, num_2):
+  result = 0
+  for count in range(0, num_2):
+    result += num_1
+  return result
+
+multiplication(3, 7)
+# 21
+multiplication(5, 5)
+# 25
+multiplication(0, 4)
+# 0
+This implementation isn't quite as robust as the built-in operator. It won't work with negative numbers, for example. We don't expect your implementation to handle negative numbers either!
+
+What is the big O runtime of our implementation?
+
+Instructions
+1.
+Implement your version of multiplication() which has the same functionality using recursive calls!
+
+==================================
+def multiplication(num_a, num_b):
+  if num_a == 0 or num_b == 0:
+    return 0
+
+  return num_a + multiplication(num_a, num_b - 1)
+
+# test cases
+print(multiplication(3, 7) == 21)
+print(multiplication(5, 5) == 25)
+print(multiplication(0, 4) == 0)
+
++++++++++++++++++++++++++++++++++++++++++++++
+
+RECURSION VS. ITERATION - CODING THROWDOWN
+How Deep Is Your Tree?
+
+Binary trees, trees which have at most two children per node, are a useful data structure for organizing hierarchical data.
+
+It's helpful to know the depth of a tree, or how many levels make up the tree.
+
+# first level
+root_of_tree = {"data": 42}
+# adding a child - second level
+root_of_tree["left_child"] = {"data": 34}
+root_of_tree["right_child"] = {"data": 56}
+# adding a child to a child - third level
+first_child = root_of_tree["left_child"]
+first_child["left_child"] = {"data": 27}
+Here's an iterative algorithm for counting the depth of a given tree.
+
+We're using Python dictionaries to represent each tree node, with the key of "left_child" or "right_child" referencing another tree node, or None if no child exists.
+
+def depth(tree):
+  result = 0
+  # our "queue" will store nodes at each level
+  queue = [tree]
+  # loop as long as there are nodes to explore
+  while queue:
+    # count the number of child nodes
+    level_count = len(queue)
+    for child_count in range(0, level_count):
+      # loop through each child
+      child = queue.pop(0)
+     # add its children if they exist
+      if child["left_child"]:
+        queue.append(child["left_child"])
+      if child["right_child"]:
+        queue.append(child["right_child"])
+    # count the level
+    result += 1
+  return result
+
+two_level_tree = {
+"data": 6, 
+"left_child":
+  {"data": 2}
+}
+
+four_level_tree = {
+"data": 54,
+"right_child":
+  {"data": 93,
+   "left_child":
+     {"data": 63,
+      "left_child":
+        {"data": 59}
+      }
+   }
+}
+
+
+depth(two_level_tree)
+# 2
+depth(four_level_tree)
+# 4
+This algorithm will visit each node in the tree once, which makes it a linear runtime, O(N), where N is the number of nodes in the tree.
+
+Instructions
+1.
+Implement your version of depth() which has the same functionality using recursive calls!
+
+=========================================
+
+def depth(tree):
+  if not tree:
+    return 0
+
+  left_depth = depth(tree["left_child"])
+  right_depth = depth(tree["right_child"])
+
+  if left_depth > right_depth:
+    return left_depth + 1
+  else:
+    return right_depth + 1
+
+# HELPER FUNCTION TO BUILD TREES
+def build_bst(my_list):
+  if len(my_list) == 0:
+    return None
+
+  mid_idx = len(my_list) // 2
+  mid_val = my_list[mid_idx]
+
+  tree_node = {"data": mid_val}
+  tree_node["left_child"] = build_bst(my_list[ : mid_idx])
+  tree_node["right_child"] = build_bst(my_list[mid_idx + 1 : ])
+
+  return tree_node
+
+# HELPER VARIABLES
+tree_level_1 = build_bst([1])
+tree_level_2 = build_bst([1, 2, 3])
+tree_level_4 = build_bst([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]) 
+
+# test cases
+print(depth(tree_level_1) == 1)
+print(depth(tree_level_2) == 2)
+print(depth(tree_level_4) == 4)
+
+#tree_level_2
+{'left_child': {'left_child': {'left_child': None, 
+                                'data': 1, 
+                                'right_child': None}, 
+                 'data': 2, 
+                 'right_child': None}, 
+  'data': 3,
+  'right_child': {'left_child': None,
+                  'data': 4, 
+                  'right_child': None}
+}
