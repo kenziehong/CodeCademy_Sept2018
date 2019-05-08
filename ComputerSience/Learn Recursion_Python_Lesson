@@ -1433,13 +1433,15 @@ print(depth(tree_level_2) == 2)
 print(depth(tree_level_4) == 4)
 
 #tree_level_2
-{'left_child': {'left_child': {'left_child': None, 
-                                'data': 1, 
-                                'right_child': None}, 
-                 'data': 2, 
-                 'right_child': None}, 
-  'data': 3,
-  'right_child': {'left_child': None,
-                  'data': 4, 
-                  'right_child': None}
-}
+	{'left_child': {'left_child': {'left_child': None, 
+	                                'data': 1, 
+	                                'right_child': None}, 
+	                 'data': 2, 
+	                 'right_child': None}, 
+	  'data': 3,
+	  'right_child': {'left_child': None,
+	                  'data': 4, 
+	                  'right_child': None}
+	}
+
+{'data': 4, 'right_child': {'data': 6, 'right_child': None, 'left_child': {'data': 5, 'right_child': None, 'left_child': None}}, 'left_child': {'data': 2, 'right_child': {'data': 3, 'right_child': None, 'left_child': None}, 'left_child': {'data': 1, 'right_child': None, 'left_child': None}}}

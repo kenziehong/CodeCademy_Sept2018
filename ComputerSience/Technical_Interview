@@ -1,0 +1,2105 @@
+TECHNICAL INTERVIEWS: WHITEBOARDING
+Clarifying the Problem
+
+Whiteboarding interviews begin with a problem from the interviewer. The interviewee must be confident they understand the dimensions of the problem!
+
+Software development is full of ambiguity. Programming requires concrete deliverables, but company needs can be murky. Even when the need is clear, a feature could have dozens of possible implementations. The ability to clearly define a problem is an important skill to demonstrate.
+
+When the interviewer presents their technical question, repeat the question back to the interviewer in your own words. This gives you a moment to think and will resolve any glaring misunderstandings.
+
+Once you've repeated the question, ask every clarifying question that comes to mind.
+
+Assumptions must be communicated to the interviewer so there is agreement on the scope of the problem.
+
+For example, if asked:
+
+Write a function that returns duplicate characters in string.
+Here are some questions which may come to mind:
+
+What is the desired return value?
+True|False, a list of characters, or ...?
+Do punctuation and spaces count as "characters"?
+Should case be considered?
+are "a" and "A" duplicates?
+Should we be checking for Unicode characters?
+Can we assume it's a 26 character alphabet?
+Instructions
+We'll apply these steps to a single problem through the rest of the lesson.
+
+Given a list of numbers, return whether the list contains Pythagorean Triplets.
+Rephrase this problem in your own words and write that down.
+
+Then, write down every question or assumption you have.
+
+Watch the video to see how we clarified this question.
+
++++++++++++++++++++++++++++++++++++++++++++++++
+
+TECHNICAL INTERVIEWS: WHITEBOARDING
+Producing Inputs and Finding Edge Cases
+
+When the question is clear, we then produce concrete inputs and outputs. These inputs guide a solution for the remainder of the interview so write them on the board!
+
+You may still be unclear how to solve the problem in code, but it's certain that given an input, X, your function will produce an output, Y.
+
+Make one input the happy path: input that reflects a common scenario.
+
+For example, you're asked to write a function which capitalizes the first letter of an input string.
+
+A good input could be "apple", which returns "Apple" because this demonstrates the function's purpose.
+
+If the input were "Apple", it would return "Apple". That's correct but less informative.
+
+Also think about edge cases, or inputs which do not reflect a common scenario and may cause problems.
+
+For the capitalization function, what should you return if given None as input? Or a number?
+
+Instructions
+Write inputs and outputs for the Pythagorean Triplet problem.
+
+Try to give yourself a few different cases.
+
+Watch the video to see how we made inputs/outputs.
++++++++++++++++++++++++++++++++
+
+TECHNICAL INTERVIEWS: WHITEBOARDING
+Writing the Outline
+
+It's time to start breaking down the problem by category.
+
+Given a question which requires the use of a stack, what do you know about stacks? Have you encountered other problems that use stacks and how were they solved?
+
+Is this a searching question? Can you sort the input and will that help? Does this problem sound like it can be modeled as a graph, with vertices and connected edges?
+
+Understanding the applications of different data structures is very useful! The more questions you practice, the more you will be able to see patterns between problems.
+
+This step varies the most because it requires details of the specific problem, but regardless of the question make certain you are communicating with the interviewer as a potential co-worker. Show them your thought process!
+
+During this step, the interviewer may make suggestions on how to proceed. Acknowledge the interviewer and incorporate their suggestions into your approach.
+
+Don't disregard their input! It gives the impression you would be difficult to work with on the job.
+
+When you and the interviewer are satisfied with a workable solution, write the steps next to your input. Follow these steps as you write code on the board.
+
+Instructions
+Come up with an outline of how to solve the Pythagorean Triplet problem.
+
+Don't worry about efficiency, just aim for high-level steps which will produce the correct output.
+
+Watch the video when you're ready to move on.
+
+++++++++++++++++++++++++++++++++++++++
+TECHNICAL INTERVIEWS: WHITEBOARDING
+Coding the Solution
+
+We've finally come to the portion where you'll write some code! Previous steps improve your odds for success because you have an outline and clear inputs for testing.
+
+Writing code on the board is a collaborative process. Refer to your outline and explain the step you're implementing.
+
+The goal is to be facing the interviewer when talking through the implementation and facing the board when you're writing the code.
+
+Try to avoid writing code in silence or narrating at a low level like "for... i... in... range... length of the list... colon" when writing for i in range(len(input_list)):.
+
+When you're finished with the implementation, look it over for any mistaken syntax or logical errors.
+
+Instructions
+Code the solution to the Pythagorean Triplets problem by writing it out on paper. Use your outline from the previous exercise as a guide.
+
+Before writing each step on paper, say what you will do out loud. Better to practice by yourself than in a real interview!
+
+++++++++++++++++++++++++++++++++++++++++
+
+TECHNICAL INTERVIEWS: WHITEBOARDING
+Testing with Inputs
+
+With a working implementation on the whiteboard, use the test inputs to walk through the evaluation of your code.
+
+Write out any temporary variables on the board and update them when they change during execution.
+
+This is another opportunity to showcase your communication skills, and will help you catch any logical errors which you may not have noticed in earlier steps.
+
+If you catch an error, don't panic! Mistakes happen. Explain the issue and talk through what you can do to fix the bug.
+
+Your interviewer may want to see you write the correction or they may be satisfied with the explanation.
+
+Instructions
+Use your test inputs and implementation to talk through your solution.
+
+Again, say each line aloud so you become more comfortable speaking about the code you've written.
+
+Track the variables used and update them as you go.
+
++++++++++++++++++++++++++++++++++++++++
+TECHNICAL INTERVIEWS: WHITEBOARDING
+Analyzing Time and Space Complexity
+
+You're satisfied with your implementation and you've demonstrated how it works, but you're not quite done.
+
+Analyze the time and space complexity of the solution. With this step you are demonstrating that you care about the efficiency of your code.
+
+Explain your code's big O notation. If you can optimize to a more efficient runtime, explain how that would work. If you can't optimize, explain why it's not possible.
+
+Instructions
+Talk through the big O time and space complexity of your solution.
+
+Explain how an optimization would be possible or not.
+
++++++++++++++++++++++++++++++++++++
+TECHNICAL INTERVIEWS: WHITEBOARDING
+Review
+
+Technical interviews judge the candidate's ability to perform technical aspects of the job. Whiteboarding is a type of technical interview which requires the candidate to code a solution without the assistance of a text editor.
+
+Coding an efficient solution is important, but the ultimate goal as an interviewee is to convince the interviewer you would be a desirable co-worker.
+
+A desirable co-worker is able to articulate their thought process and collaborate without friction.
+
+Our whiteboarding strategies revolve around communication at every step.
+
+The steps are:
+
+Clarify the Problem
+Create Inputs
+Outline the Solution
+Code the Solution
+Test the Solution
+Analyze the Solution
+Instructions
+Practice makes perfect!
+
+Run through these steps with a new practice problem:
+
+Write a function which prints every number from 0 up to the given input. If divisible by 3, print "Fizz" instead of the number. If divisible by 5, print "Buzz". If input is divisible by 3 AND 5, print "FizzBuzz".
+
+----------------------------------------------------
+13/01/2019
+
+TECHNICAL INTERVIEW PROBLEMS IN PYTHON: LISTS
+Introduction
+
+Lists are a fundamental data type in Python. Projects make extensive use of lists to store data in sequential order. You should expect at least one technical interview question that requires working with lists.
+
+This lesson introduces common interview problems that involve lists. We solve each question in two ways: an inefficient naive solution and an optimized solution which improves the big O time and/or space efficiency.
+
+The problems are meant to be open-ended: tests will pass with the correct output from a given input. Optimal implementations require that code executes within a time or space requirement.
+
+We detail our approach in the hint for each question.
+
+Make a note of clarifications and ambiguities for each question. This is a crucial step. Interviewers often leave this to you so they can see how you problem-solve.
+
+Instructions
+How would you write a function that checks if a string is a palindrome?
+
+What are some assumptions you had? Did you have any questions?
+
+Here are some questions which clarify exactly what the function should return.
+
+Should you consider spaces? For example, is "taco cat" a palindrome?
+
+Is punctuation ignored or considered part of the string?
+
+What are the edge cases? Those unconsidered scenarios which break your program. Would an empty string be considered a palindrome?
+
+The text editor has four definitions of the palindrome() function, each return different results based on the input!
+
+By asking questions, you can prevent writing code that solves the wrong problem. Test out these inputs:
+
+"aba" or "abba" # "simple" palindromes
+"taco cat" # palindrome with spaces
+"racecar!" # palindrome with punctuation
+"able was I, ere I saw elba" # both!
+
+# what if we wanted to use recursion?
+def palindrome_1(str):
+  if len(str) <= 1:
+    return True
+  if str[0] != str[-1]:
+    return False
+  return palindrome_1(str[1:-1])
+
+# what if we didn't care about case?
+def palindrome_2(str):
+  lower = str.lower()
+  for i in range(len(str) // 2):
+    if lower[i] != lower[-i - 1]:
+      return False
+  return True
+
+# what if we wanted to ignore punctuation?
+def palindrome_3(str):
+  punctuation = [',', '!', '?', '.']
+  no_punc_str = str[:]
+  for punc in punctuation:
+    no_punc_str = no_punc_str.replace(punc, '')
+  for i in range(len(no_punc_str) // 2):
+    if no_punc_str[i] != no_punc_str[-i - 1]:
+      return False
+  return True 
+
+# what if we wanted to ignore space?
+def palindrome_4(str):
+  no_space_str = str.replace(' ', '')
+  for i in range(len(no_space_str) // 2):
+    if no_space_str[i] != no_space_str[-i - 1]:
+      return False
+  return True 
+
++++++++++++++++++++++++++++++++++++++++++++++++
+
+TECHNICAL INTERVIEW PROBLEMS IN PYTHON: LISTS
+List Rotation: Slice
+
+For our first problem, we would like to "rotate" a list, or move elements forward in a list by a number of spaces, k.
+
+Elements at the greatest index will "wrap around" to the beginning of the list.
+
+list = ['a', 'b', 'c', 'd', 'e', 'f']
+rotate(list, 0)
+# ['a', 'b', 'c', 'd', 'e', 'f']
+rotate(list, 1)
+# ['f', 'a', 'b', 'c', 'd', 'e']
+rotate(list, 3)
+# ['d', 'e', 'f', 'a', 'b', 'c']
+Clarifying Questions:
+
+Are there constraints on time or space efficiency?
+Nope! Just solve the problem.
+Should I account for negative inputs?
+The rotation input will always be positive.
+What if the rotation is greater than the list length?
+Continue wrapping!
+The "rotated" list would be the same as the original when k is equal to the length.
+1.
+Write a function rotate(), with the parameters my_list and num_rotations.
+
+rotate() should return the input list rotated num_rotations forward.
+
+
+# rotate list
+# no time/space requirements
+# return "rotated" version of input list
+
+def rotate(l, k):
+  for i in range(k):
+    l.insert(0, l.pop())
+  return l
+
+def rotate_alternative(lst, degree):
+  rotation = degree % len(lst)
+  return lst[-rotation:] + lst[:-rotation]
+
+++++++++++++++++++++++++++++++++++
+TECHNICAL INTERVIEW PROBLEMS IN PYTHON: LISTS
+List Rotation: Indices
+
+Optimizing a solution means reducing the memory required (space complexity), or reducing the number of instructions the computer must execute (time complexity).
+
+Sometimes this means entirely rethinking the approach to a question and it's always meant to be a difficult task.
+
+In the last exercise we created a new list using the slice operator. This requires O(N) space, because a new list is made with copies of each value, and O(N) time because every value is visited while copying. N represents the number of values in the list.
+
+We need to do better than O(N).
+
+For time complexity, there's not much we can do. Rotations could encompass the list, requiring us to iterate approximately N times.
+
+For space complexity, we can optimize by constructing in-place solutions, meaning we don't create any additional data structures for storing values.
+
+Single variable declarations are considered O(1), or constant space, 
+because we're not allocating memory in relation to the input.
+
+This example function adds "!" to each string in a list.
+
+def constant_space(list_of_strings):
+  # variable the same regardless of input
+  exclamation = "!"
+  for element in list_of_strings:
+    element += exclamation
+
+  # input mutated but no more space used
+  return list_of_strings
+
+def linear_space(list_of_strings):
+  exclamation_list = [] # new structure
+  exclamation = "!"
+
+  for element in list_of_strings:
+    # adding a new value each loop
+    exclamation_list.append(element + exclamation)
+
+  # holds as many new values as the input!
+  return exclamation_list
+Given a list and a positive integer, return the same list "rotated" a number of times that match the input integer. This time, we'll rotate the list backward and use O(1) space.
+
+list = ['a', 'b', 'c', 'd', 'e', 'f']
+rotate(list, 1)
+# ['b', 'c', 'd', 'e', 'f', 'a']
+rotate(list, 4)
+# ['e', 'f', 'a', 'b', 'c', 'd']
+Instructions
+1.
+It's always harder to optimize, so don't get discouraged!
+
+Write a function rotate(), with the parameters my_list and num_rotations.
+
+rotate() should return the same input list rotated num_rotations backward. 
+
+# rotate list
+# Constant space requirement
+# return input list "rotated"
+def rotate_h(my_list, num_rotations):
+  for i in range(num_rotations):
+    my_list.append(my_list.pop(0))
+  return my_list
+
+def rev(lst, low, high):
+  while low < high:
+    lst[low], lst[high] = lst[high], lst[low]
+    high -= 1
+    low += 1
+  return lst
+
+def rotate(my_list, num_rotations):
+  # first half
+  rev(my_list, 0, num_rotations - 1)
+
+  # second half
+  rev(my_list, num_rotations, len(my_list) - 1)
+
+  # whole list
+  rev(my_list, 0, len(my_list) - 1)
+  return my_list
+
+#### TESTS SHOULD ALL BE TRUE ####
+print("{0}\n should equal \n{1}\n {2}\n".format(rotate(['a', 'b', 'c', 'd', 'e', 'f'], 1), ['b', 'c', 'd', 'e', 'f', 'a'], rotate(['a', 'b', 'c', 'd', 'e', 'f'], 1) == ['b', 'c', 'd', 'e', 'f', 'a']))
+
+print("{0}\n should equal \n{1}\n {2}\n".format(rotate(['a', 'b', 'c', 'd', 'e', 'f'], 2), ['c', 'd', 'e', 'f', 'a', 'b'], rotate(['a', 'b', 'c', 'd', 'e', 'f'], 2) == ['c', 'd', 'e', 'f', 'a', 'b']))
+
+print("{0}\n should equal \n{1}\n {2}\n".format(rotate(['a', 'b', 'c', 'd', 'e', 'f'], 3), ['d', 'e', 'f', 'a', 'b', 'c'], rotate(['a', 'b', 'c', 'd', 'e', 'f'], 3) == ['d', 'e', 'f', 'a', 'b', 'c']))
+
+print("{0}\n should equal \n{1}\n {2}\n".format(rotate(['a', 'b', 'c', 'd', 'e', 'f'], 4), ['e', 'f', 'a', 'b', 'c', 'd'], rotate(['a', 'b', 'c', 'd', 'e', 'f'], 4) == ['e', 'f', 'a', 'b', 'c', 'd'])) 
+++++++++++++++++++++++++++++++++++++++++++
+
+TECHNICAL INTERVIEW PROBLEMS IN PYTHON: LISTS
+Rotation Point: Linear Search
+
+We'll continue our theme of list rotation by flipping the problem: given a sorted list rotated k times, return the index where the "unrotated" list would begin.
+
+rotated_list = ['c', 'd', 'e', 'f', 'a']
+rotation_point(rotated_list)
+# index 4
+# a sorted list would start with 'a'
+
+another_rotated_list = [13, 8, 9, 10, 11] 
+rotation_point(rotated_list)
+# index 1
+# a sorted list would start with 8
+Clarifying Questions:
+
+Are there constraints on time or space efficiency?
+No! Any solution will do.
+Does the rotation direction matter?
+This won't affect the return value.
+What if the input isn't rotated?
+Return 0.
+Instructions
+1.
+Write a function count_rotations() which has one parameter rotated_list.
+count_rotations() should return the index where the sorted list would begin.
+
+# find rotation point 
+# No time/space requirements
+# return index of "rotation point" element
+
+def rotation_point_h(rotated_list):
+  return rotated_list.index(min(rotated_list))
+
+def rotation_point(rotated_list):
+  rotation_idx = 0
+  for i in range(len(rotated_list)):
+    if rotated_list[i] < rotated_list[rotation_idx]:
+      rotation_idx = i
+  return rotation_idx  
+
+
+
+#### TESTS SHOULD ALL BE TRUE ####
+print("{0}\n should equal \n{1}\n {2}\n".format(rotation_point(['a', 'b', 'c', 'd', 'e', 'f']), 0, rotation_point(['a', 'b', 'c', 'd', 'e', 'f']) == 0))
+
+print("{0}\n should equal \n{1}\n {2}\n".format(rotation_point(['c', 'd', 'e', 'f', 'a']), 4, rotation_point(['c', 'd', 'e', 'f', 'a']) == 4))
+
+print("{0}\n should equal \n{1}\n {2}\n".format(rotation_point([13, 8, 9, 10, 11]), 1, rotation_point([13, 8, 9, 10, 11]) == 1))
+
++++++++++++++++++++++++++
+TECHNICAL INTERVIEW PROBLEMS IN PYTHON: LISTS
+Rotation Point: Binary Search
+
+Our last problem had a sorted dataset as the input. Sure, it was rotated, but it started out sorted.
+
+A sorted list gives us ways to leverage that ordering. After all, someone went through a lot of work putting that data in order!
+
+Binary search is an algorithm which finds a target value in sorted datasets in O(logN) time using knowledge of the dataset to guide the search.
+
+We check the middle value. If it matches our target, we've found the value. If the middle value is greater than our target, we can safely ignore everything with a larger index because those values will also be greater. This cuts the problem in half.
+
+Our target is the element with a unique property: the values at the previous and following index both have a greater value.
+
+This is only true at the index where the rotation "finished" because it marks the beginning of a sorted list.
+
+rotated = ['c', 'd', 'e', 'f', 'a', 'b']
+# rotation index is 4
+
+'a' < 'b'
+# True
+'a' < 'f'
+# True
+Use a modified binary search algorithm to improve our solution's time efficiency from O(N) to O(logN).
+
+Instructions
+1.
+Write a function count_rotations() which has one parameter rotated_list.
+
+count_rotations() should return the index where the sorted list would begin.
+
+Your solution should make use of binary search for a O(logN) time complexity!
+
+# find rotation point 
+# O(logN) time requirement
+# return index of "rotation point" element
+
+def rotation_point(rotated_list):
+  low = 0
+  high = len(rotated_list) - 1
+  while low <= high:
+    mid = (low + high) // 2
+    mid_next = (mid + 1) % len(rotated_list)
+    mid_previous = (mid - 1) % len(rotated_list)
+    
+    if (rotated_list[mid] < rotated_list[mid_previous]) and (rotated_list[mid] < rotated_list[mid_next]):
+      return mid
+    elif rotated_list[mid] < rotated_list[high]:
+      high = mid - 1
+    else:
+      low = mid + 1
+
+
+#### TESTS SHOULD ALL BE TRUE ####
+print("{0}\n should equal \n{1}\n {2}\n".format(rotation_point(['a', 'b', 'c', 'd', 'e', 'f']), 0, rotation_point(['a', 'b', 'c', 'd', 'e', 'f']) == 0))
+
+print("{0}\n should equal \n{1}\n {2}\n".format(rotation_point(['c', 'd', 'e', 'f', 'a']), 4, rotation_point(['c', 'd', 'e', 'f', 'a']) == 4))
+
+print("{0}\n should equal \n{1}\n {2}\n".format(rotation_point([13, 8, 9, 10, 11]), 1, rotation_point([13, 8, 9, 10, 11]) == 1))
+
+++++++++++++++++++++++++++++++++++++++
+TECHNICAL INTERVIEW PROBLEMS IN PYTHON: LISTS
+Remove Duplicates: Naive
+Duplicate values? Who needs them!
+
+Given a list of values with duplicates, return a list holding the same values in the same order with all duplicates removed.
+
+duplicates = ['a', 'a', 'x', 'x', 'x', 'g', 't', 't']
+remove_dups(duplicates)
+# ['a', 'x', 'g', 't']
+
+more_duplicates = [3, 3, 1, 7, 7, 7]
+remove_dups(more_duplicates)
+# [3, 1, 7]
+This is a great problem because there are many different ways to solve it. Questions with multiple solutions are an opportunity to discuss with the interviewer.
+
+Remember: the ability to communicate is essential!
+
+Clarifying Questions:
+
+Are there constraints on time or space efficiency?
+No! Any solution will do.
+Is it okay to alter the input list?
+You can alter the list or return a new list.
+Instructions
+1.
+Write a function remove_duplicates() which has one parameter: dupe_list.
+
+remove_duplicates() should return a list containing unique values in the same order as in dupe_list.
+=======================================
+# remove duplicates 
+# no time/space requirements
+# return a list with duplicates removed
+
+def remove_duplicates(dupe_list):
+  new_list = []
+  for el in dupe_list:
+    if el not in new_list:
+      new_list.append(el)
+  return new_list
+
+
+
+#### TESTS SHOULD ALL BE TRUE ####
+print("{0}\n should equal \n{1}\n {2}\n".format(remove_duplicates(['a', 'a', 'x', 'x', 'x', 'g', 't', 't']), ['a', 'x', 'g', 't'], remove_duplicates(['a', 'a', 'x', 'x', 'x', 'g', 't', 't']) == ['a', 'x', 'g', 't']))
+
+print("{0}\n should equal \n{1}\n {2}\n".format(remove_duplicates(['c', 'c', 'd', 'd', 'e', 'e', 'f', 'a', 'a']), ['c', 'd', 'e', 'f', 'a'], remove_duplicates(['c', 'c', 'd', 'd', 'e', 'e', 'f', 'a', 'a']) == ['c', 'd', 'e', 'f', 'a']))
+
+print("{0}\n should equal \n{1}\n {2}\n".format(remove_duplicates([13, 13, 13, 13, 13, 42]), [13, 42], remove_duplicates([13, 13, 13, 13, 13, 42]) == [13, 42]))
+
+++++++++++++++++++++++++++++++++++++++++++++
+
+TECHNICAL INTERVIEW PROBLEMS IN PYTHON: LISTS
+Remove Duplicates: Optimized
+
+For the last problem our suggested solutions had O(N) time and/or O(N) space complexity.
+
+We can't improve the time complexity. We have to visit each value to determine whether or not it is a duplicate.
+
+We can reduce the space complexity to O(1) with an in-place solution.
+
+We'll adjust the problem to allow for this space complexity. Now we want to alter a sorted input list with all duplicates moved to the end of the list.
+
+The return value will be the index of the final unique value.
+
+duplicates = ['a', 'a', 'g', 't', 't', 'x', 'x', 'x']
+remove_dups(duplicates)
+# 3, index of the last unique value: 'x'
+duplicates
+# ['a', 'g', 't', 'x' 'a', 'x', 't', 'x']
+Clarifying Questions:
+
+Does the ordering of the duplicate(s) matter?
+No! They can be in any order.
+Instructions
+1.
+Write a function move_duplicates() which has one parameter: dupe_list.
+
+The argument to move_duplicates() will always be a sorted list which may have duplicated values.
+
+move_duplicates() should move all duplicate values to the end of the list and maintain sorted order.
+
+The return value is the index of the last unique value.
+
+===========================
+# remove duplicates 
+# constant space
+# return index of last unique element
+
+def move_duplicates(dupe_list):
+  unique_idx = 0
+  for i in range(len(dupe_list) - 1):
+    if dupe_list[i] != dupe_list[i + 1]:
+      dupe_list[i], dupe_list[unique_idx] = dupe_list[unique_idx], dupe_list[i]
+      unique_idx += 1
+  dupe_list[unique_idx], dupe_list[len(dupe_list) - 1] = dupe_list[len(dupe_list) - 1], dupe_list[unique_idx]
+  return unique_idx
+
+#### TESTS SHOULD ALL BE TRUE ####
+print("{0}\n should equal \n{1}\n {2}\n".format(move_duplicates(['a', 'a', 'g', 't', 't', 'x', 'x', 'x']), 3, move_duplicates(['a', 'a', 'g', 't', 't', 'x', 'x', 'x']) == 3))
+
+print("{0}\n should equal \n{1}\n {2}\n".format(move_duplicates(['a', 'a', 'c', 'c', 'd', 'd', 'e', 'e', 'f']), 4, move_duplicates(['a', 'a', 'c', 'c', 'd', 'd', 'e', 'e', 'f']) == 4))
+
+print("{0}\n should equal \n{1}\n {2}\n".format(move_duplicates([13, 13, 13, 13, 13, 42]), 1, move_duplicates([13, 13, 13, 13, 13, 42]) == 1))
+
+++++++++++++++++++++++++++++++++++++++++++++++=
+
+TECHNICAL INTERVIEW PROBLEMS IN PYTHON: LISTS
+Max list sub-sum: Naive
+
+Our next problem calculates sums within a list.
+
+Given a list of integers, return the maximum sum possible from a contiguous sub-list. A sub-list is an uninterrupted portion of the list (up to and including the entire list).
+
+nums = [1, -7, 2, 15, -11, 2]
+
+maximum_sub_sum(nums)
+# 17
+# The sum of sub-list nums[2:4]
+Clarifying Questions:
+
+Are there constraints on time or space efficiency?
+No! Any solution will do.
+Are all the numbers positive?
+No! Negative numbers can be in the input.
+How big or small can the sub-list be?
+From a single element to the entire list.
+1.
+Write a function max_sub_sum() which has a single parameter: my_list.
+
+max_sub_sum() should return the maximum sum of contiguous values in my_list.
+
+====================================
+
+# max sub sum
+# no time/space requirements
+# return maximum contiguous sum in list
+
+def maximum_sub_sum(my_list):
+  max_sum = my_list[0]
+  for i in range(len(my_list)):
+    for j in range(i, len(my_list)):
+      sub_sum = sum(my_list[i:j + 1])
+      if sub_sum > max_sum:
+        max_sum = sub_sum
+  return max_sum
+
+
+#### TESTS SHOULD ALL BE TRUE ####
+print("{0}\n should equal \n{1}\n {2}\n".format(maximum_sub_sum([1, 2, 3, 4, 5]), 15, maximum_sub_sum([1, 2, 3, 4, 5]) == 15))
+
+print("{0}\n should equal \n{1}\n {2}\n".format(maximum_sub_sum([-1, -1, -2, -4, -5, -9, -12, -13]), -1, maximum_sub_sum([-1, -1, -2, -4, -5, -9, -12, -13]) == -1))
+
+print("{0}\n should equal \n{1}\n {2}\n".format(maximum_sub_sum([1, -7, 2, 15, -11, 2]), 17, maximum_sub_sum([1, -7, 2, 15, -11, 2]) == 17))
+
+++++++++++++++++++++++++++++++++++++++
+
+TECHNICAL INTERVIEW PROBLEMS IN PYTHON: LISTS
+Max List Sub-Sum: Optimized
+Our last solution had a cubic time complexity: O(N^3).
+
+One iteration for the length of the list O(N), inside another iteration for the length of the list O(N^2), inside the inner loop, we copied a sub-list: O(N^3).
+
+Let's optimize using an important concept: We don't always need to create every possible outcome to know what's best.
+
+Do we need to make every sub-list? No! We can visit each value within the list and keep a running tally of sums.
+
+Let's see what information we can gather in a single pass:
+
+# <> will mark the current element
+nums = [1, -7, 2, 15, -11, 2]
+most_seen = 0
+current_max_sub_sum = 0
+
+[<1>, -7, 2, 15, -11, 2]
+most_seen = 1
+current_max_sub_sum = 1
+
+[1, <-7>, 2, 15, -11, 2]
+most_seen = 1
+current_max_sub_sum = -6
+
+# our sum is negative
+# anything positive which comes after
+# will be better without this "sub-list"
+# reset current max to 0!
+
+current_max_sub_sum = 0
+
+[1, -7, <2>, 15, -11, 2]
+most_seen = 2
+current_max_sub_sum = 2
+
+[1, -7, 2, <15>, -11, 2]
+most_seen = 17
+current_max_sub_sum = 17
+
+[1, -7, 2, 15, <-11>, 2]
+most_seen = 17
+current_max_sub_sum = 6
+
+# current sum went down, but not negative
+# no need to reset!
+
+[1, -7, 2, 15, -11, <2>]
+most_seen = 17
+current_max_sub_sum = 8
+Moving through the list just once is sufficient to find the maximum contiguous sub-sum.
+
+Instructions
+1.
+Write a function max_sub_sum() which has a single parameter: my_list.
+
+max_sub_sum() should return the maximum sum of contiguous values in my_list.
+
+Your solution should run in O(N) time and O(1) space!
+
+=====================================
+
+# max sub sum
+# linear time, constant space requirements
+# return maximum contiguous sum in list
+
+def maximum_sub_sum(my_list):
+  if max(my_list) < 0:
+    return max(my_list)
+  
+  max_sum = 0
+  max_sum_tracker = 0
+  for i in range(len(my_list)):
+    max_sum_tracker += my_list[i]
+    if max_sum_tracker < 0:
+      max_sum_tracker = 0
+    if max_sum_tracker > max_sum:
+      max_sum = max_sum_tracker
+    
+  return max_sum
+
+#### TESTS SHOULD ALL BE TRUE ####
+print("{0}\n should equal \n{1}\n {2}\n".format(maximum_sub_sum([1, 2, 3, 4, 5]), 15, maximum_sub_sum([1, 2, 3, 4, 5]) == 15))
+
+print("{0}\n should equal \n{1}\n {2}\n".format(maximum_sub_sum([-1, -1, -2, -4, -5, -9, -12, -13]), -1, maximum_sub_sum([-1, -1, -2, -4, -5, -9, -12, -13]) == -1))
+
+print("{0}\n should equal \n{1}\n {2}\n".format(maximum_sub_sum([1, -7, 2, 15, -11, 2]), 17, maximum_sub_sum([1, -7, 2, 15, -11, 2]) == 17))
+
+++++++++++++++++++++++++++++++++++++++++
+
+TECHNICAL INTERVIEW PROBLEMS IN PYTHON: LISTS
+Pair Sum: Naive
+
+We'll end with a classic interview question: given a list of integers and a "target" integer, return the first pair of indices whose values sum to the target.
+
+nums = [4, 2, 8, 9, 6]
+target = 8
+
+pair_sum(nums, target)
+# nums[1] + nums[4] == 8
+# [1, 4]
+
+pair_sum(nums, 15)
+# nums[2] + nums[3] == 17
+# [2, 3]
+
+pair_sum(nums, 99)
+# no pair sum exists...
+# None
+Clarifying Questions:
+
+Are there constraints on time or space efficiency?
+No! Any solution will do.
+Can the numbers be negative or 0?
+Yes! Your solution should handle those inputs.
+Does the order of indices matter?
+The earlier index comes first in the return list.
+Instructions
+1.
+Write a function pair_sum(), which has two parameters: my_list and target.
+
+pair_sum() should return a list containing the first pair of indices whose values sum to target.
+
+If no values exist, return None.
+
+==========================================
+
+# pair sum
+# no time/space requirements
+# return list of indices that sum to target
+
+def pair_sum(my_list, target):
+  for i in range(len(my_list)):
+    for j in range(i+1, len(my_list)):
+      if (my_list[i] + my_list[j])==target:
+        return [i,j]
+  return None
+
+
+#### TESTS SHOULD ALL BE TRUE ####
+print("{0}\n should equal \n{1}\n {2}\n".format(pair_sum([1, 2, 3, 4, 5], 6), [0, 4], pair_sum([1, 2, 3, 4, 5], 6) == [0, 4]))
+
+print("{0}\n should equal \n{1}\n {2}\n".format(pair_sum([-1, -1, -2, -4, -5, -9, -12, -13], -21), [5, 6], pair_sum([-1, -1, -2, -4, -5, -9, -12, -13], -21) == [5, 6]))
+
+print("{0}\n should equal \n{1}\n {2}\n".format(pair_sum([1, -7, 2, 15, -11, 2], 42), None, pair_sum([1, -7, 2, 15, -11, 2], 42) == None))
+
+print("{0}\n should equal \n{1}\n {2}\n".format(pair_sum([0, -7, 2, 15, -11, 2], 2), [0, 2], pair_sum([0, -7, 2, 15, -11, 2], 2) == [0, 2]))
+
++++++++++++++++++++++++++++++++++++++++
+
+TECHNICAL INTERVIEW PROBLEMS IN PYTHON: LISTS
+Pair Sum: Optimized
+
+We'll explore a common trade-off: time vs. space.
+
+Our previous solution used nested for loops to iterate through each element in the list and then iterate again for each element in the list to find their sum for a O(N^2) time complexity.
+
+On the bright side, that solution used O(1) space because we're not using any additional data structures.
+
+If we sort the list before looking for pairs, we can reach O(N * logN) time complexity, but we're going to go for a O(N) solution by trading away a little space.
+
+Engineering is about trade-offs! This is another opportunity to communicate benefits and drawbacks to the interviewer.
+
+As with other naive solutions, we're doing more work than is necessary. Given the target integer, what information we can gather in a single iteration:
+
+# <> marks the current element
+nums = [4, 2, 8, 9, 6]
+target = 8
+
+[<4>, 2, 8, 9, 6]
+# target - 4 = 4
+# we need another 4...
+
+[4, <2>, 8, 9, 6]
+# target - 2 = 6
+# we need a 6...
+
+[4, 2, <8>, 9, 6]
+# target - 8 = 0
+# we need a 0...
+
+[4, 2, 8, <9>, 6]
+# target - 9 = -1
+# we need a -1...
+
+[4, 2, 8, 9, <6>]
+# target - 6 = 2
+# we need a 2...
+At each step of the iteration, we know the "complement" number needed to sum to the target.
+
+Use a dictionary to store that complement and solve this problem with O(N) time complexity and O(N) space complexity.
+
+Instructions
+1.
+Write a function pair_sum(), which has two parameters: my_list and target.
+
+pair_sum() should return a list containing the first pair of indices whose values sum to target.
+
+If no values exist, return None.
+
+Your solution should run in O(N) time and O(N) space!
+
+========================================
+def pair_sum(my_list, target):
+  comp = {}
+  index = {}
+  for i in range(len(my_list)):
+    half = comp.get(my_list[i], None)
+    if half is not None:
+      return [index[half], i]
+    comp[target - my_list[i]] = my_list[i]
+    index[my_list[i]] = i
+
+
+#### TESTS SHOULD ALL BE TRUE ####
+print("{0}\n should equal \n{1}\n {2}\n".format(pair_sum([1, 2, 3, 4, 5], 6), [1, 3], pair_sum([1, 2, 3, 4, 5], 6) == [1, 3]))
+
+print("{0}\n should equal \n{1}\n {2}\n".format(pair_sum([-1, -1, -2, -4, -5, -9, -12, -13], -21), [5, 6], pair_sum([-1, -1, -2, -4, -5, -9, -12, -13], -21) == [5, 6]))
+
+print("{0}\n should equal \n{1}\n {2}\n".format(pair_sum([1, -7, 2, 15, -11, 2], 42), None, pair_sum([1, -7, 2, 15, -11, 2], 42) == None))
+
+print("{0}\n should equal \n{1}\n {2}\n".format(pair_sum([0, -7, 2, 15, -11, 2], 2), [0, 2], pair_sum([0, -7, 2, 15, -11, 2], 2) == [0, 2]))
+
+
+++++++++++++++++++++++++++++++++++++++
+
+TECHNICAL INTERVIEW PROBLEMS IN PYTHON: LISTS
+Review
+
+Lists are a fundamental data structure for any program. When faced with a technical interview problem using lists, here are a few strategies to keep in mind:
+
+Be comfortable with variables which represent indices in the list, or pointers.
+Accessing the first and last values with indices.
+Modding by the list length will ensure a valid index. (num % length_of_list).
+Pointers can sometimes substitute for copying a list.
+Ordered datasets unlock a lot of solutions.
+Sorted data can be searched in O(logN) time using binary search.
+Sorting can be done in O(N*logN) time.
+Find the "naive" solution and push to optimize.
+Interviewers want the optimal solution, but at least talk through the inefficient approach.
+Instructions
+Run the code to see the difference in execution speed between optimal and naive solutions!
+
+Sometimes the solution which optimizes for space will run slower.
+
+==================================
+
+from timeit import timeit
+
+## Rotate
+def rotate(lst, degree):
+  rotation = degree % len(lst)
+  return lst[-rotation:] + lst[:-rotation]
+
+def rev(lst, low, high):
+  while low < high:
+    lst[low], lst[high] = lst[high], lst[low]
+    high -= 1
+    low += 1
+  return lst
+
+def rotate_optimal(my_list, num_rotations):
+  rev(my_list, 0, num_rotations - 1)
+  rev(my_list, num_rotations, len(my_list) - 1)
+  rev(my_list, 0, len(my_list) - 1)
+  return my_list
+
+print("NAIVE ROTATE: ")
+print(timeit('rotate([i for i in range(1000)], 100)', number = 10, setup="from __main__ import rotate"))
+print("SPACE OPTIMAL ROTATE: ")
+print(timeit('rotate_optimal([i for i in range(1000)], 100)', number = 10, setup="from __main__ import rotate_optimal"))
+
+## Rotate Point
+def rotation_point(rotated_list):
+  rotation_idx = 0
+  for i in range(len(rotated_list)):
+    if rotated_list[i] < rotated_list[rotation_idx]:
+      rotation_idx = i
+  return rotation_idx
+
+def rotation_point_optimal(rotated_list):
+  low = 0
+  high = len(rotated_list) - 1
+  while low <= high:
+    mid = (low + high) // 2
+    mid_next = (mid + 1) % len(rotated_list)
+    mid_previous = (mid - 1) % len(rotated_list)
+    
+    if (rotated_list[mid] < rotated_list[mid_previous]) and (rotated_list[mid] < rotated_list[mid_next]):
+      return mid
+    elif rotated_list[mid] < rotated_list[high]:
+      high = mid - 1
+    else:
+      low = mid + 1
+
+print("\nNAIVE ROTATE POINT: ")
+print(timeit('rotation_point([i for i in range(1000)])', number = 10, setup="from __main__ import rotation_point"))
+print("TIME OPTIMAL ROTATE POINT: ")
+print(timeit('rotation_point_optimal([i for i in range(1000)])', number = 10, setup="from __main__ import rotation_point_optimal"))
+
+## Duplicates
+def remove_duplicates(dupe_list):
+  unique_values = []
+  for el in dupe_list:
+    if el not in unique_values:
+      unique_values.append(el)
+  return unique_values
+
+
+def move_duplicates_optimal(dupe_list):
+  unique_idx = 0
+  for i in range(len(dupe_list) - 1):
+    if dupe_list[i] != dupe_list[i + 1]:
+      dupe_list[i], dupe_list[unique_idx] = dupe_list[unique_idx], dupe_list[i]
+      unique_idx += 1
+  dupe_list[unique_idx], dupe_list[len(dupe_list) - 1] = dupe_list[len(dupe_list) - 1], dupe_list[unique_idx]
+  return unique_idx
+
+print("\nNAIVE REMOVE DUPLICATES: ")
+print(timeit('remove_duplicates([i + i for i in range(1000)])', number = 10, setup="from __main__ import remove_duplicates"))
+print("SPACE OPTIMAL REMOVE DUPLICATES: ")
+print(timeit('move_duplicates_optimal([i + i for i in range(1000)])', number = 10, setup="from __main__ import move_duplicates_optimal"))
+
+## Max Sub Sum
+def maximum_sub_sum(my_list):
+  max_sum = my_list[0]
+  for i in range(len(my_list)):
+    for j in range(i, len(my_list)):
+      sub_sum = sum(my_list[i:j + 1])
+      if sub_sum > max_sum:
+        max_sum = sub_sum
+  return max_sum
+
+def maximum_sub_sum_optimal(my_list):
+  if max(my_list) < 0:
+    return max(my_list)
+  
+  max_sum = 0
+  max_sum_tracker = 0
+  for i in range(len(my_list)):
+    max_sum_tracker += my_list[i]
+    if max_sum_tracker < 0:
+      max_sum_tracker = 0
+    if max_sum_tracker > max_sum:
+      max_sum = max_sum_tracker
+    
+  return max_sum
+
+print("\nNAIVE MAX SUB-SUM: ")
+print(timeit('maximum_sub_sum([i for i in range(200)])', number = 10, setup="from __main__ import maximum_sub_sum"))
+print("SPACE OPTIMAL REMOVE DUPLICATES: ")
+print(timeit('maximum_sub_sum_optimal([i for i in range(200)])', number = 10, setup="from __main__ import maximum_sub_sum_optimal"))
+
+## Pair Sum
+def pair_sum(my_list, target):
+  for i in range(len(my_list)):
+    for j in range(i, len(my_list)):
+      if my_list[i] + my_list[j] == target:
+        return [i, j]
+  return None
+
+def pair_sum_optimal(my_list, target):
+  comp = {}
+  index = {}
+  for i in range(len(my_list)):
+    half = comp.get(my_list[i], None)
+    if half is not None:
+      return [index[half], i]
+    comp[target - my_list[i]] = my_list[i]
+    index[my_list[i]] = i
+    
+    
+print("\nNAIVE PAIR SUM: ")
+print(timeit('pair_sum([i for i in range(1000)], -1)', number = 10, setup="from __main__ import pair_sum"))
+print("TIME OPTIMAL PAIR SUM: ")
+print(timeit('pair_sum_optimal([i for i in range(1000)], -1)', number = 10, setup="from __main__ import pair_sum_optimal"))
+
+------------------------------------------------------------
+
+14/01/2019
+
+TECHNICAL INTERVIEW PROBLEMS IN PYTHON: LINKED LISTS
+Introduction
+
+Linked lists are a sequential data structure. A linked list consists of nodes which store data and a link to another node. Each node knows its location, what value it holds, and where to find the next node in the linked list. The first node is the head node, and the last node is the tail node.
+
+Nodes of a linked list are stored anywhere in the computer's memory unlike an array (or list), where values are stored sequentially in memory. The actual memory address is abstracted away from us by Python. With our Node class, we use the instance property .next to represent the location of the following node.
+
+Due to the difference in memory storage, linked lists are more efficient than arrays at inserting and deleting values; arrays are more efficient at looking up values.
+
+In an array, inserting a value causes every subsequent value to be shifted over to make room. In a linked list, inserting a value requires a change of .next for the preceding node.
+
+With an index, we can retrieve any value in a list in constant time. Linked lists have no index because nodes are located all over the computer's memory. We must traverse, or move through each node starting at the head, to find a value. The traversal takes linear time.
+
+We'll explore common technical interview questions. By the end of the lesson, you'll be prepared for linked list questions during a job interview.
+
+Instructions
+The text editor contains LinkedList and Node classes. Run the code and test it out.
+
+LinkedList has the following methods at your disposal:
+
+.add(): receives a value, initializes a Node with the value, and sets the instance as the new head.
+.traverse(): prints the value of each Node in the linked list starting at the head.
+.size(): returns the count of Node instances stored by the LinkedList.
+.__repr__(): a special method you won't use directly. Call print() and pass an instance of LinkedList to see a string representation.
+Move on when you feel comfortable with these classes; we'll use them for the rest of the lesson!
+
++++++++++++++++++++++++++++++++++++++++++++
+
+TECHNICAL INTERVIEW PROBLEMS IN PYTHON: LINKED LISTS
+Insert at Point
+
+Start by extending the functionality of the LinkedList class. Write a method to insert a node anywhere in the linked list based on an input number. 0 means inserting at the head, 1 is the node following the head, and so on.
+
+# '->' is the .next property
+# nodes are referenced by the values they hold
+# x -> z means a node holding 'x'
+# pointing to a node holding 'z'
+
+# a -> b -> c -> d
+linked_list.insert('x', 2)
+# a -> b -> x -> c -> d
+
+# 'b' node's next is set to x
+# 'x' node's next is set to c
+
+linked_list.insert('t', 0)
+# t -> a -> b -> x -> c -> d
+# head node is set to t
+# 't' node's next is set to a
+We'll need to traverse from the head node and change the .next property on two nodes.
+
+To recap:
+
+write a method in the LinkedList class: .insert().
+.insert() takes two arguments:
+the value which will be used to initialize a Node.
+the insertion location for the node instance.
+return self at the end of the function.
+Instructions
+1.
+There are multiple ways to write this method. Use the tests to guide your way. We detail our approach in the hint.
+
+We'll use the narrative's example to illustrate our approach. Starting with a -> b -> c -> d and calling .insert('x', 2).
+
+If location is 0, we want to insert at self.head which is exactly what .add() does for us. Use the built-in .add() method passing in node_value and returning self afterwards.
+
+Otherwise, we'll need to make a Node with the value:
+
+new_node = Node(node_value)
+From the head, we want to traverse location - 1 number of nodes. Track the prev and current_node as we traverse to identify which nodes need to have their .next property updated.
+
+    prev = self.head
+    node = Node(node_value)
+    current_node = self.head.next
+
+    while location > 1:
+      prev = current_node
+      current_node = current_node.next
+      location -= 1
+Once location has hit 1 we're in the proper spot to insert our new node:
+
+    prev.next = node
+    node.next = current_node
+All that's left is to return self!
+
+++++++++++++++++++++++++++++++++++++++++++
+
+TECHNICAL INTERVIEW PROBLEMS IN PYTHON: LINKED LISTS
+Nth From Last
+
+For our second problem, we'll continue extending our LinkedList class.
+
+Write a method which returns the node that is n nodes from the tail of the linked list.
+
+If n is 0, we would return the tail node, if n is 1, we would return the second to last node, and so on.
+
+# a -> b -> c -> d -> e
+linked_list.n_from_last(0)
+# 'e' node
+linked_list.n_from_last(3)
+# 'b' node
+We'll need to be creative in how we solve this problem since we only have a reference to the head node and not the tail!
+
+The .size() method on LinkedList may be helpful.
+
+To recap:
+
+write a method in the LinkedList class: .n_from_last().
+.n_from_last() takes one argument:
+the number of nodes counting from the tail.
+return the node instance at that location.
+Instructions
+1.
+There are multiple ways we can solve this problem. Try to answer it on your own, and use the hint if you get stuck.
+
+The .size() method simplifies this problem by giving us the number of steps to reach the end of the linked list.
+
+    nodes_remaining = self.size() - 1 - n
+Imagine if n were 0: we would want the tail node so we traverse self.size() - 1 steps. In other words, traverse every node except the one to return.
+
+Then, we set a variable to track our movement through the linked list and loop nodes_remaining times, updating .next on our tracking variable.
+
+    result = self.head
+
+    while nodes_remaining:
+      result = result.next
+      nodes_remaining -= 1
+Once our loop concludes, the tracking variable contains our desired return node.
+
+This does not account for invalid input! That's not necessary to pass our tests but if n is >= to self.size() this method will error.
+
++++++++++++++++++++++++++++++++++++++++++
+
+TECHNICAL INTERVIEW PROBLEMS IN PYTHON: LINKED LISTS
+Remove Duplicates
+
+Our next problem assumes a sorted linked list. Nodes held at .next will have values greater than or equal to the current node's value.
+
+Write a method on the LinkedList class which removes all duplicates. In the following example, there are multiple nodes which hold the same value ('a' and 'c').
+
+# a -> a -> b -> c -> c -> c -> d
+sorted_linked_list.remove_duplicates()
+# a -> b -> c -> d
+"Removing" nodes in a linked list is a matter of removing the reference to that node.
+
+# a -> b -> c
+# a.next points to b
+a.next = c
+# a -> c
+We have no way of reaching the node holding 'b' once the .next property of the node holding 'a' is set to the node holding 'c'. We have "removed" 'b' from the linked list.
+
+To recap:
+
+write a method in the LinkedList class: .remove_duplicates().
+.remove_duplicates() takes no arguments.
+return self after all duplicate nodes are removed.
+Instructions
+1.
+Try to solve this problem on your own. Use the hint if you need help!
+
+We iterate through the linked list because we'll have to check each node to see if it's a duplicate.
+
+Store a reference to the head node to begin:
+
+current_node = self.head
+
+while current_node:
+  # remove duplicate nodes
+A key aspect of this problem is the linked list is sorted, meaning we can depend on the ordering.
+
+If a particular node is duplicated, that duplicate will come immediately after the current node, otherwise it wouldn't be sorted.
+
+We'll check two things:
+
+is there a .next node?
+does that .next node contain the same value as the current node making it a duplicate?
+Since there can be many duplicates an a row, we'll make our check the condition of another loop.
+
+while current_node.next and 
+current_node.next.val == current_node.val:
+Inside this "dupe loop", we'll remove the duplicate by reassigning the .next property of the current node.
+
+current_node.next = current_node.next.next
+This works because we've already guaranteed there's a .next node present with our inner loop condition.
+
+Outside the inner "dupe loop", move on to the next node by reassigning the .next property on the current node.
+
+current_node = current_node.next
+Once both loops have concluded, we can return self.
+
+++++++++++++++++++++++++++++++++
+
+TECHNICAL INTERVIEW PROBLEMS IN PYTHON: LINKED LISTS
+Merge Sorted Linked Lists
+
+The next problem involves working with two different linked lists. You'll need to write a function outside of the LinkedList class.
+
+Given two sorted linked lists as input, your function should return a single sorted linked list made up of the nodes from both inputs.
+
+# linked_list_a = a -> c -> x -> z
+# linked_list_b = b -> g -> u
+
+merge(linked_list_a, linked_list_b)
+# a -> b -> c -> g -> u -> x -> z
+One way to solve this problem would be reassigning .next for each node in both lists. This approach is a constant space solution because we're combining the inputs rather than creating a new linked list. In the above example, we would start by setting 'a' node's .next property to the 'b' node.
+
+Another way would be to create a new linked list. In the example, the head node of our new linked list would be 'a' node.
+
+To recap:
+
+write a function: merge().
+merge() takes two arguments: sorted linked lists.
+return an instance of LinkedList which contains all the nodes from both of the input lists in sorted order.
+Instructions
+1.
+Try to solve this problem on your own, and use the hint if you want advice on how to code out a solution.
+
+At a high level, traverse both inputs and compare the current node for each. The lesser of the two nodes will be added to our result.
+
+Here's how we broke that down.
+
+Set variables for each of the current nodes:
+
+current_node_a = linked_list_a.head
+current_node_b = linked_list_b.head
+Decide which of the current nodes will be the head for our new result linked list:
+
+if current_node_a.val < current_node_b.val:
+  start_node = current_node_a
+  current_node_a = current_node_a.next
+else:
+  start_node = current_node_b
+  current_node_b = current_node_b.next
+Store that head node so we can use it to initialize our return instance of LinkedList. We're storing another reference because we'll overwrite start_node repeatedly as we build out the list.
+
+head = start_node
+Traverse both lists, as long as they exist, and continue the same process that selected our head node:
+
+while current_node_a or current_node_b:
+  if not current_node_a:
+    start_node.next = current_node_b
+    current_node_b = current_node_b.next
+  elif not current_node_b:
+    start_node.next = current_node_a
+    current_node_a = current_node_a.next
+  elif current_node_a.val < current_node_b.val:
+    start_node.next = current_node_a
+    current_node_a = current_node_a.next
+  else:
+    start_node.next = current_node_b
+    current_node_b = current_node_b.next
+  start_node = start_node.next
+Finally, we'll use the reference to the new head to return a new LinkedList instance.
+
+return LinkedList(head)
+
+++++++++++++++++++++++++++++++++++++++++=
+TECHNICAL INTERVIEW PROBLEMS IN PYTHON: LINKED LISTS
+Find Merge Point
+
+Nodes within a linked list can be referenced multiple times. We'll explore this idea with a partially merged linked list.
+
+# a -> b
+#        \
+#         -> c -> e
+#        /
+# d -> f
+In this example, two different heads (nodes holding 'a' and 'd') merge into a single linked list with the node holding 'c'. This "merge point" results from nodes holding 'b' and 'f' both referencing the node holding 'c' as the .next property.
+
+Write a function that returns the merge point node of two linked lists if it exists.
+
+# x -> a -> b
+#            \
+#             -> q -> e
+#            /
+#      d -> f
+
+# node holding 'q'
+
+# r
+#  \
+#   -> x
+#  /
+# f
+
+# node holding 'x'
+
+# j -> k
+# l -> q
+
+# None
+To recap:
+
+write a function: merge_point().
+merge_point() takes two arguments, both instances of a linked list.
+return the first node referenced by both linked lists, or None if such a node does not exist.
+Instructions
+1.
+See if you can solve this problem in linear, O(N), time complexity.
+
+Another solution runs in quadratic, O(N * M), time complexity. N is the length of one linked list and M refers to the other.
+
+We detail our approach in the hint.
+
+The naive solution would be to traverse through one linked list. For each node in that traversal, completely traverse the other list and compare nodes. If any match, we have the merge point.
+
+The optimal solution is to remove the difference in size between the two linked lists and then traverse both simultaneously.
+
+First we grab the two sizes and find the difference:
+
+size_of_a = linked_list_a.size()
+size_of_b = linked_list_b.size()
+
+diff = abs(size_of_a - size_of_b)
+Then we determine which linked list is larger and set variables to the head of each linked list.
+
+if size_of_a > size_of_b:
+  bigger = linked_list_a.head
+  smaller = linked_list_b.head
+else:
+  bigger = linked_list_b.head
+  smaller = linked_list_a.head
+With the larger linked list identified, we advance its head node forward by the difference we calculated earlier.
+
+for i in range(diff):
+  bigger = bigger.next
+The two nodes which represent both lists have an equal number of steps until the tail node. We can complete the traversal and check for matching nodes along the way:
+
+while bigger and smaller:
+  if bigger == smaller:
+    return bigger
+  bigger = bigger.next
+  smaller = smaller.next
+If we never returned from this loop that means no merge point was found.
+
+return None
+
+++++++++++++++++++++++++++++++++++++++
+
+TECHNICAL INTERVIEW PROBLEMS IN PYTHON: LINKED LISTS
+Reverse a Linked List
+
+What if instead of progressing through nodes from head to tail, we wanted to move from tail to head? We can reverse a linked list to make this the default traversal!
+
+Let's examine what we'll need to reverse the linked list.
+
+# a -> b -> c -> d
+reverse(linked_list)
+# d -> c -> b -> a
+We reassign each node's .next property to the preceding node. For the head node, this means .next points to None.
+
+To recap:
+
+write a function: reverse().
+reverse() takes one argument, an instance of LinkedList.
+return an instance of LinkedList which contains all the nodes from the input in reverse order.
+Instructions
+1.
+Solve this problem, then try to optimize your solution. It's possible to solve this with O(N) time and O(1) space complexity.
+
+We detail our implementation in the hint.
+
+Similar to the .insert() method written earlier, we need to store references to the current node and preceding node.
+
+The difference is this time we're reassigning to the previous node.
+
+We'll start by declaring our two variables and beginning the traversal:
+
+prev = None
+current_node = linked_list.head
+while current_node:
+Within the iteration, we need to store a reference to the current_node's .next because it will be reassigned to the previous node:
+
+  tmp = current_node.next
+  current_node.next = prev
+We continue the iteration moving backward by reassigning prev to be the new current node.
+
+  prev = current_node
+The last piece is setting current node to be the original current node's .next that we stored earlier.
+
+  current_node = tmp
+Finally, we use our new head (stored in prev) to instantiate a new LinkedList.
+
+return LinkedList(prev)
+
+++++++++++++++++++++++++++++++++++
+TECHNICAL INTERVIEW PROBLEMS IN PYTHON: LINKED LISTS
+Detect Cycle in a Linked List
+
+As we saw with the merge point problem, more than one node can reference another node. These references can create a cycle in the linked list where the traversal will loop back on itself.
+
+#    -> b -> c
+#  /      \   \
+# a         d <-
+
+# 'd' node's next points to 'b' node
+Write a function that detects whether a cycle exists in a linked list. A cycle exists if traversing the linked list visits the same node more than once.
+
+A cycle does not mean repeated values. Avoid this pitfall in your implementation by comparing the Node instances themselves, not their values!
+
+a = Node('a')
+other_a = Node('a')
+
+a.val == other_a.val 
+# True
+a == other_a
+# False
+To recap:
+
+write a function: has_cycle().
+has_cycle() takes an instance of LinkedList as the argument.
+return a Boolean which indicates whether a cycle exists.
+Instructions
+1.
+Solve this problem and pass the tests. If you need help, check out the hint!
+
+One approach would be to create a dictionary that stores each Node instance visited in the traversal. During the traversal, if we ever encounter a node that's already in that dictionary, we have a repeat visit and therefore a cycle.
+
+A more efficient approach that does not require additional space is to use two variables to traverse the linked list: one moves twice as fast as the other.
+
+slow, fast = linked_list.head, linked_list.head
+while slow and fast:
+Two things are possible:
+
+the fast variable reaches the end of the linked list and is set to None: indicates no cycle
+the fast variable cycles back and points to the same node as slow: indicates cycle
+  slow = slow.next
+  fast = fast.next
+Be careful with moving fast because it could have already reached the end of the list which would cause an error if we attempted to reassign to fast.next again.
+
+  if fast:
+    fast = fast.next
+  else:
+    return False
+All that's left is to compare the nodes. If they're the same, we have a cycle!
+
+  if fast == slow:
+    return True
+If we exit the loop, we know there's no cycle and should return False.
+
++++++++++++++++++++++++++++++++++
+
+TECHNICAL INTERVIEW PROBLEMS IN PYTHON: LINKED LISTS
+Add Two Numbers
+
+For our last problem, we're going to pretend that each node in a linked list holds the digit of a number. The tail node holds the most significant digit and the head node holds the least significant digit.
+
+# 2 -> 4 -> 1
+# represents the number 142
+# 7 -> 1
+# represents the number 17
+Given two of these linked lists, write a function that returns the sum of the two numbers as a new linked list.
+
+# 2 -> 4 -> 1
+# plus
+# 7 -> 1
+# returns
+# 9 -> 5 -> 1
+To recap:
+
+write a function: add_two().
+add_two() takes two arguments, each an instance of LinkedList.
+return an instance of LinkedList which contains the sum of the input linked lists.
+Instructions
+1.
+Solve this problem and pass the tests. If you need help, check out the hint!
+
+This is a lengthy solution but the logic can be broken into manageable pieces.
+
+At a high level, we'll traverse both lists simultaneously, adding the value found at each head node and storing the result in a new Node instance.
+
+First, we'll need a result and carry.
+
+carry will contain the overflow if we add two digits that sum greater than 9. To start we'll set it to 0.
+
+We'll also initialize variables set to each of the head nodes.
+
+def add_two(linked_list_a, linked_list_b):
+
+  result = LinkedList()
+  carry = 0
+
+  a_node = linked_list_a.head
+  b_node = linked_list_b.head
+We'll traverse as long as a node exists in either list.
+
+while a_node or b_node:
+We need to check whether either node exists before adding. If we've reached the end of one list, we can treat that "node" as 0 which won't affect the sum.
+
+  if b_node:
+    b_val = b_node.val
+    b_node = b_node.next
+  else:
+    b_val = 0
+
+  if a_node:
+    a_val = a_node.val
+    a_node = a_node.next
+  else:
+    a_val = 0
+With the values collected from both nodes, we create our sum by adding them together with the carry.
+
+  to_sum = a_val + b_val + carry
+Each node in the return value is meant to be a single digit. Let's handle the case where our sum is greater than 9.
+
+We can retrieve a single digit using the % operator.
+
+For example, if to_sum was 15. Using to_sum % 10 will give us 5 and we can set carry to 1.
+
+  if to_sum > 9:
+    carry = 1
+    to_sum %= 10
+  else:
+    carry = 0
+Finally, we need to set up our return value. Unfortunately, we can't use the built in .add() because it will reverse the ordering.
+
+We check if we have an existing result head or create one if it does not exist. We use tmp to track the tail node of our result as we build it out.
+
+  if not result.head:
+    result.head = Node(to_sum)
+    tmp = result.head
+  else:
+    tmp.next = Node(to_sum)
+    tmp = tmp.next
+Once we've completed our traversal of both lists, it's possible there's a remaining carry. For example, adding 9 -> and 9 -> would exhaust both lists but only return 8 -> with carry set to 1.
+
+Add carry if it exists.
+
+if carry:
+  tmp.next = Node(carry)
+With the stray carry accounted for, we've successfully added two linked lists. Return result!
+
++++++++++++++++++++++++++++++++++++++
+TECHNICAL INTERVIEW PROBLEMS IN PYTHON: LINKED LISTS
+Review
+
+Linked lists are a sequential data structure like lists, but they store data in a different way. Lists store data sequentially in the computer's memory. Linked lists track the internal memory address of the data so values can be stored anywhere in memory.
+
+The benefit of storing the memory address is that linked lists can insert or delete data in constant time, whereas a list would require linear time. The drawback is that linked lists do not have index access, so searching and accessing values are linear time operations.
+
+The key to understanding linked lists lies in the manipulation of the property .next, where a node references the following node in the linked list.
+
+Instructions
+All the code from this lesson is available in the text editor. Play around by making some linked lists.
+
+----------------------------------------------------------------------------
+TECHNICAL INTERVIEW PROBLEMS: DYNAMIC PROGRAMMING
+Introduction to Dynamic Programming
+
+Dynamic programming is an optimization strategy for designing algorithms. The technique is beneficial for technical interviews because solving problems with an optimal big O runtime will improve your chances of being hired.
+
+We'll describe dynamic programming with a question: What is 1 + 1 + 1 + 1?
+
+Now, what is one more, or 1 + 1 + 1 + 1 + 1?
+
+For the first question, you counted each 1 to arrive at 4, but for the second question, you only needed to add 1 to the previous total. You "stored" the previous sum to avoid a calculation already performed.
+
+That's dynamic programming! Break a problem into smaller sub-problems, store the answers to the sub-problems, and use those stored answers to solve the original problem.
+
+We need overlapping sub-problems for the stored answers to be useful; answers for overlapping sub-problems are consistent and relevant to the original problem.
+
+With a linear search, we examine each element in a collection to find a target element. We can't apply dynamic programming because there is no overlapping sub-problem. An element's location can vary between searches and the location in one search has no relevance to another search in a larger collection.
+
++++++++++++++++++++++++++++
+TECHNICAL INTERVIEW PROBLEMS: DYNAMIC PROGRAMMING
+Fibonacci Without Memoization
+
+Storing answers to sub-problems is an essential aspect of dynamic programming. Let's explore why this is the case.
+
+The Fibonacci Sequence is a series of numbers where the next number equals the sum of the previous two, starting with 0 and 1.
+
+Here's a list of the first 10 Fibonacci numbers: 0, 1, 1, 2, 3, 5, 8, 13, 21. The zeroth Fibonacci number is 0.
+
+We can express this sequence as a function:
+
+f(n) = f(n - 1) + f(n - 2)
+We've written a Python function that returns the nth Fibonacci number.
+
+Let's add some print statements so we can see how often we're repeating work in the current implementation.
+
+Instructions
+1.
+We need a way to store our function calls.
+
+Above the fibonacci() function, declare arguments_count as an empty dictionary.
+
+arguments_count will hold the argument as a key and the number of times we called fibonacci() with that argument as the value.
+
+2.
+We need to fill our dictionary so we can log the results.
+
+Inside the first line of the fibonacci() function, declare the variable count. Set count to be the value located in arguments_count under the key num.
+
+Sometimes that key won't exist because the argument hasn't been seen before.
+
+Use 0 as a default. What dictionary method would be useful here?
+
+3.
+With a sensible default in place, reassign count to be one more than it was previously to mark this function call.
+
+After incrementing, store the updated value back in arguments_count with the same key of num.
+
+4.
+We've successfully completed our logging. Run the function.
+
+See how often arguments are repeated? Change num_in_fibonacci to different numbers.
+
+The bigger the number, the more repetitions!
+
+==========================
+
+arguments_count = {}
+num_in_fibonacci = 9
+
+def fibonacci(num):
+  count = arguments_count.get(num, 0)
+  count += 1
+  arguments_count[num] = count
+  if num < 0:
+    print("Not a valid number")
+  if num <= 1:
+    return num
+  else:
+    return fibonacci(num - 1) + fibonacci(num - 2)
+  
+
+print("Number {0} in the fibonacci sequence is {1}.".format(num_in_fibonacci, fibonacci(num_in_fibonacci)))
+      
+for num, count in arguments_count.items():
+  print("Argument {0} seen {1} time(s)!".format(num, count))
+
+print("Fibonacci function called {0} total times!".format(sum(arguments_count.values())))
+
+++++++++++++++++++++++++++++++++++
+
+TECHNICAL INTERVIEW PROBLEMS: DYNAMIC PROGRAMMING
+Fibonacci With Memoization
+The Fibonacci sequence is a perfect case to apply dynamic programming. Each Fibonacci number relies on two previous numbers, and those numbers never change. We have overlapping sub-problems!
+
+We'll store the answers to sub-problems using memoization. Think of it like jotting notes down on a memo.
+
+With each sub-problem, we'll check if we have a note in our memo. If we do, then we can use that information, otherwise, we'll need to do a calculation and then store that calculation in our memo pad!
+
+Remember these notes are possible because the answer will always be the same: the nth Fibonacci number will never change. Just like the 1 + 1 + 1 + 1 example, we don't need to recompute the 3rd and 4th Fibonacci number to calculate the 5th Fibonacci number if we already know the 3rd and 4th number.
+
+Instructions
+1.
+We'll store our calculated Fibonacci numbers in a dictionary similar to how we stored the function calls.
+
+Add a second parameter to fibonacci() of memo. Inside the function, update the recursive calls so memo is passed as the second argument.
+
+Update the logging we have outside the function. Invoke fibonacci() with num_in_fibonacci and {} as our initial "memo".
+
+2.
+Each function call now has access to our memo dictionary. Alter the function so it checks if we've seen this computation already.
+
+Add an elif conditional before the recursive function calls and check memo.get(num).
+
+If memo.get(num) has a value, we've seen the computation and we can return the retrieved value.
+
+Our conditional will look like this:
+
+ if num <= 1:
+    return num
+  elif "Have we calculated this number?":
+    return # calculated fibonacci 
+  else:
+    return fibonacci(num - 1, memo) + fibonacci(num - 2, memo)
+We can check whether we've calculated the number by looking inside our memo with memo.get(num).
+
+memo.get(num) will either retrieve the value at that key, or None which is falsey.
+
+3.
+We can see the number of function calls hasn't been reduced!
+
+That's because we're never storing anything inside our memo.
+
+Update the final line of the fibonacci() function so instead of returning the recursive call it stores the result under memo[num]. Now the computation will be available for other function calls.
+
+Once the value has been stored, return memo[num]
+
+We need to change this line:
+
+return fibonacci(num - 1, memo) + fibonacci(num - 2, memo)
+because it does not store computations in memo.
+
+You can set the value like so:
+
+memo[num] = fibonacci(num - 1, memo) + fibonacci(num - 2, memo)
+Then we need to return the value:
+
+return memo[num]
+4.
+We've successfully applied dynamic programming to the Fibonacci Sequence.
+
+Run the code and see how few function calls are performed compared to our previous solution!
+=============================
+
+num_in_fibonacci = 9
+function_calls = []
+
+def fibonacci(num,memo):
+  function_calls.append(1)
+  
+  if num < 0:
+    print("Not a valid number")
+  if num <= 1:
+    return num
+
+  elif memo.get(num):
+    return memo.get(num)
+    
+  else:
+    memo[num] = fibonacci(num - 1, memo) + fibonacci(num - 2,memo)
+    return memo[num]
+  
+  
+fibonacci_result = fibonacci(num_in_fibonacci,{})
+print("Number {0} in the fibonacci sequence is {1}.".format(num_in_fibonacci, fibonacci_result))
+
+print("Fibonacci function called {0} total times!".format(len(function_calls)))
+
+++++++++++++++++++++++++++++++++
+TECHNICAL INTERVIEW PROBLEMS: DYNAMIC PROGRAMMING
+Knapsack Without Memoization
+
+Dynamic programming is especially helpful for problems where there are many different options and we have a particular goal we're trying to maximize.
+
+For the sake of learning, we're going to imagine ourselves as burglars. We've broken into someone's home and there are many different things we can steal.
+
+Each item has a weight and a value. Our goal is to maximize the total value of items while remaining within the weight we can fit in our knapsack.
+
+This is another ideal situation to apply dynamic programming, but to start we'll use the brute force approach and generate every single possible combination.
+
+We can total each combination's weight and value to find the most lucrative collection.
+
+To help, we're given a Loot class with name, weight, and value properties.
+
+computer = Loot("Computer", 2, 12)
+print(computer)
+# Computer: 
+#     weighs 2,
+#     valued at 12,
+We also have a powerset() function which creates a list of all combinations.
+
+fruits = ['apple', 'orange', 'grape']
+fruit_combinations = power_set(fruits)
+print(fruit_combinations)
+#[(), ('apple',), ('orange',), ('grape',), ('apple', 'orange'), ('apple', 'grape'), ('orange', 'grape'), ('apple', 'orange', 'grape')]
+Note: Codecademy does not endorse thievery!
+
+Instructions
+1.
+We'll start our function by setting up our combinations of loot.
+
+After best_value, declare all_combo.
+
+We now have two variables:
+
+all_combo: Use powerset() to create all combinations of the loot argument.
+best_value: Tracks the best loot combination. Initialized at None.
+2.
+Iterate through each combo in all_combo.
+
+Inside the loop, create two new variables:
+
+combo_weight: The sum of all loot weight in combo.
+combo_value: The sum of all loot value in combo.
+Remember, each combo is a list of Loot instances. We can use a list comprehension to pull out certain properties.
+
+combo_names = [item.name for item in combo]
+We can use sum() to get a total from a list:
+
+nums = [5, 3, 1]
+sum(nums)
+# 9
+3.
+With combo_weight and combo_value, we can make informed decisions about what to take.
+
+Check if combo_weight fits in the knapsack. combo_weight will fit if it's less than or equal to weight_limit.
+
+If it does fit, we need to check to see if it's the best value we've seen.
+
+It's the best value we've seen if best_value is still set to None OR combo_value is greater than best_value.
+
+Here's a pseudo-code breakdown:
+
+# if {the combination fits}
+  # if {there isn't a best value} or
+  #    {combo value greater than best}
+    # set best_value to be combo_value
+4.
+All the hard work is done!
+
+When the loop concludes, check if best_value is None.
+
+If so, print "knapsack couldn't fit any items".
+
+=======================================
+
+from util import powerset, Loot
+
+def knapsack(loot, weight_limit):
+  all_combo = powerset(loot)
+  best_value = None
+  for combo in all_combo:
+    combo_weight = sum([item.weight for item in combo])
+    combo_value = sum([item.value for item in combo])
+    if combo_weight <= weight_limit:
+      if not best_value or best_value < combo_value:
+        best_value = combo_value
+  if not best_value:
+    print("knapsack couldn't fit any items")
+  return best_value
+    
+available_loot = [Loot("Clock", 3, 8), Loot("Vase", 4, 12), Loot("Diamond", 1, 7)]
+weight_capacity = 4
+best_combo = knapsack(available_loot, weight_capacity)
+print("The ideal loot given capacity {0} is\n{1}".format(weight_capacity, best_combo))
+
++++++++++++++++++++++++++++++++++++++++
+
+TECHNICAL INTERVIEW PROBLEMS: DYNAMIC PROGRAMMING
+Knapsack With Memoization: Building the Grid
+
+Our brute force approach is inefficient! We're compounding work by creating many different combinations that contain the same items. Just like with Fibonacci, we're repeating computations that won't change.
+
+With the Fibonacci Sequence, we had one variable to store: the number itself. We could place that number in a Python dictionary and look it up as needed.
+
+Now we're dealing with multiple variables: the item's weight and value as well as the capacity of the knapsack. A dictionary's key-value pairs won't be sufficient to store all the answers to our subproblems.
+
+We'll start tackling this problem by building a grid which can store all our sub-answers.
+
+The columns of our grid represent each possible capacity up to the weight limit.
+
+The rows of our grid represent each possible item we can fit into a knapsack.
+
+Why do we want each possible capacity? Because finding the optimal capacity for a knapsack of weight 4 will be much more efficient if we already know the optimal capacities for knapsacks of weight 3 and 1!
+
+Instructions
+1.
+Inside knapsack(), declare the variable grid.
+
+grid will be a two-dimensional list, or matrix, (a list of lists) where we store answers to our sub-problems.
+
+We create grid using two nested list comprehensions.
+
+Here's a pseudo-code representation:
+
+# [ 
+#  [ 0 for capacity 
+#    in number of capacities + 1] 
+#    for item in number of loot items + 1]
+Use range() for both list comprehensions. The inner list comprehension will place 0 for column in range(len(loot) + 1).
+
+The outer list comprehension will do this for row in range(weight_capacity + 1).
+
+2.
+After initializing our grid, we'll want to populate it with values.
+
+We can do this by iterating through each item in the loot parameter.
+
+We need information about the item as well as its location. Use enumerate(loot) for the iteration so we have access to row (the index) and item (the Loot instance).
+
+Inside the loop, increment row by 1.
+
+We do this because the first row is "no item" and we've already stored that sub-answer by using 0 as the default value.
+
+We can iterate through the list of loot items and get both index and item like so:
+
+for row, item in enumerate(loot):
+  row = row + 1
+3.
+For each item, we want to consider how they fit into all of our sub-knapsacks.
+
+Inside the first loop, make another loop that iterates for each column. You can use range(weight_limit + 1). Make the iterating variable col.
+
+The beauty of this solution is the index is also the weight capacity. For example, the 2nd column represents a knapsack of capacity 2.
+
+Even so, we'll make things a bit more explicit.
+
+Inside the loop, declare weight_capacity and initialize it to col.
+
+for col in range(weight_limit + 1):
+  weight_capacity = col
+===================================
+
+from util import Loot
+
+def knapsack(loot, weight_limit):
+  grid = [[0 for col in range(weight_limit + 1)] for row in range(len(loot) + 1)]
+  for row, item in enumerate(loot):
+    row = row + 1
+    for col in range(weight_limit + 1):
+      weight_capacity = col
+  return grid
+    
+available_loot = [Loot("Clock", 3, 8), Loot("Vase", 4, 12), Loot("Diamond", 1, 7)]
+weight_capacity = 4
+best_combo = knapsack(available_loot, weight_capacity)
+print("The ideal loot given capacity {0} is\n{1}".format(weight_capacity, best_combo))
+
+++++++++++++++++++++++++++++++++++=
+TECHNICAL INTERVIEW PROBLEMS: DYNAMIC PROGRAMMING
+Knapsack With Memoization: Filling in the Grid
+
+With our grid built, we only need to fill it in to find our optimal value. Remember: each column is the capacity of a knapsack and each row is an item we can add. The first row is "no item" and the first column is "no capacity".
+
+We'll consider the diamond first. It weighs 1 pound and is worth $7. For each capacity after 0 (our first column), we can place the diamond in that location. Some capacities have spare weight, but that's okay.
+
+           # Capacity: 0| 1| 2| 3| 4|
+#____________________________________
+# first row: no item! [0, 0, 0, 0, 0]
+# second row: Diamond [0, 7, 7, 7, 7]
+Let's add a trophy worth $6 and weighing 2 lbs.
+
+The trophy doesn't fit in a 1lb. knapsack, so we look at the previous row and fill this section with that value.
+
+           # Capacity: 0| 1| 2| 3| 4|
+#____________________________________
+# first row: no item! [0, 0, 0, 0, 0]
+# second row: Diamond [0, (7), 7, 7, 7]
+# third row: Trophy   [0, (7), ?, ?, ?]
+The trophy fits in the 2lb. knapsack; we have two options:
+
+Trophy plus value stored at the remaining weight
+The previous best in the 2lb. sub-knapsack.
+Adding the 2 lb. trophy would mean 0 remaining capacity. This is why "no capacity", "no item" values live in our grid.
+
+Option 1 = 6 (trophy value) + 0 ("no capacity" value)
+
+Option 2 = 7 (the previous best)
+
+By weighing our options, we see this section should store the diamond value even though there's spare weight. We're maximizing for value!
+
+           # Capacity: 0| 1| 2| 3| 4|
+#____________________________________
+# first row: no item! [0, 0, 0, 0, 0]
+# second row: Diamond [0, 7, 7, 7, 7]
+# third row: Trophy   [0, 7, 7, ?, ?]
+We repeat this process with the 3lb. sub-knapsack:
+
+Option 1 = 6 (trophy value) + 7 (1lb. sub-knapsack value) Option 2 = 7 (the previous best)
+
+           # Capacity: 0| 1| 2| 3| 4|
+#____________________________________
+# first row: no item! [0, 0, 0, 0, 0]
+# second row: Diamond [0, 7, 7, 7, 7]
+# third row: Trophy   [0, 7, 7, 13, ?]
+One last time for the 4lb. knapsack:
+
+Option 1 = 6 (trophy value) + 7 (2lb. sub-knapsack value) Option 2 = 7 (the previous best)
+
+           # Capacity: 0| 1| 2| 3| 4|
+#____________________________________
+# first row: no item! [0, 0, 0, 0, 0]
+# second row: Diamond [0, 7, 7, 7, 7]
+# third row: Trophy   [0, 7, 7, 13, 13]
+Note that the best value is stored in our bottom-right section. This is true no matter how many items we add.
+
+The order we consider items is irrelevant for the final value. Here's how the grid would look trophy-first:
+
+           # Capacity: 0| 1| 2| 3| 4|
+#____________________________________
+# first row: no item! [0, 0, 0, 0, 0]
+# second row: Trophy  [0, 0, 6, 6, 6]
+# third row: Diamond  [0, 7, 7, 13, 13]
+Instructions
+1.
+Let's complete the logic for adding values to our grid. Inside the nested loops, we're set up to evaluate each item for each sub-capacity.
+
+Directly beneath the declaration for weight_capacity, add a conditional that checks if the item's weight is less than or equal to weight_capacity.
+
+If it is less we want to weigh our options. Declare item_value and item_weight and initialize them to the appropriate values on item.
+
+2.
+We have two options:
+
+Item plus value stored at the remaining weight
+The previous best in the sub-knapsack capacity.
+Declare previous_best_less_item_weight and set it to grid[row - 1][weight_capacity - item_weight]
+
+grid[row - 1] retrieves the previous row, another list, and [weight_capacity - item_weight] retrieves the sub-knapsack capacity value.
+
+Declare capacity_value_with_item and set it to the sum of item_value and previous_best_less_item_weight.
+
+capacity_value_with_item represents option 1.
+
+Again, we want this to take place inside the conditional where item.weight <= weight_capacity:
+
+# The value found if we subtract the current item's weight
+previous_best_less_item_weight = grid[row -1][weight_capacity - item_weight]
+# Previous value + current item's value
+capacity_value_with_item = item_value + previous_best_less_item_weight
+3.
+Option 2 is the previous best at this sub-capacity. We can retrieve that with grid[row - 1][col]. Assign this value to capacity_value_without_item.
+
+With both options in hand, we need to assign the appropriate value to grid[row][col].
+
+Set grid[row][col] to the max() of capacity_value_with_item and capacity_value_without_item.
+
+# the previous best at the current capacity
+capacity_value_without_item = grid[row - 1][col]
+
+# set the maximum of the two options to the current cell
+grid[row][col] = max(capacity_value_with_item, capacity_value_without_item)
+4.
+Now add an else to our item.weight <= weight_capacity conditional.
+
+If the item doesn't fit, we want to use the previous best. Set grid[row][col] to the value seen in the previous row.
+
+# item fits
+if item.weight <= weight_capacity:
+  # weigh options
+else:
+# item doesn't fit, set previous best
+  grid[row][col] = grid[row - 1][col]
+5.
+We've done it! All that's left is to retrieve the final value.
+
+Outside both of the nested loops, return the value in the bottom-right section of the grid.
+
+You can access the row in the grid using len(loot) and the column using weight_limit or make use of Python's -1 index to retrieve the last values.
+
+return grid[len(loot)][weight_limit]
+# or
+return grid[-1][-1]
+
+=====================================
+
+from util import Loot
+
+def knapsack(loot, weight_limit):
+  grid = [[0 for col in range(weight_limit + 1)] for row in range(len(loot) + 1)]
+  for row, item in enumerate(loot):
+    row = row + 1
+    for col in range(weight_limit + 1):
+      weight_capacity = col
+      if item.weight <= weight_capacity:
+        item_value = item.value        
+        item_weight = item.weight
+        previous_best_less_item_weight = grid[row - 1][weight_capacity - item_weight]
+        capacity_value_with_item = item_value + previous_best_less_item_weight
+        capacity_value_without_item = grid[row - 1][col]
+        grid[row][col] = max(capacity_value_with_item, capacity_value_without_item)
+      else:
+        grid[row][col] = grid[row - 1][col]
+   
+  return grid[-1][-1]
+    
+available_loot = [Loot("Clock", 3, 8), Loot("Vase", 4, 12), Loot("Diamond", 1, 7)]
+weight_capacity = 4
+best_combo = knapsack(available_loot, weight_capacity)
+print("The ideal loot given capacity {0} is\n{1}".format(weight_capacity, best_combo))
+
+
+++++++++++++++++++++++++++++++++++++++++++
+
+TECHNICAL INTERVIEW PROBLEMS: DYNAMIC PROGRAMMING
+Dynamic Programming Review
+
+Dynamic programming is a technique to optimize solutions for problems which have a structure that involves repeated, identical computations.
+
+For dynamic programming to work, it's essential that the problem can be broken into overlapping sub-problems which combine into a solution for the original problem.
+
+Dynamic programming requires us to store the answers to sub-problems so they can be retrieved as components to larger solutions. We memoize the solutions by storing them inside a data structure with efficient look-up.
+
+While dynamic programming can be tricky to master, it's an essential tool for optimizing many useful algorithms. The key idea is to break the problem down, solve each sub-problem, and combine the sub-answers.
+
+The difficulty lies in how the problem is broken apart, how the sub-answers are stored, and how they're used to solve the original problem.
+
+For Fibonacci, we stored the previous numbers so we did not need to recompute them.
+
+For Knapsack, we stored which items gave us the best value for every size knapsack. Then we could efficiently retrieve the best option whenever adding a new item.
+
+
