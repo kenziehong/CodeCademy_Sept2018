@@ -1,30 +1,30 @@
 <?php
 require_once 'Node.php';
 class LinkedList {
-  private static $_head = null;
-  
-  private static function getHeadNode() {
-    return self::$_head;
+  private $_head = null;
+
+  private function getHeadNode() {
+    return $this->_head;
   }
 
-  private static function setHeadNode($node) {
-    self::$_head = $node;
+  private function setHeadNode($node) {
+    $this->_head = $node;
   }
-  
+
   public function insert($data) {
-    $headNode = self::getHeadNode();
+    $headNode = $this->getHeadNode();
     $newNode = new Node($data);
 
     $newNode->setNextNode($headNode);
-    self::setHeadNode($newNode);
+    $this->setHeadNode($newNode);
   }
 
   public function traverse() {
     $strLinkedList = '';
-    $currentNode = self::getHeadNode();
+    $currentNode = $this->getHeadNode();
 
     while ($currentNode) {
-      $strLinkedList .=  $currentNode->getData() . ' -> ';
+      $strLinkedList .= $currentNode->getData() . ' -> ';
       $currentNode = $currentNode->getNextNode();
     }
 
@@ -32,12 +32,12 @@ class LinkedList {
   }
 
   public function remove($data) {
-    $currentNode = self::getHeadNode();
+    $currentNode = $this->getHeadNode();
     $currentData = $currentNode->getData();
 
     if ($currentData === $data) {
       $nextNode = $currentNode->getNextNode();
-      self::setHeadNode($nextNode);
+      $this->setHeadNode($nextNode);
     } else {
       while ($currentNode) {
         $nextNode = $currentNode->getNextNode();
@@ -48,7 +48,7 @@ class LinkedList {
           $currentNode = null;
         } else {
           $currentNode = $currentNode->getNextNode();
-        } 
+        }
       }
     }
   }
@@ -56,7 +56,7 @@ class LinkedList {
 
 $ll = new LinkedList();
 // $arr = array_rand(range(1,10), 5);
-$arr = [ 3, 5, 4, 1, 9];
+$arr = [3, 5, 4, 1, 9];
 foreach ($arr as $el) {
   $ll->insert($el);
 }
@@ -66,7 +66,3 @@ $ll->traverse();
 echo PHP_EOL;
 $ll->remove(4);
 $ll->traverse();
-
-
-
-
