@@ -1,12 +1,15 @@
 <?php
 // $data = array(55,41,59,26,53,58,97,93);
 $data = array(32, 11, 36, 35, 8, 22, 54, 65);
+quicksort(0, sizeof($data)-1, 'quickSort_0');
+
+
 /**
- * tạo m = lower, duyệt từ lower + 1 đến upper
+ * tạo m = lower, duyệt từ i = lower + 1 đến upper
  * trong vòng lặp, nếu giá trị tại i nhỏ hơn lower => tăng m, đổi giá trị m và i
  * hết vòng lặp, đổi giá trị m và lower
+ * gọi hàm từ lower tới m-1 và từ m+1 đến upper
  */
-quicksort(0, sizeof($data)-1, 'quickSort_0');
 function quicksort($lower, $upper, $message) {
 	global $data;
 
