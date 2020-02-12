@@ -1,8 +1,9 @@
 <?php
 require_once 'Node.php';
 
-class Stack {
+class Queue {
   private $_head = null;
+  private $_tail = null;
   private $_size = 0;
   private $_limit = 0;
 
@@ -14,35 +15,51 @@ class Stack {
     $this->_head = $node;
   }
 
+  private function getTailNode() {
+    return $this->_tail;
+  }
+
+  private function setTailNode($node) {
+    $this->_tail = $node;
+  }
+
   public function __construct($limit) {
     $this->_limit = $limit;
   }
 
-  public function push($data) {
+  public function enqueue($data) {
     $hasSpace = $this->hasSpace();
 
     if ($hasSpace) {
       $headNode = $this->getHeadNode();
       $newNode = new Node($data);
 
-      $newNode->setNextNode($headNode);
+      if ($this->isEmpty()) {
+        $this->setTailNode($newNode); // differ
+      } else {
+        $headNode->setNextNode($newNode); // $tailNode->setNextNode
+      }
+      
       $this->setHeadNode($newNode);
 
       $this->_size += 1;
     }
   }
 
-  public function pop() {
-    $headNode = $this->getHeadNode();
+  public function dequeue() {
+    if ($this->isEmpty()) {
+      return null;
+    }
 
-    if($headNode) {
-      $nextNode = $headNode->getNextNode();
-      $headData = $headNode->getData();
+    $tailNode = $this->getTailNode();
+    if ($tailNode) {
+      $nextNode = $tailNode->getNextNode();
+      $tailValue = $tailNode->getData();
 
-      $this->setHeadNode($nextNode);
+      $tailNode->setNextNode($nextNode);
       $this->_size -= 1;
-      
-      return $headData;
+
+      return $tailValue;
     }
   }
 
@@ -56,15 +73,15 @@ class Stack {
   }
 
   public function traverse() {
-    $strStack = '';
-    $currentNode = $this->getHeadNode();
+    $strqueue = '';
+    $currentNode = $this->getTailNode();
 
     while ($currentNode) {
-      $strStack .=  $currentNode->getData() . ' -> ';
+      $strqueue .=  $currentNode->getData() . ' -> ';
       $currentNode = $currentNode->getNextNode();
     }
 
-    echo $strStack;
+    echo $strqueue;
   }
 
   public function hasSpace() {
@@ -74,19 +91,27 @@ class Stack {
     return $size < $limit;
   }
 
+  public function isEmpty() {
+    return $this->_size === 0;
+  }
+
+  public function getSize() {
+    return $this->_size;
+  }
+
 }
 
-$stack = new Stack(5);
+$queue = new Queue(5);
 
 $arr = [ 3, 5, 4, 1, 9];
 foreach ($arr as $el) {
-  $stack->push($el);
+  $queue->enqueue($el);
 }
 
-$stack->traverse();
+$queue->traverse();
 echo PHP_EOL;
-echo $stack->peek();
+echo $queue->dequeue();
 echo PHP_EOL;
-$stack->traverse();
+$queue->traverse();
 
 
