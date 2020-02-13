@@ -35,11 +35,10 @@ class Queue {
       $newNode = new Node($data);
 
       if ($this->isEmpty()) {
-        $this->setTailNode($newNode); // differ
+        $this->setTailNode($newNode); 
       } else {
-        $headNode->setNextNode($newNode); // $tailNode->setNextNode
+        $headNode->setNextNode($newNode); 
       }
-      
       $this->setHeadNode($newNode);
 
       $this->_size += 1;
@@ -47,38 +46,35 @@ class Queue {
   }
 
   public function dequeue() {
-    if ($this->isEmpty()) {
-      return null;
-    }
-
     $tailNode = $this->getTailNode();
+
     if ($tailNode) {
       $nextNode = $tailNode->getNextNode();
-      $tailValue = $tailNode->getData();
+      $tailData = $tailNode->getData();
 
-      $tailNode->setNextNode($nextNode);
+      $this->setTailNode($nextNode);
       $this->_size -= 1;
 
-      return $tailValue;
+      return $tailData;
     }
   }
 
   public function peek() {
-    $currentNode = $this->getHeadNode();
+    $tailNode = $this->getTailNode();
 
-    if($currentNode) {
-      $currentData = $currentNode->getData();
-      return $currentData;
+    if($tailNode) {
+      $tailData = $tailNode->getData();
+      return $tailData;
     }
   }
 
   public function traverse() {
     $strqueue = '';
-    $currentNode = $this->getTailNode();
+    $tailNode = $this->getTailNode();
 
-    while ($currentNode) {
-      $strqueue .=  $currentNode->getData() . ' -> ';
-      $currentNode = $currentNode->getNextNode();
+    while ($tailNode) {
+      $strqueue .=  $tailNode->getData() . ' -> ';
+      $tailNode = $tailNode->getNextNode();
     }
 
     echo $strqueue;
@@ -93,10 +89,6 @@ class Queue {
 
   public function isEmpty() {
     return $this->_size === 0;
-  }
-
-  public function getSize() {
-    return $this->_size;
   }
 
 }

@@ -47,21 +47,21 @@ class Stack {
   }
 
   public function peek() {
-    $currentNode = $this->getHeadNode();
+    $headNode = $this->getHeadNode();
 
-    if($currentNode) {
-      $currentData = $currentNode->getData();
-      return $currentData;
+    if($headNode) {
+      $headData = $headNode->getData();
+      return $headData;
     }
   }
 
   public function traverse() {
     $strStack = '';
-    $currentNode = $this->getHeadNode();
+    $headNode = $this->getHeadNode();
 
-    while ($currentNode) {
-      $strStack .=  $currentNode->getData() . ' -> ';
-      $currentNode = $currentNode->getNextNode();
+    while ($headNode) {
+      $strStack .=  $headNode->getData() . ' -> ';
+      $headNode = $headNode->getNextNode();
     }
 
     echo $strStack;
@@ -85,7 +85,7 @@ foreach ($arr as $el) {
 
 $stack->traverse();
 echo PHP_EOL;
-echo $stack->peek();
+echo $stack->pop();
 echo PHP_EOL;
 $stack->traverse();
 
