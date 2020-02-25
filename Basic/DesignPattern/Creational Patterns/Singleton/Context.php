@@ -1,8 +1,4 @@
 <?php
-require_once('StrategyInterface.php');
-require_once('ConcreteStrategyMultiply.php');
-require_once('ConcreteStrategySubtract.php');
-
 class Context {
   private $_strategy = null;
   private static $instance = null;
@@ -42,11 +38,4 @@ class Context {
   }
 }
 
-
-$obj = Context::getInstance();
-$obj->setStrategy(new ConcreteStrategyMultiply());
-echo $obj->executeStrategy(12, 35);
-$obj->setStrategy(new ConcreteStrategySubtract());
-echo $obj->executeStrategy(12, 35);
-
-$obj2 = new Context();
+$context = Context::getInstance();

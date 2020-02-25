@@ -3,13 +3,13 @@
 require_once 'FacebookShare.php';
 require_once 'TwitterShare.php';
 
-class SocialMediaShare {
+class Facade {
   private $_facebook = null;
   private $_twitter = null;
 
   public function __construct() {
     $this->_facebook = new FacebookShare();
-    $this->_twitter = new FacebookShare();
+    $this->_twitter = new TwitterShare();
   }
 
   public function share(String $message) {
@@ -21,5 +21,4 @@ class SocialMediaShare {
   }
 }
 
-$obj = new SocialMediaShare();
-$obj->share('News');
+

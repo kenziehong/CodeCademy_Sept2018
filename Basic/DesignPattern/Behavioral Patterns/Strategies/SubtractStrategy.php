@@ -1,6 +1,6 @@
 <?php
 
-class ConcreteStrategySubtract implements StrategyInterface {
+class SubtractStrategy implements StrategyInterface {
   public function execute($a, $b) {
     return $a - $b;
   }

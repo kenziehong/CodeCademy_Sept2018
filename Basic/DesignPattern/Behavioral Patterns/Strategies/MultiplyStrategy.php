@@ -1,6 +1,6 @@
 <?php
 
-class ConcreteStrategyMultiply implements StrategyInterface {
+class MultiplyStrategy implements StrategyInterface {
   public function execute($a, $b) {
     return $a + $b;
   }
