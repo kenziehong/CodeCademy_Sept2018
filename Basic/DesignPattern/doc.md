@@ -4,7 +4,9 @@
   - In what way the elements of the pattern are related?
 
 # Creational-Patterns
-  [FactoryMethod]
+### provide various object creation mechanisms, which increase flexibility and reuse of existing code.
+
+- [FactoryMethod]
   ### provides an interface for creating objects in a superclass, but allows subclasses to alter the type of objects that will be created
 
   ## SuperClass:
@@ -16,7 +18,7 @@
     - Creator2 extends CreatorAbstract
       - factoryMethod: new Product2
 
-  [AbstractFactory]
+- [AbstractFactory]
   ### lets you produce families of related objects without specifying their concrete classes.
 
   ## Interfaces:
@@ -39,7 +41,7 @@
       - produceA: new ProductA2
       - produceB: new ProductB2
 
-  [Builder]
+- [Builder]
   ### lets you construct complex objects step by step. The pattern allows you to produce different types and representations of an object using the same construction code
 
   ## Interface:
@@ -79,5 +81,51 @@
       - builder->producePartB
       - builder->producePartC
 
- [Prototype]
+- [Prototype]
  ### lets you copy existing objects without making your code dependent on their classes.
+
+# Structural Patterns
+### How to assemble objects and classes into larger structures while keeping these structures flexible and efficient
+
+- [Facade]
+  ### provides a simplified (but limited) interface to a complex system of classes, library or framework. While Facade decreases the overall complexity of the application, it also helps to move unwanted dependencies to one place
+  `Giao diện nhất quán cho các đối tượng bên trong`
+
+  ## Classes:
+  - Facade
+    - system1
+    - system2
+    - operation
+      - system1->operation1
+      - system2->operation1
+
+      - system1->operation2
+      - system2->operation3
+
+  - System1
+    - operation1
+    - operation2
+  - System2
+    - operation1
+    - operation3
+
+- [Proxy]
+  ### lets you provide a substitute or placeholder for another object. A proxy controls access to the original object, allowing you to perform something either before or after the request gets through to the original object.
+
+  ## Interface
+    - SubjectInterface
+      - request
+
+  ## Classes
+    - RealSubject implement SubjectInterface
+        - request
+
+    - Proxy
+      - realSubject
+      - __contruct: realSubject = new RealSubject
+      - request:
+        - checkAccess
+        - realSubject->request
+        - logAccess
+      - checkAccess
+      - logAccess
