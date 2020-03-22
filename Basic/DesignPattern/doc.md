@@ -85,7 +85,7 @@
         - productB->operation
         - productB->operation2(productA)
 
-- [Builder]
+- `Builder`
   ### lets you construct complex objects step by step. The pattern allows you to produce different types and representations of an object using the same construction code
 
   ## Interface
@@ -168,6 +168,11 @@
     - System2
       - operation1
       - operation3
+  ## index
+    - system1 = new System1
+    - system2 = new System2
+    - facade = new Facade(system1, system2)
+      - facade->operation
 
 - `Proxy`
   ### lets you provide a substitute or placeholder for another object. A proxy controls access to the original object, allowing you to perform something either before or after the request gets through to the original object.
@@ -189,6 +194,11 @@
         - logAccess
       - checkAccess
       - logAccess
+
+  ## index
+    - realSubject = new RealSubject
+    - proxy = new Proxy(realSubject)
+      - proxy->request
 
 - `Adapter`
   ### allows objects with incompatible interfaces to collaborate
@@ -212,7 +222,7 @@
     - adapter = new Adapter (adaptee)
       - adapter->request
 
-- [Bridge]
+- `Bridge`
   ### lets you split a large class or a set of closely related classes into two separate hierarchies—abstraction and implementation—which can be developed independently of each other.
 
   ## Superclass
@@ -244,7 +254,7 @@
     - abstraction = new ExtendedAbstraction($implementation)
       - abstraction->operation
 
----------
+------------
 
 # Behavioral Patterns
 ### are concerned with algorithms and the assignment of responsibilities between objects.
@@ -264,6 +274,14 @@
     - strategy
     - setStrategy: strategy = new SubtractStrategy
     - executeStrategy: strategy->execute
+  ## index
+    - context = new Context
+    - multiplyStrategy = new MultipyStrategy
+      - context->setStrategory(multiplyStrategy)
+      - context->executeStrategy
+    - subtractStrategy = new SubtractStrategy
+      - context->setStrategory(subtractStrategy)
+      - context->executeStrategy
 
 - `Template Method`
   ### Defines the skeleton of an algorithm in the superclass but lets subclasses override specific steps of the algorithm without changing its structure.
@@ -294,7 +312,54 @@
     - Class2 extend AbstractClass
       - requiredOperations1
       - requiredOperations2
+  ## index
+    - class = new Class1
+      - class->templateMethod()
+    - class = new Class2
+      - class->templateMethod()
 
 - `Command`
-  - Turns a request into a stand-alone object that contains all information about the request.
-  - This transformation lets you parameterize methods with different requests, delay or queue a request’s execution, and support undoable operations.
+  ## turns a request into a stand-alone object that contains all information about the request. This transformation lets you parameterize methods with different requests, delay or queue a request’s execution, and support undoable operations.
+
+  ## Interface
+    - CommandInterface
+      - execute
+  ## Classes
+    - SimpleCommand implements CommandInterface
+      - payload
+      - __contruct: this->payload = payload
+      - execute: SimpleCommand . this->payload
+
+    - ComplexCommand implements CommandInterface
+      - receiver
+      - a
+      - b
+      - __contruct (receiver, a, b):
+        - this->receiver = receiver
+        - this->a = a
+        - this->b = b
+        - execute:
+          - ComplexCommand . this->receiver->doSomething(this->a)
+          - ComplexCommand . this->receiver->doSomethingElse(this->b)
+
+    - Receiver
+      - doSomething(a): Receiver . a
+      - doSomethingElse(b): Receiver . b
+
+    - Invoker
+      - onStart
+      - onFinish
+      - setOnStart(command): this->onStart = command
+      - setOnFinish(command): this->onFinish = command
+      - doSomethingImportant:
+        - Invoker . this->onStart->execute
+        - Invoker . this->onFinish->execute
+
+  ## index
+    - simple = new SimpleCommand('Say Hi')
+    - invoker = new Invoker
+      - invoker->setOnStart(simple)
+
+    - receiver = new Receiver
+    - complex = new ComplexCommand(receiver, 'Send email', 'Save report')
+      - invoker->setOnFinish(receiver)

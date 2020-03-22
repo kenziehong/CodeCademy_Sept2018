@@ -1,16 +1,16 @@
 <?php
-require_once('Sender.php');
-require_once('Light.php');
-require_once('TurnOffCommand.php');
-require_once('TurnOnCommand.php');
+require_once('Command.php');
+require_once('SimpleCommand.php');
+require_once('ComplexCommand.php');
+require_once('Receiver.php');
+require_once('Invoker.php');
 
-$sender = new Sender;
-$light = new Light();
+/**
+ * The client code can parameterize an invoker with any commands.
+ */
+$invoker = new Invoker;
+$invoker->setOnStart(new SimpleCommand("Say Hi!"));
+$receiver = new Receiver;
+$invoker->setOnFinish(new ComplexCommand($receiver, "Send email", "Save report"));
 
-$sender->setCommand(new TurnOnCommand($light));
-$sender->executeCommand();
-echo $light->checkStatus();
-
-$sender->setCommand(new TurnOffCommand($light));
-$sender->executeCommand();
-echo $light->checkStatus();
+$invoker->doSomethingImportant();
