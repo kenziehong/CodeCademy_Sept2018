@@ -8,22 +8,38 @@
 # Creational-Patterns
 ### provide various object creation mechanisms, which increase flexibility and reuse of existing code.
 
-- [FactoryMethod]
+- `FactoryMethod`
   ### provides an interface for creating objects in a superclass, but allows subclasses to alter the type of objects that will be created
 
-  ## SuperClass:
+  ## Superclass
     - CreatorAbstract
       - factoryMethod: ProductInterface
-  ## Subclasses:
+      - someOperation:
+        - product = this->factoryMethod
+        - result = product->operation
+  ## Subclasses
     - Creator1 extends CreatorAbstract
       - factoryMethod: new Product1
     - Creator2 extends CreatorAbstract
       - factoryMethod: new Product2
+  ## Interface
+    - ProductInterface
+      - operation
+  ## Classes
+    - Product1 implements ProductInterface
+      - operation: Product1
+    - Product2 implements ProductInterface
+      - operation: Product2
+  ## index
+    - creator = new Creator1
+      - creator->someOperation
+    - creator = new Creator2
+      - creator->someOperation
 
-- [AbstractFactory]
+- `AbstractFactory`
   ### lets you produce families of related objects without specifying their concrete classes.
 
-  ## Interfaces:
+  ## Interfaces
     - FactoryInterface
       - produceA: ProductAInterface
       - produceB: ProductBInterface
@@ -33,57 +49,97 @@
 
     - ProduceBInterface
       - operation
-      - operation2: ProductAInterface
-
-  ## Classes:
-    - Factory1 implement FactoryInterface
+      - operation2(ProductAInterface)
+  ## Classes
+    - Factory1 implements FactoryInterface
       - produceA: new ProductA1
       - produceB: new ProductB1
-    - Factory2 implement FactoryInterface
+
+    - Factory2 implements FactoryInterface
       - produceA: new ProductA2
       - produceB: new ProductB2
+
+    - ProductA1 implements ProductAInterface
+      - operation: ProductA1
+
+    - ProductA2 implements ProductAInterface
+      - operation: ProductA2
+
+    - ProductB1 implements ProductBInterface
+      - operation: ProductB1
+      - operation2(ProductAInterface): ProductB1
+
+    - ProductB2 implements ProductBInterface
+      - operation: ProductB2
+      - operation2(ProductAInterface): ProductB2
+  ## index
+    - factory = new Factory1
+      - productA = factory->produceA
+      - productB = factory->produceB
+        - productB->operation
+        - productB->operation2(productA)
+
+    - factory = new Factory2
+      - productA = factory->produceA
+      - productB = factory->produceB
+        - productB->operation
+        - productB->operation2(productA)
 
 - [Builder]
   ### lets you construct complex objects step by step. The pattern allows you to produce different types and representations of an object using the same construction code
 
-  ## Interface:
-   - BuilderInterface
-    - producePartA
-    - producePartB
-    - producePartC
+  ## Interface
+    - BuilderInterface
+      - producePartA
+      - producePartB
+      - producePartC
 
-  ## Classes:
-  - Builder1 implement BuilderInterface
-    - product
-    - __contruct: reset
-    - reset: new Product1
-    - producePartA: product->parts[] = A1
-    - producePartB: product->parts[] = B1
-    - producePartC: product->parts[] = C1
-    - getProduct:
+  ## Classes
+    - Builder1 implement BuilderInterface
       - product
-      - reset
+      - __contruct: reset
+      - reset: new Product1
+      - producePartA: product->parts[] = A1
+      - producePartB: product->parts[] = B1
+      - producePartC: product->parts[] = C1
+      - getProduct:
+        - product
+        - reset
 
-  - Builder2 implement BuilderInterface
-    - product
-    - __contruct: reset
-    - reset: new Product2
-    - producePartA: product->parts[] = A2
-    - producePartB: product->parts[] = B2
-    - producePartC: product->parts[] = C2
-    - getProduct:
+    - Builder2 implement BuilderInterface
       - product
-      - reset
+      - __contruct: reset
+      - reset: new Product2
+      - producePartA: product->parts[] = A2
+      - producePartB: product->parts[] = B2
+      - producePartC: product->parts[] = C2
+      - getProduct:
+        - product
+        - reset
 
-  - Directory
-    - builder
-    - buildPartA: builder->producePartA
-    - buildFull:
+    - Directory
+      - builder
+      - setBuilder(builder): this->builder = builder
+      - buildPartA: builder->producePartA
+      - buildFull:
+        - builder->producePartA
+        - builder->producePartB
+        - builder->producePartC
+
+    - Product
+      - listPart
+  ## index
+    -  director = new Director
+      - builder = new Builder1
+      - director->setBuilder(builder)
+      - director->buildPartA
+      - builder->getProduct->listPart
+
       - builder->producePartA
-      - builder->producePartB
       - builder->producePartC
+      - builder->getProduct->listPart
 
-- [Prototype]
+- `Prototype`
  ### lets you copy existing objects without making your code dependent on their classes.
 
 ------------
@@ -91,29 +147,29 @@
 # Structural Patterns
 ### How to assemble objects and classes into larger structures while keeping these structures flexible and efficient
 
-- [Facade]
+- `Facade`
   ### provides a simplified (but limited) interface to a complex system of classes, library or framework. While Facade decreases the overall complexity of the application, it also helps to move unwanted dependencies to one place
   `Giao diện nhất quán cho các đối tượng bên trong`
 
-  ## Classes:
-  - Facade
-    - system1
-    - system2
-    - operation
-      - system1->operation1
-      - system2->operation1
+  ## Classes
+    - Facade
+      - system1
+      - system2
+      - operation
+        - system1->operation1
+        - system2->operation1
 
-      - system1->operation2
-      - system2->operation3
+        - system1->operation2
+        - system2->operation3
 
-  - System1
-    - operation1
-    - operation2
-  - System2
-    - operation1
-    - operation3
+    - System1
+      - operation1
+      - operation2
+    - System2
+      - operation1
+      - operation3
 
-- [Proxy]
+- `Proxy`
   ### lets you provide a substitute or placeholder for another object. A proxy controls access to the original object, allowing you to perform something either before or after the request gets through to the original object.
 
   ## Interface
@@ -134,7 +190,7 @@
       - checkAccess
       - logAccess
 
-- [Adapter]
+- `Adapter`
   ### allows objects with incompatible interfaces to collaborate
 
   ## Superclass
@@ -193,7 +249,7 @@
 # Behavioral Patterns
 ### are concerned with algorithms and the assignment of responsibilities between objects.
 
-- [Strategies]
+- `Strategies`
   ### Defines a family of algorithms, put each of them into a separate class, and make their objects interchangeable
 
   ## Interface
@@ -209,7 +265,7 @@
     - setStrategy: strategy = new SubtractStrategy
     - executeStrategy: strategy->execute
 
-- [Template-Method]
+- `Template Method`
   ### Defines the skeleton of an algorithm in the superclass but lets subclasses override specific steps of the algorithm without changing its structure.
 
   ## Abstract
@@ -239,6 +295,6 @@
       - requiredOperations1
       - requiredOperations2
 
-- [Command]
+- `Command`
   - Turns a request into a stand-alone object that contains all information about the request.
   - This transformation lets you parameterize methods with different requests, delay or queue a request’s execution, and support undoable operations.
