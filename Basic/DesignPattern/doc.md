@@ -3,6 +3,8 @@
   - What roles do these classes play?
   - In what way the elements of the pattern are related?
 
+-----------
+
 # Creational-Patterns
 ### provide various object creation mechanisms, which increase flexibility and reuse of existing code.
 
@@ -84,6 +86,8 @@
 - [Prototype]
  ### lets you copy existing objects without making your code dependent on their classes.
 
+------------
+
 # Structural Patterns
 ### How to assemble objects and classes into larger structures while keeping these structures flexible and efficient
 
@@ -129,3 +133,112 @@
         - logAccess
       - checkAccess
       - logAccess
+
+- [Adapter]
+  ### allows objects with incompatible interfaces to collaborate
+
+  ## Superclass
+    - Target
+      - request
+  ## Subclass
+    - Adapter extends Target
+      - adaptee
+      - __construct: adaptee = new Adaptee
+      - request
+        - format (adaptee->specificRequest) like type of the requestTarget
+  ## Class
+    - Adaptee
+      - specificRequest
+  ## index
+    - target = new Target
+      - target->request
+    - adaptee = new Adaptee
+    - adapter = new Adapter (adaptee)
+      - adapter->request
+
+- [Bridge]
+  ### lets you split a large class or a set of closely related classes into two separate hierarchies—abstraction and implementation—which can be developed independently of each other.
+
+  ## Superclass
+    - Abstract
+      - implementation
+      - __contruct(implementation): this->implementation = implementation
+      - operation: Abstract . this->implementation->operationImplementation
+  ## Subclass
+    - ExtendedAbstraction extends Abstract
+      - operation: ExtendedAbstraction . this->implementation->operationImplementation
+
+  ## Interface
+    - Implementation
+      - operationImplementation
+
+  ## Classes
+    - ConcreteImplementationA implements Implementation
+      - operationImplementation: ConcreteImplementationA
+
+    - ConcreteImplementationB implements Implementation
+      - operationImplementation: ConcreteImplementationB
+
+  ## index
+    - implementation = new ConcreteImplementationA
+    - abstraction = new Abstraction($implementation)
+      - abstraction->operation
+
+    - implementation = new ConcreteImplementationB
+    - abstraction = new ExtendedAbstraction($implementation)
+      - abstraction->operation
+
+---------
+
+# Behavioral Patterns
+### are concerned with algorithms and the assignment of responsibilities between objects.
+
+- [Strategies]
+  ### Defines a family of algorithms, put each of them into a separate class, and make their objects interchangeable
+
+  ## Interface
+    - StrategyInterface
+      - excecute
+  ## Classes
+  - SubtractStrategy implement StrategyInterface
+    - execute
+  - MultipyStrategy implement StrategyInterface
+    - execute
+  - Context
+    - strategy
+    - setStrategy: strategy = new SubtractStrategy
+    - executeStrategy: strategy->execute
+
+- [Template-Method]
+  ### Defines the skeleton of an algorithm in the superclass but lets subclasses override specific steps of the algorithm without changing its structure.
+
+  ## Abstract
+    - AbstractClass
+      - templateMethod
+        - baseOperation1
+        - requiredOperations1
+        - baseOperation2
+        - hook1
+        - requiredOperation2
+        - baseOperation3
+        - hook2
+
+      - baseOperation1
+      - baseOperation2
+      - baseOperation3
+      - abstract requiredOperations1
+      - abstract requiredOperations2
+      - hook1
+      - hook2
+
+  ## Classes
+    - Class1 extend AbstractClass
+      - requiredOperations1
+      - requiredOperations2
+    - Class2 extend AbstractClass
+      - requiredOperations1
+      - requiredOperations2
+
+- [Command]
+  - Turns a request into a stand-alone object that contains all information about the request.
+  - This transformation lets you parameterize methods with different requests, delay or queue a request’s execution, and support undoable operations.
