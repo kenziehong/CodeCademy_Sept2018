@@ -16,7 +16,12 @@ class AreaCalculator {
     
     $area = []; 
     foreach ($shapes as $shape) {
-      $area[] = $shape->area();
+      if (is_a($shape, 'ShapeInterface')) {
+        $area[] = $shape->area();
+        continue;
+      }
+
+      throw new Exception('Invalid shape');
     }
 
     return array_sum($area);

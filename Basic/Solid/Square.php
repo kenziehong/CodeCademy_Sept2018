@@ -1,6 +1,6 @@
 <?php
 
-class Square {
+class Square implements ShapeInterface {
   public $length;
 
   public function __construct(float $length) {
