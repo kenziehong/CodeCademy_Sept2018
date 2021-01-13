@@ -28,8 +28,4 @@ class AreaCalculator {
 
     return array_sum($area);
   }
-
-  public function output() {
-    return 'Sum of the areas of provided shapes: '. $this->sum();
-  }
 }

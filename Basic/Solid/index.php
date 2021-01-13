@@ -2,6 +2,7 @@
 require_once('Circle.php');
 require_once('Square.php');
 require_once('AreaCalculator.php');
+require_once('SumCalculatorOutputter.php');
 
 $shapes = [
   new Circle(2),
@@ -10,5 +11,7 @@ $shapes = [
 ];
 
 $areas = new AreaCalculator($shapes);
+$output = new SumCalculatorOutputter($areas);
 
-echo $areas->output();
+echo $output->string();
+echo $output->json();
