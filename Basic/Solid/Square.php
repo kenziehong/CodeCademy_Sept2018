@@ -6,4 +6,8 @@ class Square {
   public function __construct(float $length) {
     $this->length = $length;
   }
+
+  public function area(){
+    return pow($this->length, 2);
+  }
 }
