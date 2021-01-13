@@ -7,9 +7,12 @@
 
 # Creational-Patterns
 ### provide various object creation mechanisms, which increase flexibility and reuse of existing code.
+`Khởi tạo đối tượng`
 
 - `FactoryMethod`
   ### provides an interface for creating objects in a superclass, but allows subclasses to alter the type of objects that will be created
+
+  `https://online.visual-paradigm.com/diagrams/templates/class-diagram/gof-design-patterns-factory-method/`
 
   ## Superclass
     - CreatorAbstract
@@ -38,6 +41,8 @@
 
 - `AbstractFactory`
   ### lets you produce families of related objects without specifying their concrete classes.
+
+  `https://online.visual-paradigm.com/diagrams/templates/class-diagram/gof-design-patterns-abstract-factory/`
 
   ## Interfaces
     - FactoryInterface
@@ -146,6 +151,7 @@
 
 # Structural Patterns
 ### How to assemble objects and classes into larger structures while keeping these structures flexible and efficient
+`Tổ chức mối quan hệ giữa các đối tượng`
 
 - `Facade`
   ### provides a simplified (but limited) interface to a complex system of classes, library or framework. While Facade decreases the overall complexity of the application, it also helps to move unwanted dependencies to one place
@@ -258,6 +264,7 @@
 
 # Behavioral Patterns
 ### are concerned with algorithms and the assignment of responsibilities between objects.
+`Hành vi của mỗi đối tượng`
 
 - `Strategies`
   ### Defines a family of algorithms, put each of them into a separate class, and make their objects interchangeable
