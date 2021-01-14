@@ -11,3 +11,7 @@ q(x) x of type T
 q(y) y of type S (subtype of T)
 
 This means that every subclass or derived class should be substitutable for their base or parent class.
+
+# Interface Segregation Principle
+A client should never be forced to implement an interface that it doesn’t use, or clients shouldn’t be forced to depend on methods they do not use.
+
