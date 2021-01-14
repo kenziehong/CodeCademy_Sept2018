@@ -14,4 +14,6 @@ This means that every subclass or derived class should be substitutable for thei
 
 # Interface Segregation Principle
 A client should never be forced to implement an interface that it doesn’t use, or clients shouldn’t be forced to depend on methods they do not use.
+# Dependency Inversion Principle
+Entities must depend on abstractions, not on concretions. It states that the high-level module must not depend on the low-level module, but they should depend on abstractions.
 
